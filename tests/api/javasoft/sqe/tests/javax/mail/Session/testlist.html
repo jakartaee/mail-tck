@@ -1,0 +1,229 @@
+<HTML>
+<HEAD>
+<!--
+
+    Copyright (c) 2012, 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<TITLE>Session</TITLE>
+</HEAD>
+
+<H1>Session</H1>
+
+<BODY>
+
+<font size=+1>
+These tests are designed to test the functionality of Session
+</font>
+
+<HR>
+
+<font size=+1>
+The following are the test descriptions for the tests developed.Links to the sources are also included.
+</font>
+
+<H3>API Tests </H3>
+
+<A NAME=getDefaultInstance_Test></A>
+<TABLE BORDER class=TestDescription>
+<TR><TD><B>title</B></TD><TD>getDefaultInstance() API(s)</TD></TR>
+<TR><TD><B>name</B></TD><TD>getDefaultInstance_Test</TD></TR>
+<TR><TD><B>source</B></TD><TD><A HREF=getDefaultInstance_Test.java>getDefaultInstance_Test.java</A></TD></TR>
+<TR><TD><B>executeClass</B></TD><TD>javasoft.sqe.tests.javax.mail.Session.getDefaultInstance_Test</TD></TR>
+<TR><TD><B>executeArgs</B></TD><TD> -t $JAVAMAIL_PROTOCOL -tp $JAVAMAIL_TRANSPORT_PROTOCOL -h $JAVAMAIL_SERVER -th $JAVAMAIL_TRANSPORT_SERVER -u $JAVAMAIL_USERNAME -p $JAVAMAIL_PASSWORD -r $JAVAMAIL_ROOT_PATH -m $JAVAMAIL_MAILBOX</TD></TR>
+<TR><TD><B>keywords</B></TD><TD>positive extensionAPI</TD></TR>
+</TABLE>
+<BR>
+
+<A NAME=getFolder_Test></A>
+<TABLE BORDER class=TestDescription>
+<TR><TD><B>title</B></TD><TD>getFolder() API(s)</TD></TR>
+<TR><TD><B>name</B></TD><TD>getFolder_Test</TD></TR>
+<TR><TD><B>source</B></TD><TD><A HREF=getFolder_Test.java>getFolder_Test.java</A></TD></TR>
+<TR><TD><B>executeClass</B></TD><TD>javasoft.sqe.tests.javax.mail.Session.getFolder_Test</TD></TR>
+<TR><TD><B>executeArgs</B></TD><TD> -t $JAVAMAIL_PROTOCOL -tp $JAVAMAIL_TRANSPORT_PROTOCOL -h $JAVAMAIL_SERVER -th $JAVAMAIL_TRANSPORT_SERVER -u $JAVAMAIL_USERNAME -p $JAVAMAIL_PASSWORD -r $JAVAMAIL_ROOT_PATH -m $JAVAMAIL_MAILBOX -test testfolder2</TD></TR>
+<TR><TD><B>keywords</B></TD><TD>positive extensionAPI</TD></TR>
+</TABLE>
+<BR>
+
+<A NAME=getInstance_Test></A>
+<TABLE BORDER class=TestDescription>
+<TR><TD><B>title</B></TD><TD>getInstance() API(s)</TD></TR>
+<TR><TD><B>name</B></TD><TD>getInstance_Test</TD></TR>
+<TR><TD><B>source</B></TD><TD><A HREF=getInstance_Test.java>getInstance_Test.java</A></TD></TR>
+<TR><TD><B>executeClass</B></TD><TD>javasoft.sqe.tests.javax.mail.Session.getInstance_Test</TD></TR>
+<TR><TD><B>executeArgs</B></TD><TD> -t $JAVAMAIL_PROTOCOL -tp $JAVAMAIL_TRANSPORT_PROTOCOL -h $JAVAMAIL_SERVER -th $JAVAMAIL_TRANSPORT_SERVER -u $JAVAMAIL_USERNAME -p $JAVAMAIL_PASSWORD -r $JAVAMAIL_ROOT_PATH -m $JAVAMAIL_MAILBOX</TD></TR>
+<TR><TD><B>keywords</B></TD><TD>positive extensionAPI</TD></TR>
+</TABLE>
+<BR>
+
+<A NAME=getPasswdAuthen_Test></A>
+<TABLE BORDER class=TestDescription>
+<TR><TD><B>title</B></TD><TD>getPasswdAuthen() API(s)</TD></TR>
+<TR><TD><B>name</B></TD><TD>getPasswdAuthen_Test</TD></TR>
+<TR><TD><B>source</B></TD><TD><A HREF=getPasswdAuthen_Test.java>getPasswdAuthen_Test.java</A></TD></TR>
+<TR><TD><B>executeClass</B></TD><TD>javasoft.sqe.tests.javax.mail.Session.getPasswdAuthen_Test</TD></TR>
+<TR><TD><B>executeArgs</B></TD><TD> -t $JAVAMAIL_PROTOCOL -tp $JAVAMAIL_TRANSPORT_PROTOCOL -h $JAVAMAIL_SERVER -th $JAVAMAIL_TRANSPORT_SERVER -u $JAVAMAIL_USERNAME -p $JAVAMAIL_PASSWORD -r $JAVAMAIL_ROOT_PATH -m $JAVAMAIL_MAILBOX</TD></TR>
+<TR><TD><B>keywords</B></TD><TD>positive extensionAPI</TD></TR>
+</TABLE>
+<BR>
+
+<A NAME=getProperties_Test></A>
+<TABLE BORDER class=TestDescription>
+<TR><TD><B>title</B></TD><TD>getProperties() API(s)</TD></TR>
+<TR><TD><B>name</B></TD><TD>getProperties_Test</TD></TR>
+<TR><TD><B>source</B></TD><TD><A HREF=getProperties_Test.java>getProperties_Test.java</A></TD></TR>
+<TR><TD><B>executeClass</B></TD><TD>javasoft.sqe.tests.javax.mail.Session.getProperties_Test</TD></TR>
+<TR><TD><B>executeArgs</B></TD><TD> -t $JAVAMAIL_PROTOCOL -tp $JAVAMAIL_TRANSPORT_PROTOCOL -h $JAVAMAIL_SERVER -th $JAVAMAIL_TRANSPORT_SERVER -u $JAVAMAIL_USERNAME -p $JAVAMAIL_PASSWORD -r $JAVAMAIL_ROOT_PATH -m $JAVAMAIL_MAILBOX</TD></TR>
+<TR><TD><B>keywords</B></TD><TD>positive extensionAPI</TD></TR>
+</TABLE>
+<BR>
+
+<A NAME=getProperty_Test></A>
+<TABLE BORDER class=TestDescription>
+<TR><TD><B>title</B></TD><TD>getProperty() API(s)</TD></TR>
+<TR><TD><B>name</B></TD><TD>getProperty_Test</TD></TR>
+<TR><TD><B>source</B></TD><TD><A HREF=getProperty_Test.java>getProperty_Test.java</A></TD></TR>
+<TR><TD><B>executeClass</B></TD><TD>javasoft.sqe.tests.javax.mail.Session.getProperty_Test</TD></TR>
+<TR><TD><B>executeArgs</B></TD><TD> -t $JAVAMAIL_PROTOCOL -tp $JAVAMAIL_TRANSPORT_PROTOCOL -h $JAVAMAIL_SERVER -th $JAVAMAIL_TRANSPORT_SERVER -u $JAVAMAIL_USERNAME -p $JAVAMAIL_PASSWORD -r $JAVAMAIL_ROOT_PATH -m $JAVAMAIL_MAILBOX</TD></TR>
+<TR><TD><B>keywords</B></TD><TD>positive extensionAPI</TD></TR>
+</TABLE>
+<BR>
+
+<A NAME=getProvider_Test></A>
+<TABLE BORDER class=TestDescription>
+<TR><TD><B>title</B></TD><TD>getProvider() API(s)</TD></TR>
+<TR><TD><B>name</B></TD><TD>getProvider_Test</TD></TR>
+<TR><TD><B>source</B></TD><TD><A HREF=getProvider_Test.java>getProvider_Test.java</A></TD></TR>
+<TR><TD><B>executeClass</B></TD><TD>javasoft.sqe.tests.javax.mail.Session.getProvider_Test</TD></TR>
+<TR><TD><B>executeArgs</B></TD><TD> -t $JAVAMAIL_PROTOCOL -tp $JAVAMAIL_TRANSPORT_PROTOCOL -h $JAVAMAIL_SERVER -th $JAVAMAIL_TRANSPORT_SERVER -u $JAVAMAIL_USERNAME -p $JAVAMAIL_PASSWORD -r $JAVAMAIL_ROOT_PATH -m $JAVAMAIL_MAILBOX</TD></TR>
+<TR><TD><B>keywords</B></TD><TD>positive extensionAPI</TD></TR>
+</TABLE>
+<BR>
+
+<A NAME=getProviders_Test></A>
+<TABLE BORDER class=TestDescription>
+<TR><TD><B>title</B></TD><TD>getProviders() API(s)</TD></TR>
+<TR><TD><B>name</B></TD><TD>getProviders_Test</TD></TR>
+<TR><TD><B>source</B></TD><TD><A HREF=getProviders_Test.java>getProviders_Test.java</A></TD></TR>
+<TR><TD><B>executeClass</B></TD><TD>javasoft.sqe.tests.javax.mail.Session.getProviders_Test</TD></TR>
+<TR><TD><B>executeArgs</B></TD><TD> -t $JAVAMAIL_PROTOCOL -tp $JAVAMAIL_TRANSPORT_PROTOCOL -h $JAVAMAIL_SERVER -th $JAVAMAIL_TRANSPORT_SERVER -u $JAVAMAIL_USERNAME -p $JAVAMAIL_PASSWORD -r $JAVAMAIL_ROOT_PATH -m $JAVAMAIL_MAILBOX</TD></TR>
+<TR><TD><B>keywords</B></TD><TD>positive extensionAPI</TD></TR>
+</TABLE>
+<BR>
+
+<A NAME=getStore_Test></A>
+<TABLE BORDER class=TestDescription>
+<TR><TD><B>title</B></TD><TD>getStore() API(s)</TD></TR>
+<TR><TD><B>name</B></TD><TD>getStore_Test</TD></TR>
+<TR><TD><B>source</B></TD><TD><A HREF=getStore_Test.java>getStore_Test.java</A></TD></TR>
+<TR><TD><B>executeClass</B></TD><TD>javasoft.sqe.tests.javax.mail.Session.getStore_Test</TD></TR>
+<TR><TD><B>executeArgs</B></TD><TD> -t $JAVAMAIL_PROTOCOL -tp $JAVAMAIL_TRANSPORT_PROTOCOL -h $JAVAMAIL_SERVER -th $JAVAMAIL_TRANSPORT_SERVER -u $JAVAMAIL_USERNAME -p $JAVAMAIL_PASSWORD -r $JAVAMAIL_ROOT_PATH -m $JAVAMAIL_MAILBOX</TD></TR>
+<TR><TD><B>keywords</B></TD><TD>positive extensionAPI</TD></TR>
+</TABLE>
+<BR>
+
+<A NAME=getTransport_Test></A>
+<TABLE BORDER class=TestDescription>
+<TR><TD><B>title</B></TD><TD>getTransport() API(s)</TD></TR>
+<TR><TD><B>name</B></TD><TD>getTransport_Test</TD></TR>
+<TR><TD><B>source</B></TD><TD><A HREF=getTransport_Test.java>getTransport_Test.java</A></TD></TR>
+<TR><TD><B>executeClass</B></TD><TD>javasoft.sqe.tests.javax.mail.Session.getTransport_Test</TD></TR>
+<TR><TD><B>executeArgs</B></TD><TD> -t $JAVAMAIL_PROTOCOL -tp $JAVAMAIL_TRANSPORT_PROTOCOL -h $JAVAMAIL_SERVER -th $JAVAMAIL_TRANSPORT_SERVER -u $JAVAMAIL_USERNAME -p $JAVAMAIL_PASSWORD -r $JAVAMAIL_ROOT_PATH -m $JAVAMAIL_MAILBOX -from $JAVAMAIL_USERNAME@$JAVAMAIL_SERVER -to $SMTP_TO</TD></TR>
+<TR><TD><B>keywords</B></TD><TD>positive extensionAPI</TD></TR>
+</TABLE>
+<BR>
+
+<A NAME=reqPasswdAuthen_Test></A>
+<TABLE BORDER class=TestDescription>
+<TR><TD><B>title</B></TD><TD>reqPasswdAuthen() API(s)</TD></TR>
+<TR><TD><B>name</B></TD><TD>reqPasswdAuthen_Test</TD></TR>
+<TR><TD><B>source</B></TD><TD><A HREF=reqPasswdAuthen_Test.java>reqPasswdAuthen_Test.java</A></TD></TR>
+<TR><TD><B>executeClass</B></TD><TD>javasoft.sqe.tests.javax.mail.Session.reqPasswdAuthen_Test</TD></TR>
+<TR><TD><B>executeArgs</B></TD><TD> -t $JAVAMAIL_PROTOCOL -tp $JAVAMAIL_TRANSPORT_PROTOCOL -h $JAVAMAIL_SERVER -th $JAVAMAIL_TRANSPORT_SERVER -u $JAVAMAIL_USERNAME -p $JAVAMAIL_PASSWORD -r $JAVAMAIL_ROOT_PATH -m $JAVAMAIL_MAILBOX</TD></TR>
+<TR><TD><B>keywords</B></TD><TD>positive extensionAPI</TD></TR>
+</TABLE>
+<BR>
+
+<A NAME=setPasswdAuthen_Test></A>
+<TABLE BORDER class=TestDescription>
+<TR><TD><B>title</B></TD><TD>setPasswdAuthen() API(s)</TD></TR>
+<TR><TD><B>name</B></TD><TD>setPasswdAuthen_Test</TD></TR>
+<TR><TD><B>source</B></TD><TD><A HREF=setPasswdAuthen_Test.java>setPasswdAuthen_Test.java</A></TD></TR>
+<TR><TD><B>executeClass</B></TD><TD>javasoft.sqe.tests.javax.mail.Session.setPasswdAuthen_Test</TD></TR>
+<TR><TD><B>executeArgs</B></TD><TD> -t $JAVAMAIL_PROTOCOL -tp $JAVAMAIL_TRANSPORT_PROTOCOL -h $JAVAMAIL_SERVER -th $JAVAMAIL_TRANSPORT_SERVER -u $JAVAMAIL_USERNAME -p $JAVAMAIL_PASSWORD -r $JAVAMAIL_ROOT_PATH -m $JAVAMAIL_MAILBOX</TD></TR>
+<TR><TD><B>keywords</B></TD><TD>positive extensionAPI</TD></TR>
+</TABLE>
+<BR>
+
+<A NAME=setProvider_Test></A>
+<TABLE BORDER class=TestDescription>
+<TR><TD><B>title</B></TD><TD>setProvider() API(s)</TD></TR>
+<TR><TD><B>name</B></TD><TD>setProvider_Test</TD></TR>
+<TR><TD><B>source</B></TD><TD><A HREF=setProvider_Test.java>setProvider_Test.java</A></TD></TR>
+<TR><TD><B>executeClass</B></TD><TD>javasoft.sqe.tests.javax.mail.Session.setProvider_Test</TD></TR>
+<TR><TD><B>executeArgs</B></TD><TD> -t $JAVAMAIL_PROTOCOL -tp $JAVAMAIL_TRANSPORT_PROTOCOL -h $JAVAMAIL_SERVER -th $JAVAMAIL_TRANSPORT_SERVER -u $JAVAMAIL_USERNAME -p $JAVAMAIL_PASSWORD -r $JAVAMAIL_ROOT_PATH -m $JAVAMAIL_MAILBOX</TD></TR>
+<TR><TD><B>keywords</B></TD><TD>positive extensionAPI</TD></TR>
+</TABLE>
+<BR>
+
+<A NAME=addProvider_Test></A>
+<TABLE BORDER class=TestDescription>
+<TR><TD><B>title</B></TD><TD>addProvider() API</TD></TR>
+<TR><TD><B>name</B></TD><TD>addProvider_Test</TD></TR>
+<TR><TD><B>source</B></TD><TD><A HREF=addProvider_Test.java>addProvider_Test.java</A></TD></TR>
+<TR><TD><B>executeClass</B></TD><TD>javasoft.sqe.tests.javax.mail.Session.addProvider_Test</TD></TR>
+<TR><TD><B>executeArgs</B></TD><TD> -t $JAVAMAIL_PROTOCOL -tp $JAVAMAIL_TRANSPORT_PROTOCOL -h $JAVAMAIL_SERVER -th $JAVAMAIL_TRANSPORT_SERVER -u $JAVAMAIL_USERNAME -p $JAVAMAIL_PASSWORD -r $JAVAMAIL_ROOT_PATH -m $JAVAMAIL_MAILBOX</TD></TR>
+<TR><TD><B>keywords</B></TD><TD>positive extensionAPI</TD></TR>
+</TABLE>
+<BR>
+
+<A NAME=setProtocolForAddress_Test></A>
+<TABLE BORDER class=TestDescription>
+<TR><TD><B>title</B></TD><TD>setProtocolForAddress() API</TD></TR>
+<TR><TD><B>name</B></TD><TD>setProtocolForAddress_Test</TD></TR>
+<TR><TD><B>source</B></TD><TD><A HREF=setProtocolForAddress_Test.java>setProtocolForAddress_Test.java</A></TD></TR>
+<TR><TD><B>executeClass</B></TD><TD>javasoft.sqe.tests.javax.mail.Session.setProtocolForAddress_Test</TD></TR>
+<TR><TD><B>executeArgs</B></TD><TD> -t $JAVAMAIL_PROTOCOL -tp $JAVAMAIL_TRANSPORT_PROTOCOL -h $JAVAMAIL_SERVER -th $JAVAMAIL_TRANSPORT_SERVER -u $JAVAMAIL_USERNAME -p $JAVAMAIL_PASSWORD -r $JAVAMAIL_ROOT_PATH -m $JAVAMAIL_MAILBOX</TD></TR>
+<TR><TD><B>keywords</B></TD><TD>positive extensionAPI</TD></TR>
+</TABLE>
+<BR>
+
+<A NAME=loadFromLib_Test></A>
+<TABLE BORDER class=TestDescription>
+<TR><TD><B>title</B></TD><TD>load from java.home/lib</TD></TR>
+<TR><TD><B>name</B></TD><TD>loadFromLib_Test</TD></TR>
+<TR><TD><B>source</B></TD><TD><A HREF=loadFromLib_Test.java>loadFromLib_Test.java</A></TD></TR>
+<TR><TD><B>executeClass</B></TD><TD>javasoft.sqe.tests.javax.mail.Session.loadFromLib_Test</TD></TR>
+<TR><TD><B>executeArgs</B></TD><TD></TD></TR>
+<TR><TD><B>keywords</B></TD><TD>positive extensionAPI</TD></TR>
+</TABLE>
+<BR>
+
+<A NAME=loadFromConf_Test></A>
+<TABLE BORDER class=TestDescription>
+<TR><TD><B>title</B></TD><TD>load from java.home/conf</TD></TR>
+<TR><TD><B>name</B></TD><TD>loadFromConf_Test</TD></TR>
+<TR><TD><B>source</B></TD><TD><A HREF=loadFromConf_Test.java>loadFromConf_Test.java</A></TD></TR>
+<TR><TD><B>executeClass</B></TD><TD>javasoft.sqe.tests.javax.mail.Session.loadFromConf_Test</TD></TR>
+<TR><TD><B>executeArgs</B></TD><TD></TD></TR>
+<TR><TD><B>keywords</B></TD><TD>positive extensionAPI</TD></TR>
+</TABLE>
+<BR>
+<HR>
+
+</BODY>
+</HTML>

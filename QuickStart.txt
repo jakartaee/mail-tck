@@ -1,0 +1,96 @@
+Quick Start Instructions for JavaMail TCK
+
+================================
+Running the TCK from the source 
+================================
+
+1. Checkout TCK workspace in TCKHOME (e.g., "javamail-tck").
+     git clone git@github.com:eclipse-ee4j/javamail-tck.git
+   Change directory to $TCKHOME.
+2. Place javax.activation.jar (if using Java SE 9 or later)
+   and javax.mail.jar in any location. Let's call it JARPATH. 
+   It's usually simplest to just put them in $TCKHOME.
+3. Set CLASSPATH to
+     $TCKHOME/javatest.jar:$JARPATH/javax.activation.jar:$JARPATH/javax.mail.jar
+    
+     on Windows:
+     %TCKHOME%\javatest.jar;%JARPATH%\javax.activation.jar;%JARPATH%\javax.mail.jar
+
+4. Set ANT_HOME to $TCKHOME/tools/ant.
+5. Add $ANT_HOME/bin to your path.
+6. In TCKHOME, execute 'ant build'.  This will compile all source under
+   $TCKHOME/tests and $TCKHOME/harness into $TCKHOME/classes.
+7. See "Setting up the mailbox" below.
+8. Open $TCKHOME/lib/javamail.jte for editing.
+   In the file set the TS_HOME, JARPATH and JAVA_HOME.
+   Save and close the file.
+9. In tests/SignatureTest.html, change the sig file name to match the version of
+   Java SE you are using.  e.g. for Java SE 7, it should say
+   "-FileName javax.mail_1.6_java_1.7.sig" 
+10. In $TCKHOME, execute the following command to start the TCK in batch mode:
+     'ant run'
+   Alternatively, you can run 'ant gui' to start the TCK in gui mode.
+
+    If you are running on Windows, change the following property in
+    lib/javamail.jti:
+
+    jtwiz.environment.env=javamailWindows
+
+11. After the TCK suite finishes running, the report can be found in
+    $TCKHOME/JTreport/index.html
+
+
+================================
+  Setting up the mailbox
+================================
+
+a) Install IMAP server software on a machine.
+   Note that the IMAP server must support IMAP4 (RFC 1730) or
+   IMAP4-rev1 (RFC 2060).
+b) Create one user account with password on this server.
+   Note that a password is necessary.
+c) To populate the mailbox of the user you just created,
+   go to $TCKHOME/tests/mailboxes directory. Now compile and execute: 
+     javac fpopulate.java
+     java fpopulate -s test1 -d dest_url
+   where dest_url is of the form - protocol://username:password@hostname/  
+d) Install SMTP software on a machine.
+   Setup a user account so that the SMTP server can
+   deliver email to that account. 
+e) Now open the $TCKHOME/lib/javamail.jte file,
+   scroll to the end of the file and and set the following variables:
+
+   JAVAMAIL_SERVER=<server on which mailserver to be used is installed>
+   JAVAMAIL_USERNAME=<username of the user account you created in step b>
+   JAVAMAIL_PASSWORD=<password of the user account you created in step b>
+   JAVAMAIL_ROOT_PATH=<points to the folder, under which your test mailboxes
+			exist. This variable must be set to "" or "/" if your
+			mailboxes are directly under the root>
+   SMTP_USERNAME=<smtp username to use. Usually, this is the same as the
+			imap username if you are using a mail server>
+   SMTP_DOMAIN=<domain name of the server eg: sun.com, aol.com>
+f) Save and close the file. 
+
+
+================================
+      Releasing the TCK
+================================
+
+1. Follow steps 1 through 10 as listed in the
+   "Running the TCK from the source" section.
+2. If you need to record a sig file, in TCKHOME, execute 'ant record.sigtest'.
+   This will create a new sig file in TCKHOME for the version of Java SE you
+   are using. 
+3. Open $TCKHOME/lib/javamail.jte for editing.
+   In the file, unset the TCKHOME, JARPATH, JAVA_HOME, JAVAMAIL_SERVER,
+   JAVAMAIL_USERNAME, JAVAMAIL_PASSWORD, SMTP_USERNAME and SMTP_DOMAIN
+   variables. Save and close the file. 
+4. In the workspace now execute:
+     ant -f release.xml [-Dversion=tck_version]
+
+   Where tck_version is the javamail TCK version number
+
+   This command zips the necessary files into javamailtck-[tck_version]_[date/time].zip.
+
+   Note that this command assumes the TCK will be installed in a directory
+   named "javamailtck".

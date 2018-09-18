@@ -1,0 +1,8 @@
+# Commented tests @ 02/03/2005 
+api/javasoft/sqe/tests/javax/mail/internet/InternetHeaders/testlist.html#getHeader_Test
+api/javasoft/sqe/tests/javax/mail/Folder/testlist.html#copyMessages_Test
+api/javasoft/sqe/tests/javax/mail/Folder/testlist.html#expunge_Test
+api/javasoft/sqe/tests/javax/mail/Message/testlist.html#getRecipients_Test
+api/javasoft/sqe/tests/javax/mail/search/RecipientTerm/testlist.html#recipientterm_Test
+api/javasoft/sqe/tests/javax/mail/Folder/testlist.html#setFlags_Test
+api/javasoft/sqe/tests/javax/mail/exception/MessageRemovedException/testlist.html#msgRemoveExp_Test

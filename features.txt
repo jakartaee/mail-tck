@@ -1,0 +1,185 @@
+########################### -*- Mode: Text -*- ##########################
+## features.txt --
+##
+## List all major product features to be tested by your test script.
+
+JavaMail(tm) Framework Feature List
+-----------------------------------
+
+Overview
+--------
+
+The JavaMail API is a specification that defines a Java interface to
+a messaging system. It contains a set of abstract classes and methods
+that provide an abstract Messaging layer. This layer is defined by the
+javax.mail, javax.mail.event and javax.mail.search packages.
+
+It also includes concrete classes that implement the current Internet
+standards for describing structure of an electronic message - namely
+RFC822 and MIME. This is contained in the package "javax.mail.internet".
+
+Service providers provide implementations of the JavaMail specification
+in terms of proprietary or standard protocols. The current JavaMail
+package provides an IMAP and SMTP provider. We expect third-parties
+to come up with providers for a bunch of other Messaging protocols.
+
+The major components of JavaMail are:
+
+Message structure
+-----------------
+
+The APIs in this section describe the structure of an electronic
+message.
+
+Feature List:
+ 
+ 1) Message
+
+The abstract Message class models an email message. Subclasses
+provide actual implementation. A Message contains a set of attributes
+and a "content". Examples of attributes are "Subject", "From", 
+"Content-Type" etc. The content of a Message is an arbitrary collection
+of bytes. The DataHandler class from the "javax.activation" package is
+used to 'type' the content and obtain suitable Viewers, Content-Handlers
+etc.
+
+ 2) Multipart
+
+JavaMail allows Messages to contain multiple "content" objects.
+Such a message is represented as a Message object containing a
+Multipart object as its content. A Multipart object is essentially
+a holder for multiple BodyPart objects.
+
+ 3) BodyPart
+
+The BodyPart class is actually quite similar to the Message class -
+it also has a set of attributes and a "content". Note that certain
+attributes like "Subject" and "From" make sense only for Messages,
+while others like "Content-Type" are valid for both.
+
+ 4) Flags
+
+A Message can have a set of flags associated with it. These flags
+describe the state of the message. A Flags object holds all the
+flags that are set on a particular message.
+
+JavaMail defines a set of standard flags like DELETED, ANSWERED etc.
+Certain implementations may also allow user-defined flags.
+
+Message Storage and Retrieval
+-----------------------------
+The Classes and APIs in this section deal with the storage and
+retrieval of messages from a message store.
+
+Feature List:
+
+ 1) Store
+
+Store is an abstract class that models a message store and its
+access protocol. Subclasses provide actual implementations.
+
+Clients establish a session with a message store by first obtaining
+an appropriate Store object. The Session class provides a registry
+(or factory) for locating and instantiaing appropriate Store objects,
+based on the user's desired access-protocol.
+
+Once the client obtains the Store object, it connects to it using
+the connect() method. When its finally done with the session, it
+terminates using the close() method.
+
+ 2) Folder
+
+Folder is abstract class that represents a folder for mail messages.
+Subclasses implement protocol specific Folders.
+
+Folders can contain Messages, other Folders or both, thus providing a
+tree-like hierarchy rooted at the Store's default folder. 
+
+A Folder object obtained from a Store need not actually exist in the
+backend store. The exists() method tests whether the folder exists or
+not. The create() method creates a Folder.
+
+The messages within a Folder are obtained using one of the many
+getMessage() variants.
+
+Message Composition and Transport
+---------------------------------
+The classes and APIs in this section deal with sending messages.
+
+Note that since the Message class is abstract, one has to create a
+suitable subclass. For the most common case of creating and sending
+"internet" messages, start off by instantiating the MimeMessage class. 
+Set suitable attributes like "Subject", "To" etc. Then insert the
+content into the message using the setContent() or setText() methods.
+Thus you have a complete MimeMessage, ready for transmission.
+
+ 1) Transport
+
+An abstract class that models a message transport. Subclasses provide
+actual implementations
+
+The static send() method on Transport sends the given message to
+the recipeints listed within the message. This method is actually
+a convenience method, that internally finds and instantiates the
+appropriate Transport object, and uses that to do the actual sending.
+
+Internet Message
+----------------
+
+Feature List:
+
+ 1) MimeMessage 
+
+This class represents a MIME style email message. It implements the
+Message abstract class. It also provides additional methods to set
+and get MIME specific attributes.
+
+ 2) MimeBodyPart
+
+This class represents a MIME body part. It implements the BodyPart
+abstract class. MimeBodyParts are contained in MimeMultipart objects.
+
+ 3) MimeMultipart
+
+The MimeMultipart class is an implementation of the abstract Multipart
+class that uses MIME conventions for the multipart data.
+
+A MimeMultipart is obtained from a MimePart whose primary type is
+"multipart" (by invoking the part's getContent() method) or it can be
+created by a client as part of crafting a new MimeMessage.
+
+Events
+------
+
+JavaMail uses events to communicate state changes to clients. The Store,
+Folder and Transport classes are examples of event sources. The
+ConnectionEvent, MessageCountEvent etc are examples of events. The
+javax.mail.event package contains all the JavaMail events.
+
+Clients express interest in certain events by registering themselves as
+listeners of those events.
+
+Search
+------
+JavaMail provides APIs to search a Folder for messages that match
+specific search criteria. Search criteria are expressed using
+SearchTerms. By using logical operators, one can combine these terms
+to form quite complex search criterion.
+
+The javax.mail.search package contains all JavaMail SearchTerms.
+
+Reference:
+---------
+
+The following references are publically available on the Internet:
+
+   * The Javamail specification in PDF format:
+       https://javaee.github.io/javamail/docs/JavaMail-1.6.pdf
+
+   * Javamail API Documentation (javadoc format)
+       https://javaee.github.io/javamail/docs/api/
+
+   * JAF Homepage
+       https://github.com/javaee/activation
+
+########################################################################

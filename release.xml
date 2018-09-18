@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2012, 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<project name="JavaMail TCK release" default="core" basedir=".">
+
+    <import file="./build.xml"/>
+    <tstamp>
+        <format property="time.stamp.bundle.string" pattern="dd-MMM-yyyy" locale="en"/>
+    </tstamp>
+    <property name="date.time" value="${DSTAMP}_${TSTAMP}"/>
+    <property name="zip.fullname" value="javamailtck-${version}_${time.stamp.bundle.string}"/>
+    <property name="zip.file" value="${zip.fullname}.zip"/>
+            
+    <target name="javadoc">
+        <mkdir dir="${basedir}/docs/javadocs"/>
+        <javadoc 
+            destdir="${basedir}/docs/javadocs" 
+            source="1.8" 
+            notree="false" 
+            use="true" 
+            nonavbar="false" 
+            noindex="false" 
+            splitindex="true" 
+            author="false" 
+            version="true" 
+            failonerror="true"
+            windowtitle="JavaMail ${version} TCK">
+            <sourcepath>
+                <pathelement location="${basedir}/tests/api"/>
+            </sourcepath>
+            <classpath>
+                <pathelement path="${class.path}"/>
+            </classpath>
+            <fileset dir="${basedir}/tests/api"/>
+        </javadoc>
+    </target>
+
+    <target name="mvn">
+	<exec dir="${basedir}/docs/ug" executable="mvn"/>
+	<copy toDir="${basedir}/docs/html/">
+	    <fileset dir="${basedir}/docs/ug/target/staging/"/>
+	</copy>
+    </target>
+
+    <target name="core" depends="build, javadoc, mvn, _create.version.file">
+        <delete file="${zip.file}" quiet="true"/>
+        <zip destfile="${zip.file}">
+	    <zipfileset dir="${ts.home}" 
+               includes="build.xml,
+			            javatest.jar,
+                        sigtest.jar,
+                        version,
+                        docs/html/**,
+                        docs/javadocs/**,
+                        tests/api/**,
+                        tests/testsuite.html,
+                        tests/testsuite.jtt,
+                        tests/SignatureTest.html,
+                        tests/*.sig,
+                        tests/mailboxes/**,
+                        tests/testdata/**,
+                        lib/*.jte,
+                        lib/*.jti,
+                        lib/*.jtx,
+                        tools/**,
+                        classes/**,
+                        LICENSE.md,
+                        harness/**"
+                        prefix="javamailtck"/>                        	
+	    </zip>
+    </target>
+
+    <target name="_create.version.file">
+        <tstamp>
+            <format property="time.stamp" pattern="EEE, d MMM yyyy HH:mm:ss" locale="en"/>
+        </tstamp>
+        <touch file="${ts.home}/version"/>
+        <propertyfile file="${ts.home}/version"
+                      comment="TCK Bundle Version Information">
+            <entry key="build.name"                  value="${zip.fullname}"/>
+            <entry key="build.date.time"             value="${time.stamp}"/>
+            <entry key="build.comment"               value="${ts.build.comment}"/>
+        </propertyfile>
+    </target>
+</project>

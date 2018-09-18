@@ -1,0 +1,9 @@
+** `javax.mail`
+
+** `javax.mail.event`
+
+** `javax.mail.internet`
+
+** `javax.mail.search`
+
+** `javax.mail.util`

@@ -1,0 +1,26 @@
+#JavaTest Harness Configuration Interview
+#Wed Nov 14 16:21:21 EST 2012
+DESCRIPTION=Run the runtime tests in a separate JVM (process) on Solaris
+INTERVIEW=com.sun.javatest.interview.LegacyParameters
+LOCALE=en_US
+NAME=javamailUnix
+QUESTION=jtwiz.knownFailuresList.needKfl
+TESTSUITE=tests
+WORKDIR=JTwork
+jtwiz.concurrency.concurrency=1
+jtwiz.environment.env=javamailUnix
+jtwiz.environment.envFiles=../lib/javamail.jte
+jtwiz.excludeList.customFiles=../lib/javamail.jtx
+jtwiz.excludeList.latestAutoCheck=No
+jtwiz.excludeList.latestAutoCheckInterval=7
+jtwiz.excludeList.latestAutoCheckMode=everyXDays
+jtwiz.excludeList.needExcludeList=Yes
+jtwiz.keywords.keywords.mode=expr
+jtwiz.keywords.needKeywords=No
+jtwiz.knownFailuresList.needKfl=No
+jtwiz.priorStatus.needStatus=No
+jtwiz.priorStatus.status=
+jtwiz.tests.needTests=No
+jtwiz.tests.tests=
+jtwiz.tests.treeOrFile=tree
+jtwiz.timeout.timeout=1

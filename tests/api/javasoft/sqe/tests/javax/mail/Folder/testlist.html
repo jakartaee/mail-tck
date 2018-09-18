@@ -1,0 +1,406 @@
+<HTML>
+<HEAD>
+<!--
+
+    Copyright (c) 2012, 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<TITLE>Folder</TITLE>
+</HEAD>
+
+<H1>Folder</H1>
+
+<BODY>
+
+<font size=+1>
+These tests are designed to test the functionality of Folder
+</font>
+
+<HR>
+
+<font size=+1>
+The following are the test descriptions for the tests developed.Links to the sources are also included.
+</font>
+
+<H3>API Tests </H3>
+
+<A NAME=appendMessages_Test></A>
+<TABLE BORDER class=TestDescription>
+<TR><TD><B>title</B></TD><TD>appendMessages() API(s)</TD></TR>
+<TR><TD><B>name</B></TD><TD>appendMessages_Test</TD></TR>
+<TR><TD><B>source</B></TD><TD><A HREF=appendMessages_Test.java>appendMessages_Test.java</A></TD></TR>
+<TR><TD><B>executeClass</B></TD><TD>javasoft.sqe.tests.javax.mail.Folder.appendMessages_Test</TD></TR>
+<TR><TD><B>executeArgs</B></TD><TD> -t $JAVAMAIL_PROTOCOL -tp $JAVAMAIL_TRANSPORT_PROTOCOL -h $JAVAMAIL_SERVER -th $JAVAMAIL_TRANSPORT_SERVER -u $JAVAMAIL_USERNAME -p $JAVAMAIL_PASSWORD -r $JAVAMAIL_ROOT_PATH -m $JAVAMAIL_MAILBOX -test appendtest</TD></TR>
+<TR><TD><B>keywords</B></TD><TD>positive extensionAPI</TD></TR>
+</TABLE>
+<BR>
+
+<A NAME=autoclose_Test></A>
+<TABLE BORDER class=TestDescription>
+<TR><TD><B>title</B></TD><TD>AutoCloseable and close() API(s)</TD></TR>
+<TR><TD><B>name</B></TD><TD>autoclose_Test</TD></TR>
+<TR><TD><B>source</B></TD><TD><A HREF=autoclose_Test.java>autoclose_Test.java</A></TD></TR>
+<TR><TD><B>executeClass</B></TD><TD>javasoft.sqe.tests.javax.mail.Folder.autoclose_Test</TD></TR>
+<TR><TD><B>executeArgs</B></TD><TD> -t $JAVAMAIL_PROTOCOL -tp $JAVAMAIL_TRANSPORT_PROTOCOL -h $JAVAMAIL_SERVER -th $JAVAMAIL_TRANSPORT_SERVER -u $JAVAMAIL_USERNAME -p $JAVAMAIL_PASSWORD -r $JAVAMAIL_ROOT_PATH -m $JAVAMAIL_MAILBOX -test junkbox</TD></TR>
+<TR><TD><B>keywords</B></TD><TD>positive extensionAPI</TD></TR>
+</TABLE>
+<BR>
+
+<A NAME=close_Test></A>
+<TABLE BORDER class=TestDescription>
+<TR><TD><B>title</B></TD><TD>close() API(s)</TD></TR>
+<TR><TD><B>name</B></TD><TD>close_Test</TD></TR>
+<TR><TD><B>source</B></TD><TD><A HREF=close_Test.java>close_Test.java</A></TD></TR>
+<TR><TD><B>executeClass</B></TD><TD>javasoft.sqe.tests.javax.mail.Folder.close_Test</TD></TR>
+<TR><TD><B>executeArgs</B></TD><TD> -t $JAVAMAIL_PROTOCOL -tp $JAVAMAIL_TRANSPORT_PROTOCOL -h $JAVAMAIL_SERVER -th $JAVAMAIL_TRANSPORT_SERVER -u $JAVAMAIL_USERNAME -p $JAVAMAIL_PASSWORD -r $JAVAMAIL_ROOT_PATH -m $JAVAMAIL_MAILBOX -test junkbox</TD></TR>
+<TR><TD><B>keywords</B></TD><TD>positive extensionAPI</TD></TR>
+</TABLE>
+<BR>
+
+<A NAME=copyMessages_Test></A>
+<TABLE BORDER class=TestDescription>
+<TR><TD><B>title</B></TD><TD>copyMessages() API(s)</TD></TR>
+<TR><TD><B>name</B></TD><TD>copyMessages_Test</TD></TR>
+<TR><TD><B>source</B></TD><TD><A HREF=copyMessages_Test.java>copyMessages_Test.java</A></TD></TR>
+<TR><TD><B>executeClass</B></TD><TD>javasoft.sqe.tests.javax.mail.Folder.copyMessages_Test</TD></TR>
+<TR><TD><B>executeArgs</B></TD><TD> -t $JAVAMAIL_PROTOCOL -tp $JAVAMAIL_TRANSPORT_PROTOCOL -h $JAVAMAIL_SERVER -th $JAVAMAIL_TRANSPORT_SERVER -u $JAVAMAIL_USERNAME -p $JAVAMAIL_PASSWORD -r $JAVAMAIL_ROOT_PATH -m $JAVAMAIL_MAILBOX -test copyfolder</TD></TR>
+<TR><TD><B>keywords</B></TD><TD>positive extensionAPI</TD></TR>
+</TABLE>
+<BR>
+
+<A NAME=create_Test></A>
+<TABLE BORDER class=TestDescription>
+<TR><TD><B>title</B></TD><TD>create() API(s)</TD></TR>
+<TR><TD><B>name</B></TD><TD>create_Test</TD></TR>
+<TR><TD><B>source</B></TD><TD><A HREF=create_Test.java>create_Test.java</A></TD></TR>
+<TR><TD><B>executeClass</B></TD><TD>javasoft.sqe.tests.javax.mail.Folder.create_Test</TD></TR>
+<TR><TD><B>executeArgs</B></TD><TD> -t $JAVAMAIL_PROTOCOL -tp $JAVAMAIL_TRANSPORT_PROTOCOL -h $JAVAMAIL_SERVER -th $JAVAMAIL_TRANSPORT_SERVER -u $JAVAMAIL_USERNAME -p $JAVAMAIL_PASSWORD -r $JAVAMAIL_ROOT_PATH -m $JAVAMAIL_MAILBOX -test newfolder1</TD></TR>
+<TR><TD><B>keywords</B></TD><TD>positive extensionAPI</TD></TR>
+</TABLE>
+<BR>
+
+<A NAME=delete_Test></A>
+<TABLE BORDER class=TestDescription>
+<TR><TD><B>title</B></TD><TD>delete() API(s)</TD></TR>
+<TR><TD><B>name</B></TD><TD>delete_Test</TD></TR>
+<TR><TD><B>source</B></TD><TD><A HREF=delete_Test.java>delete_Test.java</A></TD></TR>
+<TR><TD><B>executeClass</B></TD><TD>javasoft.sqe.tests.javax.mail.Folder.delete_Test</TD></TR>
+<TR><TD><B>executeArgs</B></TD><TD> -t $JAVAMAIL_PROTOCOL -tp $JAVAMAIL_TRANSPORT_PROTOCOL -h $JAVAMAIL_SERVER -th $JAVAMAIL_TRANSPORT_SERVER -u $JAVAMAIL_USERNAME -p $JAVAMAIL_PASSWORD -r $JAVAMAIL_ROOT_PATH -m $JAVAMAIL_MAILBOX -test xytest</TD></TR>
+<TR><TD><B>keywords</B></TD><TD>positive extensionAPI</TD></TR>
+</TABLE>
+<BR>
+
+<A NAME=exists_Test></A>
+<TABLE BORDER class=TestDescription>
+<TR><TD><B>title</B></TD><TD>exists() API(s)</TD></TR>
+<TR><TD><B>name</B></TD><TD>exists_Test</TD></TR>
+<TR><TD><B>source</B></TD><TD><A HREF=exists_Test.java>exists_Test.java</A></TD></TR>
+<TR><TD><B>executeClass</B></TD><TD>javasoft.sqe.tests.javax.mail.Folder.exists_Test</TD></TR>
+<TR><TD><B>executeArgs</B></TD><TD> -t $JAVAMAIL_PROTOCOL -tp $JAVAMAIL_TRANSPORT_PROTOCOL -h $JAVAMAIL_SERVER -th $JAVAMAIL_TRANSPORT_SERVER -u $JAVAMAIL_USERNAME -p $JAVAMAIL_PASSWORD -r $JAVAMAIL_ROOT_PATH -m $JAVAMAIL_MAILBOX -test xztest</TD></TR>
+<TR><TD><B>keywords</B></TD><TD>positive extensionAPI</TD></TR>
+</TABLE>
+<BR>
+
+<A NAME=expunge_Test></A>
+<TABLE BORDER class=TestDescription>
+<TR><TD><B>title</B></TD><TD>expunge() API(s)</TD></TR>
+<TR><TD><B>name</B></TD><TD>expunge_Test</TD></TR>
+<TR><TD><B>source</B></TD><TD><A HREF=expunge_Test.java>expunge_Test.java</A></TD></TR>
+<TR><TD><B>executeClass</B></TD><TD>javasoft.sqe.tests.javax.mail.Folder.expunge_Test</TD></TR>
+<TR><TD><B>executeArgs</B></TD><TD> -t $JAVAMAIL_PROTOCOL -tp $JAVAMAIL_TRANSPORT_PROTOCOL -h $JAVAMAIL_SERVER -th $JAVAMAIL_TRANSPORT_SERVER -u $JAVAMAIL_USERNAME -p $JAVAMAIL_PASSWORD -r $JAVAMAIL_ROOT_PATH -m $JAVAMAIL_MAILBOX -test expungtest</TD></TR>
+<TR><TD><B>keywords</B></TD><TD>positive extensionAPI</TD></TR>
+</TABLE>
+<BR>
+
+<A NAME=fetch_Test></A>
+<TABLE BORDER class=TestDescription>
+<TR><TD><B>title</B></TD><TD>fetch() API(s)</TD></TR>
+<TR><TD><B>name</B></TD><TD>fetch_Test</TD></TR>
+<TR><TD><B>source</B></TD><TD><A HREF=fetch_Test.java>fetch_Test.java</A></TD></TR>
+<TR><TD><B>executeClass</B></TD><TD>javasoft.sqe.tests.javax.mail.Folder.fetch_Test</TD></TR>
+<TR><TD><B>executeArgs</B></TD><TD> -t $JAVAMAIL_PROTOCOL -tp $JAVAMAIL_TRANSPORT_PROTOCOL -h $JAVAMAIL_SERVER -th $JAVAMAIL_TRANSPORT_SERVER -u $JAVAMAIL_USERNAME -p $JAVAMAIL_PASSWORD -r $JAVAMAIL_ROOT_PATH -m $JAVAMAIL_MAILBOX</TD></TR>
+<TR><TD><B>keywords</B></TD><TD>positive extensionAPI</TD></TR>
+</TABLE>
+<BR>
+
+<A NAME=getFolder_Test></A>
+<TABLE BORDER class=TestDescription>
+<TR><TD><B>title</B></TD><TD>getFolder() API(s)</TD></TR>
+<TR><TD><B>name</B></TD><TD>getFolder_Test</TD></TR>
+<TR><TD><B>source</B></TD><TD><A HREF=getFolder_Test.java>getFolder_Test.java</A></TD></TR>
+<TR><TD><B>executeClass</B></TD><TD>javasoft.sqe.tests.javax.mail.Folder.getFolder_Test</TD></TR>
+<TR><TD><B>executeArgs</B></TD><TD> -t $JAVAMAIL_PROTOCOL -tp $JAVAMAIL_TRANSPORT_PROTOCOL -h $JAVAMAIL_SERVER -th $JAVAMAIL_TRANSPORT_SERVER -u $JAVAMAIL_USERNAME -p $JAVAMAIL_PASSWORD -r $JAVAMAIL_ROOT_PATH -m $JAVAMAIL_MAILBOX -test xyztest</TD></TR>
+<TR><TD><B>keywords</B></TD><TD>positive extensionAPI</TD></TR>
+</TABLE>
+<BR>
+
+<A NAME=getFullName_Test></A>
+<TABLE BORDER class=TestDescription>
+<TR><TD><B>title</B></TD><TD>getFullName() API(s)</TD></TR>
+<TR><TD><B>name</B></TD><TD>getFullName_Test</TD></TR>
+<TR><TD><B>source</B></TD><TD><A HREF=getFullName_Test.java>getFullName_Test.java</A></TD></TR>
+<TR><TD><B>executeClass</B></TD><TD>javasoft.sqe.tests.javax.mail.Folder.getFullName_Test</TD></TR>
+<TR><TD><B>executeArgs</B></TD><TD> -t $JAVAMAIL_PROTOCOL -tp $JAVAMAIL_TRANSPORT_PROTOCOL -h $JAVAMAIL_SERVER -th $JAVAMAIL_TRANSPORT_SERVER -u $JAVAMAIL_USERNAME -p $JAVAMAIL_PASSWORD -r $JAVAMAIL_ROOT_PATH -m $JAVAMAIL_MAILBOX</TD></TR>
+<TR><TD><B>keywords</B></TD><TD>positive extensionAPI</TD></TR>
+</TABLE>
+<BR>
+
+<A NAME=getMessageCount_Test></A>
+<TABLE BORDER class=TestDescription>
+<TR><TD><B>title</B></TD><TD>getMessageCount() API(s)</TD></TR>
+<TR><TD><B>name</B></TD><TD>getMessageCount_Test</TD></TR>
+<TR><TD><B>source</B></TD><TD><A HREF=getMessageCount_Test.java>getMessageCount_Test.java</A></TD></TR>
+<TR><TD><B>executeClass</B></TD><TD>javasoft.sqe.tests.javax.mail.Folder.getMessageCount_Test</TD></TR>
+<TR><TD><B>executeArgs</B></TD><TD> -t $JAVAMAIL_PROTOCOL -tp $JAVAMAIL_TRANSPORT_PROTOCOL -h $JAVAMAIL_SERVER -th $JAVAMAIL_TRANSPORT_SERVER -u $JAVAMAIL_USERNAME -p $JAVAMAIL_PASSWORD -r $JAVAMAIL_ROOT_PATH -m $JAVAMAIL_MAILBOX</TD></TR>
+<TR><TD><B>keywords</B></TD><TD>positive extensionAPI</TD></TR>
+</TABLE>
+<BR>
+
+<A NAME=getMessage_Test></A>
+<TABLE BORDER class=TestDescription>
+<TR><TD><B>title</B></TD><TD>getMessage() API(s)</TD></TR>
+<TR><TD><B>name</B></TD><TD>getMessage_Test</TD></TR>
+<TR><TD><B>source</B></TD><TD><A HREF=getMessage_Test.java>getMessage_Test.java</A></TD></TR>
+<TR><TD><B>executeClass</B></TD><TD>javasoft.sqe.tests.javax.mail.Folder.getMessage_Test</TD></TR>
+<TR><TD><B>executeArgs</B></TD><TD> -t $JAVAMAIL_PROTOCOL -tp $JAVAMAIL_TRANSPORT_PROTOCOL -h $JAVAMAIL_SERVER -th $JAVAMAIL_TRANSPORT_SERVER -u $JAVAMAIL_USERNAME -p $JAVAMAIL_PASSWORD -r $JAVAMAIL_ROOT_PATH -m $JAVAMAIL_MAILBOX</TD></TR>
+<TR><TD><B>keywords</B></TD><TD>positive extensionAPI</TD></TR>
+</TABLE>
+<BR>
+
+<A NAME=getMessages_Test></A>
+<TABLE BORDER class=TestDescription>
+<TR><TD><B>title</B></TD><TD>getMessages() API(s)</TD></TR>
+<TR><TD><B>name</B></TD><TD>getMessages_Test</TD></TR>
+<TR><TD><B>source</B></TD><TD><A HREF=getMessages_Test.java>getMessages_Test.java</A></TD></TR>
+<TR><TD><B>executeClass</B></TD><TD>javasoft.sqe.tests.javax.mail.Folder.getMessages_Test</TD></TR>
+<TR><TD><B>executeArgs</B></TD><TD> -t $JAVAMAIL_PROTOCOL -tp $JAVAMAIL_TRANSPORT_PROTOCOL -h $JAVAMAIL_SERVER -th $JAVAMAIL_TRANSPORT_SERVER -u $JAVAMAIL_USERNAME -p $JAVAMAIL_PASSWORD -r $JAVAMAIL_ROOT_PATH -m $JAVAMAIL_MAILBOX</TD></TR>
+<TR><TD><B>keywords</B></TD><TD>positive extensionAPI</TD></TR>
+</TABLE>
+<BR>
+
+<A NAME=getMessageContent_Test></A>
+<TABLE BORDER class=TestDescription>
+<TR><TD><B>title</B></TD><TD>Message content API(s)</TD></TR>
+<TR><TD><B>name</B></TD><TD>getMessageContent_Test</TD></TR>
+<TR><TD><B>source</B></TD><TD><A HREF=getMessageContent_Test.java>getMessageContent_Test.java</A></TD></TR>
+<TR><TD><B>executeClass</B></TD><TD>javasoft.sqe.tests.javax.mail.Folder.getMessageContent_Test</TD></TR>
+<TR><TD><B>executeArgs</B></TD><TD> -t $JAVAMAIL_PROTOCOL -tp $JAVAMAIL_TRANSPORT_PROTOCOL -h $JAVAMAIL_SERVER -th $JAVAMAIL_TRANSPORT_SERVER -u $JAVAMAIL_USERNAME -p $JAVAMAIL_PASSWORD -r $JAVAMAIL_ROOT_PATH -m $JAVAMAIL_MAILBOX</TD></TR>
+<TR><TD><B>keywords</B></TD><TD>positive extensionAPI</TD></TR>
+</TABLE>
+<BR>
+
+<A NAME=getName_Test></A>
+<TABLE BORDER class=TestDescription>
+<TR><TD><B>title</B></TD><TD>getName() API(s)</TD></TR>
+<TR><TD><B>name</B></TD><TD>getName_Test</TD></TR>
+<TR><TD><B>source</B></TD><TD><A HREF=getName_Test.java>getName_Test.java</A></TD></TR>
+<TR><TD><B>executeClass</B></TD><TD>javasoft.sqe.tests.javax.mail.Folder.getName_Test</TD></TR>
+<TR><TD><B>executeArgs</B></TD><TD> -t $JAVAMAIL_PROTOCOL -tp $JAVAMAIL_TRANSPORT_PROTOCOL -h $JAVAMAIL_SERVER -th $JAVAMAIL_TRANSPORT_SERVER -u $JAVAMAIL_USERNAME -p $JAVAMAIL_PASSWORD -r $JAVAMAIL_ROOT_PATH -m $JAVAMAIL_MAILBOX</TD></TR>
+<TR><TD><B>keywords</B></TD><TD>positive extensionAPI</TD></TR>
+</TABLE>
+<BR>
+
+<A NAME=getNewMessageCount_Test></A>
+<TABLE BORDER class=TestDescription>
+<TR><TD><B>title</B></TD><TD>getNewMessageCount() API(s)</TD></TR>
+<TR><TD><B>name</B></TD><TD>getNewMessageCount_Test</TD></TR>
+<TR><TD><B>source</B></TD><TD><A HREF=getNewMessageCount_Test.java>getNewMessageCount_Test.java</A></TD></TR>
+<TR><TD><B>executeClass</B></TD><TD>javasoft.sqe.tests.javax.mail.Folder.getNewMessageCount_Test</TD></TR>
+<TR><TD><B>executeArgs</B></TD><TD> -t $JAVAMAIL_PROTOCOL -tp $JAVAMAIL_TRANSPORT_PROTOCOL -h $JAVAMAIL_SERVER -th $JAVAMAIL_TRANSPORT_SERVER -u $JAVAMAIL_USERNAME -p $JAVAMAIL_PASSWORD -r $JAVAMAIL_ROOT_PATH -m $JAVAMAIL_MAILBOX</TD></TR>
+<TR><TD><B>keywords</B></TD><TD>positive extensionAPI</TD></TR>
+</TABLE>
+<BR>
+
+<A NAME=getParent_Test></A>
+<TABLE BORDER class=TestDescription>
+<TR><TD><B>title</B></TD><TD>getParent() API(s)</TD></TR>
+<TR><TD><B>name</B></TD><TD>getParent_Test</TD></TR>
+<TR><TD><B>source</B></TD><TD><A HREF=getParent_Test.java>getParent_Test.java</A></TD></TR>
+<TR><TD><B>executeClass</B></TD><TD>javasoft.sqe.tests.javax.mail.Folder.getParent_Test</TD></TR>
+<TR><TD><B>executeArgs</B></TD><TD> -t $JAVAMAIL_PROTOCOL -tp $JAVAMAIL_TRANSPORT_PROTOCOL -h $JAVAMAIL_SERVER -th $JAVAMAIL_TRANSPORT_SERVER -u $JAVAMAIL_USERNAME -p $JAVAMAIL_PASSWORD -r $JAVAMAIL_ROOT_PATH -m $JAVAMAIL_MAILBOX</TD></TR>
+<TR><TD><B>keywords</B></TD><TD>positive extensionAPI</TD></TR>
+</TABLE>
+<BR>
+
+<A NAME=getPermanentFlags_Test></A>
+<TABLE BORDER class=TestDescription>
+<TR><TD><B>title</B></TD><TD>getPermanentFlags() API(s)</TD></TR>
+<TR><TD><B>name</B></TD><TD>getPermanentFlags_Test</TD></TR>
+<TR><TD><B>source</B></TD><TD><A HREF=getPermanentFlags_Test.java>getPermanentFlags_Test.java</A></TD></TR>
+<TR><TD><B>executeClass</B></TD><TD>javasoft.sqe.tests.javax.mail.Folder.getPermanentFlags_Test</TD></TR>
+<TR><TD><B>executeArgs</B></TD><TD> -t $JAVAMAIL_PROTOCOL -tp $JAVAMAIL_TRANSPORT_PROTOCOL -h $JAVAMAIL_SERVER -th $JAVAMAIL_TRANSPORT_SERVER -u $JAVAMAIL_USERNAME -p $JAVAMAIL_PASSWORD -r $JAVAMAIL_ROOT_PATH -m $JAVAMAIL_MAILBOX</TD></TR>
+<TR><TD><B>keywords</B></TD><TD>positive extensionAPI</TD></TR>
+</TABLE>
+<BR>
+
+<A NAME=getSeparator_Test></A>
+<TABLE BORDER class=TestDescription>
+<TR><TD><B>title</B></TD><TD>getSeparator() API(s)</TD></TR>
+<TR><TD><B>name</B></TD><TD>getSeparator_Test</TD></TR>
+<TR><TD><B>source</B></TD><TD><A HREF=getSeparator_Test.java>getSeparator_Test.java</A></TD></TR>
+<TR><TD><B>executeClass</B></TD><TD>javasoft.sqe.tests.javax.mail.Folder.getSeparator_Test</TD></TR>
+<TR><TD><B>executeArgs</B></TD><TD> -t $JAVAMAIL_PROTOCOL -tp $JAVAMAIL_TRANSPORT_PROTOCOL -h $JAVAMAIL_SERVER -th $JAVAMAIL_TRANSPORT_SERVER -u $JAVAMAIL_USERNAME -p $JAVAMAIL_PASSWORD -r $JAVAMAIL_ROOT_PATH -m $JAVAMAIL_MAILBOX</TD></TR>
+<TR><TD><B>keywords</B></TD><TD>positive extensionAPI</TD></TR>
+</TABLE>
+<BR>
+
+<A NAME=getStore_Test></A>
+<TABLE BORDER class=TestDescription>
+<TR><TD><B>title</B></TD><TD>getStore() API(s)</TD></TR>
+<TR><TD><B>name</B></TD><TD>getStore_Test</TD></TR>
+<TR><TD><B>source</B></TD><TD><A HREF=getStore_Test.java>getStore_Test.java</A></TD></TR>
+<TR><TD><B>executeClass</B></TD><TD>javasoft.sqe.tests.javax.mail.Folder.getStore_Test</TD></TR>
+<TR><TD><B>executeArgs</B></TD><TD> -t $JAVAMAIL_PROTOCOL -tp $JAVAMAIL_TRANSPORT_PROTOCOL -h $JAVAMAIL_SERVER -th $JAVAMAIL_TRANSPORT_SERVER -u $JAVAMAIL_USERNAME -p $JAVAMAIL_PASSWORD -r $JAVAMAIL_ROOT_PATH -m $JAVAMAIL_MAILBOX</TD></TR>
+<TR><TD><B>keywords</B></TD><TD>positive extensionAPI</TD></TR>
+</TABLE>
+<BR>
+
+<A NAME=getType_Test></A>
+<TABLE BORDER class=TestDescription>
+<TR><TD><B>title</B></TD><TD>getType() API(s)</TD></TR>
+<TR><TD><B>name</B></TD><TD>getType_Test</TD></TR>
+<TR><TD><B>source</B></TD><TD><A HREF=getType_Test.java>getType_Test.java</A></TD></TR>
+<TR><TD><B>executeClass</B></TD><TD>javasoft.sqe.tests.javax.mail.Folder.getType_Test</TD></TR>
+<TR><TD><B>executeArgs</B></TD><TD> -t $JAVAMAIL_PROTOCOL -tp $JAVAMAIL_TRANSPORT_PROTOCOL -h $JAVAMAIL_SERVER -th $JAVAMAIL_TRANSPORT_SERVER -u $JAVAMAIL_USERNAME -p $JAVAMAIL_PASSWORD -r $JAVAMAIL_ROOT_PATH -m $JAVAMAIL_MAILBOX -test newfolder2</TD></TR>
+<TR><TD><B>keywords</B></TD><TD>positive extensionAPI</TD></TR>
+</TABLE>
+<BR>
+
+<A NAME=getUnreadMessageCount_Test></A>
+<TABLE BORDER class=TestDescription>
+<TR><TD><B>title</B></TD><TD>getUnreadMessageCount() API(s)</TD></TR>
+<TR><TD><B>name</B></TD><TD>getUnreadMessageCount_Test</TD></TR>
+<TR><TD><B>source</B></TD><TD><A HREF=getUnreadMessageCount_Test.java>getUnreadMessageCount_Test.java</A></TD></TR>
+<TR><TD><B>executeClass</B></TD><TD>javasoft.sqe.tests.javax.mail.Folder.getUnreadMessageCount_Test</TD></TR>
+<TR><TD><B>executeArgs</B></TD><TD> -t $JAVAMAIL_PROTOCOL -tp $JAVAMAIL_TRANSPORT_PROTOCOL -h $JAVAMAIL_SERVER -th $JAVAMAIL_TRANSPORT_SERVER -u $JAVAMAIL_USERNAME -p $JAVAMAIL_PASSWORD -r $JAVAMAIL_ROOT_PATH -m $JAVAMAIL_MAILBOX</TD></TR>
+<TR><TD><B>keywords</B></TD><TD>positive extensionAPI</TD></TR>
+</TABLE>
+<BR>
+
+<A NAME=hasNewMessages_Test></A>
+<TABLE BORDER class=TestDescription>
+<TR><TD><B>title</B></TD><TD>hasNewMessages() API(s)</TD></TR>
+<TR><TD><B>name</B></TD><TD>hasNewMessages_Test</TD></TR>
+<TR><TD><B>source</B></TD><TD><A HREF=hasNewMessages_Test.java>hasNewMessages_Test.java</A></TD></TR>
+<TR><TD><B>executeClass</B></TD><TD>javasoft.sqe.tests.javax.mail.Folder.hasNewMessages_Test</TD></TR>
+<TR><TD><B>executeArgs</B></TD><TD> -t $JAVAMAIL_PROTOCOL -tp $JAVAMAIL_TRANSPORT_PROTOCOL -h $JAVAMAIL_SERVER -th $JAVAMAIL_TRANSPORT_SERVER -u $JAVAMAIL_USERNAME -p $JAVAMAIL_PASSWORD -r $JAVAMAIL_ROOT_PATH -m $JAVAMAIL_MAILBOX</TD></TR>
+<TR><TD><B>keywords</B></TD><TD>positive extensionAPI</TD></TR>
+</TABLE>
+<BR>
+
+<A NAME=isOpen_Test></A>
+<TABLE BORDER class=TestDescription>
+<TR><TD><B>title</B></TD><TD>isOpen() API(s)</TD></TR>
+<TR><TD><B>name</B></TD><TD>isOpen_Test</TD></TR>
+<TR><TD><B>source</B></TD><TD><A HREF=isOpen_Test.java>isOpen_Test.java</A></TD></TR>
+<TR><TD><B>executeClass</B></TD><TD>javasoft.sqe.tests.javax.mail.Folder.isOpen_Test</TD></TR>
+<TR><TD><B>executeArgs</B></TD><TD> -t $JAVAMAIL_PROTOCOL -tp $JAVAMAIL_TRANSPORT_PROTOCOL -h $JAVAMAIL_SERVER -th $JAVAMAIL_TRANSPORT_SERVER -u $JAVAMAIL_USERNAME -p $JAVAMAIL_PASSWORD -r $JAVAMAIL_ROOT_PATH -m $JAVAMAIL_MAILBOX</TD></TR>
+<TR><TD><B>keywords</B></TD><TD>positive extensionAPI</TD></TR>
+</TABLE>
+<BR>
+
+<A NAME=isSubscribed_Test></A>
+<TABLE BORDER class=TestDescription>
+<TR><TD><B>title</B></TD><TD>isSubscribed() API(s)</TD></TR>
+<TR><TD><B>name</B></TD><TD>isSubscribed_Test</TD></TR>
+<TR><TD><B>source</B></TD><TD><A HREF=isSubscribed_Test.java>isSubscribed_Test.java</A></TD></TR>
+<TR><TD><B>executeClass</B></TD><TD>javasoft.sqe.tests.javax.mail.Folder.isSubscribed_Test</TD></TR>
+<TR><TD><B>executeArgs</B></TD><TD> -t $JAVAMAIL_PROTOCOL -tp $JAVAMAIL_TRANSPORT_PROTOCOL -h $JAVAMAIL_SERVER -th $JAVAMAIL_TRANSPORT_SERVER -u $JAVAMAIL_USERNAME -p $JAVAMAIL_PASSWORD -r $JAVAMAIL_ROOT_PATH -m $JAVAMAIL_MAILBOX</TD></TR>
+<TR><TD><B>keywords</B></TD><TD>positive extensionAPI</TD></TR>
+</TABLE>
+<BR>
+
+<A NAME=listSubscribed_Test></A>
+<TABLE BORDER class=TestDescription>
+<TR><TD><B>title</B></TD><TD>listSubscribed() API(s)</TD></TR>
+<TR><TD><B>name</B></TD><TD>listSubscribed_Test</TD></TR>
+<TR><TD><B>source</B></TD><TD><A HREF=listSubscribed_Test.java>listSubscribed_Test.java</A></TD></TR>
+<TR><TD><B>executeClass</B></TD><TD>javasoft.sqe.tests.javax.mail.Folder.listSubscribed_Test</TD></TR>
+<TR><TD><B>executeArgs</B></TD><TD> -t $JAVAMAIL_PROTOCOL -tp $JAVAMAIL_TRANSPORT_PROTOCOL -h $JAVAMAIL_SERVER -th $JAVAMAIL_TRANSPORT_SERVER -u $JAVAMAIL_USERNAME -p $JAVAMAIL_PASSWORD -r $JAVAMAIL_ROOT_PATH -m $JAVAMAIL_MAILBOX -s $JAVAMAIL_MAILBOX</TD></TR>
+<TR><TD><B>keywords</B></TD><TD>positive extensionAPI</TD></TR>
+</TABLE>
+<BR>
+
+<A NAME=list_Test></A>
+<TABLE BORDER class=TestDescription>
+<TR><TD><B>title</B></TD><TD>list() API(s)</TD></TR>
+<TR><TD><B>name</B></TD><TD>list_Test</TD></TR>
+<TR><TD><B>source</B></TD><TD><A HREF=list_Test.java>list_Test.java</A></TD></TR>
+<TR><TD><B>executeClass</B></TD><TD>javasoft.sqe.tests.javax.mail.Folder.list_Test</TD></TR>
+<TR><TD><B>executeArgs</B></TD><TD> -t $JAVAMAIL_PROTOCOL -tp $JAVAMAIL_TRANSPORT_PROTOCOL -h $JAVAMAIL_SERVER -th $JAVAMAIL_TRANSPORT_SERVER -u $JAVAMAIL_USERNAME -p $JAVAMAIL_PASSWORD -r $JAVAMAIL_ROOT_PATH -m $JAVAMAIL_MAILBOX -s $JAVAMAIL_LISTPATTERN</TD></TR>
+<TR><TD><B>keywords</B></TD><TD>positive extensionAPI</TD></TR>
+</TABLE>
+<BR>
+
+<A NAME=open_Test></A>
+<TABLE BORDER class=TestDescription>
+<TR><TD><B>title</B></TD><TD>open() API(s)</TD></TR>
+<TR><TD><B>name</B></TD><TD>open_Test</TD></TR>
+<TR><TD><B>source</B></TD><TD><A HREF=open_Test.java>open_Test.java</A></TD></TR>
+<TR><TD><B>executeClass</B></TD><TD>javasoft.sqe.tests.javax.mail.Folder.open_Test</TD></TR>
+<TR><TD><B>executeArgs</B></TD><TD> -t $JAVAMAIL_PROTOCOL -tp $JAVAMAIL_TRANSPORT_PROTOCOL -h $JAVAMAIL_SERVER -th $JAVAMAIL_TRANSPORT_SERVER -u $JAVAMAIL_USERNAME -p $JAVAMAIL_PASSWORD -r $JAVAMAIL_ROOT_PATH -m $JAVAMAIL_MAILBOX</TD></TR>
+<TR><TD><B>keywords</B></TD><TD>positive extensionAPI</TD></TR>
+</TABLE>
+<BR>
+
+<A NAME=renameTo_Test></A>
+<TABLE BORDER class=TestDescription>
+<TR><TD><B>title</B></TD><TD>renameTo() API(s)</TD></TR>
+<TR><TD><B>name</B></TD><TD>renameTo_Test</TD></TR>
+<TR><TD><B>source</B></TD><TD><A HREF=renameTo_Test.java>renameTo_Test.java</A></TD></TR>
+<TR><TD><B>executeClass</B></TD><TD>javasoft.sqe.tests.javax.mail.Folder.renameTo_Test</TD></TR>
+<TR><TD><B>executeArgs</B></TD><TD> -t $JAVAMAIL_PROTOCOL -tp $JAVAMAIL_TRANSPORT_PROTOCOL -h $JAVAMAIL_SERVER -th $JAVAMAIL_TRANSPORT_SERVER -u $JAVAMAIL_USERNAME -p $JAVAMAIL_PASSWORD -r $JAVAMAIL_ROOT_PATH -m $JAVAMAIL_MAILBOX -test neongod</TD></TR>
+<TR><TD><B>keywords</B></TD><TD>positive extensionAPI</TD></TR>
+</TABLE>
+<BR>
+
+<A NAME=search_Test></A>
+<TABLE BORDER class=TestDescription>
+<TR><TD><B>title</B></TD><TD>search() API(s)</TD></TR>
+<TR><TD><B>name</B></TD><TD>search_Test</TD></TR>
+<TR><TD><B>source</B></TD><TD><A HREF=search_Test.java>search_Test.java</A></TD></TR>
+<TR><TD><B>executeClass</B></TD><TD>javasoft.sqe.tests.javax.mail.Folder.search_Test</TD></TR>
+<TR><TD><B>executeArgs</B></TD><TD> -t $JAVAMAIL_PROTOCOL -tp $JAVAMAIL_TRANSPORT_PROTOCOL -h $JAVAMAIL_SERVER -th $JAVAMAIL_TRANSPORT_SERVER -u $JAVAMAIL_USERNAME -p $JAVAMAIL_PASSWORD -r $JAVAMAIL_ROOT_PATH -m $JAVAMAIL_MAILBOX -s java</TD></TR>
+<TR><TD><B>keywords</B></TD><TD>positive extensionAPI</TD></TR>
+</TABLE>
+<BR>
+
+<A NAME=setFlags_Test></A>
+<TABLE BORDER class=TestDescription>
+<TR><TD><B>title</B></TD><TD>setFlags() API(s)</TD></TR>
+<TR><TD><B>name</B></TD><TD>setFlags_Test</TD></TR>
+<TR><TD><B>source</B></TD><TD><A HREF=setFlags_Test.java>setFlags_Test.java</A></TD></TR>
+<TR><TD><B>executeClass</B></TD><TD>javasoft.sqe.tests.javax.mail.Folder.setFlags_Test</TD></TR>
+<TR><TD><B>executeArgs</B></TD><TD> -t $JAVAMAIL_PROTOCOL -tp $JAVAMAIL_TRANSPORT_PROTOCOL -h $JAVAMAIL_SERVER -th $JAVAMAIL_TRANSPORT_SERVER -u $JAVAMAIL_USERNAME -p $JAVAMAIL_PASSWORD -r $JAVAMAIL_ROOT_PATH -m $JAVAMAIL_MAILBOX -test flagtest</TD></TR>
+<TR><TD><B>keywords</B></TD><TD>positive extensionAPI</TD></TR>
+</TABLE>
+<BR>
+
+<A NAME=setSubscribed_Test></A>
+<TABLE BORDER class=TestDescription>
+<TR><TD><B>title</B></TD><TD>setSubscribed() API(s)</TD></TR>
+<TR><TD><B>name</B></TD><TD>setSubscribed_Test</TD></TR>
+<TR><TD><B>source</B></TD><TD><A HREF=setSubscribed_Test.java>setSubscribed_Test.java</A></TD></TR>
+<TR><TD><B>executeClass</B></TD><TD>javasoft.sqe.tests.javax.mail.Folder.setSubscribed_Test</TD></TR>
+<TR><TD><B>executeArgs</B></TD><TD> -t $JAVAMAIL_PROTOCOL -tp $JAVAMAIL_TRANSPORT_PROTOCOL -h $JAVAMAIL_SERVER -th $JAVAMAIL_TRANSPORT_SERVER -u $JAVAMAIL_USERNAME -p $JAVAMAIL_PASSWORD -r $JAVAMAIL_ROOT_PATH -m $JAVAMAIL_MAILBOX</TD></TR>
+<TR><TD><B>keywords</B></TD><TD>positive extensionAPI</TD></TR>
+</TABLE>
+<BR>
+
+<HR>
+
+</BODY>
+</HTML>

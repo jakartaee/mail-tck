@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2012, 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<project name="javamailtck" default="default" basedir="." xmlns:if="ant:if">
+    <description>Builds and runs the project javamailtck.</description>
+
+    <property name="version" value="1.6"/>
+
+    <property environment="env"/>
+    <dirname property="javamailtck.basedir" file="${ant.file.javamailtck}"/>
+    <property name="ts.home" value="${javamailtck.basedir}"/>
+
+    <property file="${ts.home}/lib/javamail.jte"/>
+
+    <!--
+    <property name="dir.sep"       value="${file.separator}"/>
+    <property name="dirsep"        value="${file.separator}"/>
+    -->
+
+    <property name="pathsep"        value="${path.separator}"/>
+
+    <property file="${bin.dir}/ts.jte"/>
+    <property name="lib.dir" value="${ts.home}${file.separator}lib"/>
+    <property name="class.dir" value="${ts.home}${file.separator}classes"/>
+    <property name="tests.dir" value="${ts.home}${file.separator}tests"/>
+    <property name="work.dir" value="${ts.home}/JTwork"/>
+    <property name="report.dir" value="${ts.home}/JTreport"/>
+    <mkdir dir="${class.dir}"/>
+    <mkdir dir="${work.dir}"/>
+    <mkdir dir="${report.dir}"/>
+
+    <condition property="tests.arg" value="-tests ${tests}" else="">
+            <isset property="tests"/>
+    </condition>
+
+    <condition property="tests.debug" value="-D" else="">
+            <isset property="debug"/>
+    </condition>
+
+    <property name="class.path" value="${class.dir}${pathsep}${ts.home}/sigtest.jar${pathsep}${ts.home}/javatest.jar${pathsep}${JARPATH}/javax.mail.jar${pathsep}${JARPATH}/javax.activation.jar"/>
+
+    <condition property="jdk.modules" value="false" else="true">
+	<or>
+	    <contains string="${java.version}" substring="1.7" />
+	    <contains string="${java.version}" substring="1.8" />
+	</or>
+	<!-- anything else is JDK9+ -->
+    </condition>
+    <condition property="java.classes.for.sig.ext"
+		value="lib/modules"
+                else="lib/rt.jar">
+	<istrue value="${jdk.modules}"/>
+    </condition>
+
+    <target name="build"
+            description="Compiles all sources to the classes directory">
+		<javac includeantruntime="false" deprecation="yes"
+			source="1.8" target="1.8"
+			optimize="true" srcdir="tests"
+			classpath="${class.path}" destdir="${class.dir}"
+			debug="on" />
+        
+        <javac includeantruntime="false" deprecation="yes"
+			source="1.8" target="1.8"
+			optimize="true" srcdir="harness"
+			classpath="${class.path}" destdir="${class.dir}"
+			debug="on" />
+        
+        <javac includeantruntime="false" deprecation="yes"
+			source="1.8" target="1.8"
+			optimize="true"
+			srcdir="${tests.dir}${file.separator}mailboxes"
+			classpath="${class.path}"
+			destdir="${tests.dir}${file.separator}mailboxes"
+			debug="on" />
+    </target>
+
+    <target name="clean"
+            description="Cleans all classes from the classes directory">
+        <delete failonerror="false" includeEmptyDirs="true">
+            <fileset dir="${class.dir}" includes="*/**"/>
+        </delete>
+    </target>
+
+    <target name="run"
+            description="Executes the Javamail TCK in batch mode">
+        <javatest.batch/>
+    </target>
+
+    <target name="gui"
+            description="Executes the Javamail TCK in GUI mode">
+        <javatest.gui/>
+    </target>
+
+    <target name="record.sigtest">
+        <java fork="true" jar="./sigtestdev.jar">
+                <arg value="Setup"/>
+                <arg value="-Classpath"/>
+                <arg value="${java.home}/${java.classes.for.sig.ext}${pathsep}${class.path}"/>
+                <arg value="-Package"/>
+                <arg value="javax.mail"/>
+                <arg value="-Package"/>
+                <arg value="javax.mail.event"/>
+                <arg value="-Package"/>
+                <arg value="javax.mail.internet"/>
+                <arg value="-Package"/>
+                <arg value="javax.mail.search"/>
+                <arg value="-Package"/>
+                <arg value="javax.mail.util"/>
+                <arg value="-FileName"/>
+                <arg value="${ts.home}/tests/javax.mail_${version}_java_${java.specification.version}.sig"/>
+                <arg value="-Static"/>
+                <arg value="-Xjimage" if:true="${jdk.modules}"/>
+                <arg value="${java.home}/bin/jimage" if:true="${jdk.modules}"/>
+        </java>
+    </target>
+
+    <presetdef name="javatest">
+
+        <!--
+          The javatest task is a presetdef that sets many of the common
+          attributes and elements used by both the GUI and batch mode
+          invocations of javatest with the spider workspace.  To see the preset
+          values, refer to the included XML below that shows the content of
+          the javatest presetdef.
+        -->
+
+        <java classname="com.sun.javatest.tool.Main"
+              failonerror="${failOnError}" fork="yes" >
+            <classpath>
+                <pathelement path="${class.path}"/>
+            </classpath>	
+	    <sysproperty key="testDebug" value="${tests.debug}"/>
+        </java>
+    </presetdef>
+
+    <presetdef name="javatest.batch">
+
+        <!--
+          The javatest.batch task is a presetdef that calls the javatest
+          presetdef passing the additional XML content needed to invoke
+          javatest in batch mode.  To see the preset values, refer to the
+          included XML below that shows the content of the javatest.batch
+          presetdef.
+        -->
+
+        <javatest>
+            <arg line=" -EsysProps" />
+            <arg line=" -batch" />
+            <arg line=" -ts tests/testsuite.html" />
+            <arg line=" -workdir ${work.dir}" />
+            <arg line=" -envFiles ${ts.home}/lib/javamail.jte" />
+            <arg line=" -env javamailUnix" />
+            <arg line=" -excludeList ${ts.home}/lib/javamail.jtx" />
+            <arg line=" -timeoutFactor 1" />
+            <arg line=" ${tests.arg}" />
+            <arg line=" -runtests -writereport ${report.dir}"/>
+        </javatest>
+    </presetdef>
+
+
+    <presetdef name="javatest.gui">
+
+        <!--
+          The javatest.gui task is a presetdef that calls the javatest presetdef
+          passing the additional XML content needed to invoke the javatest GUI.
+          To see the preset values, refer to the included XML below that shows
+          the content of the javatest.gui presetdef.
+        -->
+
+        <javatest>
+            <arg    line="-open ${ts.home}/lib/javamail.jti" />
+            <arg    line="-EsysProps" />
+        </javatest>
+    </presetdef>
+
+    <presetdef name="javatest.help">
+
+        <javatest>
+            <arg line="-help" />
+
+        </javatest>
+    </presetdef>
+
+</project>
