@@ -1,4 +1,4 @@
-env.label = "javamail-ci-pod-${UUID.randomUUID().toString()}"
+env.label = "javamail-tck-ci-pod-${UUID.randomUUID().toString()}"
 pipeline {
   options {
     buildDiscarder(logRotator(numToKeepStr: '5'))
@@ -18,7 +18,7 @@ spec:
     - "localhost.localdomain"
     - "james.local"
   containers:
-  - name: javamail-ci
+  - name: javamail-tck-ci
     image: anajosep/cts-base:0.1
     command:
     - cat
@@ -50,47 +50,32 @@ spec:
            description: 'URL required for downloading JAF implementation jar' )
     string(name: 'JAVAMAIL_BUNDLE_URL',
            defaultValue: 'http://central.maven.org/maven2/com/sun/mail/javax.mail/1.6.1/javax.mail-1.6.1.jar',
-           description: 'URL required for downloading JAF implementation jar' )
-    string(name: 'httpProxyHost',
-           defaultValue: '',
-           description: 'Proxy host for connecting to http urls')
-    string(name: 'httpProxyPort',
-           defaultValue: '',
-           description: 'Proxy port for connecting to http urls')
-    string(name: 'httpsProxyHost',
-           defaultValue: '',
-           description: 'Proxy host for connecting to https urls')
-    string(name: 'httpsProxyPort',
-           defaultValue: '',
-           description: 'Proxy port for connecting to https urls')
-
+           description: 'URL required for downloading Javamail implementation jar' )
   }
   environment {
-    http_proxy = ""
-    https_proxy = ""
     ANT_OPTS = "-Djavax.xml.accessExternalStylesheet=all -Djavax.xml.accessExternalSchema=all -Djavax.xml.accessExternalDTD=file,http" 
     MAIL_USER="user01@james.local"
   }
   stages {
-    stage('javamail-build') {
+    stage('javamail-tck-build') {
       steps {
-        container('javamail-ci') {
+        container('javamail-tck-ci') {
           sh """
             env
-            bash -x ${WORKSPACE}/docker/build_javamail.sh
+            bash -x ${WORKSPACE}/docker/build_javamailtck.sh
           """
           archiveArtifacts artifacts: 'bundles/*.zip'
-          stash includes: 'bundles/*.zip', name: 'javamail-bundles'
+          stash includes: 'bundles/*.zip', name: 'javamail-tck-bundles'
         }
       }
     }
   
-    stage('javamail-run') {
+    stage('javamail-tck-run') {
       steps {
-        container('javamail-ci') {
+        container('javamail-tck-ci') {
           sh """
             env
-            bash -x ${WORKSPACE}/docker/run_javamail.sh
+            bash -x ${WORKSPACE}/docker/run_javamailtck.sh
           """
           archiveArtifacts artifacts: "javamailtck-results.tar.gz"
           junit testResults: 'results/junitreports/*.xml', allowEmptyResults: true
