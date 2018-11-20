@@ -22,7 +22,7 @@ export TS_HOME=${WORKSPACE}/javamailtck
 sed -i "s#^TS_HOME=.*#TS_HOME=$TS_HOME#g" "$TS_HOME/lib/javamail.jte"
 sed -i "s#^JAVA_HOME=.*#JAVA_HOME=$JAVA_HOME#g" "$TS_HOME/lib/javamail.jte"
 sed -i "s#^JARPATH=.*#JARPATH=$WORKSPACE#g" "$TS_HOME/lib/javamail.jte"
-sed -i "s#^JAVAMAIL_SERVER=.*#JAVAMAIL_SERVER=localhost#g" "$TS_HOME/lib/javamail.jte"
+sed -i "s#^JAVAMAIL_SERVER=.*#JAVAMAIL_SERVER=localhost -pn 1143#g" "$TS_HOME/lib/javamail.jte"
 sed -i "s#^JAVAMAIL_USERNAME=.*#JAVAMAIL_USERNAME=$MAIL_USER#g" "$TS_HOME/lib/javamail.jte"
 sed -i "s#^JAVAMAIL_PASSWORD=.*#JAVAMAIL_PASSWORD=1234#g" "$TS_HOME/lib/javamail.jte"
 sed -i "s#^SMTP_DOMAIN=.*#SMTP_DOMAIN=james.local#g" "$TS_HOME/lib/javamail.jte"

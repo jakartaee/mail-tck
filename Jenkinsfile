@@ -32,15 +32,18 @@ spec:
     image: linagora/james-jpa-sample:3.0.1
     command:
     - /root/startup.sh
+    env:
+      - name: JAVA_TOOL_OPTIONS
+        value: -Xmx1G
     ports:
-    - containerPort: 25
-    - containerPort: 143
+    - containerPort: 1025
+    - containerPort: 1143
     tty: true
     imagePullPolicy: Always
     resources:
       limits:
-        memory: "2Gi"
-        cpu: "0.5"
+        memory: "4Gi"
+        cpu: "1.0"
 """
     }
   }
