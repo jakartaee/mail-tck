@@ -45,7 +45,7 @@ wget $WGET_PROPS $JAVAMAIL_BUNDLE_URL -O javax.mail.jar
 cd $TS_HOME/tests/mailboxes
 export CLASSPATH=$TS_HOME/tests/mailboxes:$WORKSPACE/javax.mail.jar:$WORKSPACE/javax.activation.jar:$CLASSPATH
 javac -cp $CLASSPATH fpopulate.java
-java -cp $CLASSPATH fpopulate -s test1 -d imap://user01%40james.local:1234@localhost
+java -cp $CLASSPATH fpopulate -s test1 -d imap://user01%40james.local:1234@localhost:1143
 
 which ant
 ant -version
