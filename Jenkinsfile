@@ -29,7 +29,7 @@ spec:
         memory: "6Gi"
         cpu: "1.25"
   - name: james-mail
-    image: linagora/james-jpa-sample:3.0.1
+    image: anajosep/cts-mailserver:0.1
     command:
     - /root/startup.sh
     env:
