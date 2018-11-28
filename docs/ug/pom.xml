@@ -22,7 +22,7 @@
     <artifactId>tck_ug</artifactId>
     <packaging>pom</packaging>
     <version>1.6</version>
-    <name>TCK User's Guide for JavaMail API</name>
+    <name>Eclipse Foundation, Technology Compatibility Kit User's Guide for JavaMail API 1.6 for Jakarta EE, Release 1.6</name>
 
     <properties>
         <site.output.dir>${project.build.directory}/staging</site.output.dir>

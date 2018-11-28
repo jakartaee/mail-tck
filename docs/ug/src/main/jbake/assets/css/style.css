@@ -239,6 +239,7 @@ pre.prettyprint.highlight {
    margin:0 auto;
    color: grey;
    font-size: 12px;
+   vertical-align: middle;
 }
 
 .beta {color: #FF0000}
