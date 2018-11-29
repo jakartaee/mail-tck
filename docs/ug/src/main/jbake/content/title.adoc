@@ -1,21 +1,21 @@
 type=page
 status=published
-title=Technology Compatibility Kit User's Guide for Technology Licensees
+title=Technology Compatibility Kit User's Guide for Jakarta EE
 next=preface.html
 prev=toc.html
 ~~~~~~
 include::attributes.conf[]
 
-Technology Compatibility Kit User's Guide for {TechnologyFullName}, Release {TechnologyVersion} for Technology Licensees
-========================================================================================================================
+Technology Compatibility Kit User's Guide for {TechnologyFullName}, Release {TechnologyVersion} for Jakarta EE
+==============================================================================================================
 
 [[oracle]]
-Oracle
+Eclipse Foundation
 ------
 
 Technology Compatibility Kit User's Guide for {TechnologyFullName}
 
-Release {TechnologyVersion} for Technology Licensees
+Release {TechnologyVersion} for Jakarta EE
 
 September 2017
 
@@ -24,7 +24,7 @@ September 2017
 '''''
 
 Technology Compatibility Kit User's Guide for {TechnologyFullName},
-Release {TechnologyVersion} for Technology Licensees
+Release {TechnologyVersion} for Jakarta EE
 
 Copyright (c) 2017, 2018 Oracle and/or its affiliates. All rights reserved.
 
