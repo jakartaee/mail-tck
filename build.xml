@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 
-    Copyright (c) 2012, 2018 Oracle and/or its affiliates. All rights reserved.
+    Copyright (c) 2012, 2019 Oracle and/or its affiliates. All rights reserved.
 
     This program and the accompanying materials are made available under the
     terms of the Eclipse Public License v. 2.0, which is available at
@@ -53,7 +53,7 @@
             <isset property="debug"/>
     </condition>
 
-    <property name="class.path" value="${class.dir}${pathsep}${ts.home}/sigtest.jar${pathsep}${ts.home}/javatest.jar${pathsep}${JARPATH}/javax.mail.jar${pathsep}${JARPATH}/javax.activation.jar"/>
+    <property name="class.path" value="${class.dir}${pathsep}${ts.home}/sigtest.jar${pathsep}${ts.home}/javatest.jar${pathsep}${JARPATH}/jakarta.mail.jar${pathsep}${JARPATH}/jakarta.activation.jar"/>
 
     <condition property="jdk.modules" value="false" else="true">
 	<or>
@@ -70,18 +70,18 @@
 
     <target name="build"
             description="Compiles all sources to the classes directory">
-		<javac includeantruntime="false" deprecation="yes"
+	<javac includeantruntime="false" deprecation="yes"
 			source="1.8" target="1.8"
 			optimize="true" srcdir="tests"
 			classpath="${class.path}" destdir="${class.dir}"
 			debug="on" />
-        
+ 
         <javac includeantruntime="false" deprecation="yes"
 			source="1.8" target="1.8"
 			optimize="true" srcdir="harness"
 			classpath="${class.path}" destdir="${class.dir}"
 			debug="on" />
-        
+ 
         <javac includeantruntime="false" deprecation="yes"
 			source="1.8" target="1.8"
 			optimize="true"
