@@ -1,0 +1,7 @@
+JTreport/
+JTwork/
+classes/
+tests/mailboxes/fpopulate.class
+published/
+jakarta.mail.jar
+jakarta.activation.jar
