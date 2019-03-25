@@ -32,20 +32,19 @@ sed -i "s#^SMTP_FROM=.*#SMTP_FROM=user01@james.local#g" "$TS_HOME/lib/javamail.j
 sed -i "s#^SMTP_TO=.*#SMTP_TO=user01@james.local#g" "$TS_HOME/lib/javamail.jte"
 
 mkdir -p ${HOME}/.m2
-cp ${WORKSPACE}/docker/settings.xml ${HOME}/.m2
 
 WGET_PROPS="--progress=bar:force --no-cache"
 if [ -z "$JAF_BUNDLE_URL" ];then
-  export JAF_BUNDLE_URL=http://central.maven.org/maven2/com/sun/activation/javax.activation/1.2.0/javax.activation-1.2.0.jar
+  export JAF_BUNDLE_URL=http://central.maven.org/maven2/com/sun/activation/jakarta.activation/1.2.1/jakarta.activation-1.2.1.jar
 fi
 if [ -z "$JAVAMAIL_BUNDLE_URL" ];then
-  export JAVAMAIL_BUNDLE_URL=http://central.maven.org/maven2/com/sun/mail/javax.mail/1.6.1/javax.mail-1.6.1.jar
+  export JAVAMAIL_BUNDLE_URL=http://central.maven.org/maven2/com/sun/mail/jakarta.mail/1.6.3/jakarta.mail-1.6.3.jar
 fi
-wget $WGET_PROPS $JAF_BUNDLE_URL -O javax.activation.jar
-wget $WGET_PROPS $JAVAMAIL_BUNDLE_URL -O javax.mail.jar
+wget $WGET_PROPS $JAF_BUNDLE_URL -O jakarta.activation.jar
+wget $WGET_PROPS $JAVAMAIL_BUNDLE_URL -O jakarta.mail.jar
 
 cd $TS_HOME/tests/mailboxes
-export CLASSPATH=$TS_HOME/tests/mailboxes:$WORKSPACE/javax.mail.jar:$WORKSPACE/javax.activation.jar:$CLASSPATH
+export CLASSPATH=$TS_HOME/tests/mailboxes:$WORKSPACE/jakarta.mail.jar:$WORKSPACE/jakarta.activation.jar:$CLASSPATH
 javac -cp $CLASSPATH fpopulate.java
 java -cp $CLASSPATH fpopulate -s test1 -d imap://user01%40james.local:1234@localhost:1143
 
