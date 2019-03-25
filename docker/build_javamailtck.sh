@@ -34,8 +34,8 @@ fi
 if [ -z "$JAVAMAIL_BUNDLE_URL" ];then
   export JAVAMAIL_BUNDLE_URL=http://central.maven.org/maven2/com/sun/mail/javax.mail/1.6.1/javax.mail-1.6.1.jar
 fi
-wget $WGET_PROPS $JAF_BUNDLE_URL -O javax.activation.jar
-wget $WGET_PROPS $JAVAMAIL_BUNDLE_URL -O javax.mail.jar
+wget $WGET_PROPS $JAF_BUNDLE_URL -O jakarta.activation.jar
+wget $WGET_PROPS $JAVAMAIL_BUNDLE_URL -O jakarta.mail.jar
 
 which ant
 ant -version
