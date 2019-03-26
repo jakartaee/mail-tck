@@ -7,14 +7,14 @@ Running the TCK from the source
 1. Checkout TCK workspace in TCKHOME (e.g., "javamail-tck").
      git clone git@github.com:eclipse-ee4j/javamail-tck.git
    Change directory to $TCKHOME.
-2. Place javax.activation.jar (if using Java SE 9 or later)
-   and javax.mail.jar in any location. Let's call it JARPATH. 
+2. Place jakarta.activation.jar (if using Java SE 9 or later)
+   and jakarta.mail.jar in any location. Let's call it JARPATH. 
    It's usually simplest to just put them in $TCKHOME.
 3. Set CLASSPATH to
-     $TCKHOME/javatest.jar:$JARPATH/javax.activation.jar:$JARPATH/javax.mail.jar
+     $TCKHOME/javatest.jar:$JARPATH/jakarta.activation.jar:$JARPATH/jakarta.mail.jar
     
      on Windows:
-     %TCKHOME%\javatest.jar;%JARPATH%\javax.activation.jar;%JARPATH%\javax.mail.jar
+     %TCKHOME%\javatest.jar;%JARPATH%\jakarta.activation.jar;%JARPATH%\jakarta.mail.jar
 
 4. Set ANT_HOME to $TCKHOME/tools/ant.
 5. Add $ANT_HOME/bin to your path.

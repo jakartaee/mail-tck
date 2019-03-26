@@ -29,10 +29,10 @@ mkdir -p ${HOME}/.m2
 cd $WORKSPACE
 WGET_PROPS="--progress=bar:force --no-cache"
 if [ -z "$JAF_BUNDLE_URL" ];then
-  export JAF_BUNDLE_URL=http://central.maven.org/maven2/com/sun/activation/javax.activation/1.2.0/javax.activation-1.2.0.jar
+  export JAF_BUNDLE_URL=http://central.maven.org/maven2/com/sun/activation/jakarta.activation/1.2.1/jakarta.activation-1.2.1.jar
 fi
 if [ -z "$JAVAMAIL_BUNDLE_URL" ];then
-  export JAVAMAIL_BUNDLE_URL=http://central.maven.org/maven2/com/sun/mail/javax.mail/1.6.1/javax.mail-1.6.1.jar
+  export JAVAMAIL_BUNDLE_URL=http://central.maven.org/maven2/com/sun/mail/jakarta.mail/1.6.3/jakarta.mail-1.6.3.jar
 fi
 wget $WGET_PROPS $JAF_BUNDLE_URL -O jakarta.activation.jar
 wget $WGET_PROPS $JAVAMAIL_BUNDLE_URL -O jakarta.mail.jar

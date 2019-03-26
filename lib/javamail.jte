@@ -27,13 +27,13 @@ TS_HOME=MUST-BE-SET
 JAVA_HOME=MUST-BE-SET
 
 # Set this to the directory containing the JavaMail .jar 
-# files (i.e., javax.mail.jar and javax.activation.jar)
+# files (i.e., jakarta.mail.jar and jakarta.activation.jar)
 JARPATH=.
 
 # Adjust these as necessary for Windows or UNIX
 
-##LOCAL_CLASSES=$JARPATH\\javax.mail.jar:$JARPATH\\javax.activation.jar
-LOCAL_CLASSES=$JARPATH/javax.mail.jar:$JARPATH/javax.activation.jar
+##LOCAL_CLASSES=$JARPATH\\jakarta.mail.jar:$JARPATH\\jakarta.activation.jar
+LOCAL_CLASSES=$JARPATH/jakarta.mail.jar:$JARPATH/jakarta.activation.jar
 
 ##TESTCLASS=$TS_HOME\\classes
 TESTCLASS=$TS_HOME/classes
