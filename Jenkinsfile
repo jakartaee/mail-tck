@@ -19,7 +19,7 @@ spec:
     - "james.local"
   containers:
   - name: javamail-tck-ci
-    image: anajosep/cts-base:0.1
+    image: jakartaee/cts-javamail-base:0.1
     command:
     - cat
     tty: true
@@ -29,7 +29,7 @@ spec:
         memory: "6Gi"
         cpu: "1.25"
   - name: james-mail
-    image: anajosep/cts-mailserver:0.1
+    image: jakartaee/cts-mailserver:0.1
     command:
     - /root/startup.sh
     env:
