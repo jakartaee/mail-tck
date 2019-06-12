@@ -36,8 +36,8 @@
 </table>
 
 <span id="copyright">
-	<img src="img/eclipse_foundation_logo_tiny.png" height="20px" alt="Eclipse Foundation Logo" align="top"/>&nbsp;            
-        <span >Copyright&nbsp;&copy;&nbsp;2018,&nbsp;Oracle&nbsp;and/or&nbsp;its&nbsp;affiliates.&nbsp;All&nbsp;rights&nbsp;reserved.</span>
+		<img src="img/eclipse_foundation_logo_tiny.png" height="20px" alt="Eclipse Foundation Logo" align="top"/>&nbsp;			
+		<span >Copyright&nbsp;&copy;&nbsp;2018,&nbsp;Oracle&nbsp;and/or&nbsp;its&nbsp;affiliates.&nbsp;All&nbsp;rights&nbsp;reserved.</span>
 </span>
 
 </body>

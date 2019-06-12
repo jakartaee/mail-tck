@@ -45,7 +45,7 @@ include::req-software.inc[]
 include::tck-packages.inc[]
 * The {TechnologyShortName} {TechnologyVersion} Vendor Implementation (VI)
 
-
+Follow these steps:
 
 .  Install the Java SE {SEversion} software, if it is not already installed. +
 Download and install the Java SE {SEversion} software from

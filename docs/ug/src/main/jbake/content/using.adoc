@@ -40,7 +40,12 @@ respectively.
 
 =======================================================================
 
-include::using-rebuild.inc[]
+ifdef::rebuild[]
+As explained in link:rebuild.html#GCLIZ[Appendix B, "Packaging the
+Test Applications in Servlet-Compliant WAR
+Files With VI-Specific Information,"] the {TechnologyShortName} TCK
+introduces the concept of repackaging the TCK tests.
+endif::rebuild[]
 
 
 [[GBFUZ]][[starting-javatest]]
@@ -76,6 +81,7 @@ Execute the following commands:
 
 [source,oac_no_warn]
 ----
+cd <TS_HOME>/bin
 ant gui
 ----
 
@@ -84,47 +90,7 @@ ant gui
 5.1.2 To Start JavaTest in Command-Line Mode
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-1.  Start JavaTest using the following command: +
-[source,oac_no_warn]
-----
-ant run
-----
-
-[[GCMCU]]
-
-Example 5-1 {TechnologyShortName} TCK Signature Tests
-
-To run the {TechnologyShortName} TCK signature tests, enter the
-following commands:
-
-[source,subs="attributes"]
-----
-ant -Dtests=SignatureTest.html run
-----
-
-[[GCMBV]]
-
-
-Example 5-2 Single Test Directory
-
-To run a single test directory, enter the following commands:
-
-[source,subs="attributes"]
-----
-ant -Dtests=api/javasoft/sqe/tests/javax/mail/Address run
-----
-
-[[GCMCA]]
-
-
-Example 5-3 Subset of Test Directories
-
-To run a subset of test directories, enter the following commands:
-
-[source,subs="attributes"]
-----
-ant -Dtests=api/javasoft/sqe/tests/javax/mail/internet run
-----
+include::using-examples.inc[]
 
 [[GBFWM]][[running-a-subset-of-the-tests]]
 
@@ -173,7 +139,7 @@ A report is created, and you are asked whether you want to view it.
 +
 [source]
 ----
-ant -Dtests=<test-directory> run
+ant runclient
 ----
 +
 The tests in the directory and its subdirectories are run.
@@ -202,7 +168,7 @@ status of failed and error by invoking the following commands:
 
 [source,oac_no_warn]
 ----
-ant -DpriorStatus="fail,error" run
+ant -DpriorStatus="fail,error" runclient
 ----
 
 Note that multiple `priorStatus` values must be separated by commas.
@@ -220,7 +186,7 @@ compatibility testing against the Vendor and Reference Implementations.
 1.  Verify that you have followed the configuration instructions in
 link:config.html#GBFVU[Section 4.1, "Configuring Your Environment to Run
 the TCK Against the Reference Implementation."]
-2.  Verify that you have completed the steps in
+2.  If required, verify that you have completed the steps in
 link:config.html#GCLIW[Section 4.3.2, "Deploying the Prebuilt Archives."]
 3.  Run the tests, as described in link:#GBFUZ[Section 5.1, "Starting
 JavaTest,"] and, if desired, link:#GBFWM[Section 5.2, "Running a Subset
@@ -237,7 +203,7 @@ Vendors must pass.
 1.  Verify that you have followed the configuration instructions in
 link:config.html#GCLHU[Section 4.2, "Configuring Your Environment to
 Repackage and Run the TCK Against the Vendor Implementation."]
-2.  Verify that you have completed the steps in
+2.  If required, verify that you have completed the steps in
 link:config.html#GCLIL[Section 4.3.3, "Deploying the
 Test Applications Against the Vendor Implementation."]
 3.  Run the tests, as described in link:#GBFUZ[Section 5.1, "Starting
@@ -352,3 +318,6 @@ The selected report set is opened in the JavaTest ReportBrowser.
 
 Use the Web browser of your choice to view the `report.html` file in the
 report directory you specified from the command line or in +{jteFileName}+.
+
+include::using.inc[]
+
