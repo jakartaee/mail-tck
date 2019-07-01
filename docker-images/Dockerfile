@@ -3,14 +3,14 @@ FROM centos:7
 ARG HTTPS_PROXY=
 ARG MAVEN_VERSION=3.5.4
 ARG ANT_VERSION=1.10.5
-ARG MAVEN_BASE_URL=https://apache.osuosl.org/maven/maven-3/${MAVEN_VERSION}/binaries
-ARG ANT_BASE_URL=https://apache.osuosl.org/ant/binaries/
+ARG MAVEN_BASE_URL=https://apache.org/dist/maven/maven-3/${MAVEN_VERSION}/binaries
+ARG ANT_BASE_URL=https://apache.org/dist/ant/binaries/
 
 ADD jdk-8u191-linux-x64.tar.gz /opt
 COPY ant-props.jar /opt/
 
 RUN echo "proxy=${HTTPS_PROXY}" >> /etc/yum.conf && \
-    yum install -y ld-linux.so.2 glibc.i686 git wget which tar zip unzip libXext.x86_64 libXrender.x86_64 libXtst.x86_64 && \
+    yum install -y ld-linux.so.2 glibc.i686 git wget which tar zip unzip && \
     mkdir -p /usr/share/maven /usr/share/maven/ref && \
     wget -e use_proxy=yes -e https_proxy=${HTTPS_PROXY} --no-cache --no-check-certificate ${MAVEN_BASE_URL}/apache-maven-${MAVEN_VERSION}-bin.tar.gz -O /tmp/apache-maven.tar.gz && \
     tar -xzf /tmp/apache-maven.tar.gz -C /usr/share/maven --strip-components=1 && \
