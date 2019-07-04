@@ -58,8 +58,14 @@
 	</copy>
     </target>
 
+    <target name="copyLicense" unless="useEFTLicensefile">
+  	<copy tofile="${ts.home}/LICENSE.md" file="${ts.home}/LICENSE_EFTL.md">
+  	</copy>
+    </target>
+
     <target name="core" depends="build, javadoc, mvn, _create.version.file">
         <delete file="${zip.file}" quiet="true"/>
+	<antcall target="copyEFTLicense"/>
         <zip destfile="${zip.file}">
 	    <zipfileset dir="${ts.home}" 
                includes="build.xml,
