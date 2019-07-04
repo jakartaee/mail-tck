@@ -58,7 +58,7 @@
 	</copy>
     </target>
 
-    <target name="copyLicense" unless="useEFTLicensefile">
+    <target name="copyEFTLicense" unless="useEFTLicensefile">
   	<copy tofile="${ts.home}/LICENSE.md" file="${ts.home}/LICENSE_EFTL.md">
   	</copy>
     </target>
