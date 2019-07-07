@@ -24,7 +24,7 @@
         <format property="time.stamp.bundle.string" pattern="dd-MMM-yyyy" locale="en"/>
     </tstamp>
     <property name="date.time" value="${DSTAMP}_${TSTAMP}"/>
-    <property name="zip.fullname" value="javamailtck-${version}_${time.stamp.bundle.string}"/>
+    <property name="zip.fullname" value="javamailtck-${version.tck}_${time.stamp.bundle.string}"/>
     <property name="zip.file" value="${zip.fullname}.zip"/>
             
     <target name="javadoc">

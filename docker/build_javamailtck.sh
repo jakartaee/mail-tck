@@ -68,7 +68,7 @@ for entry in `ls javamail*.zip`; do
     cp ${WORKSPACE}/$entry ${WORKSPACE}/bundles/eclipse-${strippedEntry}.zip
     chmod 777 ${WORKSPACE}/bundles/eclipse-${strippedEntry}.zip
   else
-    cp ${WORKSPACE}/$entry ${WORKSPACE}/bundles/${strippedEntry}_latest.zip
-    chmod 777 ${WORKSPACE}/bundles/${strippedEntry}_latest.zip
+    cp ${WORKSPACE}/$entry ${WORKSPACE}/bundles/${strippedEntry}.zip
+    chmod 777 ${WORKSPACE}/bundles/${strippedEntry}.zip
   fi
 done
