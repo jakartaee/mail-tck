@@ -21,6 +21,7 @@
     <description>Builds and runs the project javamailtck.</description>
 
     <property name="version" value="1.6"/>
+    <property name="version.tck" value="1.6.0"/>
 
     <property environment="env"/>
     <dirname property="javamailtck.basedir" file="${ant.file.javamailtck}"/>

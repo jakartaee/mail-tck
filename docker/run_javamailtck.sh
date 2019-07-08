@@ -15,8 +15,13 @@
 #
 # SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
 
-unzip -o ${WORKSPACE}/bundles/javamailtck-1.6_latest.zip -d ${WORKSPACE}
-
+if ls ${WORKSPACE}/bundles/*javamailtck*.zip 1> /dev/null 2>&1; then
+  unzip ${WORKSPACE}/bundles/*javamailtck*.zip -d ${WORKSPACE}
+else
+  echo "[ERROR] TCK bundle not found"
+  exit 1
+fi
+  
 export TS_HOME=${WORKSPACE}/javamailtck
 
 sed -i "s#^TS_HOME=.*#TS_HOME=$TS_HOME#g" "$TS_HOME/lib/javamail.jte"

@@ -27,6 +27,14 @@ sed -i "s#^JARPATH=.*#JARPATH=$WORKSPACE#g" "$WORKSPACE/lib/javamail.jte"
 mkdir -p ${HOME}/.m2
 
 cd $WORKSPACE
+
+if [ ! -z "$TCK_BUNDLE_BASE_URL" ]; then
+  #use pre-built tck bundle from this location to run test
+  mkdir -p ${WORKSPACE}/bundles
+  wget  --progress=bar:force --no-cache ${TCK_BUNDLE_BASE_URL}/${TCK_BUNDLE_FILE_NAME} -O ${WORKSPACE}/bundles/javamailtck-1.6_latest.zip
+  exit 0
+fi
+
 WGET_PROPS="--progress=bar:force --no-cache"
 if [ -z "$JAF_BUNDLE_URL" ];then
   export JAF_BUNDLE_URL=http://central.maven.org/maven2/com/sun/activation/jakarta.activation/1.2.1/jakarta.activation-1.2.1.jar
@@ -44,7 +52,11 @@ which mvn
 mvn -version
 
 export ANT_OPTS="-DTS_HOME=$WORKSPACE -DJAVA_HOME=$JAVA_HOME -DJARPATH=$WORKSPACE"
-ant -f release.xml clean core 
+if [[ "$LICENSE" == "EFTL" || "$LICENSE" == "eftl" ]]; then
+  ant -f release.xml clean core -DuseEFTLicensefile="true"
+else
+  ant -f release.xml clean core
+fi
 
 mkdir -p ${WORKSPACE}/bundles
 chmod 777 ${WORKSPACE}/*.zip
@@ -52,7 +64,11 @@ for entry in `ls javamail*.zip`; do
   date=`echo "$entry" | cut -d_ -f2`
   strippedEntry=`echo "$entry" | cut -d_ -f1`
   echo "copying ${WORKSPACE}/$entry to ${WORKSPACE}/bundles/${strippedEntry}_latest.zip"
-  cp ${WORKSPACE}/$entry ${WORKSPACE}/bundles/${strippedEntry}_latest.zip
-  chmod 777 ${WORKSPACE}/bundles/${strippedEntry}_latest.zip
+  if [[ "$LICENSE" == "EFTL" || "$LICENSE" == "eftl" ]]; then
+    cp ${WORKSPACE}/$entry ${WORKSPACE}/bundles/eclipse-${strippedEntry}.zip
+    chmod 777 ${WORKSPACE}/bundles/eclipse-${strippedEntry}.zip
+  else
+    cp ${WORKSPACE}/$entry ${WORKSPACE}/bundles/${strippedEntry}.zip
+    chmod 777 ${WORKSPACE}/bundles/${strippedEntry}.zip
+  fi
 done
-
