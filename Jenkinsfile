@@ -31,7 +31,7 @@ spec:
   - name: james-mail
     image: jakartaee/cts-mailserver:0.1
     command:
-    - /root/startup.sh
+    - cat
     env:
       - name: JAVA_TOOL_OPTIONS
         value: -Xmx1G
@@ -66,6 +66,7 @@ spec:
   environment {
     ANT_OPTS = "-Djavax.xml.accessExternalStylesheet=all -Djavax.xml.accessExternalSchema=all -Djavax.xml.accessExternalDTD=file,http" 
     MAIL_USER="user01@james.local"
+    MAIL_HOST="localhost"
   }
   stages {
     stage('javamail-tck-build') {
@@ -83,7 +84,16 @@ spec:
   
     stage('javamail-tck-run') {
       steps {
-        container('javamail-tck-ci') {
+        container('james-mail') {
+          sh """
+            cd /root 
+            /root/startup.sh | tee /root/mailserver.log &
+            sleep 120
+            bash -x /root/create_users.sh 2>&1 | tee /root/create_users.log
+            echo "Mail server setup complete"
+          """
+	}
+	container('javamail-tck-ci') {
           sh """
             env
             bash -x ${WORKSPACE}/docker/run_javamailtck.sh
