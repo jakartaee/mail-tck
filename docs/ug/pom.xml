@@ -27,7 +27,7 @@
     <artifactId>tck_ug</artifactId>
     <packaging>pom</packaging>
     <version>1.6.0-SNAPSHOT</version>
-    <name>Eclipse Foundation, Technology Compatibility Kit User's Guide for JavaMail API 1.6 for Jakarta EE, Release 1.6</name>
+    <name>Eclipse Foundation, Technology Compatibility Kit User's Guide for Jakarta Mail API 1.6 for Jakarta EE, Release 1.6</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -40,12 +40,12 @@
         <jruby.version>9.2.6.0</jruby.version>
         <!-- status: DRAFT, BETA, etc., or blank for final -->
         <status>DRAFT</status>
-        <doc.pdf>JavaMail-TCK-Users-Guide.pdf</doc.pdf>
+        <doc.pdf>Jakarta-Mail-TCK-Users-Guide.pdf</doc.pdf>
     </properties>
 
     <distributionManagement>
         <site>
-            <url>scm:git:git@github.com:javaee/javamail-tck.git</url>
+            <url>scm:git:git@github.com:eclipse-ee4j/javamail-tck.git</url>
         </site>
     </distributionManagement>
 

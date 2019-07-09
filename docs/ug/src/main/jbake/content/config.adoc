@@ -11,6 +11,13 @@ Setup and Configuration
 [[GBFVV]]
 
 
+[WARNING]
+====
+Currently, this is written to describe configuration for only one compatible implementation. 
+This must be expanded to provide for the possibility of multiple compatible implementations.
+
+====
+
 [[setup-and-configuration]]
 4 Setup and Configuration
 -------------------------
@@ -23,18 +30,6 @@ link:install.html#GBFTP[Chapter 3, "Installation."]
 After completing the instructions in this chapter, proceed to
 link:using.html#GBFWO[Chapter 5, "Executing Tests,"] for instructions on
 running the {TechnologyShortName} TCK.
-
-This chapter includes the following topics:
-
-* link:#GBFVU[Configuring Your Environment to Run the
-TCK Against the Reference Implementation]
-* link:#GCLHU[Configuring Your Environment to Repackage and Run the
-TCK Against the Vendor Implementation]
-* link:#GHGDH[Custom Configuration Handlers]
-* link:#GBFWG[Custom Deployment Handlers]
-* link:#GHGDG[Publishing the Test Applications]
-* link:#GBFUY[Using the JavaTest Harness Software]
-* link:#GBFWG[Using the JavaTest Harness Configuration GUI]
 
 include::config.inc[]
 
@@ -59,7 +54,7 @@ with the necessary configuration steps for your implementation and place
 the file under the `<TS_HOME>/bin/xml/impl/<your_impl>` directory.
 
 For more information, see `<TS_HOME>/bin/xml/impl/glassfish/config.vi.xml`,
-the configuration file for the Java EE 8 RI.
+the configuration file for the Jakarta EE 8 Compatible Implementation, Eclipse GlassFish.
 
 [[GBFWG]][[custom-deployment-handlers]]
 
@@ -77,7 +72,7 @@ The {TechnologyShortName} TCK provides these deployment handlers:
 
 The `deploy.xml` files in each of these directories are used to control
 deployment to a specific container (no deployment, deployment to
-the GlassFish Web container, deployment to the Tomcat Web container)
+the Eclipse GlassFish Web container, deployment to the Tomcat Web container)
 denoted by the name of the directory in which each `deploy.xml` file
 resides. The primary `build.xml` file in the `<TS_HOME>/bin` directory
 has a target to invoke any of the required targets (-deploy, -undeploy,
@@ -127,7 +122,7 @@ Although this example just echoes messages, it does include the four
 required Ant targets (-deploy, -undeploy, -deploy.all, -undeploy.all)
 that your custom deploy.xml file must contain. With this as your
 starting point, look at the required targets in the deploy.xml files
-in the tomcat and glassfish directories for guidance as you create
+in the Tomcat and Eclipse Glassfish directories for guidance as you create
 the same targets for the Web container in which you will run your
 implementation of {TechnologyShortName}.
 
