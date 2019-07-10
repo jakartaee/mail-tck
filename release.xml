@@ -56,6 +56,10 @@
 	<copy toDir="${basedir}/docs/html/">
 	    <fileset dir="${basedir}/docs/ug/target/staging/"/>
 	</copy>
+	<copy toDir="${basedir}/docs">
+	    <fileset dir="${basedir}/docs/ug/target/generated-docs/"
+		includes="*.pdf"/>
+	</copy>
     </target>
 
     <target name="copyEFTLicense" if="useEFTLicensefile">
@@ -74,6 +78,7 @@
                         version,
                         docs/html/**,
                         docs/javadocs/**,
+                        docs/*.pdf,
                         tests/api/**,
                         tests/testsuite.html,
                         tests/testsuite.jtt,
