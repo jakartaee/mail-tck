@@ -14,10 +14,10 @@
 # Set this to your TCK installation directory.
 
 # Use this style naming convention for Windows.
-##TS_HOME=D:\\jm_tck\\javamailtck
+##TS_HOME=D:\\jm_tck\\mailtck
 
 # And this style naming convention for UNIX.
-# TS_HOME=/home/abc/javamailtck
+# TS_HOME=/home/abc/mailtck
 TS_HOME=MUST-BE-SET
 
 # Set this to the installation of your JDK.
@@ -26,7 +26,7 @@ TS_HOME=MUST-BE-SET
 ##JAVA_HOME=/usr/jdk1.8
 JAVA_HOME=MUST-BE-SET
 
-# Set this to the directory containing the JavaMail .jar 
+# Set this to the directory containing the Jakarta Mail .jar 
 # files (i.e., jakarta.mail.jar and jakarta.activation.jar)
 JARPATH=.
 
@@ -90,17 +90,17 @@ env.jck-report.script=$TCKReportScript
 
 #---------- JDK/UNIX configuration ------------------------------------------
 
-# Environment javamailUnix
+# Environment mailUnix
 #
-env.javamailUnix.description=\
+env.mailUnix.description=\
 	Run the runtime tests in a separate JVM (process) on UNIX
-env.javamailUnix.finder=$TCKTestFinder
-env.javamailUnix.script=$TCKScript
+env.mailUnix.finder=$TCKTestFinder
+env.mailUnix.script=$TCKScript
  
 #
 # The runtime to be tested ...
 #
-env.javamailUnix.command.execute=$ExecTCKTestOtherJVMCmd \
+env.mailUnix.command.execute=$ExecTCKTestOtherJVMCmd \
 	CLASSPATH=$testSuiteRootDir/../classes$:$testClassDir:\
 	$javatestClassDir$:$extraOtherJVMClassPath \
 	HOME=${user.home} \
@@ -109,12 +109,12 @@ env.javamailUnix.command.execute=$ExecTCKTestOtherJVMCmd \
 
 #---------- JDK/Windows NT configuration ---------------------------------------
 
-# Environment javamailWindows
+# Environment mailWindows
 #
-env.javamailWindows.description=\
+env.mailWindows.description=\
 	Run the runtime tests in a separate JVM (process) on Windows NT
-env.javamailWindows.finder=$TCKTestFinder
-env.javamailWindows.script=$TCKScript
+env.mailWindows.finder=$TCKTestFinder
+env.mailWindows.script=$TCKScript
 
 #
 #
@@ -129,7 +129,7 @@ env.javamailWindows.script=$TCKScript
 # refer to a system property that you set on the command line when you start
 # JavaTest, which might in turn be set from your Windows NT SystemRoot variable.
 #
-env.javamailWindows.command.execute=$ExecTCKTestOtherJVMCmd \
+env.mailWindows.command.execute=$ExecTCKTestOtherJVMCmd \
 	CLASSPATH=$testSuiteRootDir$/..$/classes$:$javatestClassDir$:$extraOtherJVMClassPath \
 	SystemRoot=${SYSTEMROOT} \
 	windir=${SYSTEMROOT} \
@@ -137,7 +137,7 @@ env.javamailWindows.command.execute=$ExecTCKTestOtherJVMCmd \
 
 
 #----------------------------------------------------------------------
-# Variables for JavaMail Tests
+# Variables for Jakarta Mail Tests
 #
 # Host, user, and password values can be set to null by using the special
 # value NULL.
@@ -160,7 +160,7 @@ env.javamailWindows.command.execute=$ExecTCKTestOtherJVMCmd \
 
 #----------------------------------------------------------------------
 #
-# Variables for JavaMail Tests
+# Variables for Jakarta Mail Tests
 #
 #
 

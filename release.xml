@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 
-    Copyright (c) 2012, 2018 Oracle and/or its affiliates. All rights reserved.
+    Copyright (c) 2012, 2019 Oracle and/or its affiliates. All rights reserved.
 
     This program and the accompanying materials are made available under the
     terms of the Eclipse Public License v. 2.0, which is available at
@@ -17,14 +17,14 @@
 
 -->
 
-<project name="JavaMail TCK release" default="core" basedir=".">
+<project name="Jakarta Mail TCK release" default="core" basedir=".">
 
     <import file="./build.xml"/>
     <tstamp>
         <format property="time.stamp.bundle.string" pattern="dd-MMM-yyyy" locale="en"/>
     </tstamp>
     <property name="date.time" value="${DSTAMP}_${TSTAMP}"/>
-    <property name="zip.fullname" value="javamailtck-${version.tck}_${time.stamp.bundle.string}"/>
+    <property name="zip.fullname" value="mailtck-${version.tck}_${time.stamp.bundle.string}"/>
     <property name="zip.file" value="${zip.fullname}.zip"/>
             
     <target name="javadoc">
@@ -40,7 +40,7 @@
             author="false" 
             version="true" 
             failonerror="true"
-            windowtitle="JavaMail ${version} TCK">
+            windowtitle="Jakarta Mail ${version} TCK">
             <sourcepath>
                 <pathelement location="${basedir}/tests/api"/>
             </sourcepath>
@@ -69,7 +69,7 @@
         <zip destfile="${zip.file}">
 	    <zipfileset dir="${ts.home}" 
                includes="build.xml,
-			            javatest.jar,
+			javatest.jar,
                         sigtest.jar,
                         version,
                         docs/html/**,
@@ -88,7 +88,7 @@
                         classes/**,
                         LICENSE.md,
                         harness/**"
-                        prefix="javamailtck"/>                        	
+                        prefix="mailtck"/>                        	
 	    </zip>
     </target>
 

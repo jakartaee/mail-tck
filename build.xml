@@ -17,17 +17,17 @@
 
 -->
 
-<project name="javamailtck" default="default" basedir="." xmlns:if="ant:if">
-    <description>Builds and runs the project javamailtck.</description>
+<project name="mailtck" default="default" basedir="." xmlns:if="ant:if">
+    <description>Builds and runs the project mailtck.</description>
 
     <property name="version" value="1.6"/>
     <property name="version.tck" value="1.6.0"/>
 
     <property environment="env"/>
-    <dirname property="javamailtck.basedir" file="${ant.file.javamailtck}"/>
-    <property name="ts.home" value="${javamailtck.basedir}"/>
+    <dirname property="mailtck.basedir" file="${ant.file.mailtck}"/>
+    <property name="ts.home" value="${mailtck.basedir}"/>
 
-    <property file="${ts.home}/lib/javamail.jte"/>
+    <property file="${ts.home}/lib/ts.jte"/>
 
     <!--
     <property name="dir.sep"       value="${file.separator}"/>
@@ -100,12 +100,12 @@
     </target>
 
     <target name="run"
-            description="Executes the Javamail TCK in batch mode">
+            description="Executes the Jakarta Mail TCK in batch mode">
         <javatest.batch/>
     </target>
 
     <target name="gui"
-            description="Executes the Javamail TCK in GUI mode">
+            description="Executes the Jakarta Mail TCK in GUI mode">
         <javatest.gui/>
     </target>
 
@@ -166,9 +166,9 @@
             <arg line=" -batch" />
             <arg line=" -ts tests/testsuite.html" />
             <arg line=" -workdir ${work.dir}" />
-            <arg line=" -envFiles ${ts.home}/lib/javamail.jte" />
-            <arg line=" -env javamailUnix" />
-            <arg line=" -excludeList ${ts.home}/lib/javamail.jtx" />
+            <arg line=" -envFiles ${ts.home}/lib/ts.jte" />
+            <arg line=" -env mailUnix" />
+            <arg line=" -excludeList ${ts.home}/lib/ts.jtx" />
             <arg line=" -timeoutFactor 1" />
             <arg line=" ${tests.arg}" />
             <arg line=" -runtests -writereport ${report.dir}"/>
@@ -186,7 +186,7 @@
         -->
 
         <javatest>
-            <arg    line="-open ${ts.home}/lib/javamail.jti" />
+            <arg    line="-open ${ts.home}/lib/ts.jti" />
             <arg    line="-EsysProps" />
         </javatest>
     </presetdef>

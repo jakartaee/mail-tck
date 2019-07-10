@@ -1,4 +1,4 @@
-env.label = "javamail-tck-ci-pod-${UUID.randomUUID().toString()}"
+env.label = "mail-tck-ci-pod-${UUID.randomUUID().toString()}"
 pipeline {
   options {
     buildDiscarder(logRotator(numToKeepStr: '5'))
@@ -18,7 +18,7 @@ spec:
     - "localhost.localdomain"
     - "james.local"
   containers:
-  - name: javamail-tck-ci
+  - name: mail-tck-ci
     image: jakartaee/cts-javamail-base:0.1
     command:
     - cat
@@ -51,7 +51,7 @@ spec:
     string(name: 'JAF_BUNDLE_URL',
            defaultValue: 'http://central.maven.org/maven2/com/sun/activation/jakarta.activation/1.2.1/jakarta.activation-1.2.1.jar',
            description: 'URL required for downloading JAF implementation jar' )
-    string(name: 'JAVAMAIL_BUNDLE_URL',
+    string(name: 'MAIL_BUNDLE_URL',
            defaultValue: 'http://central.maven.org/maven2/com/sun/mail/jakarta.mail/1.6.3/jakarta.mail-1.6.3.jar',
            description: 'URL required for downloading Javamail implementation jar' )
     string(name: 'TCK_BUNDLE_BASE_URL',
@@ -69,20 +69,20 @@ spec:
     MAIL_HOST="localhost"
   }
   stages {
-    stage('javamail-tck-build') {
+    stage('mail-tck-build') {
       steps {
-        container('javamail-tck-ci') {
+        container('mail-tck-ci') {
           sh """
             env
-            bash -x ${WORKSPACE}/docker/build_javamailtck.sh
+            bash -x ${WORKSPACE}/docker/build_mailtck.sh
           """
           archiveArtifacts artifacts: 'bundles/*.zip'
-          stash includes: 'bundles/*.zip', name: 'javamail-tck-bundles'
+          stash includes: 'bundles/*.zip', name: 'mail-tck-bundles'
         }
       }
     }
   
-    stage('javamail-tck-run') {
+    stage('mail-tck-run') {
       steps {
         container('james-mail') {
           sh """
@@ -93,12 +93,12 @@ spec:
             echo "Mail server setup complete"
           """
 	}
-	container('javamail-tck-ci') {
+	container('mail-tck-ci') {
           sh """
             env
-            bash -x ${WORKSPACE}/docker/run_javamailtck.sh
+            bash -x ${WORKSPACE}/docker/run_mailtck.sh
           """
-          archiveArtifacts artifacts: "javamailtck-results.tar.gz"
+          archiveArtifacts artifacts: "mailtck-results.tar.gz"
           junit testResults: 'results/junitreports/*.xml', allowEmptyResults: true
         }
       }
