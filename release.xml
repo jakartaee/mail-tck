@@ -20,11 +20,7 @@
 <project name="Jakarta Mail TCK release" default="core" basedir=".">
 
     <import file="./build.xml"/>
-    <tstamp>
-        <format property="time.stamp.bundle.string" pattern="dd-MMM-yyyy" locale="en"/>
-    </tstamp>
-    <property name="date.time" value="${DSTAMP}_${TSTAMP}"/>
-    <property name="zip.fullname" value="mailtck-${version.tck}_${time.stamp.bundle.string}"/>
+    <property name="zip.fullname" value="mailtck-${version.tck}"/>
     <property name="zip.file" value="${zip.fullname}.zip"/>
             
     <target name="javadoc">
