@@ -11,6 +11,11 @@ for the specific technology:
 	Additional compatibility rules needed by some technologies.
 	The rules in rules.adoc should NOT be changed.
 
+- defns.inc
+
+	Additional definitions needed by additional compatibility
+	rules in rules.inc.
+
 - config.inc
 
 	Detailed instructions for configuring the TCK, included in
@@ -64,6 +69,9 @@ for the specific technology:
 	If needed, customize it appropriately and define the "rebuild"
 	attribute in attributes.conf.
 
+- title.inc
+	Add acronym references as required do distinguish between legacy and 
+	current APIs.
 
 Note that this template is NOT sufficient for the Jakarta EE platform
 or Jakarta EE Web Profile.
