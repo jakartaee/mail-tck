@@ -61,14 +61,13 @@ fi
 mkdir -p ${WORKSPACE}/bundles
 chmod 777 ${WORKSPACE}/*.zip
 for entry in `ls mail*.zip`; do
-  date=`echo "$entry" | cut -d_ -f2`
-  strippedEntry=`echo "$entry" | cut -d_ -f1`
-  echo "copying ${WORKSPACE}/$entry to ${WORKSPACE}/bundles/${strippedEntry}_latest.zip"
+  strippedEntry=`basename "$entry" .zip`
+  echo "copying ${WORKSPACE}/$entry to ${WORKSPACE}/bundles/$entry"
   if [[ "$LICENSE" == "EFTL" || "$LICENSE" == "eftl" ]]; then
-    cp ${WORKSPACE}/$entry ${WORKSPACE}/bundles/eclipse-${strippedEntry}.zip
-    chmod 777 ${WORKSPACE}/bundles/eclipse-${strippedEntry}.zip
+    cp ${WORKSPACE}/$entry ${WORKSPACE}/bundles/eclipse-$entry
+    chmod 777 ${WORKSPACE}/bundles/eclipse-$entry
   else
-    cp ${WORKSPACE}/$entry ${WORKSPACE}/bundles/${strippedEntry}.zip
-    chmod 777 ${WORKSPACE}/bundles/${strippedEntry}.zip
+    cp ${WORKSPACE}/$entry ${WORKSPACE}/bundles/$entry
+    chmod 777 ${WORKSPACE}/bundles/$entry
   fi
 done
