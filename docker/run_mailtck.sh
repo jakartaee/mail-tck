@@ -15,14 +15,14 @@
 #
 # SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
 
-if ls ${WORKSPACE}/bundles/*mailtck*.zip 1> /dev/null 2>&1; then
-  unzip ${WORKSPACE}/bundles/*mailtck*.zip -d ${WORKSPACE}
+if ls ${WORKSPACE}/bundles/*mail-tck*.zip 1> /dev/null 2>&1; then
+  unzip ${WORKSPACE}/bundles/*mail-tck*.zip -d ${WORKSPACE}
 else
   echo "[ERROR] TCK bundle not found"
   exit 1
 fi
   
-export TS_HOME=${WORKSPACE}/mailtck
+export TS_HOME=${WORKSPACE}/mail-tck
 
 sed -i "s#^TS_HOME=.*#TS_HOME=$TS_HOME#g" "$TS_HOME/lib/ts.jte"
 sed -i "s#^JAVA_HOME=.*#JAVA_HOME=$JAVA_HOME#g" "$TS_HOME/lib/ts.jte"
@@ -57,15 +57,15 @@ java -cp $CLASSPATH fpopulate -s test1 -d imap://user01%40james.local:1234@local
 which ant
 ant -version
 
-cd $WORKSPACE/mailtck/
-ant -Dreport.dir=$WORKSPACE/JTreport/mailtck -Dwork.dir=$WORKSPACE/JTwork/mailtck run
+cd $WORKSPACE/mail-tck/
+ant -Dreport.dir=$WORKSPACE/JTreport/mail-tck -Dwork.dir=$WORKSPACE/JTwork/mail-tck run
 
 
 HOST=`hostname -f`
-echo "1 mailtck $HOST" > $WORKSPACE/args.txt
+echo "1 mail-tck $HOST" > $WORKSPACE/args.txt
 
 mkdir -p $WORKSPACE/results/junitreports/
 JT_REPORT_DIR=$WORKSPACE/JTreport
 $JAVA_HOME/bin/java -Djunit.embed.sysout=true -jar ${WORKSPACE}/docker/JTReportParser/JTReportParser.jar $WORKSPACE/args.txt $JT_REPORT_DIR $WORKSPACE/results/junitreports/ 
 
-tar zcvf ${WORKSPACE}/mailtck-results.tar.gz $WORKSPACE/JTreport/mailtck $WORKSPACE/JTwork/mailtck $WORKSPACE/results/junitreports/
+tar zcvf ${WORKSPACE}/mail-tck-results.tar.gz $WORKSPACE/JTreport/mail-tck $WORKSPACE/JTwork/mail-tck $WORKSPACE/results/junitreports/

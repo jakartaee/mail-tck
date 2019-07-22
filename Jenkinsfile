@@ -58,7 +58,7 @@ spec:
            defaultValue: '',
            description: 'Base URL required for downloading prebuilt binary TCK Bundle from a hosted location' )
     string(name: 'TCK_BUNDLE_FILE_NAME', 
-           defaultValue: 'javamailtck-1.6_latest.zip', 
+           defaultValue: 'mail-tck-1.6.0.zip', 
 	   description: 'Name of bundle file to be appended to the base url' )
     choice(name: 'LICENSE', choices: 'EPL\nEFTL',
            description: 'License file to be used to build the TCK bundle(s) either EPL(default) or Eclipse Foundation TCK License' )
@@ -98,7 +98,7 @@ spec:
             env
             bash -x ${WORKSPACE}/docker/run_mailtck.sh
           """
-          archiveArtifacts artifacts: "mailtck-results.tar.gz"
+          archiveArtifacts artifacts: "mail-tck-results.tar.gz"
           junit testResults: 'results/junitreports/*.xml', allowEmptyResults: true
         }
       }
