@@ -20,7 +20,7 @@
 <project name="Jakarta Mail TCK release" default="core" basedir=".">
 
     <import file="./build.xml"/>
-    <property name="zip.fullname" value="mailtck-${version.tck}"/>
+    <property name="zip.fullname" value="mail-tck-${version.tck}"/>
     <property name="zip.file" value="${zip.fullname}.zip"/>
             
     <target name="javadoc">
