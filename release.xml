@@ -89,7 +89,7 @@
                         classes/**,
                         LICENSE.md,
                         harness/**"
-                        prefix="mailtck"/>                        	
+                        prefix="mail-tck"/>                        	
 	    </zip>
     </target>
 
