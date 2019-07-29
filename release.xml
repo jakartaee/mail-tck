@@ -67,6 +67,9 @@
         <delete file="${zip.file}" quiet="true"/>
 	<antcall target="copyEFTLicense"/>
         <zip destfile="${zip.file}">
+	    <zipfileset dir="${ts.home}/docs/"
+		includes="README.md"
+		prefix="mail-tck"/>
 	    <zipfileset dir="${ts.home}" 
                includes="build.xml,
 			javatest.jar,
@@ -89,7 +92,7 @@
                         classes/**,
                         LICENSE.md,
                         harness/**"
-                        prefix="mail-tck"/>                        	
+		prefix="mail-tck"/>                        	
 	    </zip>
     </target>
 
