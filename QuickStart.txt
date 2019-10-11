@@ -10,24 +10,14 @@ Running the TCK from the source
 2. Place jakarta.activation.jar (if using Java SE 9 or later)
    and jakarta.mail.jar in any location. Let's call it JARPATH. 
    It's usually simplest to just put them in $TCKHOME.
-3. Set CLASSPATH to
-     $TCKHOME/javatest.jar:$JARPATH/jakarta.activation.jar:$JARPATH/jakarta.mail.jar
-    
-     on Windows:
-     %TCKHOME%\javatest.jar;%JARPATH%\jakarta.activation.jar;%JARPATH%\jakarta.mail.jar
-
-4. Set ANT_HOME to $TCKHOME/tools/ant.
-5. Add $ANT_HOME/bin to your path.
-6. In TCKHOME, execute 'ant build'.  This will compile all source under
-   $TCKHOME/tests and $TCKHOME/harness into $TCKHOME/classes.
-7. See "Setting up the mailbox" below.
-8. Open $TCKHOME/lib/ts.jte for editing.
+3. Make sure ant is installed and in your PATH.
+4. Open $TCKHOME/lib/ts.jte for editing.
    In the file set the TS_HOME, JARPATH and JAVA_HOME.
    Save and close the file.
-9. In tests/SignatureTest.html, change the sig file name to match the version of
-   Java SE you are using.  e.g. for Java SE 7, it should say
-   "-FileName javax.mail_1.6_java_1.7.sig" 
-10. In $TCKHOME, execute the following command to start the TCK in batch mode:
+5. In TCKHOME, execute 'ant build'.  This will compile all source under
+   $TCKHOME/tests and $TCKHOME/harness into $TCKHOME/classes.
+6. See "Setting up the mailbox" below.
+7. In $TCKHOME, execute the following command to start the TCK in batch mode:
      'ant run'
    Alternatively, you can run 'ant gui' to start the TCK in gui mode.
 
@@ -36,8 +26,10 @@ Running the TCK from the source
 
     jtwiz.environment.env=mailWindows
 
-11. After the TCK suite finishes running, the report can be found in
+8. After the TCK suite finishes running, the report can be found in
     $TCKHOME/JTreport/index.html
+9. To test with modules on JDK 11+, put the module jar files in $TCKHOME
+   and run with 'ant runmod'.
 
 
 ================================

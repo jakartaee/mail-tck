@@ -21,7 +21,7 @@
     <description>Builds and runs the project mailtck.</description>
 
     <property name="version" value="1.6"/>
-    <property name="version.tck" value="1.6.0"/>
+    <property name="version.tck" value="1.6.1"/>
 
     <property environment="env"/>
     <dirname property="mailtck.basedir" file="${ant.file.mailtck}"/>
@@ -29,15 +29,6 @@
 
     <property file="${ts.home}/lib/ts.jte"/>
 
-    <!--
-    <property name="dir.sep"       value="${file.separator}"/>
-    <property name="dirsep"        value="${file.separator}"/>
-    -->
-
-    <property name="pathsep"        value="${path.separator}"/>
-
-    <property file="${bin.dir}/ts.jte"/>
-    <property name="lib.dir" value="${ts.home}${file.separator}lib"/>
     <property name="class.dir" value="${ts.home}${file.separator}classes"/>
     <property name="tests.dir" value="${ts.home}${file.separator}tests"/>
     <property name="work.dir" value="${ts.home}/JTwork"/>
@@ -54,8 +45,9 @@
             <isset property="debug"/>
     </condition>
 
-    <property name="class.path" value="${class.dir}${pathsep}${ts.home}/sigtest.jar${pathsep}${ts.home}/javatest.jar${pathsep}${JARPATH}/jakarta.mail.jar${pathsep}${JARPATH}/jakarta.activation.jar"/>
+    <property name="class.path" value="${class.dir}${path.separator}${ts.home}/sigtest.jar${path.separator}${ts.home}/javatest.jar${path.separator}${LOCAL_CLASSES}"/>
 
+    <!-- Does the current runtime support modules? -->
     <condition property="jdk.modules" value="false" else="true">
 	<or>
 	    <contains string="${java.version}" substring="1.7" />
@@ -68,6 +60,9 @@
                 else="lib/rt.jar">
 	<istrue value="${jdk.modules}"/>
     </condition>
+
+    <!-- Empty string to test without modules, "Mod" to test with modules -->
+    <property name="lib.modules" value="" />
 
     <target name="build"
             description="Compiles all sources to the classes directory">
@@ -104,6 +99,12 @@
         <javatest.batch/>
     </target>
 
+    <target name="runmod"
+            description="Executes the Jakarta Mail TCK in batch mode with modules">
+	<property name="lib.modules" value="Mod" />
+        <javatest.batch/>
+    </target>
+
     <target name="gui"
             description="Executes the Jakarta Mail TCK in GUI mode">
         <javatest.gui/>
@@ -113,7 +114,7 @@
         <java fork="true" jar="./sigtestdev.jar">
                 <arg value="Setup"/>
                 <arg value="-Classpath"/>
-                <arg value="${java.home}/${java.classes.for.sig.ext}${pathsep}${class.path}"/>
+                <arg value="${java.home}/${java.classes.for.sig.ext}${path.separator}${class.path}"/>
                 <arg value="-Package"/>
                 <arg value="javax.mail"/>
                 <arg value="-Package"/>
@@ -167,7 +168,7 @@
             <arg line=" -ts tests/testsuite.html" />
             <arg line=" -workdir ${work.dir}" />
             <arg line=" -envFiles ${ts.home}/lib/ts.jte" />
-            <arg line=" -env mailUnix" />
+            <arg line=" -env mailUnix${lib.modules}" />
             <arg line=" -excludeList ${ts.home}/lib/ts.jtx" />
             <arg line=" -timeoutFactor 1" />
             <arg line=" ${tests.arg}" />

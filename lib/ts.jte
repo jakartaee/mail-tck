@@ -31,11 +31,12 @@ JAVA_HOME=MUST-BE-SET
 JARPATH=.
 
 # Adjust these as necessary for Windows or UNIX
+# (Must use "${JARPATH}" syntax so ant will expand the nested properties)
 
-##LOCAL_CLASSES=$JARPATH\\jakarta.mail.jar:$JARPATH\\jakarta.activation.jar
-LOCAL_CLASSES=$JARPATH/jakarta.mail.jar:$JARPATH/jakarta.activation.jar
+##LOCAL_CLASSES=${JARPATH}\\jakarta.mail.jar:${JARPATH}\\jakarta.activation.jar
+LOCAL_CLASSES=${JARPATH}/jakarta.mail.jar:${JARPATH}/jakarta.activation.jar
 # Or use the following if testing modules:
-#LOCAL_CLASSES=$JARPATH/mailapi.jar:$JARPATH/smtp.jar:$JARPATH/imap.jar:$JARPATH/jakarta.activation.jar
+#LOCAL_CLASSES=${JARPATH}/mailapi.jar:${JARPATH}/smtp.jar:${JARPATH}/imap.jar:${JARPATH}/jakarta.activation.jar
 
 ##TESTCLASS=$TS_HOME\\classes
 TESTCLASS=$TS_HOME/classes
@@ -108,38 +109,49 @@ env.mailUnix.command.execute=$ExecTCKTestOtherJVMCmd \
 	HOME=${user.home} \
 	$JAVA_HOME/bin/java -verify $testExecuteClass $testExecuteArgs $testDebug
 
-# Use the following if testing modules:
-#env.mailUnix.command.execute=$ExecTCKTestOtherJVMCmd \
-#	CLASSPATH=$testSuiteRootDir/../classes$:$testClassDir:\
-#	$javatestClassDir$:$extraOtherJVMClassPath \
-#	HOME=${user.home} \
-#	$JAVA_HOME/bin/java -verify \
-#		--add-modules jakarta.activation,jakarta.mail \
-#		-p $LOCAL_CLASSES \
-#		$testExecuteClass $testExecuteArgs $testDebug
+#---------- JDK/UNIX module configuration -----------------------------------
+
+# Environment mailUnixMod
+#
+env.mailUnixMod.description=\
+	Run the runtime tests in a separate JVM (process) on UNIX
+env.mailUnixMod.finder=$TCKTestFinder
+env.mailUnixMod.script=$TCKScript
+ 
+#
+# The runtime to be tested ...
+#
+env.mailUnixMod.command.execute=$ExecTCKTestOtherJVMCmd \
+	CLASSPATH=$testSuiteRootDir/../classes$:$testClassDir:\
+	$javatestClassDir$:$extraOtherJVMClassPath \
+	HOME=${user.home} \
+	$JAVA_HOME/bin/java -verify \
+		--add-modules jakarta.activation,jakarta.mail \
+		-p $LOCAL_CLASSES \
+		$testExecuteClass $testExecuteArgs $testDebug
 
 
-#---------- JDK/Windows NT configuration ---------------------------------------
+#---------- JDK/Windows configuration ---------------------------------------
 
 # Environment mailWindows
 #
 env.mailWindows.description=\
-	Run the runtime tests in a separate JVM (process) on Windows NT
+	Run the runtime tests in a separate JVM (process) on Windows
 env.mailWindows.finder=$TCKTestFinder
 env.mailWindows.script=$TCKScript
 
 #
 #
 # This environment will run the runtime tests
-# in a separate JVM (process) on Windows NT.
+# in a separate JVM (process) on Windows.
 #
 # The runtime to be tested ...
-# 	The SystemRoot variable should be set to the Windows NT system 
+# 	The SystemRoot variable should be set to the Windows system 
 #	installation directory.
 #
 # You can either set the value of SystemRoot explicitly, or you can set it to
 # refer to a system property that you set on the command line when you start
-# JavaTest, which might in turn be set from your Windows NT SystemRoot variable.
+# JavaTest, which might in turn be set from your Windows SystemRoot variable.
 #
 env.mailWindows.command.execute=$ExecTCKTestOtherJVMCmd \
 	CLASSPATH=$testSuiteRootDir$/..$/classes$:$javatestClassDir$:$extraOtherJVMClassPath \
@@ -147,15 +159,36 @@ env.mailWindows.command.execute=$ExecTCKTestOtherJVMCmd \
 	windir=${SYSTEMROOT} \
 	$JAVA_HOME$/bin$/java -verify $testExecuteClass $testExecuteArgs $testDebug
 
-# Use the following if testing modules:
-#env.mailWindows.command.execute=$ExecTCKTestOtherJVMCmd \
-#	CLASSPATH=$testSuiteRootDir$/..$/classes$:$javatestClassDir$:$extraOtherJVMClassPath \
-#	SystemRoot=${SYSTEMROOT} \
-#	windir=${SYSTEMROOT} \
-#	$JAVA_HOME$/bin$/java -verify \
-#		--add-modules jakarta.activation,jakarta.mail \
-#		-p $LOCAL_CLASSES \
-#		$testExecuteClass $testExecuteArgs $testDebug
+#---------- JDK/Windows module configuration --------------------------------
+
+# Environment mailWindowsMod
+#
+env.mailWindowsMod.description=\
+	Run the runtime tests in a separate JVM (process) on Windows with modules
+env.mailWindowsMod.finder=$TCKTestFinder
+env.mailWindowsMod.script=$TCKScript
+
+#
+#
+# This environment will run the runtime tests
+# in a separate JVM (process) on Windows.
+#
+# The runtime to be tested ...
+# 	The SystemRoot variable should be set to the Windows system 
+#	installation directory.
+#
+# You can either set the value of SystemRoot explicitly, or you can set it to
+# refer to a system property that you set on the command line when you start
+# JavaTest, which might in turn be set from your Windows SystemRoot variable.
+#
+env.mailWindowsMod.command.execute=$ExecTCKTestOtherJVMCmd \
+	CLASSPATH=$testSuiteRootDir$/..$/classes$:$javatestClassDir$:$extraOtherJVMClassPath \
+	SystemRoot=${SYSTEMROOT} \
+	windir=${SYSTEMROOT} \
+	$JAVA_HOME$/bin$/java -verify \
+		--add-modules jakarta.activation,jakarta.mail \
+		-p $LOCAL_CLASSES \
+		$testExecuteClass $testExecuteArgs $testDebug
 
 
 #----------------------------------------------------------------------

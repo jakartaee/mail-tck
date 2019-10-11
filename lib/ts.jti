@@ -1,6 +1,6 @@
 #JavaTest Harness Configuration Interview
 #Wed Nov 14 16:21:21 EST 2012
-DESCRIPTION=Run the runtime tests in a separate JVM (process) on Solaris
+DESCRIPTION=Run the runtime tests in a separate JVM (process) on Unix
 INTERVIEW=com.sun.javatest.interview.LegacyParameters
 LOCALE=en_US
 NAME=mailUnix
