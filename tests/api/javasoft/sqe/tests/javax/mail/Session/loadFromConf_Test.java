@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002, 2018 Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2002, 2019 Oracle and/or its affiliates. All rights reserved.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License v. 2.0, which is available at
@@ -18,6 +18,7 @@ package javasoft.sqe.tests.javax.mail.Session;
 
 import java.util.*;
 import java.io.*;
+import java.nio.file.Files;
 import javax.mail.*;
 import javax.mail.internet.*;
 import com.sun.javatest.*;
@@ -31,6 +32,8 @@ import javasoft.sqe.tests.javax.mail.util.MailTest;
  */
 
 public class loadFromConf_Test extends MailTest {
+
+    private boolean skip = false;
 
     public static void main( String argv[] )
     {
@@ -50,6 +53,8 @@ public class loadFromConf_Test extends MailTest {
           // BEGIN UNIT TEST 1:
 
 	     initialize();
+	     if (skip)
+		return Status.passed("loadFromConf skipped");
 
 	     // Get Session object
              Session session = Session.getInstance(properties, null);
@@ -85,6 +90,8 @@ public class loadFromConf_Test extends MailTest {
 	home.delete();	// delete the temp file
 	home.mkdir();	// reuse the name for a directory
 	home.deleteOnExit();
+	File realhome = new File(System.getProperty("java.home"));
+	File realmod = new File(new File(realhome, "lib"), "modules");
 	System.setProperty("java.home", home.getPath());
 	File conf = new File(home, "conf");
 	conf.mkdir();
@@ -95,11 +102,25 @@ public class loadFromConf_Test extends MailTest {
 	pw.println("protocol=test; type=store; class=TestStore; vendor=Test;");
 	pw.close();
 
-	// create another javamail.providers file in java.home/lib
-	// that should *not* be loaded
 	File lib = new File(home, "lib");
 	lib.mkdir();
 	lib.deleteOnExit();
+
+	// Linux needs the <java.home>/lib/modules file so create a
+	// symlink to the original.
+	File mod = new File(lib, "modules");
+	mod.deleteOnExit();
+	try {
+	    Files.createSymbolicLink(mod.toPath(), realmod.toPath());
+	} catch (IOException|UnsupportedOperationException ex) {
+	    System.out.printf("Can't create symbolic link (%s -> %s), " +
+		    "skipping test", mod, realmod);
+	    skip = true;
+	    return;
+	}
+
+	// create another javamail.providers file in java.home/lib
+	// that should *not* be loaded
 	providers = new File(lib, "javamail.providers");
 	providers.deleteOnExit();
 	pw = new PrintWriter(providers);

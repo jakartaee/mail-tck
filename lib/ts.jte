@@ -34,6 +34,8 @@ JARPATH=.
 
 ##LOCAL_CLASSES=$JARPATH\\jakarta.mail.jar:$JARPATH\\jakarta.activation.jar
 LOCAL_CLASSES=$JARPATH/jakarta.mail.jar:$JARPATH/jakarta.activation.jar
+# Or use the following if testing modules:
+#LOCAL_CLASSES=$JARPATH/mailapi.jar:$JARPATH/smtp.jar:$JARPATH/imap.jar:$JARPATH/jakarta.activation.jar
 
 ##TESTCLASS=$TS_HOME\\classes
 TESTCLASS=$TS_HOME/classes
@@ -106,6 +108,16 @@ env.mailUnix.command.execute=$ExecTCKTestOtherJVMCmd \
 	HOME=${user.home} \
 	$JAVA_HOME/bin/java -verify $testExecuteClass $testExecuteArgs $testDebug
 
+# Use the following if testing modules:
+#env.mailUnix.command.execute=$ExecTCKTestOtherJVMCmd \
+#	CLASSPATH=$testSuiteRootDir/../classes$:$testClassDir:\
+#	$javatestClassDir$:$extraOtherJVMClassPath \
+#	HOME=${user.home} \
+#	$JAVA_HOME/bin/java -verify \
+#		--add-modules jakarta.activation,jakarta.mail \
+#		-p $LOCAL_CLASSES \
+#		$testExecuteClass $testExecuteArgs $testDebug
+
 
 #---------- JDK/Windows NT configuration ---------------------------------------
 
@@ -134,6 +146,16 @@ env.mailWindows.command.execute=$ExecTCKTestOtherJVMCmd \
 	SystemRoot=${SYSTEMROOT} \
 	windir=${SYSTEMROOT} \
 	$JAVA_HOME$/bin$/java -verify $testExecuteClass $testExecuteArgs $testDebug
+
+# Use the following if testing modules:
+#env.mailWindows.command.execute=$ExecTCKTestOtherJVMCmd \
+#	CLASSPATH=$testSuiteRootDir$/..$/classes$:$javatestClassDir$:$extraOtherJVMClassPath \
+#	SystemRoot=${SYSTEMROOT} \
+#	windir=${SYSTEMROOT} \
+#	$JAVA_HOME$/bin$/java -verify \
+#		--add-modules jakarta.activation,jakarta.mail \
+#		-p $LOCAL_CLASSES \
+#		$testExecuteClass $testExecuteArgs $testDebug
 
 
 #----------------------------------------------------------------------
