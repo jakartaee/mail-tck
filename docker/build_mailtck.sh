@@ -1,7 +1,7 @@
 #!/bin/bash -x
 
 #
-# Copyright (c) 2018, 2019 Oracle and/or its affiliates. All rights reserved.
+# Copyright (c) 2018, 2020 Oracle and/or its affiliates. All rights reserved.
 #
 # This program and the accompanying materials are made available under the
 # terms of the Eclipse Public License v. 2.0, which is available at
@@ -31,16 +31,16 @@ cd $WORKSPACE
 if [ ! -z "$TCK_BUNDLE_BASE_URL" ]; then
   #use pre-built tck bundle from this location to run test
   mkdir -p ${WORKSPACE}/bundles
-  wget  --progress=bar:force --no-cache ${TCK_BUNDLE_BASE_URL}/${TCK_BUNDLE_FILE_NAME} -O ${WORKSPACE}/bundles/mail-tck-1.6_latest.zip
+  wget  --progress=bar:force --no-cache ${TCK_BUNDLE_BASE_URL}/${TCK_BUNDLE_FILE_NAME} -O ${WORKSPACE}/bundles/mail-tck-2.0_latest.zip
   exit 0
 fi
 
 WGET_PROPS="--progress=bar:force --no-cache"
 if [ -z "$JAF_BUNDLE_URL" ];then
-  export JAF_BUNDLE_URL=http://central.maven.org/maven2/com/sun/activation/jakarta.activation/1.2.1/jakarta.activation-1.2.1.jar
+  export JAF_BUNDLE_URL=http://central.maven.org/maven2/com/sun/activation/jakarta.activation/2.0.0-rc1/jakarta.activation-2.0.0-rc1.jar
 fi
 if [ -z "$MAIL_BUNDLE_URL" ];then
-  export MAIL_BUNDLE_URL=http://central.maven.org/maven2/com/sun/mail/jakarta.mail/1.6.3/jakarta.mail-1.6.3.jar
+  export MAIL_BUNDLE_URL=http://central.maven.org/maven2/com/sun/mail/jakarta.mail/2.0.0-rc1/jakarta.mail-2.0.0-rc1.jar
 fi
 wget $WGET_PROPS $JAF_BUNDLE_URL -O jakarta.activation.jar
 wget $WGET_PROPS $MAIL_BUNDLE_URL -O jakarta.mail.jar

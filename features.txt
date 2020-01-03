@@ -1,29 +1,45 @@
+#
+# Copyright (c) 2020 Oracle and/or its affiliates. All rights reserved.
+#
+# This program and the accompanying materials are made available under the
+# terms of the Eclipse Public License v. 2.0, which is available at
+# http://www.eclipse.org/legal/epl-2.0.
+#
+# This Source Code may also be made available under the following Secondary
+# Licenses when the conditions for such availability set forth in the
+# Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+# version 2 with the GNU Classpath Exception, which is available at
+# https://www.gnu.org/software/classpath/license.html.
+#
+# SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+#
+`
 ########################### -*- Mode: Text -*- ##########################
 ## features.txt --
 ##
 ## List all major product features to be tested by your test script.
 
-JavaMail(tm) Framework Feature List
------------------------------------
+Jakarta Mail Feature List
+-------------------------
 
 Overview
 --------
 
-The JavaMail API is a specification that defines a Java interface to
+The Jakarta Mail API is a specification that defines a Java interface to
 a messaging system. It contains a set of abstract classes and methods
 that provide an abstract Messaging layer. This layer is defined by the
-javax.mail, javax.mail.event and javax.mail.search packages.
+jakarta.mail, jakarta.mail.event and jakarta.mail.search packages.
 
 It also includes concrete classes that implement the current Internet
 standards for describing structure of an electronic message - namely
-RFC822 and MIME. This is contained in the package "javax.mail.internet".
+RFC822 and MIME. This is contained in the package "jakarta.mail.internet".
 
-Service providers provide implementations of the JavaMail specification
-in terms of proprietary or standard protocols. The current JavaMail
+Service providers provide implementations of the Jakarta Mail specification
+in terms of proprietary or standard protocols. The current Jakarta Mail
 package provides an IMAP and SMTP provider. We expect third-parties
 to come up with providers for a bunch of other Messaging protocols.
 
-The major components of JavaMail are:
+The major components of Jakarta Mail are:
 
 Message structure
 -----------------
@@ -39,13 +55,13 @@ The abstract Message class models an email message. Subclasses
 provide actual implementation. A Message contains a set of attributes
 and a "content". Examples of attributes are "Subject", "From", 
 "Content-Type" etc. The content of a Message is an arbitrary collection
-of bytes. The DataHandler class from the "javax.activation" package is
+of bytes. The DataHandler class from the "jakarta.activation" package is
 used to 'type' the content and obtain suitable Viewers, Content-Handlers
 etc.
 
  2) Multipart
 
-JavaMail allows Messages to contain multiple "content" objects.
+Jakarta Mail allows Messages to contain multiple "content" objects.
 Such a message is represented as a Message object containing a
 Multipart object as its content. A Multipart object is essentially
 a holder for multiple BodyPart objects.
@@ -63,7 +79,7 @@ A Message can have a set of flags associated with it. These flags
 describe the state of the message. A Flags object holds all the
 flags that are set on a particular message.
 
-JavaMail defines a set of standard flags like DELETED, ANSWERED etc.
+Jakarta Mail defines a set of standard flags like DELETED, ANSWERED etc.
 Certain implementations may also allow user-defined flags.
 
 Message Storage and Retrieval
@@ -151,35 +167,35 @@ created by a client as part of crafting a new MimeMessage.
 Events
 ------
 
-JavaMail uses events to communicate state changes to clients. The Store,
+Jakarta Mail uses events to communicate state changes to clients. The Store,
 Folder and Transport classes are examples of event sources. The
 ConnectionEvent, MessageCountEvent etc are examples of events. The
-javax.mail.event package contains all the JavaMail events.
+jakarta.mail.event package contains all the Jakarta Mail events.
 
 Clients express interest in certain events by registering themselves as
 listeners of those events.
 
 Search
 ------
-JavaMail provides APIs to search a Folder for messages that match
+Jakarta Mail provides APIs to search a Folder for messages that match
 specific search criteria. Search criteria are expressed using
 SearchTerms. By using logical operators, one can combine these terms
 to form quite complex search criterion.
 
-The javax.mail.search package contains all JavaMail SearchTerms.
+The jakarta.mail.search package contains all Jakarta Mail SearchTerms.
 
 Reference:
 ---------
 
 The following references are publically available on the Internet:
 
-   * The Javamail specification in PDF format:
-       https://javaee.github.io/javamail/docs/JavaMail-1.6.pdf
+   * The Jakarta Mail specification in PDF format:
+       https://eclipse-ee4j.github.io/mail/docs/Mail-2.0.pdf
 
-   * Javamail API Documentation (javadoc format)
-       https://javaee.github.io/javamail/docs/api/
+   * Jakarta Mail API Documentation (javadoc format)
+       https://eclipse-ee4j.github.io/mail/docs/api/
 
-   * JAF Homepage
-       https://github.com/javaee/activation
+   * Jakarta Activation Homepage
+       https://github.com/eclipse-ee4j/jaf
 
 ########################################################################
