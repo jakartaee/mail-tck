@@ -1,0 +1,109 @@
+<HTML>
+<HEAD>
+<!--
+
+    Copyright (c) 2012, 2020 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<TITLE>AuthenticationFailedException</TITLE>
+</HEAD>
+
+<H1>AuthenticationFailedException</H1>
+
+<BODY>
+
+<font size=+1>
+These tests are designed to test the functionality of AuthenticationFailedException
+</font>
+
+<HR>
+
+<font size=+1>
+The folling are the test descriptions for the tests developed.Links to the sources are also included.
+</font>
+
+<H3>API Tests </H3>
+
+<A NAME="authenFailExp_Test"></A>
+<TABLE BORDER class=TestDescription>
+<TR><TD><B>title</B></TD><TD>AuthenticationFailedException() API(s)</TD></TR>
+<TR><TD><B>name</B></TD><TD>authenFailExp_Test</TD></TR>
+<TR><TD><B>source</B></TD><TD><A HREF=authenFailExp_Test.java>authenFailExp_Test.java</A></TD></TR>
+<TR><TD><B>executeClass</B></TD><TD>javasoft.sqe.tests.jakarta.mail.exception.authenFailExp_Test</TD></TR>
+<TR><TD><B>executeArgs</B></TD><TD> -h $JAVAMAIL_SERVER -th $JAVAMAIL_TRANSPORT_SERVER -u $JAVAMAIL_USERNAME -t $JAVAMAIL_PROTOCOL -p $JAVAMAIL_PASSWORD</TD></TR>
+<TR><TD><B>keywords</B></TD><TD>positive extensionAPI</TD></TR>
+</TABLE>
+<BR>
+
+<A NAME="folderClosedException_Test"></A>
+<TABLE BORDER class=TestDescription>
+<TR><TD><B>title</B></TD><TD>FolderClosedException() API(s)</TD></TR>
+<TR><TD><B>name</B></TD><TD>folderClosedException_Test</TD></TR>
+<TR><TD><B>source</B></TD><TD><A HREF=folderClosedException_Test.java>folderClosedException_Test.java</A></TD></TR>
+<TR><TD><B>executeClass</B></TD><TD>javasoft.sqe.tests.jakarta.mail.exception.folderClosedException_Test</TD></TR>
+<TR><TD><B>executeArgs</B></TD><TD> -h $JAVAMAIL_SERVER -th $JAVAMAIL_TRANSPORT_SERVER -u $JAVAMAIL_USERNAME -t $JAVAMAIL_PROTOCOL -p $JAVAMAIL_PASSWORD -r $JAVAMAIL_ROOT_PATH -m $JAVAMAIL_MAILBOX</TD></TR>
+<TR><TD><B>keywords</B></TD><TD>positive extensionAPI</TD></TR>
+</TABLE>
+<BR>
+
+<A NAME="folderNotFoundExp_Test"></A>
+<TABLE BORDER class=TestDescription>
+<TR><TD><B>title</B></TD><TD>FolderNotFoundException() API(s)</TD></TR>
+<TR><TD><B>name</B></TD><TD>folderNotFoundExp_Test</TD></TR>
+<TR><TD><B>source</B></TD><TD><A HREF=folderNotFoundExp_Test.java>folderNotFoundExp_Test.java</A></TD></TR>
+<TR><TD><B>executeClass</B></TD><TD>javasoft.sqe.tests.jakarta.mail.exception.folderNotFoundExp_Test</TD></TR>
+<TR><TD><B>executeArgs</B></TD><TD> -h $JAVAMAIL_SERVER -th $JAVAMAIL_TRANSPORT_SERVER -u $JAVAMAIL_USERNAME -t $JAVAMAIL_PROTOCOL -p $JAVAMAIL_PASSWORD -r $JAVAMAIL_ROOT_PATH -m $JAVAMAIL_MAILBOX</TD></TR>
+<TR><TD><B>keywords</B></TD><TD>positive extensionAPI</TD></TR>
+</TABLE>
+<BR>
+
+<A NAME="illegalWriteException_Test"></A>
+<TABLE BORDER class=TestDescription>
+<TR><TD><B>title</B></TD><TD>IllegalWriteException() API(s)</TD></TR>
+<TR><TD><B>name</B></TD><TD>illegalWriteException_Test</TD></TR>
+<TR><TD><B>source</B></TD><TD><A HREF=illegalWriteException_Test.java>illegalWriteException_Test.java</A></TD></TR>
+<TR><TD><B>executeClass</B></TD><TD>javasoft.sqe.tests.jakarta.mail.exception.illegalWriteException_Test</TD></TR>
+<TR><TD><B>executeArgs</B></TD><TD> -h $JAVAMAIL_SERVER -th $JAVAMAIL_TRANSPORT_SERVER -u $JAVAMAIL_USERNAME -t $JAVAMAIL_PROTOCOL -p $JAVAMAIL_PASSWORD -r $JAVAMAIL_ROOT_PATH -m $JAVAMAIL_MAILBOX -test illegalexcept</TD></TR>
+<TR><TD><B>keywords</B></TD><TD>positive extensionAPI</TD></TR>
+</TABLE>
+<BR>
+
+<A NAME="msgRemoveExp_Test"></A>
+<TABLE BORDER class=TestDescription>
+<TR><TD><B>title</B></TD><TD>MessageRemovedException() API(s)</TD></TR>
+<TR><TD><B>name</B></TD><TD>msgRemoveExp_Test</TD></TR>
+<TR><TD><B>source</B></TD><TD><A HREF=msgRemoveExp_Test.java>msgRemoveExp_Test.java</A></TD></TR>
+<TR><TD><B>executeClass</B></TD><TD>javasoft.sqe.tests.jakarta.mail.exception.msgRemoveExp_Test</TD></TR>
+<TR><TD><B>executeArgs</B></TD><TD> -h $JAVAMAIL_SERVER -th $JAVAMAIL_TRANSPORT_SERVER -u $JAVAMAIL_USERNAME -t $JAVAMAIL_PROTOCOL -p $JAVAMAIL_PASSWORD -r $JAVAMAIL_ROOT_PATH -m $JAVAMAIL_MAILBOX -test testmail</TD></TR>
+<TR><TD><B>keywords</B></TD><TD>positive extensionAPI</TD></TR>
+</TABLE>
+<BR>
+
+<A NAME="noSuchProvExp_Test"></A>
+<TABLE BORDER class=TestDescription>
+<TR><TD><B>title</B></TD><TD>NoSuchProviderException() API(s)</TD></TR>
+<TR><TD><B>name</B></TD><TD>noSuchProvExp_Test</TD></TR>
+<TR><TD><B>source</B></TD><TD><A HREF=noSuchProvExp_Test.java>noSuchProvExp_Test.java</A></TD></TR>
+<TR><TD><B>executeClass</B></TD><TD>javasoft.sqe.tests.jakarta.mail.exception.noSuchProvExp_Test</TD></TR>
+<TR><TD><B>executeArgs</B></TD><TD> -h $JAVAMAIL_SERVER -th $JAVAMAIL_TRANSPORT_SERVER -u $JAVAMAIL_USERNAME -t $JAVAMAIL_PROTOCOL -p $JAVAMAIL_PASSWORD -r $JAVAMAIL_ROOT_PATH -m $JAVAMAIL_MAILBOX</TD></TR>
+<TR><TD><B>keywords</B></TD><TD>positive extensionAPI</TD></TR>
+</TABLE>
+<BR>
+
+<HR>
+
+</BODY>
+</HTML>

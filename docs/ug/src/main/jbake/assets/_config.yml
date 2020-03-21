@@ -1,15 +1,15 @@
 remote_theme: jakartaee/jekyll-theme-jakarta-ee
 
-title: [JavaMail TCK]
-description: [Technology Compatibility Kit User's Guide for JavaMail API, Release 1.6]
+title: [Jakarta Mail TCK]
+description: [Technology Compatibility Kit User's Guide for Jakarta Mail, Release 2.0]
 
 # sidebar links url
 links:
-  source: https://github.com/eclipse-ee4j/javamail-tck
-  download: https://github.com/eclipse-ee4j/javamail-tck/releases
-  mailinglist: https://accounts.eclipse.org/mailing-list/javamail-dev
+  source: https://github.com/eclipse-ee4j/mail-tck
+  download: https://github.com/eclipse-ee4j/mail-tck/releases
+  mailinglist: https://accounts.eclipse.org/mailing-list/mail-dev
   #javadocs:
-  docs: https://eclipse-ee4j.github.io/javamail-tck
+  docs: https://eclipse-ee4j.github.io/mail-tck
   #faq:
 
 include:

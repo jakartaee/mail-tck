@@ -1,9 +1,8 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.X//EN">
 <head>
-
 <!--
 
-    Copyright (c) 2012, 2018 Oracle and/or its affiliates. All rights reserved.
+    Copyright (c) 2012, 2020 Oracle and/or its affiliates. All rights reserved.
 
     This program and the accompanying materials are made available under the
     terms of the Eclipse Public License v. 2.0, which is available at
@@ -18,6 +17,7 @@
     SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
 
 -->
+
 <title>JavaMail API Signature Test</title>
 </head>
 
@@ -25,13 +25,13 @@
 <h1>JavaMail API Signature Test</h1>
 <HR>
 
-This is the API signature test for the entire javax.mail.* package.  This
+This is the API signature test for the entire jakarta.mail.* package.  This
 test verifies the existence of all expected public classes and interfaces.  In
 those public classes and interfaces it verifies the existence, correct
 modifiers, arguments, and throws clauses of public constructors and methods.
 It also verifies the existence and correct modifiers of public fields.
 
-<P>This test is version specific.  The current version is 1.6.
+<P>This test is version specific.  The current version is 2.0.
 
 <P><TABLE BORDER CLASS=TestDescription>
 	<TR><TD><B>title</B> <TD>API Signature verification
@@ -40,8 +40,8 @@ It also verifies the existence and correct modifiers of public fields.
 	<TR><TD><B>executeArgs</B> <TD>
 		-ClassPath $LOCAL_CLASSES
 		-TestURL $testURL
-		-Package javax.mail
-		-FileName javax.mail_1.6_java_${java.specification.version}.sig
+		-Package jakarta.mail
+		-FileName jakarta.mail_2.0_java_${java.specification.version}.sig
 	<TR><TD><B>keywords</B> <TD>extensionAPI
 </TABLE>
 

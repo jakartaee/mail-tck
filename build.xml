@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 
-    Copyright (c) 2012, 2019 Oracle and/or its affiliates. All rights reserved.
+    Copyright (c) 2012, 2020 Oracle and/or its affiliates. All rights reserved.
 
     This program and the accompanying materials are made available under the
     terms of the Eclipse Public License v. 2.0, which is available at
@@ -20,8 +20,8 @@
 <project name="mailtck" default="default" basedir="." xmlns:if="ant:if">
     <description>Builds and runs the project mailtck.</description>
 
-    <property name="version" value="1.6"/>
-    <property name="version.tck" value="1.6.1"/>
+    <property name="version" value="2.0"/>
+    <property name="version.tck" value="2.0.0-rc1"/>
 
     <property environment="env"/>
     <dirname property="mailtck.basedir" file="${ant.file.mailtck}"/>
@@ -116,17 +116,17 @@
                 <arg value="-Classpath"/>
                 <arg value="${java.home}/${java.classes.for.sig.ext}${path.separator}${class.path}"/>
                 <arg value="-Package"/>
-                <arg value="javax.mail"/>
+                <arg value="jakarta.mail"/>
                 <arg value="-Package"/>
-                <arg value="javax.mail.event"/>
+                <arg value="jakarta.mail.event"/>
                 <arg value="-Package"/>
-                <arg value="javax.mail.internet"/>
+                <arg value="jakarta.mail.internet"/>
                 <arg value="-Package"/>
-                <arg value="javax.mail.search"/>
+                <arg value="jakarta.mail.search"/>
                 <arg value="-Package"/>
-                <arg value="javax.mail.util"/>
+                <arg value="jakarta.mail.util"/>
                 <arg value="-FileName"/>
-                <arg value="${ts.home}/tests/javax.mail_${version}_java_${java.specification.version}.sig"/>
+                <arg value="${ts.home}/tests/jakarta.mail_${version}_java_${java.specification.version}.sig"/>
                 <arg value="-Static"/>
                 <arg value="-Xjimage" if:true="${jdk.modules}"/>
                 <arg value="${java.home}/bin/jimage" if:true="${jdk.modules}"/>
