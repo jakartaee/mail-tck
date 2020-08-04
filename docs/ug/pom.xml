@@ -21,13 +21,13 @@
     <parent>
         <groupId>org.eclipse.ee4j</groupId>
         <artifactId>project</artifactId>
-        <version>1.0.5</version>
+        <version>1.0.6</version>
     </parent>
     <groupId>com.sun.mail</groupId>
     <artifactId>tck_ug</artifactId>
     <packaging>pom</packaging>
-    <version>1.6.0-SNAPSHOT</version>
-    <name>Eclipse Foundation, Technology Compatibility Kit User's Guide for Jakarta Mail API 1.6 for Jakarta EE, Release 1.6</name>
+    <version>2.0.0</version>
+    <name>Eclipse Foundation, Technology Compatibility Kit User's Guide for Jakarta Mail API 2.0.0 for Jakarta EE, Release 2.0.0</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -45,7 +45,7 @@
 
     <distributionManagement>
         <site>
-            <url>scm:git:git@github.com:eclipse-ee4j/javamail-tck.git</url>
+            <url>scm:git:git@github.com:eclipse-ee4j/mail-tck.git</url>
         </site>
     </distributionManagement>
 

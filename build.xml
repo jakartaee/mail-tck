@@ -21,7 +21,7 @@
     <description>Builds and runs the project mailtck.</description>
 
     <property name="version" value="2.0"/>
-    <property name="version.tck" value="2.0.0-RC2"/>
+    <property name="version.tck" value="2.0.0"/>
 
     <property environment="env"/>
     <dirname property="mailtck.basedir" file="${ant.file.mailtck}"/>
