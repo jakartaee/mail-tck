@@ -41,10 +41,10 @@ mkdir -p ${HOME}/.m2
 
 WGET_PROPS="--progress=bar:force --no-cache"
 if [ -z "$JAF_BUNDLE_URL" ];then
-  export JAF_BUNDLE_URL=http://central.maven.org/maven2/com/sun/activation/jakarta.activation/2.0.0-rc1/jakarta.activation-2.0.0-rc1.jar
+  export JAF_BUNDLE_URL=https://repo1.maven.org/maven2/com/sun/activation/jakarta.activation/2.0.0-RC3/jakarta.activation-2.0.0-RC3.jar
 fi
 if [ -z "$MAIL_BUNDLE_URL" ];then
-  export MAIL_BUNDLE_URL=http://central.maven.org/maven2/com/sun/mail/jakarta.mail/2.0.0-rc1/jakarta.mail-2.0.0-rc1.jar
+  export MAIL_BUNDLE_URL=https://repo1.maven.org/maven2/com/sun/mail/jakarta.mail/2.0.0-RC6/jakarta.mail-2.0.0-RC6.jar
 fi
 wget $WGET_PROPS $JAF_BUNDLE_URL -O jakarta.activation.jar
 wget $WGET_PROPS $MAIL_BUNDLE_URL -O jakarta.mail.jar
