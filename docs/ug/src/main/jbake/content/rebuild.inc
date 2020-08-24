@@ -1,20 +1,20 @@
-<!--
+//
+//
+//  Copyright (c) 2020 Oracle and/or its affiliates. All rights reserved.
+//
+//  This program and the accompanying materials are made available under the
+//  terms of the Eclipse Public License v. 2.0, which is available at
+//  http://www.eclipse.org/legal/epl-2.0.
+//
+//  This Source Code may also be made available under the following Secondary
+//  Licenses when the conditions for such availability set forth in the
+//  Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+//  version 2 with the GNU Classpath Exception, which is available at
+//  https://www.gnu.org/software/classpath/license.html.
+//
+//  SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+//
 
-    Copyright (c) 2020 Oracle and/or its affiliates. All rights reserved.
-
-    This program and the accompanying materials are made available under the
-    terms of the Eclipse Public License v. 2.0, which is available at
-    http://www.eclipse.org/legal/epl-2.0.
-
-    This Source Code may also be made available under the following Secondary
-    Licenses when the conditions for such availability set forth in the
-    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
-    version 2 with the GNU Classpath Exception, which is available at
-    https://www.gnu.org/software/classpath/license.html.
-
-    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
-
--->
 
 ///////////////////////////////////////////////////////////////////////
 NOTE TO WRITERS:
@@ -114,7 +114,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
         <servlet-name>CTSJAX-RSGET</servlet-name>
         <servlet-class>servlet_adaptor</servlet-class>
         <init-param>
-            <param-name>javax.ws.rs.Application</param-name>
+            <param-name>jakarta.ws.rs.Application</param-name>
             <param-value>com.sun.ts.tests.jaxrs.ee.rs.get.TSAppConfig</param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>
@@ -149,7 +149,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
             org/glassfish/jersey/servlet/ServletContainer
         </servlet-class>
         <init-param>
-            <param-name>javax.ws.rs.Application</param-name>
+            <param-name>jakarta.ws.rs.Application</param-name>
             <param-value>com.sun.ts.tests.jaxrs.ee.rs.get.TSAppConfig</param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>
