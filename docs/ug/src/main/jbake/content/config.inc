@@ -28,9 +28,9 @@ at the top of config.adoc will need to be changed as well as well
 as toc.adoc.
 ///////////////////////////////////////////////////////////////////////
 
-[[GBFVU]][[configuring-your-environment-to-run-the-tck-against-the-reference-implementation]]
+[[GBFVU]][[configuring-your-environment-to-run-the-tck-against-the-compatible-implementation]]
 
-4.1 Configuring Your Environment to Run the TCK Against the Reference Implementation
+4.1 Configuring Your Environment to Run the TCK Against the Compatible Implementation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 After configuring your environment as described in this section,
@@ -58,12 +58,13 @@ slashes as a path separator instead.
 
 1.  Set the following environment variables in your shell environment:
   a.  `JAVA_HOME` to the directory in which Java SE {SEversion} is installed
-  b.  `TS_HOME` to the directory in which the {TechnologyShortName} TCK
+  b.  `ANT_HOME` to the directory in which Apache Ant {AntVersion} is installed
+  c.  `TS_HOME` to the directory in which the {TechnologyShortName} TCK
   {TechnologyVersion} software is installed
-  c.  +{TechnologyHomeEnv}+ to the directory in which the {TechnologyShortName}
-  {TechnologyVersion} RI has been installed
-  d.  `PATH` to include the following directories: `JAVA_HOME/bin`
-  and `<TS_HOME>/tools/ant/bin`
+  d.  +{TechnologyHomeEnv}+ to the directory in which the {TechnologyShortName}
+  {TechnologyVersion} CI has been installed
+  e.  `PATH` to include the following directories: `JAVA_HOME/bin`
+  and `ANT_HOME/bin`
 2.  Edit your +{jteFileName}+ file and set the following
 environment variables:
   a.  Set the `JAVA_HOME` property to the directory in which Java SE {SEversion}
@@ -71,7 +72,7 @@ environment variables:
   b. Set the `TS_HOME` property to the directory in which the
   {TechnologyShortName} TCK {TechnologyVersion} software is installed.
   c.  Set the +{TechnologyHomeEnv}+ property to the directory in which the
-  {TechnologyShortName} {TechnologyVersion} RI has been installed.
+  {TechnologyShortName} {TechnologyVersion} CI has been installed.
 3. Run the JavaTest harness in GUI or command-line mode, as described in
 link:#GBFUY[Section 4.4, "Using the JavaTest Harness Software."]
 
@@ -110,7 +111,7 @@ slashes as a path separator instead.
   c.  +{TechnologyHomeEnv}+ to the directory in which the {TechnologyShortName}
   {TechnologyVersion} Vendor Implementation has been installed
   d.  `PATH` to include the following directories: `JAVA_HOME/bin`
-  and `<TS_HOME>/tools/ant/bin`
+  and `ANT_HOME/bin`
 2.  Edit your +{jteFileName}+ file and set the following
 environment variables:
   a.  Set the `JAVA_HOME` property to the directory in which Java SE {SEversion}

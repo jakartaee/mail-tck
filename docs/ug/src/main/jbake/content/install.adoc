@@ -41,9 +41,9 @@ install and set up the following software components:
 
 include::req-software.inc[]
 * Java SE {SEversion}
+* Apache Ant {AntVersion}
 * A CI for {TechnologyShortName} {TechnologyVersion}, one example is {TechnologyRI}
-* {TechnologyShortName} TCK version {TechnologyVersion}, which includes:
-include::tck-packages.inc[]
+* {TechnologyShortName} TCK version {TechnologyVersion}
 * The {TechnologyShortName} {TechnologyVersion} Vendor Implementation (VI)
 
 Follow these steps:
@@ -64,6 +64,14 @@ additional information.
       This creates the TCK directory. The TCK is the test suite home,
       `<TS_HOME>`.
 include::install-server.inc[]
+.  Install the Apache Ant {AntVersion} software, if it is not already installed. +
+Download and install Apache Ant {AntVersion} software from Apache Ant
+Project. For complete information about Ant, refer to the extensive documentation 
+on the Apache Ant Project site. The Apache Ant Manual is available at
+`http://ant.apache.org/manual/index.html`.
+Apache Ant is protected under the Apache Software, License 2.0, which is
+is available on the Apache Ant Project license page at 
+`http://ant.apache.org/license.html`.
 .  Install a {TechnologyShortName} {TechnologyVersion} Compatible
 Implementation. +
 A Compatible Implementation is used to validate your initial

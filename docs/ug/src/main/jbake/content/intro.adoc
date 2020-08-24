@@ -165,7 +165,6 @@ The {TechnologyShortName} TCK {TechnologyVersion} includes the
 following components:
 
 * JavaTest harness version {JavaTestVersion} and related documentation. See the
-`ReleaseNotes-jtharness.html` file and the
 link:https://wiki.openjdk.java.net/display/CodeTools/JT+Harness[JT Harness web site]
 for additional information.
 * {TechnologyShortName} TCK signature tests; check that all public APIs
@@ -184,8 +183,7 @@ endif::end-to-end-tests[]
 
 The {TechnologyShortName} TCK tests run on the following platforms:
 
-* Microsoft Windows 10
-* Oracle Linux 7.1
+include::platforms.inc[]
 
 [[GBFSA]][[javatest-harness]]
 
