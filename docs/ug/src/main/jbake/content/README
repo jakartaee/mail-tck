@@ -27,10 +27,6 @@ for the specific technology:
 
 	A simple list of Jakarta EE package names for the technology.
 
-- tck-packages.inc
-
-	A list of additional software packages included in the TCK.
-
 - req-software.inc
 
 	A list of software required in addition to the TCK and CI.
