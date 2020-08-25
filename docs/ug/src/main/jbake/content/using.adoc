@@ -66,7 +66,7 @@ the JavaTest harness software:
 The `ant` command referenced in the following
 two procedures and elsewhere in this guide is the Apache Ant
 build tool, which will need to be downloaded separately.
-The `build.xml` file in `<TS_HOME>/bin` contains the various Ant
+The `build.xml` file in `<TS_HOME>` contains the various Ant
 targets for the {TechnologyShortName} TCK test suite.
 
 =======================================================================
@@ -81,7 +81,7 @@ Execute the following commands:
 
 [source,oac_no_warn]
 ----
-cd <TS_HOME>/bin
+cd <TS_HOME>
 ant gui
 ----
 
@@ -139,7 +139,8 @@ A report is created, and you are asked whether you want to view it.
 +
 [source]
 ----
-ant runclient
+cd <TS_HOME>
+ant -Dtests=<subdirectory> run
 ----
 +
 The tests in the directory and its subdirectories are run.
@@ -168,7 +169,7 @@ status of failed and error by invoking the following commands:
 
 [source,oac_no_warn]
 ----
-ant -DpriorStatus="fail,error" runclient
+ant -DpriorStatus="fail,error" run
 ----
 
 Note that multiple `priorStatus` values must be separated by commas.
