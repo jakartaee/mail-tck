@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 
-    Copyright (c) 2012, 2019 Oracle and/or its affiliates. All rights reserved.
+    Copyright (c) 2012, 2021 Oracle and/or its affiliates. All rights reserved.
 
     This program and the accompanying materials are made available under the
     terms of the Eclipse Public License v. 2.0, which is available at
@@ -27,7 +27,7 @@
         <mkdir dir="${basedir}/docs/javadocs"/>
         <javadoc 
             destdir="${basedir}/docs/javadocs" 
-            source="1.8" 
+            source="9" 
             notree="false" 
             use="true" 
             nonavbar="false" 
@@ -48,36 +48,34 @@
     </target>
 
     <target name="mvn">
-	<exec dir="${basedir}/docs/ug" executable="mvn"/>
-	<copy toDir="${basedir}/docs/html/">
-	    <fileset dir="${basedir}/docs/ug/target/staging/"/>
-	</copy>
-	<copy toDir="${basedir}/docs">
-	    <fileset dir="${basedir}/docs/ug/target/generated-docs/"
-		includes="*.pdf"/>
-	</copy>
+        <exec dir="${basedir}/docs/ug" executable="mvn">
+            <arg line="-B"/>
+        </exec>
     </target>
 
     <target name="copyEFTLicense" if="useEFTLicensefile">
-  	<copy tofile="${ts.home}/LICENSE.md" file="${ts.home}/LICENSE_EFTL.md" overwrite="true">
-  	</copy>
+        <copy tofile="${ts.home}/LICENSE.md" file="${ts.home}/LICENSE_EFTL.md" overwrite="true">
+        </copy>
     </target>
 
-    <target name="core" depends="build, javadoc, mvn, _create.version.file">
+    <target name="core" depends="build, mvn, javadoc, _create.version.file">
         <delete file="${zip.file}" quiet="true"/>
-	<antcall target="copyEFTLicense"/>
+        <antcall target="copyEFTLicense"/>
         <zip destfile="${zip.file}">
-	    <zipfileset dir="${ts.home}/docs/"
-		includes="README.md"
-		prefix="mail-tck"/>
-	    <zipfileset dir="${ts.home}" 
-               includes="build.xml,
-			javatest.jar,
+            <zipfileset dir="${ts.home}/docs/"
+                        includes="README.md"
+                        prefix="mail-tck"/>
+            <zipfileset dir="${ts.home}/docs/ug/target/staging/"
+                        prefix="mail-tck/docs/html/"/>
+            <zipfileset dir="${ts.home}/docs/ug/target/generated-docs/"
+                        includes="*.pdf"
+                        prefix="mail-tck/docs"/>
+            <zipfileset dir="${ts.home}"
+                        includes="build.xml,
+                        javatest.jar,
                         sigtest.jar,
                         version,
-                        docs/html/**,
                         docs/javadocs/**,
-                        docs/*.pdf,
                         tests/api/**,
                         tests/testsuite.html,
                         tests/testsuite.jtt,
@@ -92,8 +90,8 @@
                         classes/**,
                         LICENSE.md,
                         harness/**"
-		prefix="mail-tck"/>                        	
-	    </zip>
+                        prefix="mail-tck"/>
+        </zip>
     </target>
 
     <target name="_create.version.file">

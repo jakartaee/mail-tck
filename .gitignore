@@ -1,8 +1,13 @@
+/JTreport/
+/JTwork/
+/classes/
+/docs/javadocs/
+/docs/ug/src/main/jbake/content/toc.adoc
+/mail-tck-*.zip
+/tests/mailboxes/fpopulate.class
+/version
+
 target/
-JTreport/
-JTwork/
-classes/
-tests/mailboxes/fpopulate.class
 published/
 jakarta.mail.jar
 jakarta.activation.jar
