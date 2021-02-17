@@ -49,7 +49,7 @@
 
     <distributionManagement>
         <site>
-            <url>scm:git:git@github.com:eclipse-ee4j/jaf-tck.git</url>
+            <url>scm:git:git@github.com:eclipse-ee4j/mail-tck.git</url>
         </site>
     </distributionManagement>
 
