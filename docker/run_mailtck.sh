@@ -21,6 +21,11 @@ else
   echo "[ERROR] TCK bundle not found"
   exit 1
 fi
+
+if [[ "$JDK" == "JDK11" || "$JDK" == "jdk11" ]];then
+  export JAVA_HOME=${JDK11_HOME}
+  export PATH=$JAVA_HOME/bin:$PATH
+fi
   
 export TS_HOME=${WORKSPACE}/mail-tck
 
