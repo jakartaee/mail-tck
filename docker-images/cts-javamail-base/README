@@ -22,10 +22,10 @@ Dockerfile2:
 Image - jakartaee/cts-javamail-base:0.2
 
 Additional softwares to be downloaded
--jdk-11.0.7_linux-x64_bin.tar.gz
--jdk-8u191-linux-x64.tar.gz
+-jdk-11.0.10_linux-x64_bin.tar.gz
+-jdk-8u251-linux-x64.tar.gz
 
-JDK11_HOME will the available as JDK11 home path at /opt/jdk-11.0.7
+JDK11_HOME will the available as JDK11 home path at /opt/jdk-11.0.10
 
 Build command : docker build -t jakartaee/cts-javamail-base:0.2 -f Dockerfile2 .
 Image push command : docker push jakartaee/cts-javamail-base:0.2
