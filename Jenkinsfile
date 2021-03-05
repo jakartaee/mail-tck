@@ -19,7 +19,7 @@ spec:
     - "james.local"
   containers:
   - name: mail-tck-ci
-    image: jakartaee/cts-javamail-base:0.1
+    image: jakartaee/cts-javamail-base:0.2
     command:
     - cat
     tty: true
@@ -60,6 +60,8 @@ spec:
     string(name: 'TCK_BUNDLE_FILE_NAME', 
            defaultValue: 'mail-tck-2.0.0.zip', 
 	   description: 'Name of bundle file to be appended to the base url' )
+    choice(name: 'JDK', choices: 'JDK8\nJDK11',
+           description: 'Java SE Version to be used for running TCK either JDK8/JDK11' )
     choice(name: 'LICENSE', choices: 'EPL\nEFTL',
            description: 'License file to be used to build the TCK bundle(s) either EPL(default) or Eclipse Foundation TCK License' )
   }
