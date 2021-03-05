@@ -49,7 +49,7 @@
 
     <target name="mvn">
         <exec dir="${basedir}/docs/ug" executable="mvn">
-            <arg line="-B"/>
+            <arg line="-B -V -Dmaven.repo.local=${ts.home}/.m2/repository"/>
         </exec>
     </target>
 
