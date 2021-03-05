@@ -49,10 +49,10 @@ spec:
   }
   parameters {
     string(name: 'JAF_BUNDLE_URL',
-           defaultValue: 'https://repo1.maven.org/maven2/com/sun/activation/jakarta.activation/2.0.0-RC3/jakarta.activation-2.0.0-RC3.jar',
+           defaultValue: 'https://repo1.maven.org/maven2/com/sun/activation/jakarta.activation/2.0.0/jakarta.activation-2.0.0.jar',
            description: 'URL required for downloading JAF implementation jar' )
     string(name: 'MAIL_BUNDLE_URL',
-           defaultValue: 'https://repo1.maven.org/maven2/com/sun/mail/jakarta.mail/2.0.0-RC6/jakarta.mail-2.0.0-RC6.jar',
+           defaultValue: 'https://repo1.maven.org/maven2/com/sun/mail/jakarta.mail/2.0.0/jakarta.mail-2.0.0.jar',
            description: 'URL required for downloading Javamail implementation jar' )
     string(name: 'TCK_BUNDLE_BASE_URL',
            defaultValue: '',
