@@ -20,11 +20,6 @@ echo "export JAVA_HOME=$JAVA_HOME"
 echo "export MAVEN_HOME=$MAVEN_HOME"
 echo "export PATH=$PATH"
 
-if [[ "$JDK" == "JDK11" || "$JDK" == "jdk11" ]];then
-  export JAVA_HOME=${JDK11_HOME}
-  export PATH=$JAVA_HOME/bin:$PATH
-fi
-
 sed -i "s#^TS_HOME=.*#TS_HOME=$WORKSPACE#g" "$WORKSPACE/lib/ts.jte"
 sed -i "s#^JAVA_HOME=.*#JAVA_HOME=$JAVA_HOME#g" "$WORKSPACE/lib/ts.jte"
 sed -i "s#^JARPATH=.*#JARPATH=$WORKSPACE#g" "$WORKSPACE/lib/ts.jte"
