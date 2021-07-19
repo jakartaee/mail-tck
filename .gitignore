@@ -6,8 +6,12 @@
 /mail-tck-*.zip
 /tests/mailboxes/fpopulate.class
 /version
+.classpath
+.project
+.settings/
 
 target/
 published/
 jakarta.mail.jar
 jakarta.activation.jar
+/bin/
