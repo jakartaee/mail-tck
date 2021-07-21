@@ -35,7 +35,6 @@
     <properties>
         <jakarta.mail.version>2.0.1</jakarta.mail.version>
         <jupiter-api.version>5.7.2</jupiter-api.version>
-        <javatest.version>3.1.2.b06</javatest.version>
         <maven.compiler.target>1.8</maven.compiler.target>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.plugin>3.8.1</maven.compiler.plugin>
@@ -67,13 +66,6 @@
             <version>${jakarta.mail.version}</version>
             <scope>test</scope>
         </dependency>
-		<dependency>
-		    <groupId>com.sun</groupId>
-		    <artifactId>javatest</artifactId>
-		    <version>${javatest.version}</version>
-		    <scope>system</scope>
-		    <systemPath>${basedir}/lib/javatest.jar</systemPath>
-		</dependency>
     </dependencies>
     
     <build>

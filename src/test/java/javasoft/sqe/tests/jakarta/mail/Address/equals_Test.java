@@ -21,7 +21,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.io.PrintWriter;
 
 import com.sun.javatest.Status;
-import com.sun.javatest.Test;
 
 import jakarta.mail.Address;
 import jakarta.mail.Folder;
