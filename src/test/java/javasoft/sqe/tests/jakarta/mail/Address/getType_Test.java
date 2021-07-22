@@ -45,7 +45,7 @@ public class getType_Test extends MailTest {
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(String argv[], PrintWriter log, PrintWriter out)
+    public Status run(PrintWriter log, PrintWriter out)
     {
 	super.run(log, out);
 
