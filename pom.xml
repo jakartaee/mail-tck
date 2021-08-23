@@ -34,7 +34,8 @@
 	<version>1.0.0-SNAPSHOT</version>
 
 	<properties>
-		<jakarta.mail.version>2.0.1</jakarta.mail.version>
+		<jakarta.mail.version>2.1.0-SNAPSHOT</jakarta.mail.version>
+		<angus.mail.version>1.0.0-SNAPSHOT</angus.mail.version>
 		<jupiter-api.version>5.7.2</jupiter-api.version>
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<maven.compiler.source>1.8</maven.compiler.source>
@@ -51,19 +52,24 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>com.sun.mail</groupId>
-			<artifactId>jakarta.mail</artifactId>
+			<groupId>jakarta.mail</groupId>
+			<artifactId>jakarta.mail-api</artifactId>
 			<version>${jakarta.mail.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>com.sun.mail</groupId>
+			<groupId>org.eclipse.angus</groupId>
+			<artifactId>angus-mail</artifactId>
+			<version>${angus.mail.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.angus</groupId>
 			<artifactId>smtp</artifactId>
-			<version>${jakarta.mail.version}</version>
+			<version>${angus.mail.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>com.sun.mail</groupId>
+			<groupId>org.eclipse.angus</groupId>
 			<artifactId>imap</artifactId>
-			<version>${jakarta.mail.version}</version>
+			<version>${angus.mail.version}</version>
 		</dependency>
 	</dependencies>
 
@@ -78,6 +84,10 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>${surefire.version}</version>
+				<configuration>
+					<forkCount>1</forkCount>
+					<reuseForks>false</reuseForks>
+				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.glassfish.copyright</groupId>
