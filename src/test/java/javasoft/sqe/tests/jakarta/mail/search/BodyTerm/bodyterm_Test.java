@@ -43,15 +43,15 @@ public class bodyterm_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
+    
 
-        out.println("\nTesting class BodyTerm: BodyTerm(String)\n");
+        out.fine("\nTesting class BodyTerm: BodyTerm(String)\n");
 
         try {
           // Connect to host server
@@ -67,13 +67,13 @@ public class bodyterm_Test extends MailTest {
              folder.open(Folder.READ_ONLY);
 
 	  // BEGIN UNIT TEST 1:
-             out.println("UNIT TEST 1:  BodyTerm("+ pattern +")");
+             out.fine("UNIT TEST 1:  BodyTerm("+ pattern +")");
 	     BodyTerm bt = new BodyTerm(pattern);	// API TEST
 
              if( bt == null ) {
                  return Status.failed("Warning: BodyTerm contructor returned a Null object!");
 	     } else {
-		     out.println("UNIT TEST 1: passed\n");
+		     out.fine("UNIT TEST 1: passed\n");
 	     }
 	  // END UNIT TEST 1:
 
@@ -90,21 +90,21 @@ public class bodyterm_Test extends MailTest {
                 MimeMessage msg =  (MimeMessage)folder.getMessage(i);
 
 	        if( msg == null ) {
-		    log.println("WARNING: FAILED TO GET MESSAGE NUMBER: "+ i);
+		    log.warning("WARNING: FAILED TO GET MESSAGE NUMBER: "+ i);
 		    continue;
 	        }
 	     // BEGIN UNIT TEST:
-	        out.println("UNIT TEST "+ (i+1) +":  match(Message)");
+	        out.fine("UNIT TEST "+ (i+1) +":  match(Message)");
 
 		// find the pattern in message body
 		foundit = bt.match(msg);	// API TEST
 
 	        if( foundit ) {
-	            out.println("Pattern "+ pattern +" found in message body.");
-                    out.println("UNIT TEST "+ (i+1) +":  passed\n");
+	            out.fine("Pattern "+ pattern +" found in message body.");
+                    out.fine("UNIT TEST "+ (i+1) +":  passed\n");
 	        } else {
-		        out.println("Pattern "+ pattern +" not found in message body!");
-			out.println("UNIT TEST "+ (i+1) +":  passed\n");
+		        out.fine("Pattern "+ pattern +" not found in message body!");
+			out.fine("UNIT TEST "+ (i+1) +":  passed\n");
 	        }
 	     // END UNIT TEST:
 	     }

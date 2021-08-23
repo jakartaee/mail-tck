@@ -40,21 +40,21 @@ public class autoclose_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
+    
 
-	out.println("\nTesting Transport class API => auto close()\n");
+	out.fine("\nTesting Transport class API => auto close()\n");
 
      // Get a Session object
 	Session session = Session.getInstance(properties, null);
 
      // BEGIN UNIT TEST 1:
-	out.println("UNIT TEST 1:  auto close()");
+	out.fine("UNIT TEST 1:  auto close()");
 
      // Get a Transport object
 	Transport tr = null;
@@ -76,10 +76,10 @@ public class autoclose_Test extends MailTest {
 
 	if (errors == 0 && tr != null) {
 	    if (!tr.isConnected()) {
-		out.println("UNIT TEST 1: passed\n");
+		out.fine("UNIT TEST 1: passed\n");
 	    } else {
 		errors++;
-		out.println("UNIT TEST 1: FAILED\n");
+		out.fine("UNIT TEST 1: FAILED\n");
 	    }
 	}
 

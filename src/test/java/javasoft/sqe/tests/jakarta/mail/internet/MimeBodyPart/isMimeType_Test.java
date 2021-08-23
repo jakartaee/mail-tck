@@ -42,15 +42,15 @@ public class isMimeType_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class MimeBodyPart: isMimeType(String)\n");
+        out.fine("\nTesting class MimeBodyPart: isMimeType(String)\n");
 
         try {
           // Create a MimeBodyPart object
@@ -60,30 +60,30 @@ public class isMimeType_Test extends MailTest {
                  return Status.failed("Failed to create MimeBodyPart object!");
 
 	  // BEGIN UNIT TEST 1:
-	     out.println("UNIT TEST 1: isMimeType(text/plain)");
+	     out.fine("UNIT TEST 1: isMimeType(text/plain)");
 
 	     if ( bp.isMimeType("text/plain") ) 	// API TEST
-	          out.println("UNIT TEST 1:  passed\n");
+	          out.fine("UNIT TEST 1:  passed\n");
 	     else
-		  out.println("UNIT TEST 1:  passed\n");
+		  out.fine("UNIT TEST 1:  passed\n");
 
 	  // END UNIT TEST 1:
           // BEGIN UNIT TEST 2:
-             out.println("UNIT TEST 2: isMimeType(text/html;charset=foobar)");
+             out.fine("UNIT TEST 2: isMimeType(text/html;charset=foobar)");
 
              if ( bp.isMimeType("text/html;charset=foobar") )         // API TEST
-                  out.println("UNIT TEST 2:  passed\n");
+                  out.fine("UNIT TEST 2:  passed\n");
              else
-                  out.println("UNIT TEST 2:  passed\n");
+                  out.fine("UNIT TEST 2:  passed\n");
 
           // END UNIT TEST 2:
           // BEGIN UNIT TEST 3:
-             out.println("UNIT TEST 3: isMimeType(null)");
+             out.fine("UNIT TEST 3: isMimeType(null)");
 
              if ( bp.isMimeType(null) )         // API TEST
-                  out.println("UNIT TEST 3:  passed\n");
+                  out.fine("UNIT TEST 3:  passed\n");
              else
-                  out.println("UNIT TEST 3:  passed\n");
+                  out.fine("UNIT TEST 3:  passed\n");
 
           // END UNIT TEST 3:
 	     checkStatus();

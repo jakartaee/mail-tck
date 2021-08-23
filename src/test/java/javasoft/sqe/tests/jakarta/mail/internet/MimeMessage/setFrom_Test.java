@@ -50,14 +50,14 @@ public class setFrom_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out) {
-	super.run(log, out);
+    public Status run() {
+	
 
-        out.println("\nTesting class MimeMessage: setFrom(String)\n");
+        out.fine("\nTesting class MimeMessage: setFrom(String)\n");
 
         try {
 	  // Create Session object
@@ -73,7 +73,7 @@ public class setFrom_Test extends MailTest {
                 InternetAddress addr = new InternetAddress(addrlist[i]);
 
 		// set whom the message is from
-	        out.println("UNIT TEST "+ (i+1) +":  setFrom(String)");
+	        out.fine("UNIT TEST "+ (i+1) +":  setFrom(String)");
 
 	        msg.setFrom(addrlist[i]);		// API TEST
 
@@ -82,18 +82,18 @@ public class setFrom_Test extends MailTest {
  
 	        if (newFrom != null) {
 	            if (addrlist[i].equals(newFrom)) {
-	                out.println("setFrom("+ addrlist[i] +")");
-                        out.println("UNIT TEST "+ (i+1) +":  passed\n");
+	                out.fine("setFrom("+ addrlist[i] +")");
+                        out.fine("UNIT TEST "+ (i+1) +":  passed\n");
 	             } else {
-			out.println("getFrom() :=> "+ newFrom);
-			out.println("setFrom("+ addrlist[i] +")");
-			out.println("UNIT TEST "+ (i+1) +":  FAILED\n");
+			out.fine("getFrom() :=> "+ newFrom);
+			out.fine("setFrom("+ addrlist[i] +")");
+			out.fine("UNIT TEST "+ (i+1) +":  FAILED\n");
 			errors++;
 	            }
 	        } else {
-			out.println("WARNING: Message "+ (i+1) +
+			out.fine("WARNING: Message "+ (i+1) +
 				    " has null 'From' header");
-			out.println("UNIT TEST "+ (i+1) +":  FAILED\n");
+			out.fine("UNIT TEST "+ (i+1) +":  FAILED\n");
 			errors++;
 	        }
 	      }
@@ -101,7 +101,7 @@ public class setFrom_Test extends MailTest {
 
            // BEGIN UNIT TEST:
 		// now try with more than one From address
-	        out.println("UNIT TEST "+ (i+1) +":  setFrom(String)");
+	        out.fine("UNIT TEST "+ (i+1) +":  setFrom(String)");
 
 		String addr1 = "joe@example.com";
 		String addr2 = "bob@example.com";
@@ -113,12 +113,12 @@ public class setFrom_Test extends MailTest {
 			afrom[1].toString().equals(addr2)) ||
 		    (afrom[0].toString().equals(addr2) &&
 			afrom[1].toString().equals(addr1)))) {
-		    out.println("setFrom("+ addr1 + "," + addr2 +")");
-		    out.println("UNIT TEST "+ (i+1) +":  passed\n");
+		    out.fine("setFrom("+ addr1 + "," + addr2 +")");
+		    out.fine("UNIT TEST "+ (i+1) +":  passed\n");
 		 } else {
-		    out.println("getFrom() :=> "+ afrom);
-		    out.println("setFrom("+ addr1 + "," + addr2 +")");
-		    out.println("UNIT TEST "+ (i+1) +":  FAILED\n");
+		    out.fine("getFrom() :=> "+ afrom);
+		    out.fine("setFrom("+ addr1 + "," + addr2 +")");
+		    out.fine("UNIT TEST "+ (i+1) +":  FAILED\n");
 		    errors++;
 		}
 	   // END UNIT TEST:

@@ -42,15 +42,15 @@ public class getType_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
+    
 
-        out.println("\nTesting class NewsAddress: getType()\n");
+        out.fine("\nTesting class NewsAddress: getType()\n");
 
         try {
 	   // Construct a NewsAddress with the given newsgroup
@@ -60,15 +60,15 @@ public class getType_Test extends MailTest {
 		  return Status.failed("Failed to create "+pattern+" newsgroup on host "+host);
 	      }
 	   // BEGIN UNIT TEST 1:
-              out.println("UNIT TEST 1:  getType()");
+              out.fine("UNIT TEST 1:  getType()");
 	      String ngtype = na.getType(); 	// API TEST
 
               if( ngtype != null ) {
-		  out.println("Type of address is "+ ngtype);
-                  out.println("UNIT TEST 1: passed");
+		  out.fine("Type of address is "+ ngtype);
+                  out.fine("UNIT TEST 1: passed");
               } else {
-		      out.println("Warning: Type name is null!");
-                      out.println("UNIT TEST 1: FAILED");
+		      out.fine("Warning: Type name is null!");
+                      out.fine("UNIT TEST 1: FAILED");
                       errors++;
               }
            // END UNIT TEST 1:

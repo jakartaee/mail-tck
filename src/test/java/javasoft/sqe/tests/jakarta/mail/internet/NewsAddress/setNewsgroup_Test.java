@@ -42,15 +42,15 @@ public class setNewsgroup_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
+    
 
-        out.println("\nTesting class NewsAddress: setNewsgroup(String)\n");
+        out.fine("\nTesting class NewsAddress: setNewsgroup(String)\n");
 
         try {
 	   // Construct a NewsAddress object
@@ -60,16 +60,16 @@ public class setNewsgroup_Test extends MailTest {
 		  return Status.failed("Failed to create newsgroup object!");
 	      }
 	   // BEGIN UNIT TEST 1:
-              out.println("UNIT TEST 1:  setNewsgroup("+pattern+")");
+              out.fine("UNIT TEST 1:  setNewsgroup("+pattern+")");
 
 	      na.setNewsgroup(pattern); 	// API TEST
 	      String ngName = na.getNewsgroup();
 
               if( ngName != null && pattern.equals(ngName) )
-                  out.println("UNIT TEST 1: passed");
+                  out.fine("UNIT TEST 1: passed");
               else {
-		    out.println("Warning: Failed to set newsgroup!");
-                    out.println("UNIT TEST 1: FAILED");
+		    out.fine("Warning: Failed to set newsgroup!");
+                    out.fine("UNIT TEST 1: FAILED");
                     errors++;
               }
            // END UNIT TEST 1:

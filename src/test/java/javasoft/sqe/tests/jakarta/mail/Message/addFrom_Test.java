@@ -47,15 +47,15 @@ public class addFrom_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
+    
 
-        out.println("\nTesting class Message: addFrom(Address[])\n");
+        out.fine("\nTesting class Message: addFrom(Address[])\n");
 
         try {
           // Create a MimeMessage object
@@ -63,7 +63,7 @@ public class addFrom_Test extends MailTest {
              MimeMessage msg = new MimeMessage(session);
 
              if( msg == null ) {
-                 log.println("WARNING: FAILED TO CREATE MESSAGE OBJECT");
+                 log.warning("WARNING: FAILED TO CREATE MESSAGE OBJECT");
                  return Status.failed("Failed to create Message object");
              }
 	     // create address object
@@ -77,27 +77,27 @@ public class addFrom_Test extends MailTest {
 	     addrs[1] = addr2;
 
 	  // BEGIN UNIT TEST:
-	     out.println("UNIT TEST 1:  addFrom(Address[])");
+	     out.fine("UNIT TEST 1:  addFrom(Address[])");
 
 	  // add message recipients
 
 	     msg.addFrom(addrs);	// API TEST
 	     from = msg.getFrom();
-
-	     out.print("addFrom(from) :=> '");
+	     StringBuilder sb = new StringBuilder();
+	     sb.append("addFrom(from) :=> '");
 
 	     if ( from != null && from.length != 0 ) {
                   for ( int j = 0; j < from.length; j++ )
 			if ( j > 0 )
-                             out.print(", " + from[j]);
+			    sb.append(", " + from[j]);
 			else
-			     out.print("" + from[j]);
+			    sb.append("" + from[j]);
 
-                  out.println("')");
+                  sb.append("')");
              } else
-                  out.println("empty field')");
-
-             out.println("UNIT TEST 1:  passed\n");
+                 sb.append("empty field')");
+	     out.fine(sb.toString());
+             out.fine("UNIT TEST 1:  passed\n");
 	  // END UNIT TEST:
 
 	     checkStatus();

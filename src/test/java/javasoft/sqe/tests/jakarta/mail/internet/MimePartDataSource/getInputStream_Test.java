@@ -42,15 +42,15 @@ public class getInputStream_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class MimePartDataSource: getInputStream()\n");
+        out.fine("\nTesting class MimePartDataSource: getInputStream()\n");
 
         try {
           // Connect to host server
@@ -83,14 +83,14 @@ public class getInputStream_Test extends MailTest {
                  return Status.failed("Warning: Failed to create a MimePartDataSource object!");
              }
           // BEGIN UNIT TEST 1:
-             out.println("UNIT TEST 1: getInputStream()");
+             out.fine("UNIT TEST 1: getInputStream()");
 
              InputStream is = mpds.getInputStream();    // API TEST
 
              if( is != null )
-                 out.println("UNIT TEST 1: passed\n");
+                 out.fine("UNIT TEST 1: passed\n");
              else {
-                   out.println("UNIT TEST 1: FAILED\n");
+                   out.fine("UNIT TEST 1: FAILED\n");
                    errors++;
              }
            //END UNIT TEST 1:

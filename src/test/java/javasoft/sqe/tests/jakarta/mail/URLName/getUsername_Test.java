@@ -41,15 +41,15 @@ public class getUsername_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
+    
 
-        out.println("\nTesting class URLName: getUsername()\n");
+        out.fine("\nTesting class URLName: getUsername()\n");
 
         try {
 	   // Create a URLName object
@@ -60,15 +60,15 @@ public class getUsername_Test extends MailTest {
                   return Status.failed("Failed to create a URLName object!");
 
            // BEGIN UNIT TEST 1:
-              out.println("UNIT TEST 1:  getUsername()");
+              out.fine("UNIT TEST 1:  getUsername()");
               String userName = urlname.getUsername(); 	// API TEST
 
               if( (user != null && userName != null && userName.equals(user)) ||
 		    (user == null && userName == null)) {
-		  out.println("User name is "+ userName);
-                  out.println("UNIT TEST 1: passed");
+		  out.fine("User name is "+ userName);
+                  out.fine("UNIT TEST 1: passed");
 	      } else {
-		    out.println("UNIT TEST 1: FAILED.\n");
+		    out.fine("UNIT TEST 1: FAILED.\n");
 		    errors++;
 	      }
            // END UNIT TEST 1:

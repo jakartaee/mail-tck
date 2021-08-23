@@ -47,15 +47,15 @@ public class getOutputStream_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class MimePartDataSource: getOutputStream()\n");
+        out.fine("\nTesting class MimePartDataSource: getOutputStream()\n");
 
         try {
           // Connect to host server
@@ -88,22 +88,22 @@ public class getOutputStream_Test extends MailTest {
                  return Status.failed("Warning: Failed to create a MimePartDataSource object!");
              }
           // BEGIN UNIT TEST 1:
-             out.println("UNIT TEST 1: getOutputStream()");
+             out.fine("UNIT TEST 1: getOutputStream()");
 
              OutputStream os = mpds.getOutputStream();    // API TEST ; throws the UnknownServiceException
 
              if( os != null )
-                 out.println("UNIT TEST 1: passed\n");
+                 out.fine("UNIT TEST 1: passed\n");
              else {
-                   out.println("UNIT TEST 1: FAILED\n");
+                   out.fine("UNIT TEST 1: FAILED\n");
                    errors++;
              }
           // END UNIT TEST 1:
 
 	} catch ( Exception une ) {
 		handlException(une);
-		out.println("\nThis implementation throws the UnknownServiceException.");
-		out.println("UNIT TEST 1: passed\n");
+		out.fine("\nThis implementation throws the UnknownServiceException.");
+		out.fine("UNIT TEST 1: passed\n");
 
 		try {
 			folder.close(false);

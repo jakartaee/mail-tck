@@ -42,15 +42,15 @@ public class writeTo_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class MimeMessage: writeTo(OutputStream)\n");
+        out.fine("\nTesting class MimeMessage: writeTo(OutputStream)\n");
 
         try {
           // Connect to host server
@@ -78,17 +78,17 @@ public class writeTo_Test extends MailTest {
                 MimeMessage msg = (MimeMessage)folder.getMessage(i);
 
                 if( msg == null ) {
-                    log.println("Warning: Failed to get message number "+ i);
+                    log.warning("Warning: Failed to get message number "+ i);
                     continue;
                 }
              // BEGIN UNIT TEST:
-                out.println("UNIT TEST "+ i +": writeTo(OutputStream)");
+                out.fine("UNIT TEST "+ i +": writeTo(OutputStream)");
                 msg.writeTo( os );      // API TEST
 
                 if ( os != null )
-                     out.println("UNIT TEST "+ i +": passed");
+                     out.fine("UNIT TEST "+ i +": passed");
                 else {
-                      out.println("UNIT TEST "+ i +": FAILED");
+                      out.fine("UNIT TEST "+ i +": FAILED");
                       errors++;
                 }
              // END UNIT TEST:

@@ -41,14 +41,14 @@ public class encoded_true_Test extends encoded_default_Test {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
 	System.setProperty("mail.mime.encodeparameters", "true");
 	System.setProperty("mail.mime.decodeparameters", "true");
-	return super.run(log, out);
+	return super.run();
     }
 }

@@ -44,15 +44,15 @@ public class internetAddress_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class InternetAddress: InternetAddress(void | String)\n");
+        out.fine("\nTesting class InternetAddress: InternetAddress(void | String)\n");
 
         try {
           // Connect to host server
@@ -68,13 +68,13 @@ public class internetAddress_Test extends MailTest {
 	     folder.open(Folder.READ_ONLY);
 
 	  // BEGIN UNIT TEST 1:
-	     out.println("\nUNIT TEST 1:  InternetAddress()");
+	     out.fine("\nUNIT TEST 1:  InternetAddress()");
 	     InternetAddress addr1 = new InternetAddress();	// API TEST
      
              if(( addr1 != null ) && ( addr1 instanceof InternetAddress ))
-                  out.println("UNIT TEST 1: passed\n");
+                  out.fine("UNIT TEST 1: passed\n");
 	     else {
-		   out.println("UNIT TEST 1: FAILED\n");
+		   out.fine("UNIT TEST 1: FAILED\n");
 		   errors++;
 	     }
 	  // END UNIT TEST 1:
@@ -92,14 +92,14 @@ public class internetAddress_Test extends MailTest {
                 Message msg = folder.getMessage(i);
 
                 if( msg == null ) {
-                    log.println("WARNING: FAILED TO GET MESSAGE NUMBER: "+ i);
+                    log.warning("WARNING: FAILED TO GET MESSAGE NUMBER: "+ i);
                     continue;
                 }
                 // Get a From address object(s)
                 Address[] addrs = msg.getFrom();
 
                 if( addrs == null || addrs.length == 0 ) {
-                    log.println("WARNING: FAILED TO GET FROM ADDRESS FOR MESSAGE NUMBER: "+ i);
+                    log.warning("WARNING: FAILED TO GET FROM ADDRESS FOR MESSAGE NUMBER: "+ i);
                     continue;
                 }
                 // Convert From address object to a string
@@ -107,7 +107,7 @@ public class internetAddress_Test extends MailTest {
 
                 if( addstr != null )
 		{
-		    out.println("UNIT TEST "+ (i+1) +":  InternetAddress("+ addstr +")");
+		    out.fine("UNIT TEST "+ (i+1) +":  InternetAddress("+ addstr +")");
 
                     // Create new InternetAddress object
                     InternetAddress addr;
@@ -123,10 +123,10 @@ public class internetAddress_Test extends MailTest {
 		    }
 
                     if (( addr != null ) && ( addr instanceof InternetAddress )) {
-			  out.println("Address = "+ addr.getAddress());
-			  out.println("UNIT TEST "+ (i+1) +": passed\n");
+			  out.fine("Address = "+ addr.getAddress());
+			  out.fine("UNIT TEST "+ (i+1) +": passed\n");
 		    } else {
-			    out.println("UNIT TEST "+ (i+1) +": FAILED\n");
+			    out.fine("UNIT TEST "+ (i+1) +": FAILED\n");
 			    errors++;
                           }
                 } else

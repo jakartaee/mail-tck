@@ -42,15 +42,15 @@ public class isConnected_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
+    
 
-	out.println("\nTesting Transport class API => isConnected()\n");
+	out.fine("\nTesting Transport class API => isConnected()\n");
 
 	try {
            // Get a Session object
@@ -69,20 +69,20 @@ public class isConnected_Test extends MailTest {
                   transport.connect();
 
 	   // BEGIN UNIT TEST 1:
-	      out.println("UNIT TEST 1:  isConnected()");
+	      out.fine("UNIT TEST 1:  isConnected()");
 
 	      if ( transport.isConnected() ) {		// API TEST
-		   out.println("Transport is open.");
-	           out.println("UNIT TEST 1: passed\n");
+		   out.fine("Transport is open.");
+	           out.fine("UNIT TEST 1: passed\n");
 	      }
 	   // END UNIT TEST 1:
            // BEGIN UNIT TEST 2:
-              out.println("UNIT TEST 2:  isConnected()");
+              out.fine("UNIT TEST 2:  isConnected()");
 	      transport.close();
 
               if ( ! transport.isConnected() ) {	// API TEST
-		   out.println("Transport is closed.");
-                   out.println("UNIT TEST 2: passed\n");
+		   out.fine("Transport is closed.");
+                   out.fine("UNIT TEST 2: passed\n");
 	      }
            // END UNIT TEST 2:
 

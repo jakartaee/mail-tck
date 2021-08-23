@@ -46,15 +46,15 @@ public class addHeader_Test extends MailTest {
     
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class InternetHeaders: addHeader(String, String)\n");
+        out.fine("\nTesting class InternetHeaders: addHeader(String, String)\n");
 
         try {
 	  // create internetheader object
@@ -74,15 +74,15 @@ public class addHeader_Test extends MailTest {
 
 	     for( int j = 0; j < 5; j++ )
 	     {
-		  out.println("UNIT TEST "+ (j+1) +":  addHeader("+ head[j] +", "+ value[j] +")");
+		  out.fine("UNIT TEST "+ (j+1) +":  addHeader("+ head[j] +", "+ value[j] +")");
 
 		  String[] header = ih.getHeader(head[j]);
 
 		  if( header[0].equals(value[j]) )
-		      out.println("UNIT TEST "+ (j+1) +": passed");
+		      out.fine("UNIT TEST "+ (j+1) +": passed");
 		  else {
-			out.println("The value returned: "+ header[0]);
-			out.println("UNIT TEST "+ (j+1) +": FAILED");
+			out.fine("The value returned: "+ header[0]);
+			out.fine("UNIT TEST "+ (j+1) +": FAILED");
 			errors++;
 		  }
 	     }

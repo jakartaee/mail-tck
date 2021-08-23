@@ -46,15 +46,15 @@ public class getReplyTo_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
+    
 
-        out.println("\nTesting class Message: getReplyTo()\n");
+        out.fine("\nTesting class Message: getReplyTo()\n");
 
         try {
           // Connect to host server
@@ -82,20 +82,20 @@ public class getReplyTo_Test extends MailTest {
                  MimeMessage msg = (MimeMessage)folder.getMessage(i);
 
                  if ( msg == null ) {
-                     log.println("WARNING: FAILED TO GET MESSAGE NUMBER: "+ i);
+                     log.warning("WARNING: FAILED TO GET MESSAGE NUMBER: "+ i);
                      continue;
                  }
               // BEGIN UNIT TEST:
 		 // Get whom the message is from
-	         out.println("UNIT TEST "+ i +":  getReplyTo()");
+	         out.fine("UNIT TEST "+ i +":  getReplyTo()");
 
 	         replyto = msg.getReplyTo();	// API TEST
 
 	         if( replyto != null ) {
-	             out.println("getReplyTo() :=> '" + replyto[0] + "'");
-                     out.println("UNIT TEST "+ i +":  passed\n");
+	             out.fine("getReplyTo() :=> '" + replyto[0] + "'");
+                     out.fine("UNIT TEST "+ i +":  passed\n");
 	         } else
-		       out.println("WARNING: Message "+ i +" has null reply to field");
+		       out.fine("WARNING: Message "+ i +" has null reply to field");
 
 	      // END UNIT TEST:
 	     }

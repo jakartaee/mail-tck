@@ -42,15 +42,15 @@ public class isComplete_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out) {
+    public Status run() {
         
-	super.run(log, out);
+	
 
-        out.println("\nTesting MimeMultipart: isComplete()\n");
+        out.fine("\nTesting MimeMultipart: isComplete()\n");
         
         try {
             Session session = Session.getInstance(properties, null);
@@ -59,7 +59,7 @@ public class isComplete_Test extends MailTest {
             FileInputStream fis = new FileInputStream(filename);
 
             // BEGIN UNIT TEST:
-            out.println("UNIT TEST 1:  test for parse(InputStream) with " +
+            out.fine("UNIT TEST 1:  test for parse(InputStream) with " +
                "mail.mime.multipart.ignoremissingendboundary = TRUE " +
                "(default) \n and a mime message input where the ending " +
                "boundary is missing");
@@ -72,9 +72,9 @@ public class isComplete_Test extends MailTest {
                 MimeMultipart mp = (MimeMultipart) newmimemsg.getContent();
                 
                 if (mp.isComplete() == false) 
-                    out.println("UNIT TEST 1:  passed\n");
+                    out.fine("UNIT TEST 1:  passed\n");
                 else {
-                    out.println("UNIT TEST 1:  FAILED\n");
+                    out.fine("UNIT TEST 1:  FAILED\n");
                     errors++;
                 }
             } catch (MessagingException ex) {

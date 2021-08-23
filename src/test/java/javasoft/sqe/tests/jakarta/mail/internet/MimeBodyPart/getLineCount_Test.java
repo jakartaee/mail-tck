@@ -42,15 +42,15 @@ public class getLineCount_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class MimeBodyPart: getLineCount()\n");
+        out.fine("\nTesting class MimeBodyPart: getLineCount()\n");
 
         try {
           // Connect to host server
@@ -77,11 +77,11 @@ public class getLineCount_Test extends MailTest {
                 MimeMessage msg = (MimeMessage)folder.getMessage(i);
 
 	        if( msg == null ) {
-		    log.println("WARNING: FAILED TO GET MESSAGE NUMBER: "+ i);
+		    log.warning("WARNING: FAILED TO GET MESSAGE NUMBER: "+ i);
 		    continue;
 	        }
 	     // BEGIN UNIT TEST:
-	        out.println("UNIT TEST "+ i +":  getLineCount()");
+	        out.fine("UNIT TEST "+ i +":  getLineCount()");
 
 		// Get the "type" of content
 	        Object content = msg.getContent();
@@ -98,10 +98,10 @@ public class getLineCount_Test extends MailTest {
 			  int lineCount = ((MimeBodyPart)bp).getLineCount();	// API TEST
 
 			  if ( lineCount > 0 ) {
-			       out.println("BodyPart line count is: "+ lineCount);
-			       out.println("UNIT TEST "+ i +":  passed\n");
+			       out.fine("BodyPart line count is: "+ lineCount);
+			       out.fine("UNIT TEST "+ i +":  passed\n");
 			  } else {
-				 out.println("UNIT TEST "+ i +":  has zero lines!\n");
+				 out.fine("UNIT TEST "+ i +":  has zero lines!\n");
 			  }
 		     }
 		}

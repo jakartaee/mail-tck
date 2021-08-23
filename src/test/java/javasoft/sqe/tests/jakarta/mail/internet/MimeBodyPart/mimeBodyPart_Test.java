@@ -49,25 +49,25 @@ public class mimeBodyPart_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class MimeBodyPart: MimeBodyPart(..)\n");
+        out.fine("\nTesting class MimeBodyPart: MimeBodyPart(..)\n");
 
         try {
 	  // BEGIN UNIT TEST 1:
-	     out.println("UNIT TEST 1:  MimeBodyPart()");
+	     out.fine("UNIT TEST 1:  MimeBodyPart()");
 	     MimeBodyPart mbp1 = new MimeBodyPart();	    // API TEST
 
 	     if( mbp1 != null )
-		 out.println("UNIT TEST 1: passed\n");
+		 out.fine("UNIT TEST 1: passed\n");
 	     else {
-		   out.println("UNIT TEST 1: FAILED\n");
+		   out.fine("UNIT TEST 1: FAILED\n");
 		   errors++;
 	     }
 	  // END UNIT TEST 1:
@@ -98,13 +98,13 @@ public class mimeBodyPart_Test extends MailTest {
 	     // Get a ByteArrayInputStream object
              ByteArrayInputStream bis = createInputStream(msg);
 
-	     out.println("UNIT TEST 2:  MimeBodyPart(InputStream)");
+	     out.fine("UNIT TEST 2:  MimeBodyPart(InputStream)");
 	     MimeBodyPart mbp2 = new MimeBodyPart(bis); 	// API TEST
 
 	     if( mbp2 != null )
-		 out.println("UNIT TEST 2: passed\n");
+		 out.fine("UNIT TEST 2: passed\n");
 	     else {
-		    out.println("UNIT TEST 2: FAILED\n");
+		    out.fine("UNIT TEST 2: FAILED\n");
 		    errors++;
 	     }
 	  // END UNIT TEST 2:
@@ -178,13 +178,13 @@ public class mimeBodyPart_Test extends MailTest {
                     }
                     bos.write(b);
              }
-             out.println("UNIT TEST 3:  MimeBodyPart(InternetHeaders, byte[])");
+             out.fine("UNIT TEST 3:  MimeBodyPart(InternetHeaders, byte[])");
              MimeBodyPart mbp3 = new MimeBodyPart(headers, bos.toByteArray());   // API TEST
 
              if( mbp3 != null ) 
-                 out.println("UNIT TEST 3: passed\n");
+                 out.fine("UNIT TEST 3: passed\n");
              else {
-                    out.println("UNIT TEST 3: FAILED\n");
+                    out.fine("UNIT TEST 3: FAILED\n");
                     errors++;
              }
           // END UNIT TEST 3:

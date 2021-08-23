@@ -43,15 +43,15 @@ public class getStore_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class Folder: getStore()\n");
+        out.fine("\nTesting class Folder: getStore()\n");
 
         try {
           // Connect to host server
@@ -67,7 +67,7 @@ public class getStore_Test extends MailTest {
 	     folder.open(Folder.READ_ONLY);
 	  // BEGIN UNIT TEST 1:
 
-	     out.println("UNIT TEST 1: getStore()");
+	     out.fine("UNIT TEST 1: getStore()");
 
 	     Store istore = folder.getStore();	// API TEST
 	     
@@ -77,9 +77,9 @@ public class getStore_Test extends MailTest {
 
 	     if ( istore != null && jstore != null ) {
 		  Folder defolder = istore.getDefaultFolder();
-                  out.println("UNIT TEST 1: passed\n");
+                  out.fine("UNIT TEST 1: passed\n");
              } else {
-                     out.println("UNIT TEST 1: FAILED\n");
+                     out.fine("UNIT TEST 1: FAILED\n");
                      errors++;
 	     }
 	  // END UNIT TEST 1:

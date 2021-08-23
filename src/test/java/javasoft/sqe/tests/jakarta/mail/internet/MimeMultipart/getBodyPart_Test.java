@@ -44,15 +44,15 @@ public class getBodyPart_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class MimeMultipart: getBodyPart(int | String)\n");
+        out.fine("\nTesting class MimeMultipart: getBodyPart(int | String)\n");
 
         try {
           // Connect to host server
@@ -81,7 +81,7 @@ public class getBodyPart_Test extends MailTest {
                 MimeMessage msg = (MimeMessage)folder.getMessage(i);
 
                 if( msg == null ) {
-                    log.println("Warning: Failed to get message number "+ i);
+                    log.warning("Warning: Failed to get message number "+ i);
                     continue;
                 }
              // BEGIN UNIT TEST:
@@ -89,7 +89,7 @@ public class getBodyPart_Test extends MailTest {
 		Object co = msg.getContent();
 		
 		if ( co == null ) {
-		     log.println("Warning: Failed to get message content "+ i);
+		     log.warning("Warning: Failed to get message content "+ i);
                      continue;
                 }
 
@@ -98,7 +98,7 @@ public class getBodyPart_Test extends MailTest {
 		  // cast object to MimeMultipart
 		     MimeMultipart mp = (MimeMultipart)co;
 
-                     out.println("UNIT TEST "+ i +": getBodyPart(int|String)");
+                     out.fine("UNIT TEST "+ i +": getBodyPart(int|String)");
 
                   // get the number of bodyparts enclosed for message
                      int partCount = mp.getCount();
@@ -128,18 +128,18 @@ public class getBodyPart_Test extends MailTest {
 			     }
 		         }
 		         if( istrue && !isfalse )
-			     out.println("UNIT TEST "+ i +": passed");
+			     out.fine("UNIT TEST "+ i +": passed");
 		         else {
-			       out.println("UNIT TEST "+ i +": FAILED");
+			       out.fine("UNIT TEST "+ i +": FAILED");
 			       errors++;
 		         }
                      } else {
-                             out.println("Message's has no bodyparts!");
-                             out.println("UNIT TEST "+ i +": FAILED");
+                             out.fine("Message's has no bodyparts!");
+                             out.fine("UNIT TEST "+ i +": FAILED");
                              errors++;
                        }
 		} else {
-			out.println("This Message is not a Multipart!\n");
+			out.fine("This Message is not a Multipart!\n");
 			continue;
 		  }
              // END UNIT TEST:

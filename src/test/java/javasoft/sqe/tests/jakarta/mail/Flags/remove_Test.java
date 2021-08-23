@@ -44,19 +44,19 @@ public class remove_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class Flags: remove( Flags | String)\n");
+        out.fine("\nTesting class Flags: remove( Flags | String)\n");
 
         try {
 	  // BEGIN UNIT TEST 1:
-	     out.println("\nUNIT TEST 1:  remove(Flags)");
+	     out.fine("\nUNIT TEST 1:  remove(Flags)");
 
 	     Flags flag1 = new Flags();
 
@@ -72,7 +72,7 @@ public class remove_Test extends MailTest {
 			flag1.remove(Flags.Flag.DELETED);	// API TEST
 
 			if( !(flag1.contains(Flags.Flag.DELETED)) )
-			    out.println("DELETED flag removed from Flags object.");
+			    out.fine("DELETED flag removed from Flags object.");
 		        else
 			    errors++;
 		   }
@@ -82,7 +82,7 @@ public class remove_Test extends MailTest {
 			flag1.remove(Flags.Flag.SEEN);	// API TEST
 
                         if( !(flag1.contains(Flags.Flag.SEEN)) )
-                            out.println("SEEN flag removed from Flags object.");
+                            out.fine("SEEN flag removed from Flags object.");
                         else
                             errors++;
                    }
@@ -92,7 +92,7 @@ public class remove_Test extends MailTest {
 			flag1.remove(Flags.Flag.RECENT);	// API TEST
 
 			if( !(flag1.contains(Flags.Flag.RECENT)) )
-                            out.println("RECENT flag removed from Flags object.");
+                            out.fine("RECENT flag removed from Flags object.");
 			else
 			    errors++;
 		   }
@@ -102,24 +102,24 @@ public class remove_Test extends MailTest {
                         flag1.remove(Flags.Flag.ANSWERED);     // API TEST
 
                         if( !(flag1.contains(Flags.Flag.ANSWERED)) )
-                            out.println("ANSWERED flag removed from Flags object.");
+                            out.fine("ANSWERED flag removed from Flags object.");
                         else
                             errors++;
                    }
 
 		   if( errors == 0 )
-                       out.println("UNIT TEST 1: passed\n");
+                       out.fine("UNIT TEST 1: passed\n");
 		   else
-		       out.println("UNIT TEST 1: FAILED\n");
+		       out.fine("UNIT TEST 1: FAILED\n");
 	     }
 	     else {
-		    out.println("UNIT TEST 1: FAILED\n");
+		    out.fine("UNIT TEST 1: FAILED\n");
 		    errors++;
 	     }
 	  // END UNIT TEST 1:
           // BEGIN UNIT TEST 2:
 
-             out.println("\nUNIT TEST 2: remove(String)");
+             out.fine("\nUNIT TEST 2: remove(String)");
 
              Flags flag2 = new Flags(Flags.Flag.ANSWERED);
 	     flag1.add("TEST_USER");
@@ -132,7 +132,7 @@ public class remove_Test extends MailTest {
 			flag1.remove("TEST_USER");	// API TEST
 
 			if( !(flag1.contains("TEST_USER")) )
-                            out.println("TEST_USER flag removed from Flags object.");
+                            out.fine("TEST_USER flag removed from Flags object.");
                         else
                             errors++;
 		   }
@@ -142,7 +142,7 @@ public class remove_Test extends MailTest {
                         flag2.remove("USER_TEST");      // API TEST
 
                         if( !(flag2.contains("USER_TEST")) )
-                            out.println("USER_TEST flag removed from Flags object.");
+                            out.fine("USER_TEST flag removed from Flags object.");
                         else
                             errors++;
                    }
@@ -152,18 +152,18 @@ public class remove_Test extends MailTest {
                         flag2.remove("NONEXIST");      // API TEST
 
                         if( !(flag2.contains("NONEXIST")) )
-                            out.println("NONEXIST flag removed from Flags object.");
+                            out.fine("NONEXIST flag removed from Flags object.");
                         else
                             errors++;
                    }
 
                    if( errors == 0 )
-                       out.println("UNIT TEST 2: passed\n");
+                       out.fine("UNIT TEST 2: passed\n");
                    else
-                       out.println("UNIT TEST 2: FAILED\n");
+                       out.fine("UNIT TEST 2: FAILED\n");
 	     }
              else {
-                    out.println("UNIT TEST 2: FAILED\n");
+                    out.fine("UNIT TEST 2: FAILED\n");
                     errors++;
              }
           // END UNIT TEST 2:

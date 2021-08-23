@@ -49,15 +49,15 @@ public class getMatchingHeaders_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class InternetHeaders: getMatchingHeaders(String[])\n");
+        out.fine("\nTesting class InternetHeaders: getMatchingHeaders(String[])\n");
 
         try {
           // Connect to host server
@@ -93,16 +93,16 @@ public class getMatchingHeaders_Test extends MailTest {
                  return Status.failed("WARNING: Failed to create InternetHeaders object!");
              }
           // BEGIN UNIT TEST:
-	     out.println("UNIT TEST 1:  getMatchingHeaders(String[])");
+	     out.fine("UNIT TEST 1:  getMatchingHeaders(String[])");
 
 	  // Get matching headers
 	     Enumeration matcheaders = ih.getMatchingHeaders(headerlist);	// API TEST
 
 	     while ( matcheaders.hasMoreElements() ) {
 		     Header headers = (Header)matcheaders.nextElement();
-		     out.println(headers.getName());
+		     out.fine(headers.getName());
 	     }
-             out.println("UNIT TEST 1:  passed\n");
+             out.fine("UNIT TEST 1:  passed\n");
 	  // END UNIT TEST:
 
 	     store.close();

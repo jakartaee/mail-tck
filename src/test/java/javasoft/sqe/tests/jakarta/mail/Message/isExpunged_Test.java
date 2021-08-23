@@ -42,15 +42,15 @@ public class isExpunged_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
+    
 
-        out.println("\nTesting class Message: isExpunged()\n");
+        out.fine("\nTesting class Message: isExpunged()\n");
 
         try {
           // Connect to host server
@@ -78,16 +78,16 @@ public class isExpunged_Test extends MailTest {
                 Message msg = (Message)folder.getMessage(i);
 
 	        if ( msg == null ) {
-		     log.println("FAILED TO GET: "+ i +" MESSAGE");
+		     log.warning("FAILED TO GET: "+ i +" MESSAGE");
 		     continue;
 	        }
              // Check if message is expunged
-	        out.println("UNIT TEST "+ i +":  isExpunged()");
+	        out.fine("UNIT TEST "+ i +":  isExpunged()");
 
                 if ( msg.isExpunged() ) 	// API TEST
-                     out.println("UNIT TEST "+ i +":  passed\n");
+                     out.fine("UNIT TEST "+ i +":  passed\n");
                 else {
-                      out.println("UNIT TEST "+ i +":  passed\n");
+                      out.fine("UNIT TEST "+ i +":  passed\n");
             	}
 	     }
 	  // END UNIT TEST

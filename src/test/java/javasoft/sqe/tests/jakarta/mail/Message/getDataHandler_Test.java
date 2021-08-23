@@ -43,15 +43,15 @@ public class getDataHandler_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
+    
 
-        out.println("\nTesting class Message: getDataHandler()\n");
+        out.fine("\nTesting class Message: getDataHandler()\n");
 
         try {
           // Connect to host server
@@ -78,20 +78,20 @@ public class getDataHandler_Test extends MailTest {
         	MimeMessage msg = (MimeMessage)folder.getMessage(i);
 
 		if( msg == null ) {
-		    log.println("WARNING: FAILED TO GET MESSAGE NUMBER: "+ i);
+		    log.warning("WARNING: FAILED TO GET MESSAGE NUMBER: "+ i);
 		    continue;
 		}
 	     // BEGIN UNIT TEST:
 		// Get the DataHandler for a message's content
-		out.println("UNIT TEST "+ i +":  getDataHandler()");
+		out.fine("UNIT TEST "+ i +":  getDataHandler()");
 
 		DataHandler datahandle = msg.getDataHandler();	// API TEST
-		out.println("getDataHandler() :=> "+ datahandle);
+		out.fine("getDataHandler() :=> "+ datahandle);
 
 		if( datahandle != null && ( datahandle instanceof DataHandler ))
-                    out.println("UNIT TEST "+ i +":  passed\n");
+                    out.fine("UNIT TEST "+ i +":  passed\n");
 		else {
-		      out.println("UNIT TEST "+ i +":  FAILED\n");
+		      out.fine("UNIT TEST "+ i +":  FAILED\n");
 		      errors++;
 		}
 	     // END UNIT TEST:

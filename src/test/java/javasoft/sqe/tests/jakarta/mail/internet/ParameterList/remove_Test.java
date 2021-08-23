@@ -46,15 +46,15 @@ public class remove_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
+    
 
-        out.println("\nTesting class ParameterList: remove(String)\n");
+        out.fine("\nTesting class ParameterList: remove(String)\n");
 
         try {
 	  // create a ParameterList object
@@ -67,7 +67,7 @@ public class remove_Test extends MailTest {
 
 	     for( int i = 0; i < pname.length; i++ )
 	     {
-	     	  out.println("UNIT TEST "+ i +":  remove("+ pname[i] +")");
+	     	  out.fine("UNIT TEST "+ i +":  remove("+ pname[i] +")");
 
 		// set a parameter
 		  parmlist.set(pname[i], pvalue[i]);
@@ -79,9 +79,9 @@ public class remove_Test extends MailTest {
 		  String value = parmlist.get(pname[i]);
 
 		  if( value == null )
-		      out.println("UNIT TEST "+ i +": passed");
+		      out.fine("UNIT TEST "+ i +": passed");
 		  else {
-			out.println("UNIT TEST "+ i +": FAILED");
+			out.fine("UNIT TEST "+ i +": FAILED");
 			errors++;
 		  }
 	     }

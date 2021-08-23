@@ -45,29 +45,29 @@ public class MimeMessage_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class MimeMessage: MimeMessage(Session, InputStream)\n");
+        out.fine("\nTesting class MimeMessage: MimeMessage(Session, InputStream)\n");
 
         try {	     
 	  // BEGIN UNIT TEST 1:
-	     out.println("UNIT TEST 1:  MimeMessage(Session)");
+	     out.fine("UNIT TEST 1:  MimeMessage(Session)");
 	     
 	     Session session = Session.getInstance(properties, null);
 	     MimeMessage msgObj1 = new MimeMessage(session);	    // API TEST
 	     
 	     if(( msgObj1 != null ) && ( msgObj1 instanceof MimeMessage )) {
 		  msgObj1.setFileName("javamail");
-		  out.println( msgObj1.getFileName() );
-		  out.println("UNIT TEST 1: passed");
+		  out.fine( msgObj1.getFileName() );
+		  out.fine("UNIT TEST 1: passed");
 	     } else {
-		     out.println("UNIT TEST 1: FAILED");
+		     out.fine("UNIT TEST 1: FAILED");
 		     errors++;
 	     }
 	  // END UNIT TEST 1:
@@ -95,17 +95,17 @@ public class MimeMessage_Test extends MailTest {
              if( msg == null ) {
                  return Status.failed("Warning: Failed to get message number: 1");
              }
-	     out.println("UNIT TEST 2:  MimeMessage(Session, InputStream)");
+	     out.fine("UNIT TEST 2:  MimeMessage(Session, InputStream)");
 
 	     ByteArrayInputStream istream = createInputStream(msg);
 	     MimeMessage msgObj2 = new MimeMessage(session, istream);	    // API TEST
 
 	     if(( msgObj2 != null ) && ( msgObj2 instanceof MimeMessage )) {
 		  msgObj2.setSubject("This is another javamail test!");
-		  out.println( msgObj2.getSubject() );
-		  out.println("UNIT TEST 2: passed");
+		  out.fine( msgObj2.getSubject() );
+		  out.fine("UNIT TEST 2: passed");
 	     } else {
-		     out.println("UNIT TEST 2: FAILED");
+		     out.fine("UNIT TEST 2: FAILED");
 		     errors++;
 	     }
 	  // END UNIT TEST 2:

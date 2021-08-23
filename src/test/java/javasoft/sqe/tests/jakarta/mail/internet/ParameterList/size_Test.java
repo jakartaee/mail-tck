@@ -45,15 +45,15 @@ public class size_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
+    
 
-        out.println("\nTesting class ParameterList: size()\n");
+        out.fine("\nTesting class ParameterList: size()\n");
 
         try {
 	  // create a ParameterList object
@@ -69,15 +69,15 @@ public class size_Test extends MailTest {
 		// set a parameter
 		  parmlist.set(pname[i], pvalue[i]);
 	     }
-	     out.println("UNIT TEST 1:  size()");
+	     out.fine("UNIT TEST 1:  size()");
 
 	    // get the number of parameters in list
 	     int num_param = parmlist.size();		// API TEST
 
 	     if( num_param > 0 )
-		 out.println("UNIT TEST 1: passed");
+		 out.fine("UNIT TEST 1: passed");
 	     else {
-		   out.println("UNIT TEST 1: FAILED");
+		   out.fine("UNIT TEST 1: FAILED");
 		   errors++;
 	     }
 	  // END UNIT TEST:

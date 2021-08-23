@@ -41,18 +41,18 @@ public class encoded_false_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
+    
 
         try {
 
             // BEGIN UNIT TEST:
-            out.println("\nTesting effect of encoding/decoding system " +
+            out.fine("\nTesting effect of encoding/decoding system " +
                "properties on ParameterList: set(String, String, String)\n");
             System.setProperty("mail.mime.encodeparameters", "false");
             System.setProperty("mail.mime.decodeparameters", "false");
@@ -62,24 +62,24 @@ public class encoded_false_Test extends MailTest {
             String listvalue = parmlist.toString();
 	    if (listvalue.indexOf("test*") < 0 &&
 		    listvalue.indexOf("%A1") < 0)
-                out.println("UNIT TEST 1 passed");
+                out.fine("UNIT TEST 1 passed");
             else {
-                out.println("UNIT TEST 1 FAILED");
+                out.fine("UNIT TEST 1 FAILED");
                 errors++;
             }
 
             // END UNIT TEST:
 
             // BEGIN UNIT TEST:
-            out.println("\nTesting effect of encoding/decoding system " +
+            out.fine("\nTesting effect of encoding/decoding system " +
                "properties on ParameterList: get(String)\n");
 
             parmlist = new ParameterList("; test*=iso-8859-1''%A1");
 	    if (parmlist.get("test") == null &&
 		    parmlist.get("test*").equals("iso-8859-1''%A1"))
-                out.println("UNIT TEST 2 passed");
+                out.fine("UNIT TEST 2 passed");
             else {
-                out.println("UNIT TEST 2 FAILED");
+                out.fine("UNIT TEST 2 FAILED");
                 errors++;
             }
 

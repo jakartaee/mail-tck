@@ -50,26 +50,26 @@ public class getDefaultInstance_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
+    
 
-	out.println("\nTesting class Session: getDefaultInstance(Properties, Authenticator)\n");
+	out.fine("\nTesting class Session: getDefaultInstance(Properties, Authenticator)\n");
 
         try {
 	  // BEGIN UNIT TEST 1:
-	     out.println("UNIT TEST 1: getDefaultInstance(Properties, null)");
+	     out.fine("UNIT TEST 1: getDefaultInstance(Properties, null)");
              Session session_1 = Session.getDefaultInstance(properties, null);   // API TEST
 
              if( session_1 != null && ( session_1 instanceof Session ) ) {
                  Store store = session_1.getStore(protocol);
-		 out.println("UNIT TEST 1:  passed\n");
+		 out.fine("UNIT TEST 1:  passed\n");
              } else {
-		     out.println("UNIT TEST 1:  FAILED\n");
+		     out.fine("UNIT TEST 1:  FAILED\n");
 		     errors++;
 	     }
 	  // END UNIT TEST 1:
@@ -81,14 +81,14 @@ public class getDefaultInstance_Test extends MailTest {
 	     if (host != null)
 		 props.put("mail."+ protocol +".host", host);
 
-	     out.println("UNIT TEST 2: getDefaultInstance(props, null)");
+	     out.fine("UNIT TEST 2: getDefaultInstance(props, null)");
 	     Session session_2 = Session.getDefaultInstance(props, null);	// API TEST
 
              if( session_2 != null && ( session_2 instanceof Session ) ) {
                  Store store = session_2.getStore(protocol);
-                 out.println("UNIT TEST 2:  passed\n");
+                 out.fine("UNIT TEST 2:  passed\n");
              } else {
-                     out.println("UNIT TEST 2:  FAILED\n");
+                     out.fine("UNIT TEST 2:  FAILED\n");
                      errors++;
              }
 	  // END UNIT TEST 2:

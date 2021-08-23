@@ -44,15 +44,15 @@ public class setDisposition_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class MimeBodyPart: setDisposition()\n");
+        out.fine("\nTesting class MimeBodyPart: setDisposition()\n");
 
         try {
           // Create a MimeBodyPart object
@@ -62,35 +62,35 @@ public class setDisposition_Test extends MailTest {
                  return Status.failed("Failed to create MimeBodyPart object!");
 
 	  // BEGIN UNIT TEST 1:
-             out.println("UNIT TEST 1: setDisposition(Part.INLINE)");
+             out.fine("UNIT TEST 1: setDisposition(Part.INLINE)");
 	     bp.setDisposition(Part.INLINE); 	// API TEST
 
              if( Part.INLINE.equals(bp.getDisposition()) )
-                 out.println("UNIT TEST 1:  passed.\n");
+                 out.fine("UNIT TEST 1:  passed.\n");
              else {
-                   out.println("UNIT TEST 1:  FAILED.\n");
+                   out.fine("UNIT TEST 1:  FAILED.\n");
                    errors++;
              }
           // END UNIT TEST 1:
           // BEGIN UNIT TEST 2:
-             out.println("UNIT TEST 2: setDisposition(Part.ATTACHMENT)");
+             out.fine("UNIT TEST 2: setDisposition(Part.ATTACHMENT)");
              bp.setDisposition(Part.ATTACHMENT);        // API TEST
 
              if( Part.ATTACHMENT.equals(bp.getDisposition()) )
-                 out.println("UNIT TEST 2:  passed.\n");
+                 out.fine("UNIT TEST 2:  passed.\n");
              else {
-                   out.println("UNIT TEST 2:  FAILED.\n");
+                   out.fine("UNIT TEST 2:  FAILED.\n");
                    errors++;
              }
           // END UNIT TEST 2:
           // BEGIN UNIT TEST 3:
-             out.println("UNIT TEST 3: setDisposition(null)");
+             out.fine("UNIT TEST 3: setDisposition(null)");
              bp.setDisposition(null);        // API TEST
 
              if( bp.getDisposition() == null )
-                 out.println("UNIT TEST 3:  passed.\n");
+                 out.fine("UNIT TEST 3:  passed.\n");
              else {
-                   out.println("UNIT TEST 3:  FAILED.\n");
+                   out.fine("UNIT TEST 3:  FAILED.\n");
                    errors++;
              }
           // END UNIT TEST 3:

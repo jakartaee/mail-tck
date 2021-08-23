@@ -53,55 +53,53 @@ public class addTransportListener_Test extends MailTest implements ConnectionLis
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
     // implement ConnectionListener interface
     public void opened(ConnectionEvent e)
     {
-	out.println(">>> ConnectionListener.opened()");
+	out.fine(">>> ConnectionListener.opened()");
     }
     public void disconnected(ConnectionEvent e) {}
 
     public void closed(ConnectionEvent e)
     {
-	out.println(">>> ConnectionListener.closed()");
+	out.fine(">>> ConnectionListener.closed()");
     }
 
     // implement TransportListener interface
     public void messageDelivered(TransportEvent e)
     {
-	out.print(">>> TransportListener.messageDelivered().");
-	out.println("Valid Addresses:");
+	out.fine(">>> TransportListener.messageDelivered().Valid Addresses:");
 	Address[] valid = e.getValidSentAddresses();
 	delivered = true;
 
 	if( valid != null ) {
 	    for(int i = 0; i < valid.length; i++)
-		out.println("    " + valid[i]);
+		out.fine("    " + valid[i]);
 	}
     }
     public void messagePartiallyDelivered(TransportEvent e) { partialldelivery = true; }
 
     public void messageNotDelivered(TransportEvent e)
     {
-	out.print(">>> TransportListener.messageNotDelivered().");
-	out.println("Invalid Addresses:");
+	out.fine(">>> TransportListener.messageNotDelivered().Invalid Addresses:");
 	Address[] invalid = e.getInvalidAddresses();
 	notdelivered = true;
 
 	if (invalid != null) {
 	    for (int i = 0; i < invalid.length; i++) 
-		out.println("    "+ invalid[i]);
+		out.fine("    "+ invalid[i]);
 	}
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class TransportEvent: addTransportListener(TransportListener)");
+        out.fine("\nTesting class TransportEvent: addTransportListener(TransportListener)");
 
         try {
            // Get a Session object
@@ -133,7 +131,7 @@ public class addTransportListener_Test extends MailTest implements ConnectionLis
               Transport transport = session.getTransport(transport_protocol);
 
            // BEGIN UNIT TEST:
-              out.println("UNIT TEST 1: addTransportListener(TransportListener)\n");
+              out.fine("UNIT TEST 1: addTransportListener(TransportListener)\n");
 
               transport.addConnectionListener(this);
               transport.addTransportListener(this);     // API TEST
@@ -204,10 +202,10 @@ public class addTransportListener_Test extends MailTest implements ConnectionLis
 	      try { Thread.sleep(100); } catch(InterruptedException e) { }
 
 	      if( (delivered || notdelivered ) || partialldelivery )
-		   out.println("UNIT TEST 1:  passed\n");
+		   out.fine("UNIT TEST 1:  passed\n");
 	      else {
-		    out.println("Failed to invoke TransportListener events!");
-		    out.println("UNIT TEST 1:  FAILED\n");
+		    out.fine("Failed to invoke TransportListener events!");
+		    out.fine("UNIT TEST 1:  FAILED\n");
 		    errors++;
 	      }
 	   // END UNIT TEST:
@@ -224,24 +222,24 @@ public class addTransportListener_Test extends MailTest implements ConnectionLis
 	    MessagingException _mex = mex;
 	    int n = 0;
 	    while (_mex != null) {
-		out.println("--- Chained exception "+ (++n) +"----");
+		out.fine("--- Chained exception "+ (++n) +"----");
 		_mex.printStackTrace();
 		if (_mex instanceof SendFailedException) {
 		    SendFailedException sfex = (SendFailedException)_mex;
 		    Address[] invalid = sfex.getInvalidAddresses();
 		    if (invalid != null) {
-			out.println("    ** Invalid Addresses");
+			out.fine("    ** Invalid Addresses");
 			if (invalid != null) {
 			    for (int i = 0; i < invalid.length; i++) 
-				out.println("         "+ invalid[i]);
+				out.fine("         "+ invalid[i]);
 			}
 		    }
 		    Address[] valid = sfex.getValidUnsentAddresses();
 		    if (valid != null) {
-			out.println("    ** Valid Addresses");
+			out.fine("    ** Valid Addresses");
 			if (valid != null) {
 			    for(int i = 0; i < valid.length; i++) 
-				out.println("         "+ valid[i]);
+				out.fine("         "+ valid[i]);
 			}
 		    }
 		}

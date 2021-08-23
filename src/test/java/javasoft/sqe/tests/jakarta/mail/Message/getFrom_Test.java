@@ -47,15 +47,15 @@ public class getFrom_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
+    
 
-        out.println("\nTesting class Message: getFrom()\n");
+        out.fine("\nTesting class Message: getFrom()\n");
 
         try {
           // Connect to host server
@@ -83,20 +83,20 @@ public class getFrom_Test extends MailTest {
                 MimeMessage msg =  (MimeMessage)folder.getMessage(i);
 
 	        if( msg == null ) {
-		    log.println("WARNING: FAILED TO GET MESSAGE NUMBER: "+ i);
+		    log.warning("WARNING: FAILED TO GET MESSAGE NUMBER: "+ i);
 		    continue;
 	        }
 	     // BEGIN UNIT TEST:
 		// Get whom the message is from
-	        out.println("UNIT TEST "+ i +":  getFrom()");
+	        out.fine("UNIT TEST "+ i +":  getFrom()");
 
 	        from = msg.getFrom();	// API TEST
 
 	        if( from != null ) {
-	            out.println("getFrom() :=> '"+ from[0] +"'");
-                    out.println("UNIT TEST "+ i +":  passed\n");
+	            out.fine("getFrom() :=> '"+ from[0] +"'");
+                    out.fine("UNIT TEST "+ i +":  passed\n");
 	        } else
-		       out.println("WARNING: Message "+ i +" has null From header");
+		       out.fine("WARNING: Message "+ i +" has null From header");
 	     // END UNIT TEST:
 	     }
 	     folder.close(false);

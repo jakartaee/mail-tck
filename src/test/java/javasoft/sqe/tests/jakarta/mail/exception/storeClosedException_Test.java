@@ -40,14 +40,14 @@ public class storeClosedException_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
-        out.println("\nTesting class StoreClosedException: StoreClosedException()\n");
+	
+        out.fine("\nTesting class StoreClosedException: StoreClosedException()\n");
 
         try {
            // Connect to host server
@@ -67,16 +67,16 @@ public class storeClosedException_Test extends MailTest {
 	      Thread.sleep(5000);
 
            // BEGIN UNIT TEST 1:
-	      out.println("UNIT TEST 1: StoreClosedException(Store | String)");
+	      out.fine("UNIT TEST 1: StoreClosedException(Store | String)");
 
               root.getFolder(mailbox);	    // API TEST
 
-              out.println("UNIT TEST 1: FAILED.\n");
+              out.fine("UNIT TEST 1: FAILED.\n");
            // END UNIT TEST 1:
 
 	      status = Status.failed(" Failed to catch StoreClosedException ");
         } catch ( StoreClosedException sce ) {
-		out.println("UNIT TEST 1: passed.\n");
+		out.fine("UNIT TEST 1: passed.\n");
 		try {
 		      folder.close(false);
 		      ExceptionTest(sce);

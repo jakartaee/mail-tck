@@ -42,15 +42,15 @@ public class getUID_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
+    
 
-        out.println("\nTesting interface UIDFolder: getUID()\n");
+        out.fine("\nTesting interface UIDFolder: getUID()\n");
 
         try {
           // Connect to host server
@@ -95,7 +95,7 @@ public class getUID_Test extends MailTest {
           // BEGIN UNIT TEST 1:
 	     // get UIDNEXT value
 
-	     out.println("UNIT TEST 1: getUID(), getMessageByUID()");
+	     out.fine("UNIT TEST 1: getUID(), getMessageByUID()");
 
 	     testfolder.open(Folder.READ_WRITE);
 	     Message[] umsg = testfolder.getMessages();
@@ -109,9 +109,9 @@ public class getUID_Test extends MailTest {
 		 }
 	     }
 	     if (success)
-		  out.println("UNIT TEST 1:  passed\n");
+		  out.fine("UNIT TEST 1:  passed\n");
 	     else {
-		   out.println("UNIT TEST 1:  FAILED\n");
+		   out.fine("UNIT TEST 1:  FAILED\n");
 		   errors++;
 	     }
 

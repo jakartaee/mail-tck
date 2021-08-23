@@ -42,15 +42,15 @@ public class getContentID_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class MimeBodyPart: getContentID()\n");
+        out.fine("\nTesting class MimeBodyPart: getContentID()\n");
 
         try {
           // Connect to host server
@@ -77,11 +77,11 @@ public class getContentID_Test extends MailTest {
                 MimeMessage msg = (MimeMessage)folder.getMessage(i);
 
 	        if ( msg == null ) {
-		    log.println("WARNING: FAILED TO GET MESSAGE NUMBER: "+ i);
+		    log.warning("WARNING: FAILED TO GET MESSAGE NUMBER: "+ i);
 		    continue;
 	        }
 	     // BEGIN UNIT TEST:
-	        out.println("UNIT TEST "+ i +":  getContentID()");
+	        out.fine("UNIT TEST "+ i +":  getContentID()");
 
 		// Get the "type" of content
 	        Object content = msg.getContent();
@@ -95,10 +95,10 @@ public class getContentID_Test extends MailTest {
 			  String cid = ((MimeBodyPart)bp).getContentID();	// API TEST
 
 			  if ( cid != null ) {
-			       out.println("ContentID of BodyPart is "+ cid);
-			       out.println("UNIT TEST "+ i +":  passed\n");
+			       out.fine("ContentID of BodyPart is "+ cid);
+			       out.fine("UNIT TEST "+ i +":  passed\n");
 			  } else {
-				  out.println("UNIT TEST "+ i +":  has Null contentID!\n");
+				  out.fine("UNIT TEST "+ i +":  has Null contentID!\n");
 			  }
 		     }
 		}

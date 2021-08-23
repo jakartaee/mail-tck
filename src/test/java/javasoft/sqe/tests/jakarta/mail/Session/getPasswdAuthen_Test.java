@@ -41,15 +41,15 @@ public class getPasswdAuthen_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
+    
 
-        out.println("\nTesting class Session: getPasswordAuthentication(URLName)\n");
+        out.fine("\nTesting class Session: getPasswordAuthentication(URLName)\n");
 
         try {
            // Get Session object
@@ -71,16 +71,16 @@ public class getPasswdAuthen_Test extends MailTest {
               session.setPasswordAuthentication(url, pwa);
 
            // BEGIN UNIT TEST 1:
-              out.println("UNIT TEST 1:  getPasswordAuthentication(URLName)");
+              out.fine("UNIT TEST 1:  getPasswordAuthentication(URLName)");
 
               PasswordAuthentication passauth = session.getPasswordAuthentication(url);  // API TEST
 
               if( passauth != null ) {
-		  out.println("User name is "+ passauth.getUserName());
-		  out.println("User password is "+ passauth.getPassword());
-                  out.println("UNIT TEST 1: passed");
+		  out.fine("User name is "+ passauth.getUserName());
+		  out.fine("User password is "+ passauth.getPassword());
+                  out.fine("UNIT TEST 1: passed");
 	      } else {
-		    out.println("UNIT TEST 1: FAILED.\n");
+		    out.fine("UNIT TEST 1: FAILED.\n");
 		    errors++;
 	      }
            // END UNIT TEST 1:

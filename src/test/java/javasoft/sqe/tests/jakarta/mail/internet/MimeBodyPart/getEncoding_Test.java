@@ -44,15 +44,15 @@ public class getEncoding_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class MimeBodyPart: getEncoding()\n");
+        out.fine("\nTesting class MimeBodyPart: getEncoding()\n");
 
         try {
           // Connect to host server
@@ -82,11 +82,11 @@ public class getEncoding_Test extends MailTest {
                 MimeMessage msg = (MimeMessage)folder.getMessage(i);
 
 	        if( msg == null ) {
-		    log.println("WARNING: FAILED TO GET MESSAGE NUMBER: "+ i);
+		    log.warning("WARNING: FAILED TO GET MESSAGE NUMBER: "+ i);
 		    continue;
 	        }
 	     // BEGIN UNIT TEST:
-	        out.println("UNIT TEST "+ i +":  getEncoding()");
+	        out.fine("UNIT TEST "+ i +":  getEncoding()");
 
 		// Get the "type" of content
 	        Object content = msg.getContent();
@@ -100,11 +100,11 @@ public class getEncoding_Test extends MailTest {
 			  String encode = ((MimeBodyPart)bp).getEncoding();	// API TEST
 
 			  if ( encode != null ) {
-			       out.println("Encode for bodypart is "+ encode);
-			       out.println("UNIT TEST "+ i +":  passed\n");
+			       out.fine("Encode for bodypart is "+ encode);
+			       out.fine("UNIT TEST "+ i +":  passed\n");
 			  } else {
-				out.println("Warning: content-encode field not defined!");
-				out.println("UNIT TEST "+ i +":  passed\n");
+				out.fine("Warning: content-encode field not defined!");
+				out.fine("UNIT TEST "+ i +":  passed\n");
 			  }
 		     }
 		}
@@ -114,7 +114,7 @@ public class getEncoding_Test extends MailTest {
 	    Session session = createSession();
 
 	 // BEGIN UNIT TEST:
-	    out.println("UNIT TEST "+ i +":  getEncoding()");
+	    out.fine("UNIT TEST "+ i +":  getEncoding()");
 	    i++;
 
 	    MimeMessage msg = new MimeMessage(session);
@@ -128,18 +128,18 @@ public class getEncoding_Test extends MailTest {
 
 	    if (bp.isMimeType("text/plain") &&
 		    bp.getEncoding().equals("7bit")) {
-                out.println("UNIT TEST passed.");
+                out.fine("UNIT TEST passed.");
             } else {
-		out.println("content type = " + bp.getContentType());
-		out.println("encoding = " + bp.getEncoding());
-                out.println("UNIT TEST FAILED");
+		out.fine("content type = " + bp.getContentType());
+		out.fine("encoding = " + bp.getEncoding());
+                out.fine("UNIT TEST FAILED");
 	        errors++;
             }
 
 	 // END UNIT TEST:
 
 	 // BEGIN UNIT TEST:
-	    out.println("UNIT TEST "+ i +":  EncodingAware.getEncoding()");
+	    out.fine("UNIT TEST "+ i +":  EncodingAware.getEncoding()");
 	    i++;
 
 	    msg = new MimeMessage(session);
@@ -153,11 +153,11 @@ public class getEncoding_Test extends MailTest {
 
 	    if (bp.isMimeType("text/plain") &&
 		    bp.getEncoding().equals("base64")) {
-                out.println("UNIT TEST passed.");
+                out.fine("UNIT TEST passed.");
             } else {
-		out.println("content type = " + bp.getContentType());
-		out.println("encoding = " + bp.getEncoding());
-                out.println("UNIT TEST FAILED");
+		out.fine("content type = " + bp.getContentType());
+		out.fine("encoding = " + bp.getEncoding());
+                out.fine("UNIT TEST FAILED");
 	        errors++;
             }
 

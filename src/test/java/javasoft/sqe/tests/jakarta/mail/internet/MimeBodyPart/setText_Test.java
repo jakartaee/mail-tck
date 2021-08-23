@@ -54,15 +54,15 @@ public class setText_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class MimeBodyPart: setText()\n");
+        out.fine("\nTesting class MimeBodyPart: setText()\n");
 
         try {
           // Create a MimeBodyPart object
@@ -73,27 +73,27 @@ public class setText_Test extends MailTest {
 
 	  // BEGIN UNIT TEST:
              for (int i = 0; i < setc.length; i++) {
-                  out.println("UNIT TEST " + i + ": setText(" + setc[i] + ")");
+                  out.fine("UNIT TEST " + i + ": setText(" + setc[i] + ")");
 		  bp.setText(setc[i]);			// API TEST
 
-                  out.println("UNIT TEST " + i + ":  passed.\n");
+                  out.fine("UNIT TEST " + i + ":  passed.\n");
              }
 
              for (int i = 0; i < setc.length; i++) {
-                  out.println("UNIT TEST " + i + ": setText(" 
+                  out.fine("UNIT TEST " + i + ": setText(" 
                       + setc[i] + "," + chars[i] + ")");
 		  bp.setText(setc[i], chars[i]);	// API TEST
 
-                  out.println("UNIT TEST "+i+":  passed.\n");
+                  out.fine("UNIT TEST "+i+":  passed.\n");
              }
 
              for (int i = 0; i < setc.length; i++) {
-                  out.println("UNIT TEST "+i+": setText(" + setc[i] + "," + 
+                  out.fine("UNIT TEST "+i+": setText(" + setc[i] + "," + 
                       chars[i]+ "," + textMimeSubtypes[i] + ")");
 		  
                   bp.setText(setc[i], chars[i], textMimeSubtypes[i]);// API TEST
 
-                  out.println("UNIT TEST "+i+":  passed.\n");
+                  out.fine("UNIT TEST "+i+":  passed.\n");
              }
            // END UNIT TEST:
              

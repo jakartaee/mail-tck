@@ -41,14 +41,14 @@ public class getFile_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
-        out.println("\nTesting class URLName: getFile()\n");
+    
+        out.fine("\nTesting class URLName: getFile()\n");
 
         try {
 	   // Create a URLName object
@@ -58,14 +58,14 @@ public class getFile_Test extends MailTest {
                   return Status.failed("Failed to create a URLName object!");
 
            // BEGIN UNIT TEST 1:
-              out.println("UNIT TEST 1:  getFile()");
+              out.fine("UNIT TEST 1:  getFile()");
               String filename = urlname.getFile(); 	// API TEST
 
               if( filename != null ) {
-		  out.println("File name is "+ filename);
-                  out.println("UNIT TEST 1: passed");
+		  out.fine("File name is "+ filename);
+                  out.fine("UNIT TEST 1: passed");
 	      } else {
-		    out.println("UNIT TEST 1: FAILED.\n");
+		    out.fine("UNIT TEST 1: FAILED.\n");
 		    errors++;
 	      }
            // END UNIT TEST 1:

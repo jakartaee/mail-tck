@@ -41,15 +41,15 @@ public class getClassName_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
+    
 
-	out.println("\nTesting class Provider: getClassName()\n");
+	out.fine("\nTesting class Provider: getClassName()\n");
 
         try {
 	   // Get Session object
@@ -60,15 +60,15 @@ public class getClassName_Test extends MailTest {
                   return Status.failed("Failed to get Provider object!");
               }
            // BEGIN UNIT TEST 1:
-              out.println("UNIT TEST 1: getClassName()");
+              out.fine("UNIT TEST 1: getClassName()");
 
 	      String className = prov.getClassName();	// API TEST
 
               if( className != null ) {
-		  out.println("The class that implements "+ protocol +" is "+ className);
-                  out.println("UNIT TEST 1:  passed\n");
+		  out.fine("The class that implements "+ protocol +" is "+ className);
+                  out.fine("UNIT TEST 1:  passed\n");
               } else {
-                      out.println("UNIT TEST 2:  FAILED\n");
+                      out.fine("UNIT TEST 2:  FAILED\n");
                       errors++;
               }
            // END UNIT TEST 1:

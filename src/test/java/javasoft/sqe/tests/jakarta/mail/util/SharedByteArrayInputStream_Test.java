@@ -41,54 +41,54 @@ public class SharedByteArrayInputStream_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
+    
         try {
    
 	  // BEGIN UNIT TEST 1:
-            out.println("UNIT TEST 1:  SharedByteArrayInputStream(byte[])");
+            out.fine("UNIT TEST 1:  SharedByteArrayInputStream(byte[])");
             byte[] barr = new byte[2]; barr[0]='a'; barr[1]='b';
             SharedByteArrayInputStream sbais = 
                 new SharedByteArrayInputStream(barr);
             
             if (sbais == null) {
-                out.println("UNIT TEST 1: FAILED\n");
+                out.fine("UNIT TEST 1: FAILED\n");
                 errors++;
-            } else out.println("UNIT TEST 1: passed\n");
+            } else out.fine("UNIT TEST 1: passed\n");
 	  // END UNIT TEST 1:
 
 	  // BEGIN UNIT TEST 2:
-            out.println("UNIT TEST 2:  " +
+            out.fine("UNIT TEST 2:  " +
                 "SharedByteArrayInputStream(byte[], int, int)");
             
             byte[] bytearr = {'T','e','s','t','S','t','r','i','n','g'};
             sbais = new SharedByteArrayInputStream(bytearr, 4, 6);
             
             if (sbais == null) {
-                out.println("UNIT TEST 2: FAILED\n");
+                out.fine("UNIT TEST 2: FAILED\n");
                 errors++;
-            } else out.println("UNIT TEST 2: passed\n");
+            } else out.fine("UNIT TEST 2: passed\n");
 	  // END UNIT TEST 2:
 
           // BEGIN UNIT TEST 3: sbais is "String"
-            out.println("UNIT TEST 3:  " +
+            out.fine("UNIT TEST 3:  " +
                 "SharedByteArrayInputStream.getPosition()");
             
             if (0 == sbais.getPosition()) 
-               out.println("UNIT TEST 3: passed\n");
+               out.fine("UNIT TEST 3: passed\n");
             else {
                errors++; 
-               out.println("UNIT TEST 3: failed\n");
+               out.fine("UNIT TEST 3: failed\n");
             }
 	  // END UNIT TEST 3:
 
           // BEGIN UNIT TEST 4: sbais is "String"
-            out.println("UNIT TEST 4:  " +
+            out.fine("UNIT TEST 4:  " +
                 "SharedByteArrayInputStream.newStream(long, long) ");
             
             InputStream is = sbais.newStream(1, 5);
@@ -97,10 +97,10 @@ public class SharedByteArrayInputStream_Test extends MailTest {
             String newbarrstr = new String(newbarr);
 
             if ("trin".equals(newbarrstr)) 
-                out.println("UNIT TEST 4: passed\n");
+                out.fine("UNIT TEST 4: passed\n");
 	    else { 
                 errors++; 
-                out.println("UNIT TEST 4: FAILED\n");
+                out.fine("UNIT TEST 4: FAILED\n");
             }
             if (is != null) 
                 is.close();

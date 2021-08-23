@@ -50,15 +50,15 @@ public class addHeader_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
+    
 
-        out.println("\nTesting class Message: addHeader(String, String)\n");
+        out.fine("\nTesting class Message: addHeader(String, String)\n");
 
         try {
           // Create a MimeMessage object
@@ -66,36 +66,36 @@ public class addHeader_Test extends MailTest {
              MimeMessage msg = new MimeMessage(session);
 
              if( msg == null ) {
-                 log.println("WARNING: FAILED TO CREATE MESSAGE OBJECT");
+                 log.warning("WARNING: FAILED TO CREATE MESSAGE OBJECT");
                  return Status.failed("Failed to create Message object");
              }
 	  // BEGIN UNIT TEST:
 	     // add message header(s)
-	     out.println("UNIT TEST 1:  addHeader(String, String)");
+	     out.fine("UNIT TEST 1:  addHeader(String, String)");
 
              msg.addHeader(name1, value1);		// API TEST
 	     header = msg.getHeader(name1);
 
 	     if( header != null )
-                 out.println("addHeader(..) :=> '" + header[0] + "'");
+                 out.fine("addHeader(..) :=> '" + header[0] + "'");
 	     else {
-		   out.println("addHeader(..) :=> 'empty field'");
+		   out.fine("addHeader(..) :=> 'empty field'");
 		   thistest++;
 	     }
              msg.addHeader(name2, value2);		// API TEST
              header = msg.getHeader(name2);
 
              if( header != null )
-                 out.println("addHeader(..) :=> '" + header[0] + "'");
+                 out.fine("addHeader(..) :=> '" + header[0] + "'");
              else {
-                   out.println("addHeader(..) :=> 'empty field'");
+                   out.fine("addHeader(..) :=> 'empty field'");
 		   thistest++;
 	     }
 
 	     if( thistest == 0 )
-		 out.println("UNIT TEST 1:  passed\n");
+		 out.fine("UNIT TEST 1:  passed\n");
 	     else
-		 out.println("UNIT TEST 1:  FAILED\n");
+		 out.fine("UNIT TEST 1:  FAILED\n");
 
 	     errors += thistest;
 	  // END UNIT TEST:

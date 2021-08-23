@@ -38,16 +38,16 @@ public class folderNotFoundExp_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 	mailbox="xyzfolder";
 
-        out.println("\nTesting class FolderNotFoundException: FolderNotFoundException()\n");
+        out.fine("\nTesting class FolderNotFoundException: FolderNotFoundException()\n");
 
         try {
            // Connect to host server
@@ -60,13 +60,13 @@ public class folderNotFoundExp_Test extends MailTest {
                   return Status.failed("Invalid folder object!");
               }
            // BEGIN UNIT TEST 1:
-	      out.println("UNIT TEST 1: FolderNotFoundException(String, Folder)");
+	      out.fine("UNIT TEST 1: FolderNotFoundException(String, Folder)");
 	      folder.open(Folder.READ_ONLY);	    // API TEST
            // END UNIT TEST 1:
 
 	      status = Status.failed(" Failed to catch FolderNotFoundException ");
         } catch ( FolderNotFoundException e ) {
-		out.println("UNIT TEST 1: passed.\n");
+		out.fine("UNIT TEST 1: passed.\n");
 		ExceptionTest(e);
 	} catch ( MessagingException me ) {
                 handlException(me);

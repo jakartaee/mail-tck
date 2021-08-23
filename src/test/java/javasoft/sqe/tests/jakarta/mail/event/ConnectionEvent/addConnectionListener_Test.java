@@ -47,33 +47,33 @@ public class addConnectionListener_Test extends MailTest implements ConnectionLi
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
     public void opened(ConnectionEvent e)
     {
-	out.println("\nFolder/Store/Transport opened successfully!");
+	out.fine("\nFolder/Store/Transport opened successfully!");
 	opened = true;
     }
 
     public void closed(ConnectionEvent e)
     {
-        out.println("\nFolder/Store/Transport closed successfully!");
+        out.fine("\nFolder/Store/Transport closed successfully!");
         closed = true;
     }
 
     public void disconnected(ConnectionEvent e)
     {
-        out.println("\nStore/Transport disconnected successfully!");
+        out.fine("\nStore/Transport disconnected successfully!");
         disconnected = true;
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class ConnectionEvent: addConnectionListener(ConnectionListener)");
+        out.fine("\nTesting class ConnectionEvent: addConnectionListener(ConnectionListener)");
 
         try {
           // Connect to host server
@@ -87,24 +87,24 @@ public class addConnectionListener_Test extends MailTest implements ConnectionLi
                   return Status.failed("Invalid folder object!");
              }
           // BEGIN UNIT TEST:
-	     out.println("UNIT TEST 1: addConnectionListener(ConnectionListener)\n");
+	     out.fine("UNIT TEST 1: addConnectionListener(ConnectionListener)\n");
 	     folder.addConnectionListener(this);
 
 	     if( folder.exists() ) {
-		 out.println("Deleting existing folder: " + folder);
+		 out.fine("Deleting existing folder: " + folder);
 		 folder.delete(false);
 	     }
 
 	     return_code = folder.create(Folder.HOLDS_MESSAGES);	// API TEST
 	     if( return_code ) {
-		 out.println("Open folder: " + folder);
+		 out.fine("Open folder: " + folder);
 		 folder.open(Folder.READ_ONLY);
-		 out.println("Close folder: " + folder);
+		 out.fine("Close folder: " + folder);
 		 folder.close(false);
-		 out.println("Delete folder: " + folder);
+		 out.fine("Delete folder: " + folder);
 		 folder.delete(false);
 	     } else
-		 out.println("Failed to create folder: " + folder);
+		 out.fine("Failed to create folder: " + folder);
 
 	     // added so that notification has time to update
 	     for (int tries = 0; tries < 10; tries++) {
@@ -114,15 +114,15 @@ public class addConnectionListener_Test extends MailTest implements ConnectionLi
 	     }
 
 	     if( opened && closed )
-		 out.println("UNIT TEST 1:  passed\n");
+		 out.fine("UNIT TEST 1:  passed\n");
 	     else {
 		   if (!debug) {
-		       out.println("Retry with debugging");
+		       out.fine("Retry with debugging");
 		       debug = true;
-		       return run(log, out);
+		       return run();
 		   } else {
-		   out.println("Failed to invoke ConnectionListener events!");
-		   out.println("UNIT TEST 1:  FAILED, opened " + opened +
+		   out.fine("Failed to invoke ConnectionListener events!");
+		   out.fine("UNIT TEST 1:  FAILED, opened " + opened +
 				", closed " + closed + "\n");
 		   errors++;
 		   }

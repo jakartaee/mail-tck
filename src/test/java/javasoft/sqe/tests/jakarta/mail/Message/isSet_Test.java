@@ -43,15 +43,15 @@ public class isSet_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
+    
 
-        out.println("\nTesting class Message: isSet(Flags)\n");
+        out.fine("\nTesting class Message: isSet(Flags)\n");
 
         try {
           // Connect to host server
@@ -79,22 +79,22 @@ public class isSet_Test extends MailTest {
                 MimeMessage msg = (MimeMessage)folder.getMessage(i);
 
 	        if( msg == null ) {
-		    log.println("WARNING: FAILED TO GET MESSAGE NUMBER: "+ i);
+		    log.warning("WARNING: FAILED TO GET MESSAGE NUMBER: "+ i);
 		    continue;
 	        }
 	     // BEGIN UNIT TEST:
 		// Returns the flags associated with this message
-	        out.println("UNIT TEST "+ i +":  isSet(Flags)");
+	        out.fine("UNIT TEST "+ i +":  isSet(Flags)");
 
 	        Flags msgflag = msg.getFlags();
 	        iset1 = msg.isSet(Flags.Flag.SEEN);		// API TEST
 		iset2 = msg.isSet(Flags.Flag.ANSWERED);		// API TEST
 
 	        if( iset1 && iset2 )
-                    out.println("UNIT TEST "+ i +":  passed\n");
+                    out.fine("UNIT TEST "+ i +":  passed\n");
 	        else {
-		      out.println("Caution: The flags for message object is not set!");
-		      out.println("UNIT TEST "+ i +":  passed\n");
+		      out.fine("Caution: The flags for message object is not set!");
+		      out.fine("UNIT TEST "+ i +":  passed\n");
 	        }
 	     // END UNIT TEST:
 	     }

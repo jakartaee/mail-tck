@@ -42,15 +42,15 @@ public class setSubject_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
+    
 
-        out.println("\nTesting class Message: setSubject(String)\n");
+        out.fine("\nTesting class Message: setSubject(String)\n");
 
         try {
           // Create a MimeMessage object
@@ -58,7 +58,7 @@ public class setSubject_Test extends MailTest {
              MimeMessage msg = new MimeMessage(session);
 
              if( msg == null ) {
-                 log.println("WARNING: FAILED TO CREATE MESSAGE OBJECT");
+                 log.warning("WARNING: FAILED TO CREATE MESSAGE OBJECT");
                  return Status.failed("Failed to create Message object");
              }
 	  // set current subject
@@ -66,31 +66,31 @@ public class setSubject_Test extends MailTest {
 
 	  // BEGIN UNIT TEST:
              // set subject for this message
-	     out.println("UNIT TEST 1:  setSubject("+subject+")");
+	     out.fine("UNIT TEST 1:  setSubject("+subject+")");
 
 	     msg.setSubject(subject);	// API TEST
 	     String newSubject = msg.getSubject();
 
 	     if( subject.equals(newSubject) ) {
-	         out.println("setSubject("+ newSubject +")");
-                 out.println("UNIT TEST 1:  passed\n");
+	         out.fine("setSubject("+ newSubject +")");
+                 out.fine("UNIT TEST 1:  passed\n");
 	     } else {
-		     out.println("setSubject("+ subject +")");
-		     out.println("UNIT TEST 1:  FAILED\n");
+		     out.fine("setSubject("+ subject +")");
+		     out.fine("UNIT TEST 1:  FAILED\n");
 	             errors++;
 	     }
 	     subject = "";
-             out.println("UNIT TEST 2:  setSubject("+subject+")");
+             out.fine("UNIT TEST 2:  setSubject("+subject+")");
 
              msg.setSubject(subject);   // API TEST
              newSubject = msg.getSubject();
 
              if( subject.equals(newSubject) ) {
-                 out.println("setSubject("+ newSubject +")");
-                 out.println("UNIT TEST 2:  passed\n");
+                 out.fine("setSubject("+ newSubject +")");
+                 out.fine("UNIT TEST 2:  passed\n");
              } else {
-                     out.println("setSubject("+ subject +")");
-                     out.println("UNIT TEST 2:  FAILED\n");
+                     out.fine("setSubject("+ subject +")");
+                     out.fine("UNIT TEST 2:  FAILED\n");
                      errors++;
              }
 	  // END UNIT TEST:

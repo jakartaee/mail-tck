@@ -49,15 +49,15 @@ public class removeHeader_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class MimeBodyPart: removeHeader(String)\n");
+        out.fine("\nTesting class MimeBodyPart: removeHeader(String)\n");
 
         try {
 	   // Create MimeBodyPart object
@@ -67,28 +67,28 @@ public class removeHeader_Test extends MailTest {
 		  return Status.failed("Failed to create a MimeBodyPart object");
 
 	   // BEGIN UNIT TEST 1:
-	      out.println("UNIT TEST 1: removeHeader("+name1+")");
+	      out.fine("UNIT TEST 1: removeHeader("+name1+")");
 
 	      mbp.addHeader(name1, value1);
 	      mbp.removeHeader(name1);		// API TEST
 
-	      out.println("UNIT TEST 1: passed\n");
+	      out.fine("UNIT TEST 1: passed\n");
 	   // END UNIT TEST 1:
            // BEGIN UNIT TEST 2:
-              out.println("UNIT TEST 2: removeHeader("+name2+")");
+              out.fine("UNIT TEST 2: removeHeader("+name2+")");
 
               mbp.addHeader(name2, value2);
 	      mbp.removeHeader(name2);		// API TEST
 
-              out.println("UNIT TEST 2: passed\n");
+              out.fine("UNIT TEST 2: passed\n");
            // END UNIT TEST 2:
            // BEGIN UNIT TEST 3:
-              out.println("UNIT TEST 3: removeHeader("+name3+")");
+              out.fine("UNIT TEST 3: removeHeader("+name3+")");
 
               mbp.addHeader(name3, value3);
 	      mbp.removeHeader(name3);		// API TEST
 
-              out.println("UNIT TEST 3: passed\n");
+              out.fine("UNIT TEST 3: passed\n");
            // END UNIT TEST 3:
 
               checkStatus();

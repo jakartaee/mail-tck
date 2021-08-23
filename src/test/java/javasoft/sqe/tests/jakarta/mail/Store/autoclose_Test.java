@@ -41,25 +41,25 @@ public class autoclose_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
+    
 
-        out.println("\nTesting class Store: auto close()\n");
+        out.fine("\nTesting class Store: auto close()\n");
 
      // BEGIN UNIT TEST 1:
-	out.println("UNIT TEST 1: auto close()");
+	out.fine("UNIT TEST 1: auto close()");
 
      // Connect to host server
 	Store store = null;
         try (Store istore = connect2host(protocol, host, user, password)) {
 	    if (!istore.isConnected()) {
 		errors++;
-		out.println("UNIT TEST 1:  FAILED\n");
+		out.fine("UNIT TEST 1:  FAILED\n");
 	    }
 	    store = istore;
 
@@ -69,10 +69,10 @@ public class autoclose_Test extends MailTest {
 
 	if (errors == 0 && store != null) {
 	    if (!store.isConnected()) {
-		out.println("UNIT TEST 1:  passed\n");
+		out.fine("UNIT TEST 1:  passed\n");
 	    } else {
 		errors++;
-		out.println("UNIT TEST 1:  FAILED\n");
+		out.fine("UNIT TEST 1:  FAILED\n");
 	    }
 	}
 

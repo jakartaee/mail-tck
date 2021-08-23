@@ -42,15 +42,15 @@ public class parse_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
+    
 
-        out.println("\nTesting class NewsAddress: parse(String)\n");
+        out.fine("\nTesting class NewsAddress: parse(String)\n");
 
         try {
 	   // Construct a NewsAddress object
@@ -60,21 +60,21 @@ public class parse_Test extends MailTest {
 		  return Status.failed("Failed to create newsgroup object!");
 	      }
 	   // BEGIN UNIT TEST 1:
-              out.println("UNIT TEST 1:  parse("+pattern+")");
+              out.fine("UNIT TEST 1:  parse("+pattern+")");
 
 	      NewsAddress[] nalist = na.parse(pattern); 	// API TEST
 	      boolean ngFound = false;
 
 	      for( int k = 0; k < nalist.length; k++ ) {
                    if( nalist[k] != null ) {
-		       out.println("Newsgroup name is "+ nalist[k].getNewsgroup());
+		       out.fine("Newsgroup name is "+ nalist[k].getNewsgroup());
 		       ngFound = true;
 		   }
 	      }
 	      if( ngFound )
-                  out.println("UNIT TEST 1: passed");
+                  out.fine("UNIT TEST 1: passed");
               else {
-                    out.println("UNIT TEST 1: FAILED");
+                    out.fine("UNIT TEST 1: FAILED");
                     errors++;
               }
            // END UNIT TEST 1:

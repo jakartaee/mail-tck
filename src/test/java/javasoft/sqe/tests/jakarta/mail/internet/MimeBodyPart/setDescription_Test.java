@@ -49,15 +49,15 @@ public class setDescription_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run( PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class MimeBodyPart: setDescription()\n");
+        out.fine("\nTesting class MimeBodyPart: setDescription()");
 
         try {
           // Create a MimeBodyPart object
@@ -70,15 +70,15 @@ public class setDescription_Test extends MailTest {
 
              for( int i = 0; i < setd.length; i++ )
              {
-                  out.println("UNIT TEST "+i+": setDescription("+setd[i]+","+chars[i]+")");
+                  out.fine("UNIT TEST "+i+": setDescription("+setd[i]+","+chars[i]+")");
 
 		  bp.setDescription(setd[i]);			// API TEST
 		  bp.setDescription(setd[i], chars[i]);		// API TEST
 
                   if( setd[i].equals(bp.getDescription()) )
-                      out.println("UNIT TEST "+i+":  passed.\n");
+                      out.fine("UNIT TEST "+i+":  passed.");
                   else {
-                        out.println("UNIT TEST "+i+":  FAILED.\n");
+                        out.fine("UNIT TEST "+i+":  FAILED.");
                         errors++;
                   }
              }

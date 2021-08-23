@@ -42,43 +42,43 @@ public class clear_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class Flags: clear{System,User}Flags)\n");
+        out.fine("\nTesting class Flags: clear{System,User}Flags)\n");
 
         try {
 	  // BEGIN UNIT TEST 1:
-	     out.println("\nUNIT TEST 1:  clearSystemFlags()");
+	     out.fine("\nUNIT TEST 1:  clearSystemFlags()");
 
 	     Flags flag1 = new Flags();
 	     flag1.add(Flags.Flag.SEEN);
 	     flag1.add("FLAG");
 	     flag1.clearSystemFlags();
 	     if (!flag1.contains(Flags.Flag.SEEN) && flag1.contains("FLAG")) {
-		out.println("UNIT TEST 1: passed\n");
+		out.fine("UNIT TEST 1: passed\n");
 	     } else {
-		out.println("UNIT TEST 1: FAILED\n");
+		out.fine("UNIT TEST 1: FAILED\n");
 		errors++;
 	     }
 	  // END UNIT TEST 1:
           // BEGIN UNIT TEST 2:
 
-             out.println("\nUNIT TEST 2: clearUserFlags()");
+             out.fine("\nUNIT TEST 2: clearUserFlags()");
 
 	     Flags flag2 = new Flags();
 	     flag2.add(Flags.Flag.SEEN);
 	     flag2.add("FLAG");
 	     flag2.clearUserFlags();
 	     if (flag2.contains(Flags.Flag.SEEN) && !flag2.contains("FLAG")) {
-		out.println("UNIT TEST 2: passed\n");
+		out.fine("UNIT TEST 2: passed\n");
 	     } else {
-		out.println("UNIT TEST 2: FAILED\n");
+		out.fine("UNIT TEST 2: FAILED\n");
 		errors++;
 	     }
           // END UNIT TEST 2:

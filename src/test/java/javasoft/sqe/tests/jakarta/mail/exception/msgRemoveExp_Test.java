@@ -42,15 +42,15 @@ public class msgRemoveExp_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class MessageRemovedException: MessageRemovedException(void|String)\n");
+        out.fine("\nTesting class MessageRemovedException: MessageRemovedException(void|String)\n");
 
         try {
             // Connect to host server
@@ -120,17 +120,17 @@ public class msgRemoveExp_Test extends MailTest {
 	    // BEGIN UNIT TEST:
                if ( testfolder.getMessageCount() == 0 )
 	       {
-		    out.println("UNIT TEST 1: MessageRemovedException()");
+		    out.fine("UNIT TEST 1: MessageRemovedException()");
 		    String badstr = msglist[1].getSubject();	    // API TEST
 
 		    if( badstr != null )
-                        out.println("UNIT TEST 1: FAILED\n");
+                        out.fine("UNIT TEST 1: FAILED\n");
                }
             // END UNIT TEST:
 	       status = Status.failed(" Failed to catch MessageRemovedException ");
 
         } catch ( MessageRemovedException me ) {
-		out.println("UNIT TEST 1: passed.\n");
+		out.fine("UNIT TEST 1: passed.\n");
 		try {
 		      testfolder.close(false);
 		      testfolder.delete(false);

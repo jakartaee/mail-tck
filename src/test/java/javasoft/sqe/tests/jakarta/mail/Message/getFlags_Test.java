@@ -42,15 +42,15 @@ public class getFlags_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
+    
 
-        out.println("\nTesting class Message: getFlags()\n");
+        out.fine("\nTesting class Message: getFlags()\n");
 
         try {
           // Connect to host server
@@ -77,26 +77,26 @@ public class getFlags_Test extends MailTest {
                 MimeMessage msg = (MimeMessage)folder.getMessage(i);
 
 	        if( msg == null ) {
-		    log.println("WARNING: FAILED TO GET MESSAGE NUMBER: "+ i);
+		    log.warning("WARNING: FAILED TO GET MESSAGE NUMBER: "+ i);
 		    continue;
 	        }
 	     // BEGIN UNIT TEST:
 		// Returns the flags associated with this message
-	        out.println("UNIT TEST "+ i +":  getFlags()");
+	        out.fine("UNIT TEST "+ i +":  getFlags()");
 
 	        Flags msgflag  = msg.getFlags();	// API TEST
 	        String[] flaglist = msgflag.getUserFlags();
 
 		for( int j = 0; j < flaglist.length; j++ ) {
 		     if( flaglist[j] != null )
-	        	 out.println("getFlags() :=> "+ flaglist[j]);
+	        	 out.fine("getFlags() :=> "+ flaglist[j]);
 		}
 
 	        if( msgflag != null )
-                    out.println("UNIT TEST "+ i +":  passed\n");
+                    out.fine("UNIT TEST "+ i +":  passed\n");
 	        else {	
-		      out.println("Caution: getFlags() returns null for this message object!");
-		      out.println("UNIT TEST "+ i +":  passed\n");
+		      out.fine("Caution: getFlags() returns null for this message object!");
+		      out.fine("UNIT TEST "+ i +":  passed\n");
 	        }
 	     // END UNIT TEST:
 	     }

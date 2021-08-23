@@ -20,9 +20,9 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.PrintStream;
-import java.io.PrintWriter;
 import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import com.sun.javatest.Status;
 
@@ -42,6 +42,8 @@ import jakarta.mail.Store;
 
 public class MailTest {
 
+    protected final Logger log = Logger.getLogger(getClass().getName());
+    protected final Logger out = log;
 	public String testname;		// testcase name
 	public String protocol;		// server protocol being used
 	public String transport_protocol;	// Transport protocol
@@ -69,8 +71,6 @@ public class MailTest {
 	public int errors = 0;		// number of unit test errors
 	public Status status;		// JavaTest harness pass/fail status
 	public Properties properties = new Properties();	// the global properties object
-	public PrintWriter out;		// output stream
-        public PrintWriter log;		// error output stream
 	public Session session;		// Session object variable
 	public boolean debug = false;	// debug mode
 
@@ -84,31 +84,6 @@ public class MailTest {
         } catch (IOException e) {
             throw new IllegalStateException("Cannot load ts.properties " + e);
         }
-	}
-
-	/**
-	 * Convert streams to Writers.
-	 *
-	 * @param	log	the log stream
-	 * @param	out	the output stream
-	 * @return	the Status of the test
-	 */
-	public Status run(PrintStream log, PrintStream out) {
-		return run(new PrintWriter(log, true),
-		    new PrintWriter(out, true));
-	}
-
-	/**
-	 * Default run() method ; sets i/o streams.
-	 *
-	 * @param	log	the log stream
-	 * @param	out	the output stream
-	 * @return	null
-	 */
-	public Status run(PrintWriter log, PrintWriter out) {
-		this.out = out;
-		this.log = log;
-		return null;
 	}
 
 	/**
@@ -183,9 +158,9 @@ public class MailTest {
     			"mail." + transport_protocol + ".socks.host", proxy);
 	    }
 	    if (debug) {
-    		System.out.println("Session properties:");
+    		out.fine("Session properties:");
     		for (String s : properties.stringPropertyNames())
-    		    System.out.println(s + "=" + properties.getProperty(s));
+    		    out.fine(s + "=" + properties.getProperty(s));
 	    }
 	}
 
@@ -233,15 +208,15 @@ public class MailTest {
 		session.setDebug(debug);
 
 		if (debug) {
-		    out.println("Password is:" + password);
-		    out.println("User is:" + user);
-		    out.println("Host:" + host);
-		    out.println("Port:" + portnum);
-		    out.println("Protocol:" + proto);
+		    out.fine("Password is:" + password);
+		    out.fine("User is:" + user);
+		    out.fine("Host:" + host);
+		    out.fine("Port:" + portnum);
+		    out.fine("Protocol:" + proto);
 		}
 
 		if (session == null) {
-		    out.println("Warning: Failed to create a Session object!");
+		    out.fine("Warning: Failed to create a Session object!");
 		    return null;
 		}
 	
@@ -249,7 +224,7 @@ public class MailTest {
 		store = session.getStore(proto);
 
                 if (store == null) {
-                    out.println("Warning: Failed to create a Store object!");
+                    out.fine("Warning: Failed to create a Store object!");
 		    return null;
 		}
              // Connect
@@ -262,7 +237,7 @@ public class MailTest {
                     store.connect();
 
 	    } catch (Exception e) {
-            	e.printStackTrace(out);
+	        log.log(Level.SEVERE, "", e);
             }
 	    return store;
 	}
@@ -281,7 +256,7 @@ public class MailTest {
 		else
 		    folder = store.getFolder(rootpath);
 	   } catch (Exception e) {
-		e.printStackTrace(out);
+	       log.log(Level.SEVERE, "", e);
 	   }
 	   return folder;
 	}
@@ -294,8 +269,8 @@ public class MailTest {
 	public Status checkMem() {
 	   Runtime rt = Runtime.getRuntime();
 
-           out.println("Free Memory = " + rt.freeMemory());
-           out.println("Test Aborted!");
+           out.fine("Free Memory = " + rt.freeMemory());
+           out.fine("Test Aborted!");
 
            if (errors == 0)
                status = Status.passed("OKAY");
@@ -319,7 +294,7 @@ public class MailTest {
 		ByteArrayOutputStream bos = new ByteArrayOutputStream();
 
 		if (bos == null) {
-                    out.println("Warning: Failed to create a ByteArrayOutputStream object!");
+                    out.fine("Warning: Failed to create a ByteArrayOutputStream object!");
                     return null;
                 }
 		msg.writeTo(bos);
@@ -328,7 +303,7 @@ public class MailTest {
 		bis = new ByteArrayInputStream(bos.toByteArray());
 
 		if (bis == null) {
-                    out.println("Warning: Failed to create a ByteArrayInputStream object!");
+                    out.fine("Warning: Failed to create a ByteArrayInputStream object!");
                     return null;
                 }
 	  } catch (Exception e) {
@@ -353,9 +328,9 @@ public class MailTest {
 	 * @param	e	the Exception
 	 */
 	public void handlException(Exception e) {
-           out.println("\nException caught!");
+           out.fine("\nException caught!");
            status = Status.failed("EXCEPTION");
-           e.printStackTrace(out);
+           log.log(Level.SEVERE, "", e);
 	}
 
         /**
@@ -364,8 +339,8 @@ public class MailTest {
 	 * @param	e	the Exception
          */
         public void ExceptionTest(Exception e) {
-           out.println("\nException caught!");
+           out.fine("\nException caught!");
            status = Status.passed("OKAY");
-           e.printStackTrace(out);
+           log.log(Level.SEVERE, "", e);
         }
 }

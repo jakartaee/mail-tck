@@ -48,15 +48,15 @@ public class getNonMatchingHeaders_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
+    
 
-        out.println("\nTesting class Message: getNonMatchingHeaders(String[])\n");
+        out.fine("\nTesting class Message: getNonMatchingHeaders(String[])\n");
 
         try {
           // Connect to host server
@@ -83,20 +83,20 @@ public class getNonMatchingHeaders_Test extends MailTest {
                 MimeMessage msg = (MimeMessage)folder.getMessage(i);
 
 	        if( msg == null ) {
-		    log.println("WARNING: FAILED TO GET MESSAGE NUMBER: "+ i);
+		    log.warning("WARNING: FAILED TO GET MESSAGE NUMBER: "+ i);
 		    continue;
 	        }
 	     // BEGIN UNIT TEST:
 		// Get non-matching headers for given message(s)
-	        out.println("UNIT TEST "+ i +":  getNonMatchingHeaders(String[])");
+	        out.fine("UNIT TEST "+ i +":  getNonMatchingHeaders(String[])");
 
 	        Enumeration nonMatcheaders = msg.getNonMatchingHeaders(headerlist);	// API TEST
 
 	        while( nonMatcheaders.hasMoreElements() ) {
 		       Header headers = (Header)nonMatcheaders.nextElement();
-		       out.println(headers.getName());
+		       out.fine(headers.getName());
 	        }
-                out.println("UNIT TEST "+ i +":  passed\n");
+                out.fine("UNIT TEST "+ i +":  passed\n");
 	     // END UNIT TEST:
 	     }
 	     folder.close(false);

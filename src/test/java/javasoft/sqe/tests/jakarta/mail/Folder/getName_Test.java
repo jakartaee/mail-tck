@@ -42,15 +42,15 @@ public class getName_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class Folder: getName()\n");
+        out.fine("\nTesting class Folder: getName()\n");
 
         try {
           // Connect to host server
@@ -66,7 +66,7 @@ public class getName_Test extends MailTest {
 	     folder.open(Folder.READ_ONLY);
 	     
 	  // BEGIN UNIT TEST 1:
-	     out.println("UNIT TEST 1: getName()");
+	     out.fine("UNIT TEST 1: getName()");
 
 	     String folderName1 = folder.getName();	// API TEST
 	     folder.close(false);
@@ -74,10 +74,10 @@ public class getName_Test extends MailTest {
 	     
 	     if(folderName1 != null && folderName2 != null ) {
 		if( folderName1.equals(folderName2) ) {
-		    out.println("Folder name is: "+ folderName1);
-		    out.println("UNIT TEST 1: passed\n");
+		    out.fine("Folder name is: "+ folderName1);
+		    out.fine("UNIT TEST 1: passed\n");
 		} else {
-			out.println("UNIT TEST 1: FAILED\n");
+			out.fine("UNIT TEST 1: FAILED\n");
 			errors++;
 		}
 	     }

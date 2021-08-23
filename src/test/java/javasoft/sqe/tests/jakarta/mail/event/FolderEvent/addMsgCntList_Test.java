@@ -48,27 +48,27 @@ public class addMsgCntList_Test extends MailTest implements MessageCountListener
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
     public void messagesAdded(MessageCountEvent e)
     {
-	out.println("\nMessages added successfully!");
+	out.fine("\nMessages added successfully!");
 	msgadded = true;
     }
 
     public void messagesRemoved(MessageCountEvent e)
     {
-        out.println("\nMessages removed successfully!");
+        out.fine("\nMessages removed successfully!");
         msgdeleted = true;
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class FolderEvent: addMessageCountListener(MessageCountListener)");
+        out.fine("\nTesting class FolderEvent: addMessageCountListener(MessageCountListener)");
 
         try {
           // Connect to host server
@@ -97,7 +97,7 @@ public class addMsgCntList_Test extends MailTest implements MessageCountListener
 	     testfolder.open(Folder.READ_WRITE);
 
 	  // BEGIN UNIT TEST:
-             out.println("UNIT TEST 1: addMessageCountListener(MessageCountListener)\n");
+             out.fine("UNIT TEST 1: addMessageCountListener(MessageCountListener)\n");
 
           // Add messageCountListener to listen for new messages
              testfolder.addMessageCountListener(this);	// API TEST
@@ -147,7 +147,7 @@ public class addMsgCntList_Test extends MailTest implements MessageCountListener
 	     // give event delivery thread time to run
 	     for (tries = 0; tries < TRIES; tries++) {
 		if (msgadded && msgdeleted) {
-		    out.println("UNIT TEST 1:  passed\n");
+		    out.fine("UNIT TEST 1:  passed\n");
 		    break;
 		}
 		try {
@@ -155,8 +155,8 @@ public class addMsgCntList_Test extends MailTest implements MessageCountListener
 		} catch (InterruptedException ex) { }
 	     }
 	     if (tries == TRIES) {
-		   out.println("Failed to invoke MessageCountListener events!");
-		   out.println("UNIT TEST 1:  FAILED\n");
+		   out.fine("Failed to invoke MessageCountListener events!");
+		   out.fine("UNIT TEST 1:  FAILED\n");
 		   errors++;
 	     }
 	  // END UNIT TEST:

@@ -43,15 +43,15 @@ public class setSentDate_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class MimeMessage: setSentDate(Date)\n");
+        out.fine("\nTesting class MimeMessage: setSentDate(Date)\n");
 
         try {
           // Connect to host server
@@ -76,17 +76,17 @@ public class setSentDate_Test extends MailTest {
              MimeMessage msg = new MimeMessage(session);
 
              if( msg == null ) {
-                 log.println("WARNING: FAILED TO CREATE MESSAGE OBJECT");
+                 log.warning("WARNING: FAILED TO CREATE MESSAGE OBJECT");
                  return Status.failed("Failed to create Message object");
              }
 
 	     MimeMessage dmsg = (MimeMessage)folder.getMessage(1);
 	     if( dmsg == null ) {
-                 log.println("WARNING: FAILED TO GET MESSAGE OBJECT");
+                 log.warning("WARNING: FAILED TO GET MESSAGE OBJECT");
                  return Status.failed("Failed to get Message object");
              }
           // BEGIN UNIT TEST:
-	     out.println("UNIT TEST 1:  setSentDate(Date)");
+	     out.fine("UNIT TEST 1:  setSentDate(Date)");
 
 	     Date current_date = dmsg.getSentDate();
 	     SentDateTerm daterm = new SentDateTerm(ComparisonTerm.EQ, current_date);
@@ -98,14 +98,14 @@ public class setSentDate_Test extends MailTest {
 	           Date new_date = msg.getSentDate();
 
 		   if( daterm.match(msg) ) {
-		       out.println("setSentDate("+ new_date +")");
-		       out.println("UNIT TEST 1:  passed\n");
+		       out.fine("setSentDate("+ new_date +")");
+		       out.fine("UNIT TEST 1:  passed\n");
 		   } else {
-			    out.println("WARNING: Message failed to set date!");
+			    out.fine("WARNING: Message failed to set date!");
 			    errors++;
 		   }
 	     } else
-		   out.println("WARNING: Message has null date header");
+		   out.fine("WARNING: Message has null date header");
 
 	  // END UNIT TEST:
 	     folder.close(false);

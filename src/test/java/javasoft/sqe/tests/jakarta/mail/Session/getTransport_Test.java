@@ -57,15 +57,15 @@ public class getTransport_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
+    
 
-        out.println("\nTesting class Session: getTransport()\n");
+        out.fine("\nTesting class Session: getTransport()\n");
 
         try {
 	     // Create some properties object
@@ -81,18 +81,18 @@ public class getTransport_Test extends MailTest {
                  return Status.failed("Warning: failed to get Session object!\n");
              }
 	  // BEGIN UNIT TEST 1:
-	     out.println("UNIT TEST 1: getTransport()");
+	     out.fine("UNIT TEST 1: getTransport()");
              trans = session.getTransport();        // API TEST
 
              if( trans != null )
-                 out.println("UNIT TEST 1:  passed\n");
+                 out.fine("UNIT TEST 1:  passed\n");
              else {
-                   out.println("UNIT TEST 1:  FAILED\n");
+                   out.fine("UNIT TEST 1:  FAILED\n");
                    errors++;
              }
           // END UNIT TEST 1:
           // BEGIN UNIT TEST 2:
-	     out.println("UNIT TEST 2: getTransport("+ transport_protocol +")");
+	     out.fine("UNIT TEST 2: getTransport("+ transport_protocol +")");
              session = Session.getInstance(properties, null);
 
 	     if( session == null ) {
@@ -102,51 +102,51 @@ public class getTransport_Test extends MailTest {
              trans = session.getTransport(transport_protocol);        // API TEST
 
              if( trans != null )
-                 out.println("UNIT TEST 2:  passed\n");
+                 out.fine("UNIT TEST 2:  passed\n");
              else {
-                   out.println("UNIT TEST 2:  FAILED\n");
+                   out.fine("UNIT TEST 2:  FAILED\n");
                    errors++;
              }
           // END UNIT TEST 2:
           // BEGIN UNIT TEST 3:
-	     out.println("UNIT TEST 3: getTransport("+ transport_protocol +")");
+	     out.fine("UNIT TEST 3: getTransport("+ transport_protocol +")");
 
 	     // get InternetAddress and Transport objects
 	     InternetAddress addr = new InternetAddress(to);	// get address for 'to'
              trans = session.getTransport(addr);	// API TEST
 
              if( trans != null )
-                 out.println("UNIT TEST 3:  passed\n");
+                 out.fine("UNIT TEST 3:  passed\n");
              else {
-                   out.println("UNIT TEST 3:  FAILED\n");
+                   out.fine("UNIT TEST 3:  FAILED\n");
                    errors++;
              }
           // END UNIT TEST 3:
           // BEGIN UNIT TEST 4:
-             out.println("UNIT TEST 4: getTransport(Provider)");
+             out.fine("UNIT TEST 4: getTransport(Provider)");
 
              // get provider for user specified protocol
              Provider prov = session.getProvider(transport_protocol);
              trans = session.getTransport(prov);  // API TEST
 
              if( trans != null )
-                 out.println("UNIT TEST 4:  passed\n");
+                 out.fine("UNIT TEST 4:  passed\n");
              else {
-                   out.println("UNIT TEST 4:  FAILED\n");
+                   out.fine("UNIT TEST 4:  FAILED\n");
                    errors++;
              }
           // END UNIT TEST 4:
           // BEGIN UNIT TEST 5:
-             out.println("UNIT TEST 5: getTransport(URLName)");
+             out.fine("UNIT TEST 5: getTransport(URLName)");
 
              // create a URLName object
 	     URLName urlname = new URLName(transport_protocol,transport_host,0,mailbox,user,password);
              trans = session.getTransport(urlname);  // API TEST
 
              if( trans != null )
-                 out.println("UNIT TEST 5:  passed\n");
+                 out.fine("UNIT TEST 5:  passed\n");
              else {
-                   out.println("UNIT TEST 5:  FAILED\n");
+                   out.fine("UNIT TEST 5:  FAILED\n");
                    errors++;
              }
           // END UNIT TEST 5:

@@ -40,13 +40,13 @@ public class setFileNameEncoded_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
         try {
           // Create a MimeMessage object
@@ -58,23 +58,23 @@ public class setFileNameEncoded_Test extends MailTest {
 
 	     System.setProperty("mail.mime.charset", "utf-8");
              
-             out.println("\nTesting class MimeMessage: setFileName(String)\n");
+             out.fine("\nTesting class MimeMessage: setFileName(String)\n");
              
 	  // BEGIN UNIT TEST:
 	     // Set message filename
-	     out.println("UNIT TEST 1:  msg.setFileName(String)");
+	     out.fine("UNIT TEST 1:  msg.setFileName(String)");
 
  	     String fileName="\u00a1";
 	     msg.setFileName(fileName);	// API TEST
 	     msg.saveChanges();
-	     out.println("setFileName("+ fileName +")");
+	     out.fine("setFileName("+ fileName +")");
 
 	     String cd = msg.getHeader("Content-Disposition", null);
-	     out.println("Content-Disposition associated with this message: "+ cd);
+	     out.fine("Content-Disposition associated with this message: "+ cd);
              if (cd.indexOf("filename*=utf-8''%C2%A1") >= 0)
-                 out.println("UNIT TEST 1:  passed\n");
+                 out.fine("UNIT TEST 1:  passed\n");
              else {
-                   out.println("UNIT TEST 1:  FAILED\n");
+                   out.fine("UNIT TEST 1:  FAILED\n");
                    errors++;
              }
             // END UNIT TEST:

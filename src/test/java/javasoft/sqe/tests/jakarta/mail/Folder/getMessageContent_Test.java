@@ -39,20 +39,16 @@ import javasoft.sqe.tests.jakarta.mail.util.MailTest;
 
 public class getMessageContent_Test extends MailTest {
 
-    private static PrintWriter out;
-
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
-	this.out = out;
 
-        out.println("\nTesting class Folder: Message content\n");
+        out.fine("\nTesting class Folder: Message content\n");
 
         try {
           // Connect to host server
@@ -78,21 +74,21 @@ public class getMessageContent_Test extends MailTest {
 
 	     for( int i = 1; i <= msgcount; i++ )
 	     {
-	          out.println("UNIT TEST " + i + ": getMessage(" + i + ")");
+	          out.fine("UNIT TEST " + i + ": getMessage(" + i + ")");
 
 		  msg = folder.getMessage(i);		// API TEST
 		  try {
 		      level = 0;
 		      dumpPart(msg);
-		      out.println("UNIT TEST " + i + ": passed\n");
+		      out.fine("UNIT TEST " + i + ": passed\n");
 		  } catch (Exception ex) {
-		      out.println("EXCEPTION: " + ex);
-		      out.println("UNIT TEST " + i + ": FAILED\n");
+		      out.fine("EXCEPTION: " + ex);
+		      out.fine("UNIT TEST " + i + ": FAILED\n");
 		      errors++;
 		  }
 
              }
-             out.println("\n");
+             out.fine("\n");
 	  // END UNIT TEST:
 
 	     folder.close(false);
@@ -251,8 +247,7 @@ public class getMessageContent_Test extends MailTest {
      */
     private void pr(String s) {
 	if (debug) {
-	    out.print(indentStr.substring(0, level * 2));
-	    out.println(s);
+	    out.fine(indentStr.substring(0, level * 2) + s);
 	}
     }
 }

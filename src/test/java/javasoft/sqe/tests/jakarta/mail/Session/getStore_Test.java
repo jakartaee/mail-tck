@@ -55,21 +55,21 @@ public class getStore_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
+    
 
-        out.println("\nTesting class Session: getStore({void|String|URL})\n");
+        out.fine("\nTesting class Session: getStore({void|String|URL})\n");
 
         try {
 	  // BEGIN UNIT TEST 1:
 	     Session session = Session.getInstance(properties, null);
 
-             out.println("UNIT TEST 1: getStore()");
+             out.fine("UNIT TEST 1: getStore()");
 	     store = session.getStore();	// API TEST
 
              // Connect
@@ -85,15 +85,15 @@ public class getStore_Test extends MailTest {
 
              if( root != null ) {
                  folder = root.getFolder(mailbox);
-                 out.println("UNIT TEST 1:  passed\n");
+                 out.fine("UNIT TEST 1:  passed\n");
              } else {
-                     out.println("UNIT TEST 1:  FAILED\n");
+                     out.fine("UNIT TEST 1:  FAILED\n");
                      errors++;
              }
           // END UNIT TEST 1:
           // BEGIN UNIT TEST 2:
              session = Session.getInstance(properties, null);
-             out.println("UNIT TEST 2: getStore(Provider)");
+             out.fine("UNIT TEST 2: getStore(Provider)");
 
 	     Provider prov = session.getProvider(protocol);
              Store store = session.getStore(prov);        // API TEST
@@ -110,15 +110,15 @@ public class getStore_Test extends MailTest {
 	     root = getRootFolder(store);
              if( root != null ) {
                  folder = root.getFolder(mailbox);
-                 out.println("UNIT TEST 2:  passed\n");
+                 out.fine("UNIT TEST 2:  passed\n");
              } else {
-                     out.println("UNIT TEST 2:  FAILED\n");
+                     out.fine("UNIT TEST 2:  FAILED\n");
                      errors++;
              }
           // END UNIT TEST 2:
           // BEGIN UNIT TEST 3:
 	     session = Session.getInstance(properties, null);
-             out.println("UNIT TEST 3: getStore("+ protocol +")");
+             out.fine("UNIT TEST 3: getStore("+ protocol +")");
 	     
 	     store = session.getStore(protocol);        // API TEST
 
@@ -134,15 +134,15 @@ public class getStore_Test extends MailTest {
 	     root = getRootFolder(store);
              if( root != null ) {
                  folder = root.getFolder(mailbox);
-                 out.println("UNIT TEST 3:  passed\n");
+                 out.fine("UNIT TEST 3:  passed\n");
              } else {
-                     out.println("UNIT TEST 3:  FAILED\n");
+                     out.fine("UNIT TEST 3:  FAILED\n");
                      errors++;
              }
           // END UNIT TEST 3:
           // BEGIN UNIT TEST 4:
              session = Session.getInstance(properties, null);
-             out.println("UNIT TEST 4: getStore(URLName)");
+             out.fine("UNIT TEST 4: getStore(URLName)");
 
 	     URLName urlName = new URLName(protocol,host,portnum,mailbox,user,password);
              store = session.getStore(urlName);	// API TEST
@@ -159,9 +159,9 @@ public class getStore_Test extends MailTest {
 	     root = getRootFolder(store);
              if( root != null ) {
                  folder = root.getFolder(mailbox);
-                 out.println("UNIT TEST 4:  passed\n");
+                 out.fine("UNIT TEST 4:  passed\n");
              } else {
-                     out.println("UNIT TEST 4:  FAILED\n");
+                     out.fine("UNIT TEST 4:  FAILED\n");
                      errors++;
              }
           // END UNIT TEST 4:

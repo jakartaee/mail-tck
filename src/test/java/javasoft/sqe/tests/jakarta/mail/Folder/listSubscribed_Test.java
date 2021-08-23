@@ -64,15 +64,15 @@ public class listSubscribed_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class Folder: listSubscribed(String)\n");
+        out.fine("\nTesting class Folder: listSubscribed(String)\n");
 
         try {
           // Connect to host server
@@ -98,7 +98,7 @@ public class listSubscribed_Test extends MailTest {
 	     try {
 	          tst.setSubscribed(true);
 	     } catch (MethodNotSupportedException mex) {
-		     out.println("Folder doesn't support subscriptions");
+		     out.fine("Folder doesn't support subscriptions");
 		     checkStatus();
 		     return status;
 	             //return Status.failed("This store doesn't support subscription");
@@ -106,73 +106,73 @@ public class listSubscribed_Test extends MailTest {
 		     return Status.failed("MessagingException caught!");
 	     }
           // BEGIN UNIT TEST 1:
-             out.println("UNIT TEST 1: listSubscribed()");
+             out.fine("UNIT TEST 1: listSubscribed()");
 
              Folder[] slist1 = root.listSubscribed();       // API TEST
 
              if ( slist1.length > 0 ) {
                   for ( int i = 0; i < slist1.length; i++ ) {
 			if (slist1[i].getName().equals(pattern) ) {
-                            out.println(slist1[i].getName());
-                            out.println("UNIT TEST 1: passed\n");
+                            out.fine(slist1[i].getName());
+                            out.fine("UNIT TEST 1: passed\n");
 			}
 		  }
              } else {
-                     out.println("UNIT TEST 1: FAILED\n");
+                     out.fine("UNIT TEST 1: FAILED\n");
                      errors++;
              }
           // END UNIT TEST 1:
 	  // BEGIN UNIT TEST 2:
-	     out.println("UNIT TEST 2: listSubscribed("+pattern+")");
+	     out.fine("UNIT TEST 2: listSubscribed("+pattern+")");
 
 	     Folder[] slist2 = root.listSubscribed(pattern);	    // API TEST
 
 	     if ( slist2.length > 0 ) {
                   for ( int i = 0; i < slist2.length; i++ ) {
 			if (slist2[i].getName().equals(pattern)) {
-                            out.println(slist2[i].getName());
-			    out.println("UNIT TEST 2: passed\n");
+                            out.fine(slist2[i].getName());
+			    out.fine("UNIT TEST 2: passed\n");
 			    break;
 			}
 		  }
              } else {
-                     out.println("UNIT TEST 2: FAILED\n");
+                     out.fine("UNIT TEST 2: FAILED\n");
                      errors++;
              }
 	  // END UNIT TEST 2:
 	  // BEGIN UNIT TEST 3:
-	     out.println("UNIT TEST 3: listSubscribed("+pattern+"%)");
+	     out.fine("UNIT TEST 3: listSubscribed("+pattern+"%)");
 
 	     Folder[] slist3 = root.listSubscribed(pattern+"%");	// API TEST
 
              if ( slist3.length > 0 ) {
                   for ( int i = 0; i < slist3.length; i++ ) {
 			if (slist3[i].getName().equals(pattern)) {
-                            out.println(slist3[i].getName());
-                            out.println("UNIT TEST 3: passed\n");
+                            out.fine(slist3[i].getName());
+                            out.fine("UNIT TEST 3: passed\n");
 			    break;
 			}
 		  }
              } else {
-                   out.println("UNIT TEST 3: FAILED\n");
+                   out.fine("UNIT TEST 3: FAILED\n");
                    errors++;
              }
 	  // END UNIT TEST 3:
           // BEGIN UNIT TEST 4:
-             out.println("UNIT TEST 4: listSubscribed("+pattern+"*)");
+             out.fine("UNIT TEST 4: listSubscribed("+pattern+"*)");
 
              Folder[] slist4 = root.listSubscribed(pattern+"*");	  // API TEST
 
              if ( slist4.length > 0 ) {
                   for ( int i = 0; i < slist4.length; i++ ) {
 			if (slist4[i].getName().equals(pattern) ) {
-                           out.println(slist4[i].getName());
-                           out.println("UNIT TEST 4: passed\n");
+                           out.fine(slist4[i].getName());
+                           out.fine("UNIT TEST 4: passed\n");
 			   break;
 			}
 		  }
              } else {
-                     out.println("UNIT TEST 4: FAILED\n");
+                     out.fine("UNIT TEST 4: FAILED\n");
                      errors++;
              }
           // END UNIT TEST 4:

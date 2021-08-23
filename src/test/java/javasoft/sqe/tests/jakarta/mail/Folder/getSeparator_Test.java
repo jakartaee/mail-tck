@@ -44,15 +44,15 @@ public class getSeparator_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class Folder: getSeparator()\n");
+        out.fine("\nTesting class Folder: getSeparator()\n");
 
         try {
           // Connect to host server
@@ -67,35 +67,35 @@ public class getSeparator_Test extends MailTest {
        	     }
 	     folder.open(Folder.READ_ONLY);
 	  // BEGIN UNIT TEST 1:
-	     out.println("UNIT TEST 1: getSeparator()");
+	     out.fine("UNIT TEST 1: getSeparator()");
 
 	     char separator = folder.getSeparator();	// API TEST
-	     out.println("Delimiter character that separates this " +
+	     out.fine("Delimiter character that separates this " +
                      "Folder's pathname is " + separator);
 
 	     if (( separator == '/' ) || ( separator == '\\' ) || ( separator == '.' ))
-                   out.println("UNIT TEST 1: passed\n");
+                   out.fine("UNIT TEST 1: passed\n");
              else {
-                     out.println("UNIT TEST 1: FAILED\n");
+                     out.fine("UNIT TEST 1: FAILED\n");
                      errors++;
 	     }
 	  // END UNIT TEST 1:
              
           // BEGIN UNIT TEST 2:
-             out.println("UNIT TEST 2: IMAP specific test: getSeparator() " +
+             out.fine("UNIT TEST 2: IMAP specific test: getSeparator() " +
                          "on a closed folder");
              Folder childfolder = root.getFolder(mailbox);
              if (childfolder == null) 
                  return Status.failed("Invalid folder object!");
              if (childfolder.isOpen()) childfolder.close(false);
 	     separator = childfolder.getSeparator();	// API TEST
-	     out.println("Delimiter character that separates the Child " +
+	     out.fine("Delimiter character that separates the Child " +
                      "Folder's pathname is " + separator);
 
 	     if (( separator == '/' ) || ( separator == '\\' ) || ( separator == '.' ))
-                   out.println("UNIT TEST 2: passed\n");
+                   out.fine("UNIT TEST 2: passed\n");
              else { 
-                   out.println("UNIT TEST 2: FAILED\n");
+                   out.fine("UNIT TEST 2: FAILED\n");
                    errors++;
 	     }
           // END UNIT TEST 2:

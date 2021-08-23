@@ -46,21 +46,21 @@ public class addMsgChangeList_Test extends MailTest implements MessageChangedLis
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
     public void messageChanged(MessageChangedEvent e)
     {
-        out.println("\nNotification: Message changed!");
+        out.fine("\nNotification: Message changed!");
         msgchanged = true;
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class FolderEvent: addMessageChangedListener(MessageChangedEvent)\n");
+        out.fine("\nTesting class FolderEvent: addMessageChangedListener(MessageChangedEvent)\n");
 
         try {
           // Connect to host server
@@ -76,7 +76,7 @@ public class addMsgChangeList_Test extends MailTest implements MessageChangedLis
              folder.open(Folder.READ_WRITE);
 	  // BEGIN UNIT TEST:
 	  
-	     out.println("UNIT TEST:  addMessageChangedListener(this)\n");
+	     out.fine("UNIT TEST:  addMessageChangedListener(this)\n");
 	     folder.addMessageChangedListener(this);	// API TEST
 
 	     if( msgcount == -1 ) {
@@ -91,7 +91,7 @@ public class addMsgChangeList_Test extends MailTest implements MessageChangedLis
                 Message msg = folder.getMessage(i);
 
 	        if( msg == null ) {
-		    log.println("FAILED GET: "+ i +" MESSAGE");
+		    log.warning("FAILED GET: "+ i +" MESSAGE");
 		    continue;
 	        }
 	     // Set the flags for this message
@@ -104,9 +104,9 @@ public class addMsgChangeList_Test extends MailTest implements MessageChangedLis
 	     Thread.sleep(5);
 
 	     if( msgchanged )
-		 out.println("UNIT TEST:  passed\n");
+		 out.fine("UNIT TEST:  passed\n");
 	     else {
-		   out.println("UNIT TEST:  FAILED\n");
+		   out.fine("UNIT TEST:  FAILED\n");
 		   errors++;
 	     }
 	  // END UNIT TEST:

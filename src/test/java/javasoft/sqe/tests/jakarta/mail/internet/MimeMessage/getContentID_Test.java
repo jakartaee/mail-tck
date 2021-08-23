@@ -42,15 +42,15 @@ public class getContentID_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class MimeMessage: getContentID()\n");
+        out.fine("\nTesting class MimeMessage: getContentID()\n");
 
         try {
           // Connect to host server
@@ -77,20 +77,20 @@ public class getContentID_Test extends MailTest {
                 MimeMessage msg = (MimeMessage)folder.getMessage(i);
 
                 if( msg == null ) {
-                    log.println("Warning: Failed to get message number "+ i);
+                    log.warning("Warning: Failed to get message number "+ i);
                     continue;
                 }
              // BEGIN UNIT TEST:
-                out.println("UNIT TEST "+ i +": getContentID()");
+                out.fine("UNIT TEST "+ i +": getContentID()");
 
                 // get message's contentID
                 String contentid = msg.getContentID();   // API TEST
 
 		if( contentid != null ) {
-		    out.println("Message's contentID is "+ contentid);
-		    out.println("UNIT TEST "+ i +": passed");
+		    out.fine("Message's contentID is "+ contentid);
+		    out.fine("UNIT TEST "+ i +": passed");
 		} else {
-			out.println("UNIT TEST "+ i +": contentID is unavailable!");
+			out.fine("UNIT TEST "+ i +": contentID is unavailable!");
 		}
              // END UNIT TEST:
              }

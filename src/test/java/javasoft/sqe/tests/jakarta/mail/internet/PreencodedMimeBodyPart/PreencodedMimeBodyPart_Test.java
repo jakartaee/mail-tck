@@ -49,36 +49,36 @@ public class PreencodedMimeBodyPart_Test extends MailTest {
     
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
+    
 
-        out.println("\nTesting class PreencodedMimeBodyPart:" +
+        out.fine("\nTesting class PreencodedMimeBodyPart:" +
                 " PreencodedMimeBodyPart(String)\n");
 
         try {
-            out.println("UNIT TEST 1: Testing PreencodedMimeBodyPart("
+            out.fine("UNIT TEST 1: Testing PreencodedMimeBodyPart("
                     + sevenBit +")");
 
             PreencodedMimeBodyPart preencMbp = 
                 new PreencodedMimeBodyPart(sevenBit); // API TEST
 
            // BEGIN UNIT TEST 1:
-            out.println("UNIT TEST 1: Testing getEncoding()");
+            out.fine("UNIT TEST 1: Testing getEncoding()");
             String enc = preencMbp.getEncoding(); // API TEST
-            if (sevenBit.equals(enc)) out.println("UNIT TEST 1: Passed.\n"); 
+            if (sevenBit.equals(enc)) out.fine("UNIT TEST 1: Passed.\n"); 
             else {
-                out.println("UNIT TEST 1: FAILED.\n");
+                out.fine("UNIT TEST 1: FAILED.\n");
                 errors++;
             }
            // END UNIT TEST 1:
             
            // BEGIN UNIT TEST 2:            
-            out.println("UNIT TEST 2: Testing writeTo(OutputStream)");            
+            out.fine("UNIT TEST 2: Testing writeTo(OutputStream)");            
             String infoText = "This is informational text. ??-a_german_character";            
             byte[] initialbarrout = infoText.getBytes();                        
             
@@ -87,7 +87,7 @@ public class PreencodedMimeBodyPart_Test extends MailTest {
             OutputStream b64os = MimeUtility.encode(baos0, baseSixtyFour,"");            
             b64os.write(initialbarrout); //obtained base64 encoded byte array            
             b64os.flush();            
-            out.println("base64 encoded byte array = " + 
+            out.fine("base64 encoded byte array = " + 
                     new String(baos0.toByteArray()));            
             
             //set this base64 encoded string as the content             
@@ -105,24 +105,24 @@ public class PreencodedMimeBodyPart_Test extends MailTest {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();            
             preencMbp1.writeTo(baos);            
             byte[] encodedbarr = baos.toByteArray();                        
-            out.println("PreencodedMimeBodyPart.writeTo = " +                 
+            out.fine("PreencodedMimeBodyPart.writeTo = " +                 
                 new String(encodedbarr));            
             MimeBodyPart mbp1 =                
                 new MimeBodyPart(new ByteArrayInputStream(encodedbarr));             
             InputStream mbp1is = mbp1.getInputStream();            
             byte[] finalbarrout = new byte[initialbarrout.length];            
             mbp1is.read(finalbarrout);                        
-            out.println("finalbarrout = " + new String(finalbarrout));                        
+            out.fine("finalbarrout = " + new String(finalbarrout));                        
             if (Arrays.equals(finalbarrout, initialbarrout)) {                
-                out.println("UNIT TEST 2: Passed.\n");             
+                out.fine("UNIT TEST 2: Passed.\n");             
             } else {                
-                out.println("UNIT TEST 2: FAILED.\n");                
+                out.fine("UNIT TEST 2: FAILED.\n");                
                 errors++;            
             }           
            // END UNIT TEST 2:
             
            // BEGIN UNIT TEST 3:
-            out.println("UNIT TEST 3: Testing updateHeaders(OutputStream)");
+            out.fine("UNIT TEST 3: Testing updateHeaders(OutputStream)");
             
             infoText = " Hedge Fund strategies. \n" +
                    " 1. Trading Options and Derivatives. \n" + 
@@ -140,9 +140,9 @@ public class PreencodedMimeBodyPart_Test extends MailTest {
             String[] hdr = myPreencMbp.getHeader("Content-transfer-encoding");
             
             if (hdr[0].equals(sevenBit))
-                out.println("UNIT TEST 3: Passed.\n"); 
+                out.fine("UNIT TEST 3: Passed.\n"); 
             else {
-                out.println("UNIT TEST 3: FAILED.\n");
+                out.fine("UNIT TEST 3: FAILED.\n");
                 errors++;
             }
            // END UNIT TEST 3:

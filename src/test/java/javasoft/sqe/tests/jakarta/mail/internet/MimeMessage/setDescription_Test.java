@@ -46,14 +46,14 @@ public class setDescription_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
-        out.println("\nTesting class MimeMessage: setDescription(String)\n");
+	
+        out.fine("\nTesting class MimeMessage: setDescription(String)\n");
 
         try {
 	  // Create a Session object
@@ -69,41 +69,41 @@ public class setDescription_Test extends MailTest {
                  return Status.failed("Warning: Failed to create MimeMessage object!");
              }
           // BEGIN UNIT TEST 1:
-	     out.println("UNIT TEST 1:  setDescription("+destr1+")");
+	     out.fine("UNIT TEST 1:  setDescription("+destr1+")");
 
 	  // set the message's description header
 	     msg.setDescription(destr1);		   // API TEST
 
              if( destr1.equals(msg.getDescription()) )
-                 out.println("UNIT TEST 1:  passed\n");
+                 out.fine("UNIT TEST 1:  passed\n");
              else {
-                   out.println("UNIT TEST 1:  FAILED\n");
+                   out.fine("UNIT TEST 1:  FAILED\n");
 		   errors++;
              }
 	  // END UNIT TEST 1:
           // BEGIN UNIT TEST 2:
-             out.println("UNIT TEST 2:  setDescription("+destr2+")");
+             out.fine("UNIT TEST 2:  setDescription("+destr2+")");
 
           // set the message's description header
              msg.setDescription(destr2);                 // API TEST
 
              if( destr2.equals(msg.getDescription()) )
-                 out.println("UNIT TEST 2:  passed\n");
+                 out.fine("UNIT TEST 2:  passed\n");
              else {
-                   out.println("UNIT TEST 2:  FAILED\n");
+                   out.fine("UNIT TEST 2:  FAILED\n");
                    errors++;
              }
           // END UNIT TEST 2:
           // BEGIN UNIT TEST 3:
-             out.println("UNIT TEST 3:  setDescription("+destr3+")");
+             out.fine("UNIT TEST 3:  setDescription("+destr3+")");
 
           // set the message's description header
              msg.setDescription(destr3);                 // API TEST
 
              if( destr3.equals(msg.getDescription()) )
-                 out.println("UNIT TEST 3:  passed\n");
+                 out.fine("UNIT TEST 3:  passed\n");
              else {
-                   out.println("UNIT TEST 3:  FAILED\n");
+                   out.fine("UNIT TEST 3:  FAILED\n");
                    errors++;
              }
           // END UNIT TEST 3:

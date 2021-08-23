@@ -44,15 +44,15 @@ public class getContentType_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
+    
 
-        out.println("\nTesting class Message: getContentType()\n");
+        out.fine("\nTesting class Message: getContentType()\n");
 
         try {
           // Connect to host server
@@ -79,20 +79,20 @@ public class getContentType_Test extends MailTest {
                Message msg = folder.getMessage(i);
 
 	       if ( msg == null ) {
-		    log.println("WARNING: FAILED TO GET MESSAGE NUMBER: "+ i);
+		    log.warning("WARNING: FAILED TO GET MESSAGE NUMBER: "+ i);
 		    continue;
 	       }
 	    // BEGIN UNIT TEST:
 		// Get body content type of message(s)
-	       out.println("UNIT TEST "+ i +":  getContentType()");
+	       out.fine("UNIT TEST "+ i +":  getContentType()");
 
 	       contentype = msg.getContentType();		// API TEST
-	       out.println("getContentType() :=> "+ contentype);
+	       out.fine("getContentType() :=> "+ contentype);
 
 	       if (( contentype != null ) && ( contentype instanceof String ))
-                     out.println("UNIT TEST "+ i +":  passed\n");
+                     out.fine("UNIT TEST "+ i +":  passed\n");
 	       else {
-		     out.println("UNIT TEST "+ i +":  FAILED\n");
+		     out.fine("UNIT TEST "+ i +":  FAILED\n");
 		     errors++;
 	       }
 	    // END UNIT TEST:

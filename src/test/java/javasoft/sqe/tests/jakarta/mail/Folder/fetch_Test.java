@@ -43,15 +43,15 @@ public class fetch_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class Folder: fetch(Message msgs[], FetchProfile fp)\n");
+        out.fine("\nTesting class Folder: fetch(Message msgs[], FetchProfile fp)\n");
 
         try {
           // Connect to host server
@@ -82,17 +82,19 @@ public class fetch_Test extends MailTest {
 	     
              for (int i = 0; i < msgcount; i++)
 	     {
-		  out.println("UNIT TEST " + i + ": fetch(msgs["+i+"], fp)\n");
+		  out.fine("UNIT TEST " + i + ": fetch(msgs["+i+"], fp)\n");
 
 		  if ( msgs[i] != null && ( msgs[i] instanceof Message ) ) {
-		       out.println(msgs[i].getReceivedDate());
-                       out.println(msgs[i].getFrom());
-                       out.println(msgs[i].getSubject());
-                       out.println(msgs[i].getHeader("X-mailer"));
+		       out.fine(msgs[i].getReceivedDate().toString());
+                       out.fine(msgs[i].getFrom().toString());
+                       out.fine(msgs[i].getSubject().toString());
+                       if (msgs[i].getHeader("X-mailer") != null) {
+                           out.fine(msgs[i].getHeader("X-mailer").toString());
+                       }
 
-		       out.println("UNIT TEST "+ i +": passed\n");
+		       out.fine("UNIT TEST "+ i +": passed\n");
 		  } else {
-			  out.println("UNIT TEST "+ i +": FAILED\n");
+			  out.fine("UNIT TEST "+ i +": FAILED\n");
 			  errors++;
 		  }
              }

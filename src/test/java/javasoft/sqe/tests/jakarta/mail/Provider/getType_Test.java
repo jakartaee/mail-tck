@@ -41,15 +41,15 @@ public class getType_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
+    
 
-	out.println("\nTesting class Provider: getType()\n");
+	out.fine("\nTesting class Provider: getType()\n");
 
         try {
 	   // Get Session object
@@ -61,15 +61,15 @@ public class getType_Test extends MailTest {
                   return Status.failed("Failed to get Provider object!");
               }
            // BEGIN UNIT TEST 1:
-              out.println("UNIT TEST 1: getType()");
+              out.fine("UNIT TEST 1: getType()");
 
 	      Provider.Type provType1 = prov1.getType();	// API TEST
 	      Provider.Type provType2 = prov2.getType();	// API TEST
 
               if( provType1 == Provider.Type.STORE && provType2 == Provider.Type.TRANSPORT )
-                  out.println("UNIT TEST 1:  passed\n");
+                  out.fine("UNIT TEST 1:  passed\n");
               else {
-		    out.println("UNIT TEST 2:  FAILED\n");
+		    out.fine("UNIT TEST 2:  FAILED\n");
 		    errors++;
               }
            // END UNIT TEST 1:

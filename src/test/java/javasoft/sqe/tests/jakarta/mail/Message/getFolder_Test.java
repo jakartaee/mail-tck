@@ -43,15 +43,15 @@ public class getFolder_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
+    
 
-        out.println("\nTesting class Message: getFolder()\n");
+        out.fine("\nTesting class Message: getFolder()\n");
 
         try {
           // Connect to host server
@@ -79,16 +79,16 @@ public class getFolder_Test extends MailTest {
 	     }
 	  // BEGIN UNIT TEST 1:
 	     // Return the folder associated with this message
-	     out.println("UNIT TEST 1:  getFolder()");
+	     out.fine("UNIT TEST 1:  getFolder()");
 
 	     Folder folderName = msg.getFolder();	// API TEST
-	     out.println("getFolder() :=> "+ folderName);
+	     out.fine("getFolder() :=> "+ folderName);
 
 	     if (( folderName != null ) && ( folderName instanceof Folder ))
-                  out.println("UNIT TEST 1:  passed\n");
+                  out.fine("UNIT TEST 1:  passed\n");
 	     else {	
-		   out.println("Caution: folderName is null for this message.");
-		   out.println("UNIT TEST 1:  passed\n");
+		   out.fine("Caution: folderName is null for this message.");
+		   out.fine("UNIT TEST 1:  passed\n");
 	     }
 	  // END UNIT TEST 1:
 	     folder.close(false);

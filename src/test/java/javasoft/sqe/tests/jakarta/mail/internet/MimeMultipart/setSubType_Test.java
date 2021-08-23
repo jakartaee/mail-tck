@@ -42,37 +42,37 @@ public class setSubType_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class MimeMultipart: setSubType(String)\n");
+        out.fine("\nTesting class MimeMultipart: setSubType(String)\n");
 
         try {
 	  // BEGIN UNIT TEST 1:
-	     out.println("UNIT TEST 1:  setSubType( mixed )");
+	     out.fine("UNIT TEST 1:  setSubType( mixed )");
 	     MimeMultipart mp = new MimeMultipart();
 
 	     if ( mp != null ) {
 		  mp.setSubType("mixed");	// API TEST
-		  out.println("UNIT TEST 1: passed");
+		  out.fine("UNIT TEST 1: passed");
 	     } else {
-		    out.println("UNIT TEST 1: FAILED");
+		    out.fine("UNIT TEST 1: FAILED");
 		    errors++;
 	     }
 	  // END UNIT TEST 1:
 	  // BEGIN UNIT TEST 2:
-	     out.println("UNIT TEST 2:  setSubType(>@#$%  &^%!<)");
+	     out.fine("UNIT TEST 2:  setSubType(>@#$%  &^%!<)");
 
 	     if ( mp != null ) {
 		  mp.setSubType(">@#$%	&^%!<");	// API TEST
-		  out.println("UNIT TEST 2: passed");
+		  out.fine("UNIT TEST 2: passed");
 	     } else {
-		    out.println("UNIT TEST 2: FAILED");
+		    out.fine("UNIT TEST 2: FAILED");
 		    errors++;
 	     }
 	  // END UNIT TEST 2:

@@ -42,13 +42,13 @@ public class setProtocolForAddress_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
+    
 
         try {
 
@@ -65,7 +65,7 @@ public class setProtocolForAddress_Test extends MailTest {
             session.setProvider(prov);
             
             // BEGIN UNIT TEST 1:
-            out.println("UNIT TEST 1: setProtocolForAddress()");
+            out.fine("UNIT TEST 1: setProtocolForAddress()");
             String addressType = "rfc999999";
             String protocol = "airmail";
             session.setProtocolForAddress(addressType, protocol); // API TEST
@@ -73,9 +73,9 @@ public class setProtocolForAddress_Test extends MailTest {
             // Session object's addressMap
             Transport transport = session.getTransport(new AirMailAddress());            
             if (transport instanceof AirMailTestTransport)  {
-                out.println("UNIT TEST 1:  passed\n");
+                out.fine("UNIT TEST 1:  passed\n");
             } else {
-                out.println("UNIT TEST 1:  FAILED\n");
+                out.fine("UNIT TEST 1:  FAILED\n");
                 errors++;
             }
             // END UNIT TEST 1:

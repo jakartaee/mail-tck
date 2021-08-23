@@ -43,15 +43,15 @@ public class recipientterm_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
+    
 
-        out.println("\nTesting class RecipientTerm: RecipientTerm(int, Address)\n");
+        out.fine("\nTesting class RecipientTerm: RecipientTerm(int, Address)\n");
 
         try {
           // Connect to host server
@@ -79,7 +79,7 @@ public class recipientterm_Test extends MailTest {
                 MimeMessage msg =  (MimeMessage)folder.getMessage(i);
 
 	        if( msg == null ) {
-		    log.println("WARNING: FAILED TO GET MESSAGE NUMBER: "+ i);
+		    log.warning("WARNING: FAILED TO GET MESSAGE NUMBER: "+ i);
 		    continue;
 	        }
 		Address[] recipient = msg.getRecipients(Message.RecipientType.TO);
@@ -88,27 +88,27 @@ public class recipientterm_Test extends MailTest {
 		    continue;
 
              // BEGIN UNIT TEST:
-                out.println("UNIT TEST "+ i +":  RecipientTerm(Message.RecipientType.TO, "+ (recipient[0]).toString() +")");
+                out.fine("UNIT TEST "+ i +":  RecipientTerm(Message.RecipientType.TO, "+ (recipient[0]).toString() +")");
 
                 RecipientTerm rt = new RecipientTerm(Message.RecipientType.TO, recipient[0]);    // API TEST
 
                 if( rt == null ) {
-                    log.println("Warning: RecipientTerm contructor returned a Null object!");
+                    log.warning("Warning: RecipientTerm contructor returned a Null object!");
 		    continue;
                 } else
-                      out.println("UNIT TEST "+ i +": passed\n");
+                      out.fine("UNIT TEST "+ i +": passed\n");
 
-	        out.println("UNIT TEST "+ i +":  match(Message)");
+	        out.fine("UNIT TEST "+ i +":  match(Message)");
 
 		// match the message number
 		foundit = rt.match(msg);	// API TEST
 
 	        if( foundit ) {
-	            out.println("Expected recipients found in message header.");
-                    out.println("UNIT TEST "+ i +":  passed\n");
+	            out.fine("Expected recipients found in message header.");
+                    out.fine("UNIT TEST "+ i +":  passed\n");
 	        } else {
-		        out.println("Expected recipients not found in message header!");
-			out.println("UNIT TEST "+ i +":  passed\n");
+		        out.fine("Expected recipients not found in message header!");
+			out.fine("UNIT TEST "+ i +":  passed\n");
 	        }
 	     // END UNIT TEST:
 	     }

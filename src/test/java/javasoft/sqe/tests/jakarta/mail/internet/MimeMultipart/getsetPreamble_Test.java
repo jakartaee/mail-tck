@@ -46,12 +46,12 @@ public class getsetPreamble_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out) {
-	super.run(log, out);
+    public Status run() {
+	
         FileInputStream fis = null;
         
         if (!protocol.equals("imap")) {
@@ -67,16 +67,16 @@ public class getsetPreamble_Test extends MailTest {
             fis = new FileInputStream(filename);
             
             // BEGIN UNIT TEST:
-            out.println("UNIT TEST 1:  test for getPreamble()");
+            out.fine("UNIT TEST 1:  test for getPreamble()");
             
             String existingPreambleText = "Preamble"+ System.getProperty("line.separator");
             MimeMessage mimemsg = new MimeMessage(session, fis);
             MimeMultipart mimemp = (MimeMultipart) mimemsg.getContent();
 
             if (existingPreambleText.equals(mimemp.getPreamble())) { // API TEST
-                out.println("UNIT TEST 1:  passed\n");
+                out.fine("UNIT TEST 1:  passed\n");
             } else {
-                out.println("UNIT TEST 1:  FAILED\n");
+                out.fine("UNIT TEST 1:  FAILED\n");
                 errors++;
             }
             fis.close();
@@ -88,17 +88,17 @@ public class getsetPreamble_Test extends MailTest {
             MimeMessage newmimemsg = new MimeMessage(session, fis);
             MimeMultipart newmimemp = (MimeMultipart) newmimemsg.getContent();
             
-            out.println("UNIT TEST 2: test for setPreamble(" 
+            out.fine("UNIT TEST 2: test for setPreamble(" 
                         + newPreambleText + ")");
-            out.println("The Old preamble is " +  newmimemp.getPreamble()+"...");
+            out.fine("The Old preamble is " +  newmimemp.getPreamble()+"...");
             newmimemp.setPreamble(newPreambleText); //API TEST
             
-            out.println("The New preamble is " +  newmimemp.getPreamble()+"..."); 
+            out.fine("The New preamble is " +  newmimemp.getPreamble()+"..."); 
             
             if (newPreambleText.equals(newmimemp.getPreamble()))
-                out.println("UNIT TEST 2:  passed\n");
+                out.fine("UNIT TEST 2:  passed\n");
             else {
-                out.println("UNIT TEST 2:  FAILED\n");
+                out.fine("UNIT TEST 2:  FAILED\n");
                 errors++;
             }
             // END UNIT TEST:

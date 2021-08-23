@@ -49,15 +49,15 @@ public class addRecipient_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
+    
 
-        out.println("\nTesting class Message: addRecipient(int, Address)\n");
+        out.fine("\nTesting class Message: addRecipient(int, Address)\n");
 
         try {
 	  // Create a Session object
@@ -77,7 +77,7 @@ public class addRecipient_Test extends MailTest {
 	     bcc = cc;
 
           // BEGIN UNIT TEST:
-	     out.println("UNIT TEST 1:  addRecipient(int, Address)");
+	     out.fine("UNIT TEST 1:  addRecipient(int, Address)");
 
 		// add message recipients
 	     msg.addRecipient(Message.RecipientType.TO, To); 	// API TEST
@@ -85,23 +85,27 @@ public class addRecipient_Test extends MailTest {
 	     msg.addRecipient(Message.RecipientType.BCC, bcc);	// API TEST
 
 	     From = msg.getRecipients(Message.RecipientType.TO);
-	     out.print("addRecipients(1");
+	     StringBuilder sb = new StringBuilder();
+	     sb.append("addRecipients(1");
 
 	     for( int j = 0; j < From.length; j++ )
-	          out.print(", " + From[j]);
-	     out.println(")");
+	         sb.append(", " + From[j]);
+	     sb.append(")");
+	     out.fine(sb.toString());
 
 	     From = msg.getRecipients(Message.RecipientType.CC);
-	     out.print("addRecipients(2");
+	     sb = new StringBuilder();
+	     sb.append("addRecipients(2");
 
              for( int j = 0; j < From.length; j++ )
-                  out.print(", " + From[j]);
-             out.println(")");
+                 sb.append(", " + From[j]);
+             sb.append(")");
+             out.fine(sb.toString());
 
 	     From = msg.getRecipients(Message.RecipientType.BCC);
-	     out.println("addRecipients(3, " + From[0] + ")");
+	     out.fine("addRecipients(3, " + From[0] + ")");
 
-             out.println("UNIT TEST 1:  passed\n");
+             out.fine("UNIT TEST 1:  passed\n");
 	  // END UNIT TEST:
 
 	     checkStatus();

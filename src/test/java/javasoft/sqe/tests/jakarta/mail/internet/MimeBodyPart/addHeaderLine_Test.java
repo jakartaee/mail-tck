@@ -48,15 +48,15 @@ public class addHeaderLine_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class MimeBodyPart: addHeaderLine(String)\n");
+        out.fine("\nTesting class MimeBodyPart: addHeaderLine(String)\n");
 
         try {
 	   // Create MimeBodyPart object
@@ -66,10 +66,10 @@ public class addHeaderLine_Test extends MailTest {
 		  return Status.failed("Failed to create a MimeBodyPart object");
 
 	   // BEGIN UNIT TEST:
-	      out.println("UNIT TEST 1: addHeaderLine("+name1+")");
-	      out.println("		addHeaderLine("+name2+")");
-	      out.println("		addHeaderLine("+name3+")");
-	      out.println("		addHeaderLine("+name4+")\n");
+	      out.fine("UNIT TEST 1: addHeaderLine("+name1+")");
+	      out.fine("		addHeaderLine("+name2+")");
+	      out.fine("		addHeaderLine("+name3+")");
+	      out.fine("		addHeaderLine("+name4+")\n");
 
 	      mbp.addHeaderLine(name1);  	// API TEST
 	      mbp.addHeaderLine(name2);         // API TEST
@@ -80,9 +80,9 @@ public class addHeaderLine_Test extends MailTest {
 
               while( headline.hasMoreElements() ) {
                      String headers = (String)headline.nextElement();
-                     out.println(headers);
+                     out.fine(headers);
               }
-              out.println("\nUNIT TEST 1: passed\n");
+              out.fine("\nUNIT TEST 1: passed\n");
 	   // END UNIT TEST 1:
               checkStatus();
 

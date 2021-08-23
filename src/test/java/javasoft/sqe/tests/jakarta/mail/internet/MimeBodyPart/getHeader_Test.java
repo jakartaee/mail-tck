@@ -47,15 +47,15 @@ public class getHeader_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class MimeBodyPart: getHeader(String, String)\n");
+        out.fine("\nTesting class MimeBodyPart: getHeader(String, String)\n");
 
         try {
           // Connect to host server
@@ -82,11 +82,11 @@ public class getHeader_Test extends MailTest {
                 MimeMessage msg = (MimeMessage)folder.getMessage(i);
 
 	        if( msg == null ) {
-		    log.println("WARNING: FAILED TO GET MESSAGE NUMBER: "+ i);
+		    log.warning("WARNING: FAILED TO GET MESSAGE NUMBER: "+ i);
 		    continue;
 	        }
 	     // BEGIN UNIT TEST:
-	        out.println("UNIT TEST "+ i +":  getHeader(String, String)");
+	        out.fine("UNIT TEST "+ i +":  getHeader(String, String)");
 
 		// Get the specified message headers
                 // Get the "type" of content
@@ -106,14 +106,14 @@ public class getHeader_Test extends MailTest {
 			      String header = ((MimeBodyPart)bp).getHeader( headerName[j], delimiter[j] );    // API TEST
 
 			      if ( header != null )
-				   out.println("getHeaders("+ headerName[j] +","+ delimiter[j] +") :=> '"+ header +"'");
+				   out.fine("getHeaders("+ headerName[j] +","+ delimiter[j] +") :=> '"+ header +"'");
 			      else
-				   out.println("getHeaders("+ headerName[j] +","+ delimiter[j] +") :=> 'empty field'");
+				   out.fine("getHeaders("+ headerName[j] +","+ delimiter[j] +") :=> 'empty field'");
 			  }
 		      }
-                      out.println("UNIT TEST " + i + ":  passed\n");
+                      out.fine("UNIT TEST " + i + ":  passed\n");
 		} else
-		      out.println("UNIT TEST " + i + ": is not Multipart message!");
+		      out.fine("UNIT TEST " + i + ": is not Multipart message!");
 
 	     // END UNIT TEST:
 	    }

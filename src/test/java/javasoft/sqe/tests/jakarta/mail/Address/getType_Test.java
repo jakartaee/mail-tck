@@ -41,15 +41,15 @@ public class getType_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class Address: getType()\n");
+        out.fine("\nTesting class Address: getType()\n");
 
         try {
           // Connect to host server
@@ -76,25 +76,25 @@ public class getType_Test extends MailTest {
 		Message msg = folder.getMessage(i);
 
 		if( msg == null ) {
-                    log.println("WARNING: FAILED TO GET MESSAGE NUMBER: "+ i);
+                    log.warning("WARNING: FAILED TO GET MESSAGE NUMBER: "+ i);
                     continue;
 		}
 		// Get a From address object(s)
 		Address[] addrs = msg.getFrom();
 
 		if( addrs == null ) {
-                    log.println("WARNING: FAILED TO GET FROM ADDRESS FOR MESSAGE NUMBER: "+ i);
+                    log.warning("WARNING: FAILED TO GET FROM ADDRESS FOR MESSAGE NUMBER: "+ i);
                     continue;
 		}
-		out.println("UNIT TEST "+ i +": getType()");
+		out.fine("UNIT TEST "+ i +": getType()");
 
 		String addtype = addrs[0].getType();	// API TEST
 
 		if ( addtype != null ) {
 		     if ( addtype.equals("rfc822") )
-			  out.println("UNIT TEST "+ i +": passed\n");
+			  out.fine("UNIT TEST "+ i +": passed\n");
 		     else {
-			    out.println("UNIT TEST "+ i +": FAILED\n");
+			    out.fine("UNIT TEST "+ i +": FAILED\n");
 			    errors++;
 		     }
 		} else

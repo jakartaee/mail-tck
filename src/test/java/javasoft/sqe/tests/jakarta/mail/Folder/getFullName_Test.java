@@ -50,15 +50,15 @@ public class getFullName_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class Folder: getFullName()\n");
+        out.fine("\nTesting class Folder: getFullName()\n");
 
         try {
           // Connect to host server
@@ -75,15 +75,15 @@ public class getFullName_Test extends MailTest {
 
 	  // BEGIN UNIT TEST 1:
 	     // Invoke on open folder
-	     out.println("UNIT TEST 1: getFullName()");
+	     out.fine("UNIT TEST 1: getFullName()");
 
 	     String fullName = folder.getFullName();	// API TEST
-	     out.println("Full folder name is " + fullName);
+	     out.fine("Full folder name is " + fullName);
 
 	     if ( fullName != null && ( fullName instanceof String ) )
-                  out.println("UNIT TEST 1: passed\n");
+                  out.fine("UNIT TEST 1: passed\n");
              else {
-                    out.println("UNIT TEST 1: FAILED\n");
+                    out.fine("UNIT TEST 1: FAILED\n");
                     errors++;
 	     }
 	     folder.close(false);
@@ -91,15 +91,15 @@ public class getFullName_Test extends MailTest {
 	  // END UNIT TEST 1:
           // BEGIN UNIT TEST 2:
 		// Invoke on closed folder
-             out.println("UNIT TEST 2: getFullName()");
+             out.fine("UNIT TEST 2: getFullName()");
 
              fullName = folder.getFullName();	// API TEST
-             out.println("Full folder name is " + fullName);
+             out.fine("Full folder name is " + fullName);
 
              if ( fullName != null && ( fullName instanceof String ) )
-                  out.println("UNIT TEST 2: passed\n");
+                  out.fine("UNIT TEST 2: passed\n");
              else {
-                    out.println("UNIT TEST 2: FAILED\n");
+                    out.fine("UNIT TEST 2: FAILED\n");
                     errors++;
              }
           // END UNIT TEST 2:

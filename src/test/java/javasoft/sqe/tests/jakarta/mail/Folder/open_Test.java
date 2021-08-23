@@ -47,15 +47,15 @@ public class open_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class Folder: open(int)\n");
+        out.fine("\nTesting class Folder: open(int)\n");
 
         try {
           // Connect to host server
@@ -69,31 +69,31 @@ public class open_Test extends MailTest {
 	         return Status.failed("Invalid folder object!");
        	     }
 	  // BEGIN UNIT TEST 1:
-	     out.println("UNIT TEST 1: open(READ_ONLY)");
+	     out.fine("UNIT TEST 1: open(READ_ONLY)");
 
 	     boolean notOpen = folder.isOpen();
 	     folder.open(Folder.READ_ONLY);		// API TEST
 	     boolean nowOpen = folder.isOpen();
 
 	     if ((! notOpen) && nowOpen )
-                 out.println("UNIT TEST 1: passed\n");
+                 out.fine("UNIT TEST 1: passed\n");
              else {
-                  out.println("UNIT TEST 1: FAILED\n");
+                  out.fine("UNIT TEST 1: FAILED\n");
                   errors++;
              }
 	     folder.close(false);
 	  // END UNIT TEST 1:
 	  // BEGIN UNIT TEST 2:
-	     out.println("UNIT TEST 2: open(READ_WRITE)");
+	     out.fine("UNIT TEST 2: open(READ_WRITE)");
 
 	     notOpen = folder.isOpen();
 	     folder.open(Folder.READ_WRITE);		// API TEST
 	     nowOpen = folder.isOpen();
 
 	     if(( ! notOpen) && nowOpen )
-                  out.println("UNIT TEST 2: passed\n");
+                  out.fine("UNIT TEST 2: passed\n");
              else {
-                   out.println("UNIT TEST 2: FAILED\n");
+                   out.fine("UNIT TEST 2: FAILED\n");
 		   errors++;
 	     }
 	  // END UNIT TEST 2:

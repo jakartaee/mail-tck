@@ -42,15 +42,15 @@ public class getBaseType_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	 super.run(log, out);
+	 
 
-        out.println("\nTesting class ContentType: getBaseType()\n");
+        out.fine("\nTesting class ContentType: getBaseType()\n");
 
         try {
 	   // Create ContentType object
@@ -60,14 +60,14 @@ public class getBaseType_Test extends MailTest {
 		  return Status.failed("Failed to create ContentType object!");
 
            // BEGIN UNIT TEST 1:
-              out.println("UNIT TEST 1: getBaseType()");
+              out.fine("UNIT TEST 1: getBaseType()");
               String baseType = ct.getBaseType();    // API TEST
 
               if( baseType != null ) {
-		  out.println("Base type is "+baseType);
-                  out.println("UNIT TEST 1: passed.\n");
+		  out.fine("Base type is "+baseType);
+                  out.fine("UNIT TEST 1: passed.\n");
               } else {
-                    out.println("UNIT TEST 1: FAILED.\n");
+                    out.fine("UNIT TEST 1: FAILED.\n");
                     errors++;
               }
            // END UNIT TEST 1:

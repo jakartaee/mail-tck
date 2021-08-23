@@ -45,15 +45,15 @@ public class match_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
+    
 
-        out.println("\nTesting class Message: match(Term)\n");
+        out.fine("\nTesting class Message: match(Term)\n");
 
         try {
           // Connect to host server
@@ -87,12 +87,12 @@ public class match_Test extends MailTest {
                 Message msg =  folder.getMessage(i);
 
 	        if( msg == null ) {
-		    log.println("WARNING: FAILED TO GET MESSAGE NUMBER: "+ i);
+		    log.warning("WARNING: FAILED TO GET MESSAGE NUMBER: "+ i);
 		    continue;
 	        }
 	     // BEGIN UNIT TEST 1:
 		// find the pattern in message body
-	        out.println("UNIT TEST "+ i +":  match(Term)");
+	        out.fine("UNIT TEST "+ i +":  match(Term)");
 
 	        if ( freeStr != null )
 	             foundit = msg.match(freeStr);	// API TEST
@@ -100,15 +100,15 @@ public class match_Test extends MailTest {
 		     return null;
 
 	        if ( foundit ) {
-	             out.println("Pattern "+ pattern +" found in message body.");
-                     out.println("UNIT TEST "+ i +":  passed\n");
+	             out.fine("Pattern "+ pattern +" found in message body.");
+                     out.fine("UNIT TEST "+ i +":  passed\n");
 	        } else {
-		        out.println("Caution: Pattern "+ pattern +" not found in message body!");
+		        out.fine("Caution: Pattern "+ pattern +" not found in message body!");
 	        }
 	     // END UNIT TEST 1:
              // BEGIN UNIT TEST 2:
                 // find the pattern in message header
-                out.println("UNIT TEST "+ i +":  match(Term)");
+                out.fine("UNIT TEST "+ i +":  match(Term)");
 
 		if ( caseTerm != null )
                      foundit = msg.match(caseTerm);    // API TEST
@@ -116,10 +116,10 @@ public class match_Test extends MailTest {
 		     return null;
 
                 if ( foundit ) {
-                    out.println("Pattern "+ pattern +" found in message header.");
-                    out.println("UNIT TEST "+ i +":  passed\n");
+                    out.fine("Pattern "+ pattern +" found in message header.");
+                    out.fine("UNIT TEST "+ i +":  passed\n");
                 } else {
-                        out.println("Caution: Pattern "+ pattern +" not found in message header!");
+                        out.fine("Caution: Pattern "+ pattern +" not found in message header!");
                 }
              // END UNIT TEST 2:
 	     }

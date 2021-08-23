@@ -49,15 +49,15 @@ public class setHeader_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
+    
 
-        out.println("\nTesting class Message: setHeader(String, String)\n");
+        out.fine("\nTesting class Message: setHeader(String, String)\n");
 
         try {
           // Create a MimeMessage object
@@ -65,27 +65,27 @@ public class setHeader_Test extends MailTest {
              MimeMessage msg = new MimeMessage(session);
 
              if( msg == null ) {
-                 log.println("WARNING: FAILED TO CREATE MESSAGE OBJECT");
+                 log.warning("WARNING: FAILED TO CREATE MESSAGE OBJECT");
                  return Status.failed("Failed to create Message object");
              }
           // BEGIN UNIT TEST:
-	     out.println("UNIT TEST 1:  setHeader(String, String)");
+	     out.fine("UNIT TEST 1:  setHeader(String, String)");
 
 	     // Set a header field
 	     msg.setHeader(hname1, hvalue1);	// API TEST
 	     String[] newheader = msg.getHeader(hname1);
 
-	     out.println("New header : "+ newheader[0]);
-             out.println("UNIT TEST 1:  passed\n");
+	     out.fine("New header : "+ newheader[0]);
+             out.fine("UNIT TEST 1:  passed\n");
 
-	     out.println("UNIT TEST 2:  setHeader(String, String)");
+	     out.fine("UNIT TEST 2:  setHeader(String, String)");
 
 	     // Set it again
 	     msg.setHeader(hname2, hvalue2); 	// API TEST
 	     newheader = msg.getHeader(hname2);
 
-             out.println("New header : "+ newheader[0]);
-             out.println("UNIT TEST 2:  passed\n");
+             out.fine("New header : "+ newheader[0]);
+             out.fine("UNIT TEST 2:  passed\n");
 
 	  // END UNIT TEST:
 

@@ -48,36 +48,36 @@ public class contentType_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	 super.run(log, out);
+	 
 
-        out.println("\nTesting class ContentType: ContentType(void|String|ParameterList)\n");
+        out.fine("\nTesting class ContentType: ContentType(void|String|ParameterList)\n");
 
         try {
 	  // BEGIN UNIT TEST 1:
-	     out.println("UNIT TEST 1:  ContentType()");
+	     out.fine("UNIT TEST 1:  ContentType()");
 	     ContentType ct1 = new ContentType();    // API TEST
 
 	     if( ct1.toString() != null )
-		 out.println("UNIT TEST 1: passed");
+		 out.fine("UNIT TEST 1: passed");
 	     else {
-		   out.println("UNIT TEST 1: FAILED");
+		   out.fine("UNIT TEST 1: FAILED");
 		   errors++;
 	     }
 	  // END UNIT TEST 1:
           // BEGIN UNIT TEST 2:
-             out.println("UNIT TEST 2:  ContentType("+pattern+")");
+             out.fine("UNIT TEST 2:  ContentType("+pattern+")");
              ContentType ct2 = new ContentType(pattern);    // API TEST
 
              if( ct2.toString() != null )
-                 out.println("UNIT TEST 2: passed");
+                 out.fine("UNIT TEST 2: passed");
              else {
-                   out.println("UNIT TEST 2: FAILED");
+                   out.fine("UNIT TEST 2: FAILED");
                    errors++;
              }
           // END UNIT TEST 2:
@@ -85,13 +85,13 @@ public class contentType_Test extends MailTest {
 	     String primaryType = "text";
 	     String subType = "plain";
 
-             out.println("UNIT TEST 3:  ContentType("+primaryType+","+subType+")");
+             out.fine("UNIT TEST 3:  ContentType("+primaryType+","+subType+")");
              ContentType ct3 = new ContentType(primaryType, subType, null);    // API TEST
 
              if (ct3.toString().equals(primaryType + "/" + subType))
-                 out.println("UNIT TEST 3: passed");
+                 out.fine("UNIT TEST 3: passed");
              else {
-                 out.println("UNIT TEST 3: FAILED");
+                 out.fine("UNIT TEST 3: FAILED");
                  errors++;
              }
           // END UNIT TEST 3:
@@ -102,13 +102,13 @@ public class contentType_Test extends MailTest {
 	     if( pl == null )
 		 return Status.failed("Failed to create ParameterList object!");
 
-             out.println("UNIT TEST 4:  ContentType("+primaryType+","+subType+","+pl+")");
+             out.fine("UNIT TEST 4:  ContentType("+primaryType+","+subType+","+pl+")");
              ContentType ct4 = new ContentType(primaryType, subType, pl);    // API TEST
 
              if( ct4.toString() != null )
-                 out.println("UNIT TEST 4: passed");
+                 out.fine("UNIT TEST 4: passed");
              else {
-                 out.println("UNIT TEST 4: FAILED");
+                 out.fine("UNIT TEST 4: FAILED");
                  errors++;
              }
           // END UNIT TEST 4:

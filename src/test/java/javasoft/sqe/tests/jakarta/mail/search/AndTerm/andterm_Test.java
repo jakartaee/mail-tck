@@ -45,15 +45,15 @@ public class andterm_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
+    
 
-        out.println("\nTesting class AndTerm: AndTerm(SearchTerm | SearchTerm[])\n");
+        out.fine("\nTesting class AndTerm: AndTerm(SearchTerm | SearchTerm[])\n");
 
         try {
           // Connect to host server
@@ -72,29 +72,29 @@ public class andterm_Test extends MailTest {
              FromTerm fromTerm = new FromTerm(new InternetAddress(from));
 
 	  // BEGIN UNIT TEST 1:
-	     out.println("UNIT TEST 1: AndTerm(SearchTerm, SearchTerm)");
+	     out.fine("UNIT TEST 1: AndTerm(SearchTerm, SearchTerm)");
 	     
 	     // Create a AND term object
              AndTerm at = new AndTerm(new SubjectTerm(subject), fromTerm);	// API TEST
 
 	     if( at != null )
-	     	 out.println("UNIT TEST 1: passed.");
+	     	 out.fine("UNIT TEST 1: passed.");
 	     else {
-		   out.println("UNIT TEST 1: FAILED.");
+		   out.fine("UNIT TEST 1: FAILED.");
 		   errors++;
 	     }
 	  // END UNIT TEST 1:
 	  // BEGIN UNIT TEST 2:
-	     out.println("UNIT TEST 2: getTerms()");
+	     out.fine("UNIT TEST 2: getTerms()");
 
 	     // get the search terms
              SearchTerm[] searchTerm = at.getTerms();        // API TEST
 
 	     if( searchTerm != null ) {
 		for( int k = 0; k < searchTerm.length; k++ )
-		     out.println(searchTerm[k]);
+		     out.fine(searchTerm[k].toString());
 
-		out.println("UNIT TEST 2: passed.");
+		out.fine("UNIT TEST 2: passed.");
 	     }
 	  // END UNIT TEST 2:
 	  
@@ -111,21 +111,21 @@ public class andterm_Test extends MailTest {
                 MimeMessage msg =  (MimeMessage)folder.getMessage(i);
 
 	        if( msg == null ) {
-		    log.println("WARNING: FAILED TO GET MESSAGE NUMBER: "+ i);
+		    log.warning("WARNING: FAILED TO GET MESSAGE NUMBER: "+ i);
 		    continue;
 	        }
 	     // BEGIN UNIT TEST:
-	        out.println("UNIT TEST "+ (i+2) +":  match(Message)");
+	        out.fine("UNIT TEST "+ (i+2) +":  match(Message)");
 
 		// find the pattern in message body
 		foundit = at.match(msg);	// API TEST
 
 	        if( foundit ) {
-	            out.println("All search terms found in message header.");
-                    out.println("UNIT TEST "+ (i+2) +":  passed\n");
+	            out.fine("All search terms found in message header.");
+                    out.fine("UNIT TEST "+ (i+2) +":  passed\n");
 	        } else {
-		        out.println("Niether search terms found in message header!");
-			out.println("UNIT TEST "+ (i+2) +":  passed\n");
+		        out.fine("Niether search terms found in message header!");
+			out.fine("UNIT TEST "+ (i+2) +":  passed\n");
 	        }
 	     // END UNIT TEST:
 	     }

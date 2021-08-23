@@ -42,15 +42,15 @@ public class getPermanentFlags_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class Folder: getPermanentFlags()\n");
+        out.fine("\nTesting class Folder: getPermanentFlags()\n");
 
         try {
           // Connect to host server
@@ -66,7 +66,7 @@ public class getPermanentFlags_Test extends MailTest {
 	     folder.open(Folder.READ_ONLY);
 	  // BEGIN UNIT TEST 1:
 
-             out.println("UNIT TEST 1: getPermanentFlags();");
+             out.fine("UNIT TEST 1: getPermanentFlags();");
              Flags flags = folder.getPermanentFlags();	// API TEST
 
 	     if( flags == null ) {
@@ -75,9 +75,9 @@ public class getPermanentFlags_Test extends MailTest {
 	     String[] permflags = flags.getUserFlags();
 
              if( permflags != null && permflags.length >= 0 )
-                 out.println("UNIT TEST 1: passed\n");
+                 out.fine("UNIT TEST 1: passed\n");
 	     else {
-                   out.println("UNIT TEST 1: FAILED\n");
+                   out.fine("UNIT TEST 1: FAILED\n");
                    errors++;
 	     }
 	  // END UNIT TEST 1:

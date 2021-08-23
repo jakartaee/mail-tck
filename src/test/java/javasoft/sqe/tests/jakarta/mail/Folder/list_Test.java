@@ -68,15 +68,15 @@ public class list_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class Folder: list(String)\n");
+        out.fine("\nTesting class Folder: list(String)\n");
 
         try {
           // Connect to host server
@@ -89,62 +89,62 @@ public class list_Test extends MailTest {
 	         return Status.failed("Invalid root path object!");
              }
           // BEGIN UNIT TEST 1:
-             out.println("UNIT TEST 1: list()");
+             out.fine("UNIT TEST 1: list()");
 
 	     Folder[] folderlist1 = folder.list();	// API TEST
 
 	     if ( folderlist1.length > 0 ) {
                   for ( int i = 0; i < folderlist1.length; i++ )
-                        out.println(folderlist1[i].getName());
+                        out.fine(folderlist1[i].getName());
 
-                  out.println("UNIT TEST 1: passed\n");
+                  out.fine("UNIT TEST 1: passed\n");
 	     } else {
-                     out.println("UNIT TEST 1: FAILED\n");
+                     out.fine("UNIT TEST 1: FAILED\n");
 		     errors++;
 	     }
           // END UNIT TEST 1:
           // BEGIN UNIT TEST 2:
-             out.println("UNIT TEST 2: list(*)");
+             out.fine("UNIT TEST 2: list(*)");
 
              Folder[] folderlist2 = folder.list("*");      // API TEST
 
              if ( folderlist2.length > 0 ) {
 		  for ( int i = 0; i < folderlist2.length; i++ )
-			out.println(folderlist2[i].getName());
+			out.fine(folderlist2[i].getName());
 
-                  out.println("UNIT TEST 2: passed\n");
+                  out.fine("UNIT TEST 2: passed\n");
              } else {
-                     out.println("UNIT TEST 2: FAILED\n");
+                     out.fine("UNIT TEST 2: FAILED\n");
                      errors++;
              }
           // END UNIT TEST 2:
           // BEGIN UNIT TEST 3:
-             out.println("UNIT TEST 3: list(%)");
+             out.fine("UNIT TEST 3: list(%)");
 
              Folder[] folderlist3 = folder.list("%");      // API TEST
 
              if ( folderlist3.length > 0 ) {
                   for ( int i = 0; i < folderlist3.length; i++ )
-                        out.println(folderlist3[i].getName());
+                        out.fine(folderlist3[i].getName());
 
-                  out.println("UNIT TEST 3: passed\n");
+                  out.fine("UNIT TEST 3: passed\n");
              } else {
-                     out.println("UNIT TEST 3: FAILED\n");
+                     out.fine("UNIT TEST 3: FAILED\n");
                      errors++;
              }
           // END UNIT TEST 3:
           // BEGIN UNIT TEST 4:
-             out.println("UNIT TEST 4: list("+ pattern +")");
+             out.fine("UNIT TEST 4: list("+ pattern +")");
 
              Folder[] folderlist4 = folder.list(pattern+"%");      // API TEST
 
              if( folderlist4.length > 0 ) {
                  for( int i = 0; i < folderlist4.length; i++ )
-                      out.println(folderlist4[i].getName());
+                      out.fine(folderlist4[i].getName());
 
-                  out.println("UNIT TEST 4: passed\n");
+                  out.fine("UNIT TEST 4: passed\n");
              } else {
-                     out.println("UNIT TEST 4: FAILED\n");
+                     out.fine("UNIT TEST 4: FAILED\n");
                      errors++;
              }
           // END UNIT TEST 4:

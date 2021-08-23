@@ -42,15 +42,15 @@ public class clone_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class Flags: clone()\n");
+        out.fine("\nTesting class Flags: clone()\n");
 
         try {
           // Connect to host server
@@ -75,26 +75,26 @@ public class clone_Test extends MailTest {
 		MimeMessage msg = (MimeMessage)folder.getMessage(i);
 
 		if ( msg == null ) {
-		     out.println("WARNING: FAILED TO GET MESSAGE NUMBER: "+ i);
+		     out.fine("WARNING: FAILED TO GET MESSAGE NUMBER: "+ i);
 		     continue;
 		}
 	     // Get Flags object for this message
 		Flags flag = msg.getFlags();
 
                 if ( flag == null ) {
-                     out.println("WARNING: FAILED TO GET FLAGS OBJECT FOR MESSAGE: "+ i);
+                     out.fine("WARNING: FAILED TO GET FLAGS OBJECT FOR MESSAGE: "+ i);
                      continue;
                 }
 	     // BEGIN UNIT TEST:
 
-                out.println("UNIT TEST "+ i +":  clone()");
+                out.fine("UNIT TEST "+ i +":  clone()");
 
 		Flags cflag = (Flags)flag.clone();		// API TEST
 
 		if( cflag != null )
-		    out.println("UNIT TEST " + i + ":  passed\n");
+		    out.fine("UNIT TEST " + i + ":  passed\n");
 		else {
-		      out.println("UNIT TEST "+ i +":  FAILED\n");
+		      out.fine("UNIT TEST "+ i +":  FAILED\n");
 		      errors++;
 		}
 	     // END OF UNIT TEST:

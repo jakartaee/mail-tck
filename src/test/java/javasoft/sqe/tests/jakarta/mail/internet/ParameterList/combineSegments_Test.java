@@ -41,19 +41,19 @@ public class combineSegments_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
+    
 
-        out.println("\nTesting method ParameterList.combineSegments()\n");
+        out.fine("\nTesting method ParameterList.combineSegments()\n");
 
         try {	     
 	  // BEGIN UNIT TEST 1:
-	     out.println("UNIT TEST 1:  ParameterList.combineSegments()");
+	     out.fine("UNIT TEST 1:  ParameterList.combineSegments()");
 	     System.setProperty("mail.mime.decodeparameters", "true");
 
 	     ParameterList parmlist1 = new ParameterList();    // API TEST
@@ -64,10 +64,10 @@ public class combineSegments_Test extends MailTest {
 	     if (parmlist1.get("p").equals("abcdef") &&
 		    parmlist1.get("p*0") == null &&
 		    parmlist1.get("p*1") == null)
-		 out.println("UNIT TEST 1: passed");
+		 out.fine("UNIT TEST 1: passed");
 	     else {
-		 out.println("ParameterList: " + parmlist1);
-		 out.println("UNIT TEST 1: FAILED");
+		 out.fine("ParameterList: " + parmlist1);
+		 out.fine("UNIT TEST 1: FAILED");
 		 errors++;
 	     }
 	  // END UNIT TEST 1:

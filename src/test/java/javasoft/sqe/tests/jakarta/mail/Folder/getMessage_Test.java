@@ -53,15 +53,15 @@ public class getMessage_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class Folder: getMessage(int)\n");
+        out.fine("\nTesting class Folder: getMessage(int)\n");
 
         try {
           // Connect to host server
@@ -89,7 +89,7 @@ public class getMessage_Test extends MailTest {
 
 	     for( int i = 1; i <= msgcount; i++ )
 	     {
-	          out.println("UNIT TEST " + i + ": getMessage(" + i + ")");
+	          out.fine("UNIT TEST " + i + ": getMessage(" + i + ")");
 
 		   msg = folder.getMessage(i);		// API TEST
 		  cmsg = folder.getMessage(i);		// API TEST
@@ -98,13 +98,13 @@ public class getMessage_Test extends MailTest {
 		      size_in_bytes1 = msg.getSize();
 		      size_in_bytes2 = cmsg.getSize();
 		      if ( size_in_bytes1 == size_in_bytes2 )
-                           out.println("UNIT TEST " + i + ": passed\n");
+                           out.fine("UNIT TEST " + i + ": passed\n");
                   } else {
-                          out.println("UNIT TEST " + i + ": FAILED\n");
+                          out.fine("UNIT TEST " + i + ": FAILED\n");
                           errors++;
 		  }
              }
-             out.println("\n");
+             out.fine("\n");
 	  // END UNIT TEST:
 
 	     folder.close(false);

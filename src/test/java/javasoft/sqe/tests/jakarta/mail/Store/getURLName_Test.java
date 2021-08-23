@@ -41,31 +41,31 @@ public class getURLName_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
+    
 
-        out.println("\nTesting class Store: getUrl()\n");
+        out.fine("\nTesting class Store: getUrl()\n");
 
         try {
           // Connect to host server
              Store store_1 = connect2host(protocol, host, user, password);
 
           // BEGIN UNIT TEST 1:
-             out.println("UNIT TEST 1: getURLName()");
+             out.fine("UNIT TEST 1: getURLName()");
 
           // Get a URL for the 'root' default namespace
              URLName url_1 = store_1.getURLName();      // API TEST
 
              if ( url_1 == null ) {
-                  out.println("UNIT TEST 1:  FAILED\n");
+                  out.fine("UNIT TEST 1:  FAILED\n");
 		  return Status.failed("Invalid folder object!");
              } else if ( url_1 != null && ( url_1 instanceof URLName ))
-                        out.println("UNIT TEST 1:  passed\n");
+                        out.fine("UNIT TEST 1:  passed\n");
 
              store_1.close();
           // END UNIT TEST 1:

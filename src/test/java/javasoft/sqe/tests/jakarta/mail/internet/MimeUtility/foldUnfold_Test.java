@@ -40,14 +40,14 @@ public class foldUnfold_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out) {
-	super.run(log, out);
+    public Status run() {
+	
 
-        out.println("\nTesting class MimeUtility: " +
+        out.fine("\nTesting class MimeUtility: " +
                 "fold(int, String) and unfold(String)");
 
         try {
@@ -61,8 +61,8 @@ public class foldUnfold_Test extends MailTest {
             
 	    test(in);
             if (errors > 0) 
-                out.println("UNIT TEST : FAILED");
-            else out.println("UNIT TEST : passed");
+                out.fine("UNIT TEST : FAILED");
+            else out.fine("UNIT TEST : passed");
 
 	  // END UNIT TEST:
              checkStatus();

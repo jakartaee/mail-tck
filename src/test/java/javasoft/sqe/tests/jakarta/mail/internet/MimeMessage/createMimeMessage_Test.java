@@ -44,12 +44,12 @@ public class createMimeMessage_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out) {
-	super.run(log, out);
+    public Status run() {
+	
 
         try {
           // Create a custom MimeMessage objectcreateMimeMessage_Test 
@@ -58,13 +58,13 @@ public class createMimeMessage_Test extends MailTest {
              MimeMessage msg = new MyMimeMessage(session);
              
              if (msg == null) {
-                 log.println("WARNING: FAILED TO CREATE MESSAGE OBJECT");
+                 log.warning("WARNING: FAILED TO CREATE MESSAGE OBJECT");
                  return Status.failed("Failed to create custom " +
                                       "MimeMessage object");
              }
              
 	  // BEGIN UNIT TEST:
-	     out.println("UNIT TEST 1: createMimeMessage");
+	     out.fine("UNIT TEST 1: createMimeMessage");
 
           // create Message ID
 	     Message replyMsg = msg.reply(false);// API TEST for 
@@ -72,9 +72,9 @@ public class createMimeMessage_Test extends MailTest {
              // See the reply() in the inner class below
             
              if (replyMsg instanceof MyReplyMimeMessage) {
-                out.println("UNIT TEST 1: passed\n");
+                out.fine("UNIT TEST 1: passed\n");
              } else {
-                 out.println("UNIT TEST 1: FAILED\n");
+                 out.fine("UNIT TEST 1: FAILED\n");
                 errors++;
              }
              

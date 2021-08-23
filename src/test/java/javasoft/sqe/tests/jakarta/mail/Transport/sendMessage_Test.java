@@ -48,16 +48,16 @@ public class sendMessage_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
+    
 
 	TO = to;
-	out.println("\nTesting Transport class method: sendMessage(Message, Address[])\n");
+	out.fine("\nTesting Transport class method: sendMessage(Message, Address[])\n");
 
 	try {
            // Get a Session object
@@ -96,12 +96,12 @@ public class sendMessage_Test extends MailTest {
                   transport.connect();
 
            // BEGIN UNIT TEST 1:
-              out.println("UNIT TEST 1: sendMessage(Message, Address[])");
+              out.fine("UNIT TEST 1: sendMessage(Message, Address[])");
 
              // send the mail message off via the specified addresses
               transport.sendMessage(msg, addrs);	// API TEST
 
-              out.println("UNIT TEST 1: passed\n");
+              out.fine("UNIT TEST 1: passed\n");
            // END UNIT TEST 1:
 
 	      status = Status.passed("OKAY");

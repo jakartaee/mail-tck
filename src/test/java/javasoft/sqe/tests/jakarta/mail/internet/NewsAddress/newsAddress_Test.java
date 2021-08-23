@@ -42,50 +42,50 @@ public class newsAddress_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
+    
 
-        out.println("\nTesting class NewsAddress: NewsAddress(void|String|String)\n");
+        out.fine("\nTesting class NewsAddress: NewsAddress(void|String|String)\n");
 
         try {
 	  // BEGIN UNIT TEST 1:
-	     out.println("UNIT TEST 1:  NewsAddress()");
+	     out.fine("UNIT TEST 1:  NewsAddress()");
 	     NewsAddress na1 = new NewsAddress();    // API TEST
 
 	     if( na1 != null )
-		 out.println("UNIT TEST 1: passed");
+		 out.fine("UNIT TEST 1: passed");
 	     else {
-		   out.println("UNIT TEST 1: FAILED");
+		   out.fine("UNIT TEST 1: FAILED");
 		   errors++;
 	     }
 	  // END UNIT TEST 1:
           // BEGIN UNIT TEST 2:
-             out.println("UNIT TEST 2:  NewsAddress("+pattern+")");
+             out.fine("UNIT TEST 2:  NewsAddress("+pattern+")");
              NewsAddress na2 = new NewsAddress(pattern);    // API TEST
 
              if( na2 != null ) {
-		 out.println("Newsgroup name is "+ na2.getNewsgroup());
-                 out.println("UNIT TEST 2: passed");
+		 out.fine("Newsgroup name is "+ na2.getNewsgroup());
+                 out.fine("UNIT TEST 2: passed");
              } else {
-                     out.println("UNIT TEST 2: FAILED");
+                     out.fine("UNIT TEST 2: FAILED");
                      errors++;
              }
           // END UNIT TEST 2:
           // BEGIN UNIT TEST 3:
-             out.println("UNIT TEST 3:  NewsAddress("+pattern+" ,"+host+")");
+             out.fine("UNIT TEST 3:  NewsAddress("+pattern+" ,"+host+")");
              NewsAddress na3 = new NewsAddress(pattern, host);    // API TEST
 
              if( na3 != null ) {
-		 out.println("Host name is "+ na3.getHost());
-		 out.println("Newsgroup name is "+ na3.getNewsgroup());
-                 out.println("UNIT TEST 3: passed");
+		 out.fine("Host name is "+ na3.getHost());
+		 out.fine("Newsgroup name is "+ na3.getNewsgroup());
+                 out.fine("UNIT TEST 3: passed");
              } else {
-                     out.println("UNIT TEST 3: FAILED");
+                     out.fine("UNIT TEST 3: FAILED");
                      errors++;
              }
           // END UNIT TEST 3:

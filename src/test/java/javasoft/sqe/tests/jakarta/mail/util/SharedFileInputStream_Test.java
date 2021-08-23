@@ -49,146 +49,146 @@ public class SharedFileInputStream_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out) {
+    public Status run() {
 	pattern = "java mail";
-	super.run(log, out);
+	
 
         try {
    
 	  // BEGIN UNIT TEST 1:
-            out.println("UNIT TEST 1: SharedFileInputStream(File)");
+            out.fine("UNIT TEST 1: SharedFileInputStream(File)");
             String filename = workdir + 
                 System.getProperty("file.separator") + iofile;
             File file = new File(filename);
             SharedFileInputStream sfis = new SharedFileInputStream(file);
             
             if (sfis == null) {
-                out.println("UNIT TEST 1: FAILED\n");
+                out.fine("UNIT TEST 1: FAILED\n");
                 errors++;
             }
-	    else out.println("UNIT TEST 1: passed\n");
+	    else out.fine("UNIT TEST 1: passed\n");
 	  // END UNIT TEST 1:
 
 	  // BEGIN UNIT TEST 2:
-            out.println("UNIT TEST 2:  SharedFileInputStream(String)");
+            out.fine("UNIT TEST 2:  SharedFileInputStream(String)");
             sfis = new SharedFileInputStream(filename);
             if (sfis == null) {
-                out.println("UNIT TEST 2: FAILED\n");
+                out.fine("UNIT TEST 2: FAILED\n");
                 errors++;
-            } else out.println("UNIT TEST 2: passed\n");
+            } else out.fine("UNIT TEST 2: passed\n");
 	  // END UNIT TEST 2:
 
 	  // BEGIN UNIT TEST 3:
-            out.println("UNIT TEST 3:  SharedFileInputStream(File, int)");
+            out.fine("UNIT TEST 3:  SharedFileInputStream(File, int)");
             sfis = new SharedFileInputStream(file, 1024);
             if (sfis == null) {
-                out.println("UNIT TEST 3: FAILED\n");
+                out.fine("UNIT TEST 3: FAILED\n");
                 errors++;
-            } else out.println("UNIT TEST 3: passed\n");
+            } else out.fine("UNIT TEST 3: passed\n");
 	  // END UNIT TEST 3:
 
 	  // BEGIN UNIT TEST 4:
-            out.println("UNIT TEST 4:  SharedFileInputStream(String, int)");
+            out.fine("UNIT TEST 4:  SharedFileInputStream(String, int)");
             sfis = new SharedFileInputStream(filename, 1024);
             if (sfis == null) {
-                out.println("UNIT TEST 4: FAILED\n");
+                out.fine("UNIT TEST 4: FAILED\n");
                 errors++;
-            } else out.println("UNIT TEST 4: passed\n");
+            } else out.fine("UNIT TEST 4: passed\n");
 	  // END UNIT TEST 4:
 
 	  // BEGIN UNIT TEST 5:
-            out.println("UNIT TEST 5:  read()");
+            out.fine("UNIT TEST 5:  read()");
             sfis = new SharedFileInputStream(filename);
             
             //peek into input.txt to understand the reads
             
             //reading letter 'T' : 
             if (sfis.read() == -1) {
-                out.println("UNIT TEST 5: FAILED\n");
+                out.fine("UNIT TEST 5: FAILED\n");
                 errors++;
-            } else out.println("UNIT TEST 5: passed\n");
+            } else out.fine("UNIT TEST 5: passed\n");
 	  // END UNIT TEST 5:
 
           // BEGIN UNIT TEST 6:
-            out.println("UNIT TEST 6:  read(byte b[], int off, int len)");
+            out.fine("UNIT TEST 6:  read(byte b[], int off, int len)");
             byte[] b = new byte[2];
             //reading letter 'h' and 'i' : 
             if (sfis.read(b) == -1) {
-                out.println("UNIT TEST 6: FAILED\n");
+                out.fine("UNIT TEST 6: FAILED\n");
                 errors++;
-            } else out.println("UNIT TEST 6: passed\n");
+            } else out.fine("UNIT TEST 6: passed\n");
 	  // END UNIT TEST 6:
 
 	  // BEGIN UNIT TEST 7:
-            out.println("UNIT TEST 7:  skip(long n)");
+            out.fine("UNIT TEST 7:  skip(long n)");
             //skipping letter 's' : 
             if (sfis == null) {
-                out.println("UNIT TEST 7: FAILED\n");
+                out.fine("UNIT TEST 7: FAILED\n");
                 errors++;
-            } else out.println("UNIT TEST 7: passed\n");
+            } else out.fine("UNIT TEST 7: passed\n");
 	  // END UNIT TEST 7:
 
           // BEGIN UNIT TEST 8:
-            out.println("UNIT TEST 8:  getPosition()");
+            out.fine("UNIT TEST 8:  getPosition()");
             //position will be 5 corresponding to the first space
             if (sfis.getPosition() <= 0) {
-                out.println("UNIT TEST 8: FAILED\n");
+                out.fine("UNIT TEST 8: FAILED\n");
                 errors++;
-            } else out.println("UNIT TEST 8: passed\n");
+            } else out.fine("UNIT TEST 8: passed\n");
 	  // END UNIT TEST 8:
 
 	  // BEGIN UNIT TEST 9:
-            out.println("UNIT TEST 9:  available()");
+            out.fine("UNIT TEST 9:  available()");
             //we still have data to be read, so if available returns 0 flag error
             if (sfis.available() == 0) {
-                out.println("UNIT TEST 9: FAILED\n");
+                out.fine("UNIT TEST 9: FAILED\n");
                 errors++;
-            } else out.println("UNIT TEST 9: passed\n");
+            } else out.fine("UNIT TEST 9: passed\n");
 	  // END UNIT TEST 9:
 
           // BEGIN UNIT TEST 10:
-            out.println("UNIT TEST 10:  newStream(long, long)");
+            out.fine("UNIT TEST 10:  newStream(long, long)");
             //read 'is' into newsfis
             InputStream newsfis = 
                 sfis.newStream(sfis.getPosition()+1,  sfis.getPosition()+3);
             if (newsfis.read() == -1) {
-                out.println("UNIT TEST 10: FAILED\n");
+                out.fine("UNIT TEST 10: FAILED\n");
                 errors++;
-            } else out.println("UNIT TEST 10: passed\n");
+            } else out.fine("UNIT TEST 10: passed\n");
 	  // END UNIT TEST 10:
 
 	  // BEGIN UNIT TEST 11:
-            out.println("UNIT TEST 11:  mark(int readlimit)");
+            out.fine("UNIT TEST 11:  mark(int readlimit)");
             // if reader goes past "a test" reset() will throw exception 
             long currpos = sfis.getPosition();
             sfis.mark(8);
             if (sfis == null) {
-                out.println("UNIT TEST 11: FAILED\n");
+                out.fine("UNIT TEST 11: FAILED\n");
                 errors++;
-            } else out.println("UNIT TEST 11: passed\n");
+            } else out.fine("UNIT TEST 11: passed\n");
 	  // END UNIT TEST 11:
 
           // BEGIN UNIT TEST 12:
-            out.println("UNIT TEST 12: reset()");
+            out.fine("UNIT TEST 12: reset()");
             sfis.skip(5);
             sfis.reset(); 
             if (currpos != sfis.getPosition()) {
-                out.println("UNIT TEST 12: FAILED\n");
+                out.fine("UNIT TEST 12: FAILED\n");
                 errors++;
-            } else out.println("UNIT TEST 12: passed\n");
+            } else out.fine("UNIT TEST 12: passed\n");
 	  // END UNIT TEST 12:
 
           // BEGIN UNIT TEST 13:
-            out.println("UNIT TEST 13:  close()");
+            out.fine("UNIT TEST 13:  close()");
             try {
                 sfis.close();
-                out.println("UNIT TEST 13: passed\n");
+                out.fine("UNIT TEST 13: passed\n");
             } catch (IOException ex) {
-                out.println("UNIT TEST 13: FAILED\n");
+                out.fine("UNIT TEST 13: FAILED\n");
             }
 	  // END UNIT TEST 13:
 

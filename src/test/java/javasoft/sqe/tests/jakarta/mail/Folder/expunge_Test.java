@@ -44,15 +44,15 @@ public class expunge_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class Folder: expunge()\n");
+        out.fine("\nTesting class Folder: expunge()\n");
 
         try {
             // Connect to host server
@@ -94,10 +94,10 @@ public class expunge_Test extends MailTest {
                   if ( msg != null )
                        msg.setFlag(Flags.Flag.DELETED, true);   // expunging message
              }
-	     out.println("Before expunge messages = "+ testfolder.getMessageCount());
+	     out.fine("Before expunge messages = "+ testfolder.getMessageCount());
 
 	  // BEGIN UNIT TEST 1:
-             out.println("UNIT TEST 1:  expunge()");
+             out.fine("UNIT TEST 1:  expunge()");
 
 	     boolean wasnotExpunged = false;
 	     Message[] msglist = testfolder.expunge();	// API TEST
@@ -109,12 +109,12 @@ public class expunge_Test extends MailTest {
 		 }
 	     }
 	     int newTotal = testfolder.getMessageCount();
-	     out.println("After expunge messages = " + newTotal);
+	     out.fine("After expunge messages = " + newTotal);
 
              if ( newTotal == 0 && ! wasnotExpunged )
-                  out.println("UNIT TEST 1: passed\n");
+                  out.fine("UNIT TEST 1: passed\n");
              else {
-                   out.println("UNIT TEST 1: FAILED\n");
+                   out.fine("UNIT TEST 1: FAILED\n");
                    errors++;
              }
 	  // END UNIT TEST:

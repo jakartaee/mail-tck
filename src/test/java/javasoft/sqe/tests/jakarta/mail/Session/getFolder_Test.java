@@ -45,15 +45,15 @@ public class getFolder_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
+    
 
-	out.println("\nTesting class Session: getFolder(URLName)\n");
+	out.fine("\nTesting class Session: getFolder(URLName)\n");
 
         try {
           // BEGIN UNIT TEST 1:
@@ -63,7 +63,7 @@ public class getFolder_Test extends MailTest {
              String fqhost = portnum > 0 ? host + ":" + portnum : host;
              String rootprefix = (rootpath != null && rootpath.length() > 0) ? rootpath + "." : rootpath;
 
-             out.println("UNIT TEST 1: getFolder("+protocol+"://"+user+":"+password+"@"+fqhost+"/"+rootprefix+testbox+")");
+             out.fine("UNIT TEST 1: getFolder("+protocol+"://"+user+":"+password+"@"+fqhost+"/"+rootprefix+testbox+")");
 	     URLName urlname = new URLName(protocol, host, portnum, rootprefix+testbox, user, password);
 
 	     // Get folder for specified URL name
@@ -71,9 +71,9 @@ public class getFolder_Test extends MailTest {
 
              if( folder != null ) {
 		 if( ! folder.exists() )
-                     out.println("UNIT TEST 2:  passed\n");
+                     out.fine("UNIT TEST 2:  passed\n");
                  else {
-                       out.println("UNIT TEST 2:  FAILED\n");
+                       out.fine("UNIT TEST 2:  FAILED\n");
                        errors++;
              	 }
 	     }

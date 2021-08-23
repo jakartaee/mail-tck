@@ -47,15 +47,15 @@ public class appendMessages_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class Folder: appendMessages(Message msgs[])\n");
+        out.fine("\nTesting class Folder: appendMessages(Message msgs[])\n");
 
         try {
           // Connect to host server
@@ -96,7 +96,7 @@ public class appendMessages_Test extends MailTest {
           // BEGIN UNIT TEST 1:
 	     // Append messages 1-N to open tester folder
 
-	     out.println("UNIT TEST 1: appendMessages(Message msgs[1-N])");
+	     out.fine("UNIT TEST 1: appendMessages(Message msgs[1-N])");
 
              Message[] msg = folder.getMessages();
 	     testfolder.appendMessages(msg);	    // API TEST
@@ -106,9 +106,9 @@ public class appendMessages_Test extends MailTest {
 	     int newTotal = testfolder.getMessageCount();
 
 	     if ( newTotal == msgcount )
-	          out.println("UNIT TEST 1:  passed\n");
+	          out.fine("UNIT TEST 1:  passed\n");
 	     else {
-		   out.println("UNIT TEST 1:  FAILED\n");
+		   out.fine("UNIT TEST 1:  FAILED\n");
 		   errors++;
 	     }
 	     testfolder.close(false);	    // close test folder
@@ -117,16 +117,16 @@ public class appendMessages_Test extends MailTest {
 	  // BEGIN UNIT TEST 2:
 	     // Append messages 1-N to closed tester folder
 
-             out.println("UNIT TEST 2: appendMessages(Message msgs[1-N])");
+             out.fine("UNIT TEST 2: appendMessages(Message msgs[1-N])");
 
 	     testfolder.appendMessages(msg);     // API TEST
 	     testfolder.open(Folder.READ_WRITE);
              newTotal = testfolder.getMessageCount();
 
              if ( newTotal == ( 2 * msgcount ))
-                  out.println("UNIT TEST 2:  passed\n");
+                  out.fine("UNIT TEST 2:  passed\n");
              else {
-                   out.println("UNIT TEST 2:  FAILED\n");
+                   out.fine("UNIT TEST 2:  FAILED\n");
                    errors++;
              }
 	     testfolder.close(false);
@@ -135,7 +135,7 @@ public class appendMessages_Test extends MailTest {
 	  // BEGIN UNIT TEST 3:
 	     // Append expunged messages 1-N to closed test folder
 
-             out.println("UNIT TEST 3: appendMessages(Message msgs[1-N])");
+             out.fine("UNIT TEST 3: appendMessages(Message msgs[1-N])");
 	     testfolder.open(Folder.READ_WRITE);
 
              for( int j = 0; j < msg.length; j++ ) {
@@ -150,9 +150,9 @@ public class appendMessages_Test extends MailTest {
              newTotal = testfolder.getMessageCount();
 
              if ( newTotal == ( 3 * msgcount ))
-                  out.println("UNIT TEST 3:  passed\n");
+                  out.fine("UNIT TEST 3:  passed\n");
              else  {
-                    out.println("UNIT TEST 3:  FAILED\n");
+                    out.fine("UNIT TEST 3:  FAILED\n");
                     errors++;
              }
 	  // END UNIT TEST 3:

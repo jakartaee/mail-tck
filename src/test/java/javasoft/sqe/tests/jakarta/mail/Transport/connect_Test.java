@@ -51,18 +51,18 @@ public class connect_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
+    
 
 	FROM = from;
 	TO = to;
 
-	out.println("\nTesting Transport class API => connect(String, String, String)\n");
+	out.fine("\nTesting Transport class API => connect(String, String, String)\n");
 
 	try {
 	   // Get a Session object
@@ -92,8 +92,8 @@ public class connect_Test extends MailTest {
               msg.setContent(msgText, "text/plain");
 
 	    // BEGIN UNIT TEST 1:
-	      out.println("UNIT TEST 1:  connect(host, user, password)");
-	      out.println("		 connect()");
+	      out.fine("UNIT TEST 1:  connect(host, user, password)");
+	      out.fine("		 connect()");
 
 	     // Connect
               if( transport_host != null ) {
@@ -104,7 +104,7 @@ public class connect_Test extends MailTest {
               } else
                   transport.connect();				// API TEST
 
-	      out.println("UNIT TEST 1: passed\n");
+	      out.fine("UNIT TEST 1: passed\n");
 	    // END UNIT TEST 1:
 
 	    // send the mail message via specified 'protocol'

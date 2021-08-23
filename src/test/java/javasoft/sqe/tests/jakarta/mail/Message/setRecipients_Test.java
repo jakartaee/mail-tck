@@ -44,15 +44,15 @@ public class setRecipients_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
+    
 
-        out.println("\nTesting class Message: setRecipients(int, Address[])\n");
+        out.fine("\nTesting class Message: setRecipients(int, Address[])\n");
 
         try {
           // Create a MimeMessage object
@@ -60,7 +60,7 @@ public class setRecipients_Test extends MailTest {
              MimeMessage msg = new MimeMessage(session);
 
              if( msg == null ) {
-                 log.println("WARNING: FAILED TO CREATE MESSAGE OBJECT");
+                 log.warning("WARNING: FAILED TO CREATE MESSAGE OBJECT");
                  return Status.failed("Failed to create Message object");
              }
 	     // Create an address object
@@ -72,44 +72,47 @@ public class setRecipients_Test extends MailTest {
 
           // BEGIN UNIT TEST:
 	     // Set the message's recipients
-	     out.println("UNIT TEST 1:  setRecipients(int, Address[])");
+	     out.fine("UNIT TEST 1:  setRecipients(int, Address[])");
 
 	     /* to unit test */
 	     to = msg.getRecipients(Message.RecipientType.TO);
 	     msg.setRecipients(Message.RecipientType.TO, to);	// API TEST
 	     to = msg.getRecipients(Message.RecipientType.TO);
-	     out.print("setRecipients(1");
+	     StringBuilder sb = new StringBuilder();
+	     sb.append("setRecipients(1");
 
 	     if( to != null && to.length != 0 ) {
 	         for( int j = 0; j < to.length; j++ )
-                      out.print(", "+ to[j]);
-                 out.println(")");
+	             sb.append(", "+ to[j]);
+	         sb.append(")");
 	     } else
-		    out.println(", empty field)");
-
+	         sb.append(", empty field)");
+	     
+	     out.fine(sb.toString());
 	     /* cc unit test */
 	     cc = msg.getRecipients(Message.RecipientType.CC);
 	     msg.setRecipients(Message.RecipientType.CC, cc);	// API TEST
 	     cc = msg.getRecipients(Message.RecipientType.CC);
-             out.print("setRecipients(2");
+	     sb = new StringBuilder();
+	     sb.append("setRecipients(2");
 
 	     if( cc != null && cc.length != 0 ) {
                  for( int j = 0; j < cc.length; j++ )
-                      out.print(", "+ cc[j]);
-                 out.println(")");
+                     sb.append(", "+ cc[j]);
+                 sb.append(")");
 	     } else
-		   out.println(", empty field)");
-
+	         sb.append(", empty field)");
+	     out.fine(sb.toString());
 	     /* bcc unit test */
 	    msg.setRecipients(Message.RecipientType.BCC, (Address[])Bcc);	// API TEST
 	    bcc = msg.getRecipients(Message.RecipientType.BCC);
 
 	    if( bcc != null )
-	        out.println("setRecipients(3, "+ bcc[0] +")");
+	        out.fine("setRecipients(3, "+ bcc[0] +")");
 	    else
-		out.println("setRecipients(3, empty field)");
+		out.fine("setRecipients(3, empty field)");
 
-            out.println("UNIT TEST 1:  passed\n");
+            out.fine("UNIT TEST 1:  passed\n");
 	 // END UNIT TEST:
 
 	    status = Status.passed("OKAY");

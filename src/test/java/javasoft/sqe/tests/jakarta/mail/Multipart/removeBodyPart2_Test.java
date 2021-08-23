@@ -45,15 +45,15 @@ public class removeBodyPart2_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
+    
 
-        out.println("\nTesting class Multipart: removeBodyPart(int)\n");
+        out.fine("\nTesting class Multipart: removeBodyPart(int)\n");
 
 	try {
            // create some properties and get the default Session
@@ -91,12 +91,12 @@ public class removeBodyPart2_Test extends MailTest {
 
            // BEGIN UNIT TEST:
 
-              out.println("UNIT TEST 1: removeBodyPart(int)");
+              out.fine("UNIT TEST 1: removeBodyPart(int)");
 
 	      int partCount = mp.getCount();
 
 	   // remove part from Multipart object
-	      out.println("Number of parts = "+ partCount);
+	      out.fine("Number of parts = "+ partCount);
 
 	      int k = 0;
 	      while(k < partCount ) {
@@ -104,9 +104,9 @@ public class removeBodyPart2_Test extends MailTest {
 		    k++;
 	      }
 	      if( mp.getCount() == 0 )
-                  out.println("UNIT TEST 1: passed.\n");
+                  out.fine("UNIT TEST 1: passed.\n");
 	      else {
-		    out.println("UNIT TEST 1: FAILEd.\n");
+		    out.fine("UNIT TEST 1: FAILEd.\n");
 		    errors++;
 	      }
            // END UNIT TEST:

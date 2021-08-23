@@ -47,14 +47,14 @@ public class getRemainder_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
-        out.println("\nTesting class HeaderTokenizer: getRemainder()\n");
+	
+        out.fine("\nTesting class HeaderTokenizer: getRemainder()\n");
 
 	try {
 	   // Create HeaderTokenizer object
@@ -66,14 +66,14 @@ public class getRemainder_Test extends MailTest {
 		  return Status.failed("Failed to create HeaderTokenizer object!");
 
 	   // BEGIN UNIT TEST 1:
-	      out.println("UNIT TEST 1: getRemainder()");
+	      out.fine("UNIT TEST 1: getRemainder()");
 	      String remain = ht.getRemainder();	// API TEST
 
 	      if( remain != null ) {
-	          out.println("Remainder header = "+ remain);
-	          out.println("\nUNIT TEST 1: passed.\n");
+	          out.fine("Remainder header = "+ remain);
+	          out.fine("\nUNIT TEST 1: passed.\n");
 	      } else {
-		      out.println("\nUNIT TEST 1: FAILED.\n");
+		      out.fine("\nUNIT TEST 1: FAILED.\n");
 		      errors++;
 	      }
 	   // END UNIT TEST 1:

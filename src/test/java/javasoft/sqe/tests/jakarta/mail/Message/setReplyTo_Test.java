@@ -44,16 +44,16 @@ public class setReplyTo_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
+    
 	TO = to;
 
-        out.println("\nTesting class Message: setReplyTo(Address[])\n");
+        out.fine("\nTesting class Message: setReplyTo(Address[])\n");
 
         try {
              Session session = Session.getInstance(properties, null);
@@ -67,14 +67,14 @@ public class setReplyTo_Test extends MailTest {
              addrs[0] = addr;
 
           // BEGIN UNIT TEST:
-	     out.println("UNIT TEST 1:  setReplyTo(Address[])");
+	     out.fine("UNIT TEST 1:  setReplyTo(Address[])");
 
 	  // set whom the message is from
 	     msg.setReplyTo(addrs);	// API TEST
 	     Address[] replyto = msg.getReplyTo();
 
 	     if(replyto[0].toString().equals(TO)) {
-                out.println("UNIT TEST 1:  passed\n");
+                out.fine("UNIT TEST 1:  passed\n");
 	     }
 	  // END UNIT TEST:
 

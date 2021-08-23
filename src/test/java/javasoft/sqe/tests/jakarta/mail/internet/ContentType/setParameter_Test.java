@@ -42,15 +42,15 @@ public class setParameter_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	 super.run(log, out);
+	 
 
-        out.println("\nTesting class ContentType: setParameter(String,String)\n");
+        out.fine("\nTesting class ContentType: setParameter(String,String)\n");
 
         try {
 	   // Create ContentType object
@@ -63,15 +63,15 @@ public class setParameter_Test extends MailTest {
 	      String name  = "charset";
 	      String value = "ISO-8859-1";
 
-              out.println("UNIT TEST 1: setParameter("+name+","+value+")");
+              out.fine("UNIT TEST 1: setParameter("+name+","+value+")");
               ct.setParameter(name, value);    // API TEST
 	      String param = ct.getParameter(name);
 
               if( param.equals(value) ) {
-		  out.println("Parameter is "+param);
-                  out.println("UNIT TEST 1: passed.\n");
+		  out.fine("Parameter is "+param);
+                  out.fine("UNIT TEST 1: passed.\n");
               } else {
-                    out.println("UNIT TEST 1: FAILED.\n");
+                    out.fine("UNIT TEST 1: FAILED.\n");
                     errors++;
               }
            // END UNIT TEST 1:

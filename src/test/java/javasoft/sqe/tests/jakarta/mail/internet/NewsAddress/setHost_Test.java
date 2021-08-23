@@ -42,15 +42,15 @@ public class setHost_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
+    
 
-        out.println("\nTesting class NewsAddress: setHost(String)\n");
+        out.fine("\nTesting class NewsAddress: setHost(String)\n");
 
         try {
 	   // Construct a NewsAddress with the given newsgroup
@@ -60,16 +60,16 @@ public class setHost_Test extends MailTest {
 		  return Status.failed("Failed to create "+pattern+" newsgroup on host "+host);
 	      }
 	   // BEGIN UNIT TEST 1:
-              out.println("UNIT TEST 1:  setHost("+pattern+")");
+              out.fine("UNIT TEST 1:  setHost("+pattern+")");
 
 	      na.setHost(pattern); 	// API TEST
 	      String host = na.getHost();
 
               if( host != null && pattern.equals(host) )
-                  out.println("UNIT TEST 1: passed");
+                  out.fine("UNIT TEST 1: passed");
               else {
-		    out.println("Warning: Failed to set host!");
-                    out.println("UNIT TEST 1: FAILED");
+		    out.fine("Warning: Failed to set host!");
+                    out.fine("UNIT TEST 1: FAILED");
                     errors++;
               }
            // END UNIT TEST 1:

@@ -45,15 +45,15 @@ public class get_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
+    
 
-        out.println("\nTesting class ParameterList: get(String)\n");
+        out.fine("\nTesting class ParameterList: get(String)\n");
 
         try {
 	  // create a ParameterList object
@@ -66,16 +66,16 @@ public class get_Test extends MailTest {
 
 	     for( int i = 0; i < pname.length; i++ )
 	     {
-	     	  out.println("UNIT TEST "+ i +":  get("+ pname[i] +")");
+	     	  out.fine("UNIT TEST "+ i +":  get("+ pname[i] +")");
 		  parmlist.set(pname[i], pvalue[i]);
 
 		  // get a value for a specified parameter
 		  String value = parmlist.get(pname[i]);	// API TEST
 
 		  if( pvalue[i].equals(value) )
-		      out.println("UNIT TEST "+ i +": passed");
+		      out.fine("UNIT TEST "+ i +": passed");
 		  else {
-			out.println("UNIT TEST "+ i +": FAILED");
+			out.fine("UNIT TEST "+ i +": FAILED");
 			errors++;
 		  }
 	     }

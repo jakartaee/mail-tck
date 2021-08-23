@@ -41,26 +41,26 @@ public class passwdAuthen_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
+    
 
-        out.println("\nTesting class PasswordAuthentication: PasswordAuthentication(String|String)\n");
+        out.fine("\nTesting class PasswordAuthentication: PasswordAuthentication(String|String)\n");
 
         try {
 	  // BEGIN UNIT TEST 1:
-	     out.println("UNIT TEST 1:  PasswordAuthentication("+user+", "+password+")");
+	     out.fine("UNIT TEST 1:  PasswordAuthentication("+user+", "+password+")");
 
 	     PasswordAuthentication pwa = new PasswordAuthentication(user, password);	// API TEST
 
 	     if( pwa != null )
-		 out.println("UNIT TEST 1: passed");
+		 out.fine("UNIT TEST 1: passed");
 	     else {
-		    out.println("UNIT TEST 1: FAILED");
+		    out.fine("UNIT TEST 1: FAILED");
 		    errors++;
 	     }
 	  // END UNIT TEST 1:

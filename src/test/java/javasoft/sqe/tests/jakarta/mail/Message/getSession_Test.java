@@ -47,45 +47,45 @@ public class getSession_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
+    
 
-        out.println("\nTesting class Message: getSession()\n");
+        out.fine("\nTesting class Message: getSession()\n");
 
         try {
 	    Session s = createSession();
 
 	    // BEGIN UNIT TEST 1:
 	       Message msg = new MimeMessage(s);
-	       out.println("UNIT TEST 1:  getSession()");
+	       out.fine("UNIT TEST 1:  getSession()");
 
 	       Session sess = msg.getSession();	// API TEST
 
 	       if (sess == s) {
-                   out.println("UNIT TEST 1:  passed\n");
+                   out.fine("UNIT TEST 1:  passed\n");
 	       } else {
-		       out.println("got Session: " + sess);
-		       out.println("UNIT TEST 1:  Failed\n");
+		       out.fine("got Session: " + sess);
+		       out.fine("UNIT TEST 1:  Failed\n");
 		       errors++;
 	       }
 	    // END UNIT TEST 1:
 
 	    // BEGIN UNIT TEST 2:
 	       msg = new MimeMessage((Session)null);
-	       out.println("UNIT TEST 2:  getSession() null");
+	       out.fine("UNIT TEST 2:  getSession() null");
 
 	       sess = msg.getSession();	// API TEST
 
 	       if (sess == null) {
-                   out.println("UNIT TEST 2:  passed\n");
+                   out.fine("UNIT TEST 2:  passed\n");
 	       } else {
-		       out.println("got Session: " + sess);
-		       out.println("UNIT TEST 2:  Failed\n");
+		       out.fine("got Session: " + sess);
+		       out.fine("UNIT TEST 2:  Failed\n");
 		       errors++;
 	       }
 	    // END UNIT TEST 2:

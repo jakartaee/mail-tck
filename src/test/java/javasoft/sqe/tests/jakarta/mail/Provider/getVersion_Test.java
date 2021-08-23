@@ -41,15 +41,15 @@ public class getVersion_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
+    
 
-	out.println("\nTesting class Provider: getVersion()\n");
+	out.fine("\nTesting class Provider: getVersion()\n");
 
         try {
 	   // Get Session object
@@ -60,12 +60,12 @@ public class getVersion_Test extends MailTest {
                   return Status.failed("Failed to get Provider object!");
               }
            // BEGIN UNIT TEST 1:
-              out.println("UNIT TEST 1: getVersion()");
+              out.fine("UNIT TEST 1: getVersion()");
 
 	      String version = prov.getVersion();	// API TEST
 
-	      out.println("The implementation version is "+ version);
-              out.println("UNIT TEST 1:  passed\n");
+	      out.fine("The implementation version is "+ version);
+              out.fine("UNIT TEST 1:  passed\n");
            // END UNIT TEST 1:
 
 	      status = Status.passed("OKAY");

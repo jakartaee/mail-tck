@@ -44,92 +44,92 @@ public class unsupportedOperation_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
-        out.println("\nTesting class MailDateFormat: UnsupportedOperationException\n");
+	
+        out.fine("\nTesting class MailDateFormat: UnsupportedOperationException\n");
 
 	try {
 	   MailDateFormat mdf = new MailDateFormat();
 
 	   // BEGIN UNIT TEST 1:
-	      out.println("UNIT TEST 1: setCalendar()");
+	      out.fine("UNIT TEST 1: setCalendar()");
 	      try {
 	      	  mdf.setCalendar(null);
-	          out.println("\nUNIT TEST 1: FAILED.\n");
+	          out.fine("\nUNIT TEST 1: FAILED.\n");
 	          errors++;
 	      } catch (UnsupportedOperationException ex) {
-	          out.println("\nUNIT TEST 1: passed.\n");
+	          out.fine("\nUNIT TEST 1: passed.\n");
 	      }
 	   // END UNIT TEST 1:
 
 	   // BEGIN UNIT TEST 2:
-	      out.println("UNIT TEST 2: setNumberFormat()");
+	      out.fine("UNIT TEST 2: setNumberFormat()");
 	      try {
 	      	  mdf.setNumberFormat(null);
-	          out.println("\nUNIT TEST 2: FAILED.\n");
+	          out.fine("\nUNIT TEST 2: FAILED.\n");
 	          errors++;
 	      } catch (UnsupportedOperationException ex) {
-	          out.println("\nUNIT TEST 2: passed.\n");
+	          out.fine("\nUNIT TEST 2: passed.\n");
 	      }
 	   // END UNIT TEST 2:
 
 	   // BEGIN UNIT TEST 3:
-	      out.println("UNIT TEST 3: applyLocalizedPattern()");
+	      out.fine("UNIT TEST 3: applyLocalizedPattern()");
 	      try {
 	      	  mdf.applyLocalizedPattern(null);
-	          out.println("\nUNIT TEST 3: FAILED.\n");
+	          out.fine("\nUNIT TEST 3: FAILED.\n");
 	          errors++;
 	      } catch (UnsupportedOperationException ex) {
-	          out.println("\nUNIT TEST 3: passed.\n");
+	          out.fine("\nUNIT TEST 3: passed.\n");
 	      }
 	   // END UNIT TEST 3:
 
 	   // BEGIN UNIT TEST 4:
-	      out.println("UNIT TEST 4: applyPattern()");
+	      out.fine("UNIT TEST 4: applyPattern()");
 	      try {
 	      	  mdf.applyPattern(null);
-	          out.println("\nUNIT TEST 4: FAILED.\n");
+	          out.fine("\nUNIT TEST 4: FAILED.\n");
 	          errors++;
 	      } catch (UnsupportedOperationException ex) {
-	          out.println("\nUNIT TEST 4: passed.\n");
+	          out.fine("\nUNIT TEST 4: passed.\n");
 	      }
 	   // END UNIT TEST 4:
 
 	   // BEGIN UNIT TEST 5:
-	      out.println("UNIT TEST 5: get2DigitYearStart()");
+	      out.fine("UNIT TEST 5: get2DigitYearStart()");
 	      try {
 	      	  Date d = mdf.get2DigitYearStart();
-	          out.println("\nUNIT TEST 5: FAILED.\n");
+	          out.fine("\nUNIT TEST 5: FAILED.\n");
 	          errors++;
 	      } catch (UnsupportedOperationException ex) {
-	          out.println("\nUNIT TEST 5: passed.\n");
+	          out.fine("\nUNIT TEST 5: passed.\n");
 	      }
 	   // END UNIT TEST 5:
 
 	   // BEGIN UNIT TEST 6:
-	      out.println("UNIT TEST 6: set2DigitYearStart()");
+	      out.fine("UNIT TEST 6: set2DigitYearStart()");
 	      try {
 	      	  mdf.set2DigitYearStart(null);
-	          out.println("\nUNIT TEST 6: FAILED.\n");
+	          out.fine("\nUNIT TEST 6: FAILED.\n");
 	          errors++;
 	      } catch (UnsupportedOperationException ex) {
-	          out.println("\nUNIT TEST 6: passed.\n");
+	          out.fine("\nUNIT TEST 6: passed.\n");
 	      }
 	   // END UNIT TEST 6:
 
 	   // BEGIN UNIT TEST 7:
-	      out.println("UNIT TEST 7: setDateFormatSymbols()");
+	      out.fine("UNIT TEST 7: setDateFormatSymbols()");
 	      try {
 	      	  mdf.setDateFormatSymbols(null);
-	          out.println("\nUNIT TEST 7: FAILED.\n");
+	          out.fine("\nUNIT TEST 7: FAILED.\n");
 	          errors++;
 	      } catch (UnsupportedOperationException ex) {
-	          out.println("\nUNIT TEST 7: passed.\n");
+	          out.fine("\nUNIT TEST 7: passed.\n");
 	      }
 	   // END UNIT TEST 7:
 

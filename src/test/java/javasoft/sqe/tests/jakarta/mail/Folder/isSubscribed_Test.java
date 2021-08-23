@@ -43,15 +43,15 @@ public class isSubscribed_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class Folder: isSubscribed()\n");
+        out.fine("\nTesting class Folder: isSubscribed()\n");
 
         try {
           // Connect to host server
@@ -68,26 +68,26 @@ public class isSubscribed_Test extends MailTest {
 	     // test with closed folder
 	     
 	     boolean subscribed;
-             out.println("UNIT TEST 1: isSubscribed();");
+             out.fine("UNIT TEST 1: isSubscribed();");
 
              subscribed = folder.isSubscribed();	// API TEST
 
              if( subscribed ) {
-		 out.println("This folder is subscribed.");
-                 out.println("UNIT TEST 1: passed\n");
+		 out.fine("This folder is subscribed.");
+                 out.fine("UNIT TEST 1: passed\n");
              }
 	  // END UNIT TEST 1:
           // BEGIN UNIT TEST 2:
 	     // test with open folder
 
 	     folder.open(Folder.READ_ONLY);
-             out.println("UNIT TEST 2: isSubscribed();");
+             out.fine("UNIT TEST 2: isSubscribed();");
 
              subscribed = folder.isSubscribed();       // API TEST
 
              if( subscribed ) {
-                 out.println("This folder is subscribed.");
-                 out.println("UNIT TEST 2: passed\n");
+                 out.fine("This folder is subscribed.");
+                 out.fine("UNIT TEST 2: passed\n");
              }
           // END UNIT TEST 2:
 	     folder.close(false);

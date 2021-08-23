@@ -42,15 +42,15 @@ public class getNewsgroup_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class NewsAddress: getNewsgroups()\n");
+        out.fine("\nTesting class NewsAddress: getNewsgroups()\n");
 
         try {
 	   // Construct a NewsAddress with the given newsgroup
@@ -60,15 +60,15 @@ public class getNewsgroup_Test extends MailTest {
 		  return Status.failed("Failed to create "+pattern+" newsgroup!");
 	      }
 	   // BEGIN UNIT TEST 1:
-              out.println("UNIT TEST 1:  getNewsgroup()");
+              out.fine("UNIT TEST 1:  getNewsgroup()");
 	      String newsgp = na.getNewsgroup(); 	// API TEST
 
               if( newsgp != null ) {
-		  out.println("Newsgroup name is "+ newsgp);
-                  out.println("UNIT TEST 1: passed");
+		  out.fine("Newsgroup name is "+ newsgp);
+                  out.fine("UNIT TEST 1: passed");
               } else {
-		      out.println("Warning: Newsgroup name is null!");
-                      out.println("UNIT TEST 1: FAILED");
+		      out.fine("Warning: Newsgroup name is null!");
+                      out.fine("UNIT TEST 1: FAILED");
                       errors++;
               }
            // END UNIT TEST 1:
@@ -81,14 +81,14 @@ public class getNewsgroup_Test extends MailTest {
               if( ng == null ) {
                   return Status.failed("Failed to create "+pattern+" newsgroup!");
               } 
-              out.println("UNIT TEST 2:  getNewsgroup()");
+              out.fine("UNIT TEST 2:  getNewsgroup()");
               String badng = ng.getNewsgroup();    // API TEST
 
               if( badng != null ) {
-		  out.println("Newsgroup name is "+ badng);
-                  out.println("UNIT TEST 2: passed");
+		  out.fine("Newsgroup name is "+ badng);
+                  out.fine("UNIT TEST 2: passed");
               } else {
-                      out.println("UNIT TEST 2: FAILED");
+                      out.fine("UNIT TEST 2: FAILED");
                       errors++;
               }
            // END UNIT TEST 2:

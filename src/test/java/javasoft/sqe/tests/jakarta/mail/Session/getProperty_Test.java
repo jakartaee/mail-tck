@@ -48,15 +48,15 @@ public class getProperty_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
+    
 
-        out.println("\nTesting class Session: getProperty()\n");
+        out.fine("\nTesting class Session: getProperty()\n");
 	String propis = null;
 	
         try {
@@ -73,38 +73,38 @@ public class getProperty_Test extends MailTest {
 		  return Status.failed("Warning: null session object!");
 	      }
            // BEGIN UNIT TEST 1:
-              out.println("UNIT TEST 1: getProperty(mail."+ protocol +".host)");
+              out.fine("UNIT TEST 1: getProperty(mail."+ protocol +".host)");
               propis = session.getProperty("mail."+ protocol +".host");	    // API TEST
 
               if ( propis != null && propis.equals("localhost") ) {
-                  out.println("UNIT TEST 1:  passed\n");
+                  out.fine("UNIT TEST 1:  passed\n");
               } else {
-		     out.println("The value returned is: "+ propis);
-                     out.println("UNIT TEST 1:  FAILED\n");
+		     out.fine("The value returned is: "+ propis);
+                     out.fine("UNIT TEST 1:  FAILED\n");
                      errors++;
               }
            // END UNIT TEST 1:
            // BEGIN UNIT TEST 2:
-              out.println("UNIT TEST 2: getProperty(mail."+ protocol +".user)");
+              out.fine("UNIT TEST 2: getProperty(mail."+ protocol +".user)");
               propis = session.getProperty("mail."+ protocol +".user");	    // API TEST
 
               if( propis != null && propis.equals("testuser") ) {
-		  out.println("The value returned is: "+ propis);
-                  out.println("UNIT TEST 2:  passed\n");
+		  out.fine("The value returned is: "+ propis);
+                  out.fine("UNIT TEST 2:  passed\n");
               } else {
-                      out.println("UNIT TEST 2:  FAILED\n");
+                      out.fine("UNIT TEST 2:  FAILED\n");
                       errors++;
               }
            // END UNIT TEST 2:
            // BEGIN UNIT TEST 3:
-              out.println("UNIT TEST 3: getProperty(mail.store.protocol)");
+              out.fine("UNIT TEST 3: getProperty(mail.store.protocol)");
               propis = session.getProperty("mail.store.protocol");	    // API TEST
 
               if( propis != null && propis.equals(protocol) ) {
-		  out.println("The value returned is: "+ propis);
-                  out.println("UNIT TEST 3:  passed\n");
+		  out.fine("The value returned is: "+ propis);
+                  out.fine("UNIT TEST 3:  passed\n");
               } else {
-                      out.println("UNIT TEST 3:  FAILED\n");
+                      out.fine("UNIT TEST 3:  FAILED\n");
                       errors++;
               }
            // END UNIT TEST 3:

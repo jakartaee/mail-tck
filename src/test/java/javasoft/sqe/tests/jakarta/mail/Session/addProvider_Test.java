@@ -40,15 +40,15 @@ public class addProvider_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
+    
 
-	out.println("\nTesting class Provider\n");
+	out.fine("\nTesting class Provider\n");
 
         try {
 
@@ -56,27 +56,27 @@ public class addProvider_Test extends MailTest {
             Session session = Session.getInstance(properties, null);
 
             // BEGIN UNIT TEST 1:
-            out.println("UNIT TEST 1: Provider() constructor");
+            out.fine("UNIT TEST 1: Provider() constructor");
             Provider prov = new Provider(Type.STORE, "airmail", 
                 "com.sun.mail.airmail.AirMailStore", 
                 "Sun Microsystems, Inc", "1.0"); //API TEST
 
             if (prov == null) {
-                out.println("UNIT TEST 1:  FAILED\n");
+                out.fine("UNIT TEST 1:  FAILED\n");
                 errors++;
-            } else out.println("UNIT TEST 1:  passed\n");
+            } else out.fine("UNIT TEST 1:  passed\n");
             // END UNIT TEST 1:
 
             // BEGIN UNIT TEST 2:
-            out.println("UNIT TEST 2: addProvider()");
+            out.fine("UNIT TEST 2: addProvider()");
 
             session.addProvider(prov); // API TEST
             Provider provider = session.getProvider("airmail");
             
             if (provider.toString().equals(prov.toString()))        
-                out.println("UNIT TEST 2:  passed\n");
+                out.fine("UNIT TEST 2:  passed\n");
             else {
-                out.println("UNIT TEST 2:  FAILED\n");
+                out.fine("UNIT TEST 2:  FAILED\n");
                 errors++;
             }
             // END UNIT TEST 2:

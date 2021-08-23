@@ -46,15 +46,15 @@ public class addHeaderLine_Test extends MailTest {
     
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class InternetHeaders: addHeaderLine(String)\n");
+        out.fine("\nTesting class InternetHeaders: addHeaderLine(String)\n");
 
         try {
 	  // create internetheader object
@@ -68,7 +68,7 @@ public class addHeaderLine_Test extends MailTest {
 
 	     for( int i = 0; i < 5; i++ )
 	     {
-		  out.println("UNIT TEST "+ i +":  addHeaderLine("+ headerline[i] +")");
+		  out.fine("UNIT TEST "+ i +":  addHeaderLine("+ headerline[i] +")");
 		  ih.addHeaderLine(headerline[i]);	// API TEST
 	     }
 	    // get all headerlines
@@ -76,9 +76,9 @@ public class addHeaderLine_Test extends MailTest {
 
 	     while( allheaders.hasMoreElements() ) {
 		    String headers = (String)allheaders.nextElement();
-		    out.println(headers);
+		    out.fine(headers);
 	     }
-	     out.println("ALL UNIT TEST: passed");
+	     out.fine("ALL UNIT TEST: passed");
 	  // END UNIT TEST:
              checkStatus();
 

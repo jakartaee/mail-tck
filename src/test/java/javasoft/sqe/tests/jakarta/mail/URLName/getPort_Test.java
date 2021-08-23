@@ -41,15 +41,15 @@ public class getPort_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
+    
 
-        out.println("\nTesting class URLName: getPort()\n");
+        out.fine("\nTesting class URLName: getPort()\n");
 
         try {
 	   // Create a URLName object
@@ -59,14 +59,14 @@ public class getPort_Test extends MailTest {
                   return Status.failed("Failed to create a URLName object!");
 
            // BEGIN UNIT TEST 1:
-              out.println("UNIT TEST 1:  getPort()");
+              out.fine("UNIT TEST 1:  getPort()");
               int portid = urlname.getPort(); 	// API TEST
 
               if( portid > -1 ) {
-		  out.println("Port number is "+ portid);
-                  out.println("UNIT TEST 1: passed");
+		  out.fine("Port number is "+ portid);
+                  out.fine("UNIT TEST 1: passed");
 	      } else {
-		      out.println("UNIT TEST 1: FAILED.\n");
+		      out.fine("UNIT TEST 1: FAILED.\n");
 		      errors++;
 	      }
            // END UNIT TEST 1:

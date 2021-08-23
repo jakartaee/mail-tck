@@ -50,26 +50,26 @@ public String[] datim = { "=?ISO-8859-1?Q?Keld_J=F8rn_Simonsen?=",
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class MimeUtility: decodeWord(String);");
+        out.fine("\nTesting class MimeUtility: decodeWord(String);");
 
         try {
 	  // BEGIN UNIT TEST:
 
 	     for( int k = 0; k < datim.length; k++ )
 	     {
-	         out.println("UNIT TEST "+ (k+1) +":  decodeWord("+datim[k]+")");
+	         out.fine("UNIT TEST "+ (k+1) +":  decodeWord("+datim[k]+")");
 
-	         out.println("Decoded text = "+ MimeUtility.decodeWord(datim[k]));
-		 out.println("\nUNIT TEST "+ (k+1) +": passed");
-	         out.println("----------------------------------------");
+	         out.fine("Decoded text = "+ MimeUtility.decodeWord(datim[k]));
+		 out.fine("\nUNIT TEST "+ (k+1) +": passed");
+	         out.fine("----------------------------------------");
 	     }
 	  // END UNIT TEST:
              checkStatus();

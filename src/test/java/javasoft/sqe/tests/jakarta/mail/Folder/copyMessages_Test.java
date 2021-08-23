@@ -50,15 +50,15 @@ public class copyMessages_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class Folder: copyMessages(Message msgs[], Folder folder)\n");
+        out.fine("\nTesting class Folder: copyMessages(Message msgs[], Folder folder)\n");
 
         try {
           // Connect to host server
@@ -96,7 +96,7 @@ public class copyMessages_Test extends MailTest {
              // Get all messages
 	     Message[] msgs = folder.getMessages();
 
-             out.println("UNIT TEST 1: copyMessages(Message msgs[]," + testbox + ")");
+             out.fine("UNIT TEST 1: copyMessages(Message msgs[]," + testbox + ")");
 	     
 	     // Copy all messages
 	     folder.copyMessages(msgs, testfolder);   // API TEST
@@ -104,9 +104,9 @@ public class copyMessages_Test extends MailTest {
 	     testfolder.open(Folder.READ_WRITE); 
 
 	     if ( testfolder.getMessageCount() == msgcount )
-		  out.println("UNIT TEST 1 with mods: passed\n");
+		  out.fine("UNIT TEST 1 with mods: passed\n");
 	     else {
-	           out.println("UNIT TEST 1 with mods: FAILED\n");
+	           out.fine("UNIT TEST 1 with mods: FAILED\n");
 		   errors++;
 	     }
 
@@ -117,7 +117,7 @@ public class copyMessages_Test extends MailTest {
 	  // BEGIN UNIT TEST 2:
 	     // case 2: close test folder
 
-             out.println("UNIT TEST 2: copyMessages(Message msgs[]," + testbox + ")");
+             out.fine("UNIT TEST 2: copyMessages(Message msgs[]," + testbox + ")");
 
              folder.copyMessages(msgs, testfolder);   // API TEST
 	     testfolder.open(Folder.READ_WRITE);
@@ -125,9 +125,9 @@ public class copyMessages_Test extends MailTest {
 	     Thread.sleep(5000);
 
              if ( testfolder.getMessageCount() == ( 2 * msgcount ))
-                  out.println("UNIT TEST 2: passed\n");
+                  out.fine("UNIT TEST 2: passed\n");
              else {
-               	   out.println("UNIT TEST 2: FAILED\n");
+               	   out.fine("UNIT TEST 2: FAILED\n");
                	   errors++;
 	     }
 	  // END UNIT TEST 2:
@@ -138,14 +138,14 @@ public class copyMessages_Test extends MailTest {
              for( int k = 0; k < msgs.length; k++ )
                   msgs[k].setFlag(Flags.Flag.DELETED, true);
 
-             out.println("UNIT TEST 3: copyMessages(Message msgs[]," + testbox + ")");
+             out.fine("UNIT TEST 3: copyMessages(Message msgs[]," + testbox + ")");
 
              folder.copyMessages(msgs, testfolder);   // API TEST
 
              if ( testfolder.getMessageCount() == ( 3 * msgcount ) )
-                  out.println("UNIT TEST 3: passed\n");
+                  out.fine("UNIT TEST 3: passed\n");
              else {
-                    out.println("UNIT TEST 3: FAILED\n");
+                    out.fine("UNIT TEST 3: FAILED\n");
                     errors++;
 	     }
 	  // END UNIT TEST 3:

@@ -60,15 +60,15 @@ public class getHeader_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
+    
 
-        out.println("\nTesting class Message: getHeader(String)\n");
+        out.fine("\nTesting class Message: getHeader(String)\n");
 
         try {
           // Connect to host server
@@ -96,127 +96,127 @@ public class getHeader_Test extends MailTest {
                 MimeMessage msg = (MimeMessage)folder.getMessage(i);
 
 	        if( msg == null ) {
-		    log.println("WARNING: FAILED TO GET MESSAGE NUMBER: "+ i);
+		    log.warning("WARNING: FAILED TO GET MESSAGE NUMBER: "+ i);
 		    continue;
 	        }
 	     // BEGIN UNIT TEST:
-	        out.println("UNIT TEST "+ i +":  getHeader(String)");
+	        out.fine("UNIT TEST "+ i +":  getHeader(String)");
 
 		// Get the specified message headers
                 header = msg.getHeader(returnpath);	// API TEST
 
 	        if( header != null )
-                    out.println("getHeaders(Return-Path) :=> '" + header[0] + "'");
+                    out.fine("getHeaders(Return-Path) :=> '" + header[0] + "'");
 	        else
-		    out.println("getHeaders(Return-Path) :=> 'empty field'");
+		    out.fine("getHeaders(Return-Path) :=> 'empty field'");
 
                 header = msg.getHeader(msgid);		// API TEST
 
 	        if ( header != null )
-                     out.println("getHeaders(Message-ID) :=> '" + header[0] + "'");
+                     out.fine("getHeaders(Message-ID) :=> '" + header[0] + "'");
 	        else
-		     out.println("getHeaders(Message-ID) :=> 'empty field'");
+		     out.fine("getHeaders(Message-ID) :=> 'empty field'");
 
 	        header = msg.getHeader(date);		// API TEST
 
 	        if ( header != null )
-	             out.println("getHeaders(Date) :=> '" + header[0] + "'");
+	             out.fine("getHeaders(Date) :=> '" + header[0] + "'");
                 else
-		     out.println("getHeaders(Date) :=> 'empty field'");
+		     out.fine("getHeaders(Date) :=> 'empty field'");
 
                 header = msg.getHeader(from);		// API TEST
 
 	        if ( header != null ) {
-                     out.println("getHeaders(From) :=> '" + header[0] + "'");
-		   //out.println("getHeaders(From) :=> '" + header[1] + "'");
+                     out.fine("getHeaders(From) :=> '" + header[0] + "'");
+		   //out.fine("getHeaders(From) :=> '" + header[1] + "'");
 	        } else
-		     out.println("getHeaders(From) :=> 'empty field'");
+		     out.fine("getHeaders(From) :=> 'empty field'");
 
                 header = msg.getHeader(replyto);	// API TEST
 
 	        if ( header != null )
-                     out.println("getHeaders(Reply-To) :=> '" + header[0] + "'");
+                     out.fine("getHeaders(Reply-To) :=> '" + header[0] + "'");
 	        else
-		     out.println("getHeaders(Reply-To) :=> 'empty field'");
+		     out.fine("getHeaders(Reply-To) :=> 'empty field'");
 
                 header = msg.getHeader(xmailer);	// API TEST
 
 	        if ( header != null )
-                     out.println("getHeaders(X-Mailer) :=> '" + header[0] + "'");
+                     out.fine("getHeaders(X-Mailer) :=> '" + header[0] + "'");
 	        else
-	             out.println("getHeaders(X-Mailer) :=> 'empty field'");
+	             out.fine("getHeaders(X-Mailer) :=> 'empty field'");
 
                 header = msg.getHeader(mime_version);	// API TEST
 
                 if ( header != null )
-                     out.println("getHeaders(MIME-Version) :=> '" + header[0] + "'");
+                     out.fine("getHeaders(MIME-Version) :=> '" + header[0] + "'");
                 else
-                     out.println("getHeaders(MIME-Version) :=> 'empty field'");
+                     out.fine("getHeaders(MIME-Version) :=> 'empty field'");
 
                 header = msg.getHeader(to);		// API TEST
 
 	        if ( header != null )
-                     out.println("getHeaders(To) :=> '" + header[0] + "'");
+                     out.fine("getHeaders(To) :=> '" + header[0] + "'");
 	        else
-		     out.println("getHeaders(To) :=> 'empty field'");
+		     out.fine("getHeaders(To) :=> 'empty field'");
 
                 header = msg.getHeader(cc);		// API TEST
 
 	        if ( header != null )
-                     out.println("getHeaders(Cc) :=> '" + header[0] + "'");
+                     out.fine("getHeaders(Cc) :=> '" + header[0] + "'");
 	        else
-		     out.println("getHeaders(Cc) :=> 'empty field'");
+		     out.fine("getHeaders(Cc) :=> 'empty field'");
 
                 header = msg.getHeader(bcc);		// API TEST
 
 	        if ( header != null )
-                     out.println("getHeaders(Bcc) :=> '" + header[0] + "'");
+                     out.fine("getHeaders(Bcc) :=> '" + header[0] + "'");
 	        else
-		     out.println("getHeaders(Bcc) :=> 'empty field'");
+		     out.fine("getHeaders(Bcc) :=> 'empty field'");
 
                 header = msg.getHeader(subject);	// API TEST
 
 	        if ( header != null )
-                     out.println("getHeaders(Subject) :=> '" + header[0] + "'");
+                     out.fine("getHeaders(Subject) :=> '" + header[0] + "'");
 	        else
-		     out.println("getHeaders(Subject) :=> 'empty field'");
+		     out.fine("getHeaders(Subject) :=> 'empty field'");
 
                 header = msg.getHeader(reference);	// API TEST
 
                 if ( header != null )
-                     out.println("getHeaders(References) :=> '" + header[0] + "'");
+                     out.fine("getHeaders(References) :=> '" + header[0] + "'");
                 else
-                     out.println("getHeaders(References) :=> 'empty field'");
+                     out.fine("getHeaders(References) :=> 'empty field'");
 
                 header = msg.getHeader(contentype);	// API TEST
 
                 if ( header != null )
-                     out.println("getHeaders(Content-Type) :=> '" + header[0] + "'");
+                     out.fine("getHeaders(Content-Type) :=> '" + header[0] + "'");
                 else
-                     out.println("getHeaders(Content-Type) :=> 'empty field'");
+                     out.fine("getHeaders(Content-Type) :=> 'empty field'");
 
                 header = msg.getHeader(content_encode);	// API TEST
 
 	        if ( header != null )
-                     out.println("getHeaders(Content-Transfer-Encoding) :=> '" + header[0] + "'");
+                     out.fine("getHeaders(Content-Transfer-Encoding) :=> '" + header[0] + "'");
 	        else
-		     out.println("getHeaders(Content-Transfer-Encoding) :=> 'empty field'");
+		     out.fine("getHeaders(Content-Transfer-Encoding) :=> 'empty field'");
 
                 header = msg.getHeader(content_md5);	// API TEST
 
 	        if ( header != null )
-                     out.println("getHeaders(Content-MD5) :=> '" + header[0] + "'");
+                     out.fine("getHeaders(Content-MD5) :=> '" + header[0] + "'");
 	        else
-		     out.println("getHeaders(Content-MD5) :=> 'empty field'");
+		     out.fine("getHeaders(Content-MD5) :=> 'empty field'");
 
                 header = msg.getHeader(contentlength);	// API TEST
 
                 if ( header != null )
-                     out.println("getHeader(Content-Length) :=> '" + header[0] + "'");
+                     out.fine("getHeader(Content-Length) :=> '" + header[0] + "'");
                 else
-                     out.println("getHeader(Content-Length) :=> 'empty field'");
+                     out.fine("getHeader(Content-Length) :=> 'empty field'");
 
-                out.println("UNIT TEST " + (i+1) + ":  passed\n");
+                out.fine("UNIT TEST " + (i+1) + ":  passed\n");
 
 	     // END UNIT TEST:
 	    }

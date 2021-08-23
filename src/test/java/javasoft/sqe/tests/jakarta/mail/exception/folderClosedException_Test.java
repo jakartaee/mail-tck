@@ -40,15 +40,15 @@ public class folderClosedException_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class FolderClosedException: FolderClosedException()\n");
+        out.fine("\nTesting class FolderClosedException: FolderClosedException()\n");
 
         try {
            // Connect to host server
@@ -62,7 +62,7 @@ public class folderClosedException_Test extends MailTest {
                   return Status.failed("Invalid folder object!");
               }
            // BEGIN UNIT TEST 1:
-	      out.println("UNIT TEST 1: FolderClosedException(Folder | String)");
+	      out.fine("UNIT TEST 1: FolderClosedException(Folder | String)");
 	      // XXX - this only really tests IllegalStateException because
 	      // there's no way to force a FolderClosedException, which only
 	      // happens when the folder closes "unexpectedly".
@@ -70,13 +70,13 @@ public class folderClosedException_Test extends MailTest {
               Message msg = folder.getMessage(1);	// API TEST
 
               if( msg != null )
-                  out.println("UNIT TEST 1: FAILED.\n");
+                  out.fine("UNIT TEST 1: FAILED.\n");
 
            // END UNIT TEST 1:
 	      status = Status.failed(" Failed to catch FolderClosedException ");
 
         } catch ( FolderClosedException fe ) {
-		out.println("UNIT TEST 1: passed.\n");
+		out.fine("UNIT TEST 1: passed.\n");
 		try {
 		      store.close();
 		      ExceptionTest(fe);
@@ -84,7 +84,7 @@ public class folderClosedException_Test extends MailTest {
 		      handlException(e);
 		}
 	} catch ( java.lang.IllegalStateException ise ) {
-		out.println("UNIT TEST 1: passed.\n");
+		out.fine("UNIT TEST 1: passed.\n");
                 try {
                       store.close();
                       ExceptionTest(ise);

@@ -49,20 +49,20 @@ public class add_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class Flags: add(Flags | String)\n");
+        out.fine("\nTesting class Flags: add(Flags | String)\n");
 
         try {
 	  // BEGIN UNIT TEST 1:
 
-	     out.println("\nUNIT TEST 1:  add(Flags)");
+	     out.fine("\nUNIT TEST 1:  add(Flags)");
 
 	     Flags flag1 = new Flags();
 
@@ -74,38 +74,38 @@ public class add_Test extends MailTest {
 		   flag1.add(Flags.Flag.ANSWERED);	// API TEST
 
 		   if( flag1.contains(Flags.Flag.DELETED) )
-			out.println("Flag DELETED added successfuly");
+			out.fine("Flag DELETED added successfuly");
 		   else
 			errors++;
 
                    if( flag1.contains(Flags.Flag.SEEN) )
-                       out.println("Flag SEEN added successfuly");
+                       out.fine("Flag SEEN added successfuly");
                    else
                        errors++;
 
                    if( flag1.contains(Flags.Flag.RECENT) )
-                       out.println("Flag RECENT added successfuly");                
+                       out.fine("Flag RECENT added successfuly");                
                    else
                        errors++;
 
                    if( flag1.contains(Flags.Flag.ANSWERED) )
-                       out.println("Flag ANSWERED added successfuly");                
+                       out.fine("Flag ANSWERED added successfuly");                
                    else
                        errors++;
 
 		   if( errors == 0 )
-                       out.println("UNIT TEST 1: passed\n");
+                       out.fine("UNIT TEST 1: passed\n");
 		   else
-			out.println("UNIT TEST 1: FAILED\n");
+			out.fine("UNIT TEST 1: FAILED\n");
 	     }
 	     else {
-		    out.println("UNIT TEST 1: FAILED\n");
+		    out.fine("UNIT TEST 1: FAILED\n");
 		    errors++;
 	     }
 	  // END UNIT TEST 1:
           // BEGIN UNIT TEST 2:
 
-             out.println("\nUNIT TEST 2: add(String)");
+             out.fine("\nUNIT TEST 2: add(String)");
 
              Flags flag2 = new Flags(Flags.Flag.ANSWERED);
 
@@ -115,22 +115,22 @@ public class add_Test extends MailTest {
              if(( flag2 != null ) && ( flag2 instanceof Flags ))
 	     {
                    if( flag1.contains("TEST_USER") )
-                       out.println("Flag TEST_USER added successfuly");
+                       out.fine("Flag TEST_USER added successfuly");
                    else
                        errors++;
 
                    if( flag2.contains("USER_TEST") )
-                       out.println("Flag USER_TEST added successfuly");
+                       out.fine("Flag USER_TEST added successfuly");
                    else
                        errors++;
 
                    if( errors == 0 )
-                       out.println("UNIT TEST 2: passed\n");
+                       out.fine("UNIT TEST 2: passed\n");
                    else
-                       out.println("UNIT TEST 2: FAILED\n");
+                       out.fine("UNIT TEST 2: FAILED\n");
 	     }
              else {
-                    out.println("UNIT TEST 2: FAILED\n");
+                    out.fine("UNIT TEST 2: FAILED\n");
                     errors++;
              }
           // END UNIT TEST 2:

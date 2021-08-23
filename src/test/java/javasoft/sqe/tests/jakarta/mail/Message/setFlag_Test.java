@@ -43,7 +43,7 @@ public class setFlag_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
     // check if setFlags does its job successfully
@@ -80,11 +80,11 @@ public class setFlag_Test extends MailTest {
         return unitest;
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class Message: setFlag(Flags.Flag, boolean)\n");
+        out.fine("\nTesting class Message: setFlag(Flags.Flag, boolean)\n");
 
         try {
           // Create a MimeMessage object
@@ -92,64 +92,64 @@ public class setFlag_Test extends MailTest {
              MimeMessage msg = new MimeMessage(session);
 
              if( msg == null ) {
-                 log.println("WARNING: FAILED TO CREATE MESSAGE OBJECT");
+                 log.warning("WARNING: FAILED TO CREATE MESSAGE OBJECT");
                  return Status.failed("Failed to create Message object");
              }
 	  // BEGIN UNIT TEST:
 	     // Set the flags for this message
 
-	     out.println("UNIT TEST 1:  setFlags(Flags.Flag, boolean)\n");
+	     out.fine("UNIT TEST 1:  setFlags(Flags.Flag, boolean)\n");
 
-	     out.println("setFlag(Flag.ANSWERED, true)");
+	     out.fine("setFlag(Flag.ANSWERED, true)");
 	     msg.setFlag(Flags.Flag.ANSWERED, true);		// APT TESTS
 
              if( testFlag(msg) )
-                 out.println("ANSWERED flag set to TRUE\n");
+                 out.fine("ANSWERED flag set to TRUE\n");
              else {
-                   out.println("ANSWERED flag not set to TRUE\n");
+                   out.fine("ANSWERED flag not set to TRUE\n");
                    errors++;
              }
-	     out.println("setFlag(Flag.SEEN, true)");
+	     out.fine("setFlag(Flag.SEEN, true)");
 	     msg.setFlag(Flags.Flag.SEEN, true);		// APT TESTS
 
              if( testFlag(msg) )
-                 out.println("SEEN flag set to TRUE\n");
+                 out.fine("SEEN flag set to TRUE\n");
              else {
-                   out.println("Warning: SEEN flag not set to TRUE\n");
+                   out.fine("Warning: SEEN flag not set to TRUE\n");
                    errors++;
              }
-	     out.println("setFlag(Flags.RECENT, false)");
+	     out.fine("setFlag(Flags.RECENT, false)");
 	     msg.setFlag(Flags.Flag.RECENT, false);		// APT TESTS
 
              if( testFlag(msg) )
-                 out.println("RECENT flag set to FALSE\n");
+                 out.fine("RECENT flag set to FALSE\n");
              else {
-                   out.println("Warning: RECENT flag not set to FALSE\n");
+                   out.fine("Warning: RECENT flag not set to FALSE\n");
                    errors++;
              }
-	     out.println("setFlag(Flag.DRAFT, false)");
+	     out.fine("setFlag(Flag.DRAFT, false)");
 	     msg.setFlag(Flags.Flag.DRAFT, false);		// APT TESTS
 
              if( testFlag(msg) )
-                 out.println("DRAFT flag set to FALSE\n");
+                 out.fine("DRAFT flag set to FALSE\n");
              else {
-                   out.println("Warning: DRAFT flag not set to FALSE\n");
+                   out.fine("Warning: DRAFT flag not set to FALSE\n");
                    errors++;
              }
-	     out.println("setFlag(Flag.DELETED, true)");
+	     out.fine("setFlag(Flag.DELETED, true)");
 	     msg.setFlag(Flags.Flag.DELETED, true);		// APT TESTS
 
              if( testFlag(msg) )
-                 out.println("DELETED flag set to TRUE\n");
+                 out.fine("DELETED flag set to TRUE\n");
              else {
-                   out.println("Warning: DELETED flag not set to TRUE\n");
+                   out.fine("Warning: DELETED flag not set to TRUE\n");
                    errors++;
              }
 
 	     if( errors == 0 )
-                 out.println("UNIT TEST 1:  passed\n");
+                 out.fine("UNIT TEST 1:  passed\n");
 	     else
-		 out.println("UNIT TEST 1:  FAILED\n");
+		 out.fine("UNIT TEST 1:  FAILED\n");
 
 	  // END UNIT TEST
 

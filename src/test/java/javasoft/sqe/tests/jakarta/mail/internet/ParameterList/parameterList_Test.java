@@ -44,42 +44,42 @@ public class parameterList_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
 	pattern = ";i18set=ISO-8859-1;charset=us-acii;abc=xyz";
 
-	super.run(log, out);
+	
 
-        out.println("\nTesting class ParameterList: ParameterList(void | String)\n");
+        out.fine("\nTesting class ParameterList: ParameterList(void | String)\n");
 
         try {	     
 	  // BEGIN UNIT TEST 1:
-	     out.println("UNIT TEST 1:  ParameterList()");
+	     out.fine("UNIT TEST 1:  ParameterList()");
 
 	     ParameterList parmlist1 = new ParameterList();    // API TEST
 
 	     if( parmlist1 != null )
-		 out.println("UNIT TEST 1: passed");
+		 out.fine("UNIT TEST 1: passed");
 	     else {
-		    out.println("UNIT TEST 1: FAILED");
+		    out.fine("UNIT TEST 1: FAILED");
 		    errors++;
 	     }
 	  // END UNIT TEST 1:
 	  // BEGIN UNIT TEST 2:
-	     out.println("UNIT TEST 2:  ParameterList("+pattern+")");
+	     out.fine("UNIT TEST 2:  ParameterList("+pattern+")");
 
 	   // Constructor that takes a parameter-list string
 	     ParameterList parmlist2 = new ParameterList(pattern);	// API TEST
 
 	     if( parmlist2 != null ) {
-		 out.println( parmlist2.get("filename") );
-		 out.println("UNIT TEST 2: passed");
+		 out.fine( parmlist2.get("filename") );
+		 out.fine("UNIT TEST 2: passed");
 	     } else {
-		     out.println("UNIT TEST 2: FAILED");
+		     out.fine("UNIT TEST 2: FAILED");
 		     errors++;
 	     }
 	  // END UNIT TEST 2:

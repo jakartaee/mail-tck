@@ -38,33 +38,33 @@ public class initializeProperties_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
     static Session session;
 
-    public Status run(PrintWriter log, PrintWriter out) {
-	super.run(log, out);
+    public Status run() {
+	
 
-        out.println("\nTesting class MimeMultipart: " +
+        out.fine("\nTesting class MimeMultipart: " +
 	    "initializeProperties method\n");
         try {
 	    clearAll();
 
             // BEGIN UNIT TEST:
-            out.println("UNIT TEST 1:  initializeProperties()");
+            out.fine("UNIT TEST 1:  initializeProperties()");
 	    MyMimeMultipart mp = new MyMimeMultipart();
 	    if (mp.checkDefault()) {
-                out.println("UNIT TEST 1:  passed\n");
+                out.fine("UNIT TEST 1:  passed\n");
 	    } else {
-                out.println("UNIT TEST 1:  FAILED\n");
+                out.fine("UNIT TEST 1:  FAILED\n");
                 errors++;
 	    }
             // END UNIT TEST:
 
             // BEGIN UNIT TEST:
-            out.println("UNIT TEST 2:  initializeProperties()");
+            out.fine("UNIT TEST 2:  initializeProperties()");
 	    System.setProperty(
 		"mail.mime.multipart.ignoreexistingboundaryparameter", "true");
 	    System.setProperty(
@@ -74,9 +74,9 @@ public class initializeProperties_Test extends MailTest {
 	    System.setProperty("mail.mime.multipart.allowempty", "true");
 	    mp = new MyMimeMultipart();
 	    if (mp.checkNonDefault()) {
-                out.println("UNIT TEST 2:  passed\n");
+                out.fine("UNIT TEST 2:  passed\n");
 	    } else {
-                out.println("UNIT TEST 2:  FAILED\n");
+                out.fine("UNIT TEST 2:  FAILED\n");
                 errors++;
 	    }
             // END UNIT TEST:

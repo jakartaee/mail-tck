@@ -33,19 +33,19 @@ public class unicode_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting MimeMessage class Unicode APIs\n");
+        out.fine("\nTesting MimeMessage class Unicode APIs\n");
 
 	try {
 	  // BEGIN UNIT TEST 1:
-	     out.println("UNIT TEST 1: mail.mime.allowutf8 writeTo()\n");
+	     out.fine("UNIT TEST 1: mail.mime.allowutf8 writeTo()\n");
 	     Properties props = new Properties();
 	     props.setProperty("mail.mime.allowutf8", "true");
 	     Session s = Session.getInstance(props);
@@ -73,24 +73,24 @@ public class unicode_Test extends MailTest {
 		    foundHeader = true;
 	     }
 	     if (foundTo && foundHeader)
-		  out.println("UNIT TEST 1:  passed\n");
+		  out.fine("UNIT TEST 1:  passed\n");
 	     else {
-		  out.println("UNIT TEST 1:  FAILED\n");
+		  out.fine("UNIT TEST 1:  FAILED\n");
 		  errors++;
 	     }
 	  // END UNIT TEST 1:
 
 	  // BEGIN UNIT TEST 2:
-	     out.println("UNIT TEST 2: mail.mime.allowutf8 constructor\n");
+	     out.fine("UNIT TEST 2: mail.mime.allowutf8 constructor\n");
 	     bis = new ByteArrayInputStream(bos.toByteArray());
 	     msg = new MimeMessage(s, bis);
 	     InternetAddress to =
 		(InternetAddress)msg.getRecipients(Message.RecipientType.TO)[0];
 	     String header = msg.getHeader("Header", null);
 	     if (to.getAddress().equals(mailbox) && header.equals(personal))
-		  out.println("UNIT TEST 2:  passed\n");
+		  out.fine("UNIT TEST 2:  passed\n");
 	     else {
-		  out.println("UNIT TEST 2:  FAILED\n");
+		  out.fine("UNIT TEST 2:  FAILED\n");
 		  errors++;
 	     }
 	  // END UNIT TEST 2:

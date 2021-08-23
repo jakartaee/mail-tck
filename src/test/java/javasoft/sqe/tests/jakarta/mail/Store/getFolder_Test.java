@@ -46,31 +46,31 @@ public class getFolder_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
+    
 
-        out.println("\nTesting class Store: getFolder(String | URL)\n");
+        out.fine("\nTesting class Store: getFolder(String | URL)\n");
 
         try {
           // Connect to host server
              Store store_1 = connect2host(protocol, host, user, password);
 
           // BEGIN UNIT TEST 1:
-             out.println("UNIT TEST 1: getFolder(" + mailbox + ")");
+             out.fine("UNIT TEST 1: getFolder(" + mailbox + ")");
 
           // Get a Folder.
 	     Folder root = getRootFolder(store_1);
              Folder folder_1 = root.getFolder(mailbox);	// API TEST
 
              if(( folder_1 != null ) && ( folder_1 instanceof Folder ))
-		  out.println("UNIT TEST 1:  passed\n");
+		  out.fine("UNIT TEST 1:  passed\n");
              else if( folder_1 == null ) {
-		      out.println("UNIT TEST 1:  FAILED\n");
+		      out.fine("UNIT TEST 1:  FAILED\n");
 		      return Status.failed("Invalid folder object!");
 	     }
 	     store_1.close();
@@ -80,14 +80,14 @@ public class getFolder_Test extends MailTest {
 	  // Connect to host server
              Store store_2 = this.connect2host(protocol, host, user, password);
 
-             out.println("UNIT TEST 2: getFolder("+ protocol +"://"+ user +"@"+ host +"/"+ mailbox +")");
+             out.fine("UNIT TEST 2: getFolder("+ protocol +"://"+ user +"@"+ host +"/"+ mailbox +")");
 
              Folder folder_2 = store_2.getFolder(new URLName(protocol +"://"+ user +"@"+ host +"/"+ mailbox));	// API TEST
 
 	     if (( folder_2 != null ) && ( folder_2 instanceof Folder ))
-		   out.println("UNIT TEST 2:  passed\n");
+		   out.fine("UNIT TEST 2:  passed\n");
              else if ( folder_2 == null ) {
-		       out.println("UNIT TEST 2:  FAILED\n");
+		       out.fine("UNIT TEST 2:  FAILED\n");
 		       return Status.failed("Invalid URL path");
 	     }
              store_2.close();
@@ -97,15 +97,15 @@ public class getFolder_Test extends MailTest {
 	  // Connect to host server
              Store store_3 = this.connect2host(protocol, host, user, password);
 
-             out.println("UNIT TEST 3: getFolder("+ protocol +"://"+ user +"@"+ host +"/testinbox)");
+             out.fine("UNIT TEST 3: getFolder("+ protocol +"://"+ user +"@"+ host +"/testinbox)");
 
 		// need to pass URLName object here !
              Folder folder_3 = store_3.getFolder(new URLName(protocol +"://"+ user +"@"+ host +"/testinbox")); // API TEST
 
              if ( folder_3 == null || ( folder_3 instanceof Folder ) )
-                  out.println("UNIT TEST 3:  passed\n");
+                  out.fine("UNIT TEST 3:  passed\n");
              else {
-                    out.println("UNIT TEST 3:  FAILED\n");
+                    out.fine("UNIT TEST 3:  FAILED\n");
                     errors++;
              }
 	     store_3.close();

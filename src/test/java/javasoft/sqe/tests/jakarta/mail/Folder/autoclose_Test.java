@@ -44,15 +44,15 @@ public class autoclose_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class Folder: auto close()\n");
+        out.fine("\nTesting class Folder: auto close()\n");
 
         try {
           // Connect to host server
@@ -68,7 +68,7 @@ public class autoclose_Test extends MailTest {
 
 	  // BEGIN UNIT TEST 1:
 
-	     out.println("UNIT TEST 1: auto close()");
+	     out.fine("UNIT TEST 1: auto close()");
 
           // Create a new test folder in same protocol store
              Folder testfolder0 = null;
@@ -109,7 +109,7 @@ public class autoclose_Test extends MailTest {
 	     }
 
 	     if (testfolder0.isOpen()) {
-                    out.println("UNIT TEST 1: FAILED\n");
+                    out.fine("UNIT TEST 1: FAILED\n");
                     errors++;
 	     } else {
 
@@ -120,9 +120,9 @@ public class autoclose_Test extends MailTest {
 		 testfolder0.delete(true);
 
 		 if ( newTotal == 0 )
-		      out.println("UNIT TEST 1: passed\n");	
+		      out.fine("UNIT TEST 1: passed\n");	
 		 else {
-			out.println("UNIT TEST 1: FAILED\n");
+			out.fine("UNIT TEST 1: FAILED\n");
 			errors++;
 		 }
 	     }

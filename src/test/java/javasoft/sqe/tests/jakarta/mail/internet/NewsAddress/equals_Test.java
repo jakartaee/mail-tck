@@ -42,15 +42,15 @@ public class equals_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class NewsAddress: equals(Object)\n");
+        out.fine("\nTesting class NewsAddress: equals(Object)\n");
 
         try {
 	   // Construct a NewsAddress object
@@ -60,12 +60,12 @@ public class equals_Test extends MailTest {
 		  return Status.failed("Failed to create newsgroup object!");
 	      }
            // BEGIN UNIT TEST 1:
-              out.println("UNIT TEST 1:  equals((Object)equal)");
+              out.fine("UNIT TEST 1:  equals((Object)equal)");
 
               if( na.equals((Object)na))	// API TEST
-                  out.println("UNIT TEST 1: passed");
+                  out.fine("UNIT TEST 1: passed");
               else {
-                      out.println("UNIT TEST 1: FAILED");
+                      out.fine("UNIT TEST 1: FAILED");
                       errors++;
               }
            // END UNIT TEST 1:
@@ -76,12 +76,12 @@ public class equals_Test extends MailTest {
               if( ng == null ) {
                   return Status.failed("Failed to create second newsgroup object!");
               }
-              out.println("UNIT TEST 2:  equals((Object)not-equal)");
+              out.fine("UNIT TEST 2:  equals((Object)not-equal)");
 
 	      if( ! na.equals((Object)ng) )	// API TEST
-                  out.println("UNIT TEST 2: passed");
+                  out.fine("UNIT TEST 2: passed");
               else {
-                    out.println("UNIT TEST 2: FAILED");
+                    out.fine("UNIT TEST 2: FAILED");
                     errors++;
               }
            // END UNIT TEST 2:

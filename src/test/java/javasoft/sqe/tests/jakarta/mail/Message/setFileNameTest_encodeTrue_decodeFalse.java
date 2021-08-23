@@ -45,13 +45,13 @@ public class setFileNameTest_encodeTrue_decodeFalse extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
+    
 
         try {
              // Create a MimeMessage object
@@ -85,11 +85,11 @@ public class setFileNameTest_encodeTrue_decodeFalse extends MailTest {
 "\202\302\254\302\250\342\200\232\303\240\302\264" +
 		"-a_german_character";
 
-             out.println("\nfileName = " + fileName + "-Nandini");
+             out.fine("\nfileName = " + fileName + "-Nandini");
              // Test with value set to true (one by one)
              // for mail.mime.encodefilename and mail.mime.decodefilename
              // system properties.
-             out.println("UNIT TEST 1: setFileName(String) with default " +
+             out.fine("UNIT TEST 1: setFileName(String) with default " +
                                        "mail.mime.encodefilename = TRUE and " +
                                        "mail.mime.decodefilename = FALSE");
              
@@ -98,9 +98,9 @@ public class setFileNameTest_encodeTrue_decodeFalse extends MailTest {
 	     msg.setFileName(fileName); 
              
              if (!fileName.equals(msg.getFileName()))
-                 out.println("UNIT TEST 1:  passed\n");
+                 out.fine("UNIT TEST 1:  passed\n");
 	     else {
-		 out.println("UNIT TEST 1:  FAILED\n");
+		 out.fine("UNIT TEST 1:  FAILED\n");
 		 errors++;
 	     }
              // END UNIT TEST:

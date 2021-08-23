@@ -28,15 +28,15 @@ public class utilmethods_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting InternetAddress class utility APIs => equals(), toString()\n");
+        out.fine("\nTesting InternetAddress class utility APIs => equals(), toString()\n");
 
 	try {
 	  // BEGIN UNIT TEST:
@@ -45,22 +45,22 @@ public class utilmethods_Test extends MailTest {
 	     if ( addr == null ) {
 		  return Status.failed("Invalid/Null InternetAddress object!");
 	     }
-	     out.println("UNIT TEST 1:  equals()\n");
+	     out.fine("UNIT TEST 1:  equals()\n");
 
 	     if (addr.toString().equals( addr.toString() ))	    // API TEST
-		  out.println("UNIT TEST 1:  passed\n");
+		  out.fine("UNIT TEST 1:  passed\n");
 	     else {
-		   out.println("UNIT TEST 1:  FAILED\n");
+		   out.fine("UNIT TEST 1:  FAILED\n");
 		   errors++;
 	     }
 
-	     out.println("\nUNIT TEST 2:  toString()");
-	     out.println(addr.toString());
+	     out.fine("\nUNIT TEST 2:  toString()");
+	     out.fine(addr.toString());
 
 	     if ( addr.toString() != null )		// API TEST
-		  out.println("UNIT TEST 2:  passed\n");
+		  out.fine("UNIT TEST 2:  passed\n");
              else {
-                   out.println("UNIT TEST 2:  FAILED\n");
+                   out.fine("UNIT TEST 2:  FAILED\n");
 		   errors++;
              }
 	  // END UNIT TEST:

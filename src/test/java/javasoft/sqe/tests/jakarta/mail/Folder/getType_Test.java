@@ -43,15 +43,15 @@ public class getType_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class Folder: getType()\n");
+        out.fine("\nTesting class Folder: getType()\n");
 
         try {
           // Connect to host server
@@ -66,26 +66,26 @@ public class getType_Test extends MailTest {
        	     }
 	     folder_1.open(Folder.READ_ONLY);
 	  // BEGIN UNIT TEST 1:
-	     out.println("UNIT TEST 1: getType()");
+	     out.fine("UNIT TEST 1: getType()");
 
 	     int foldertype = folder_1.getType();	// API TEST
 
 	     switch (foldertype) {
 		case Folder.HOLDS_FOLDERS:
-		    out.println("Folder type is: HOLDS_FOLDERS");
-		    out.println("UNIT TEST 1: FAILED\n");
+		    out.fine("Folder type is: HOLDS_FOLDERS");
+		    out.fine("UNIT TEST 1: FAILED\n");
 		    errors++;
 		    break;
 		case Folder.HOLDS_MESSAGES:
-		    out.println("Folder type is: HOLDS_MESSAGES");
-		    out.println("UNIT TEST 1: passed\n");
+		    out.fine("Folder type is: HOLDS_MESSAGES");
+		    out.fine("UNIT TEST 1: passed\n");
 		case Folder.HOLDS_FOLDERS|Folder.HOLDS_MESSAGES:
-		    out.println("Folder type is: HOLDS_FOLDERS|HOLDS_MESSAGES");
-		    out.println("UNIT TEST 1: passed\n");
+		    out.fine("Folder type is: HOLDS_FOLDERS|HOLDS_MESSAGES");
+		    out.fine("UNIT TEST 1: passed\n");
 		    break;
 		default:
-		    out.println("Warning unknown folder type");
-		    out.println("UNIT TEST 1: FAILED\n");
+		    out.fine("Warning unknown folder type");
+		    out.fine("UNIT TEST 1: FAILED\n");
 		    errors++;
 	     }
 	     folder_1.close(false);
@@ -101,7 +101,7 @@ public class getType_Test extends MailTest {
 	     if ( folder_2.exists() ) {
 		  folder_2.delete(false);
 	     }
-             out.println("UNIT TEST 2: getType()");
+             out.fine("UNIT TEST 2: getType()");
 
 	     if ( folder_2.create(Folder.HOLDS_FOLDERS) )
 		  foldertype = folder_2.getType();       // API TEST
@@ -110,21 +110,21 @@ public class getType_Test extends MailTest {
 
 	     switch (foldertype) {
 		case Folder.HOLDS_FOLDERS:
-		    out.println("Folder type is: HOLDS_FOLDERS");
-		    out.println("UNIT TEST 2: passed\n");
+		    out.fine("Folder type is: HOLDS_FOLDERS");
+		    out.fine("UNIT TEST 2: passed\n");
 		    break;
 		case Folder.HOLDS_MESSAGES:
-		    out.println("Folder type is: HOLDS_MESSAGES");
-		    out.println("UNIT TEST 2: FAILED\n");
+		    out.fine("Folder type is: HOLDS_MESSAGES");
+		    out.fine("UNIT TEST 2: FAILED\n");
 		    errors++;
 		    break;
 		case Folder.HOLDS_FOLDERS|Folder.HOLDS_MESSAGES:
-		    out.println("Folder type is: HOLDS_FOLDERS|HOLDS_MESSAGES");
-		    out.println("UNIT TEST 2: passed\n");
+		    out.fine("Folder type is: HOLDS_FOLDERS|HOLDS_MESSAGES");
+		    out.fine("UNIT TEST 2: passed\n");
 		    break;
 		default:
-		    out.println("Warning unknown folder type");
-		    out.println("UNIT TEST 2: FAILED\n");
+		    out.fine("Warning unknown folder type");
+		    out.fine("UNIT TEST 2: FAILED\n");
 		    errors++;
 	     }
           // END UNIT TEST 2:

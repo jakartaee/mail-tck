@@ -38,31 +38,31 @@ public class noSuchProvExp_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class NoSuchProviderException: NoSuchProviderException()\n");
+        out.fine("\nTesting class NoSuchProviderException: NoSuchProviderException()\n");
 
         try {
            // Get Session object
               Session session = Session.getInstance(properties, null);
 
            // BEGIN UNIT TEST 1:
-	      out.println("UNIT TEST 1: NoSuchProviderException(void | String)");
+	      out.fine("UNIT TEST 1: NoSuchProviderException(void | String)");
 
 	      session.getProvider("foo");	// API TEST
 
-	      out.println("UNIT TEST 1: FAILED.\n");
+	      out.fine("UNIT TEST 1: FAILED.\n");
            // END UNIT TEST 1:
 
 	      status = Status.failed(" Failed to catch NoSuchProviderException ");
         } catch ( NoSuchProviderException nspe ) {
-		out.println("UNIT TEST 1: passed.\n");
+		out.fine("UNIT TEST 1: passed.\n");
 		ExceptionTest(nspe);
         }
 	return status;

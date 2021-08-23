@@ -63,44 +63,44 @@ public class header_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-        out.println("\nTesting Header class APIs\n");
+        out.fine("\nTesting Header class APIs\n");
 
 	try {
 	  // BEGIN UNIT TEST:
 
 	     for (int i = 0; i < hname.length; i++) 
 	     {
-	         out.println("UNIT TEST "+ (i+1) +":  Header(String, String);\n");
+	         out.fine("UNIT TEST "+ (i+1) +":  Header(String, String);\n");
 
 		 // create Header class object
 	         header = new Header(hname[i], hvalue[i]); 	// API TEST
 
  	         if(( header != null ) && ( header instanceof Header ))
-		      out.println("UNIT TEST "+ i +": Header("+ hname[i] +", "+ hvalue[i] +") passed");
+		      out.fine("UNIT TEST "+ i +": Header("+ hname[i] +", "+ hvalue[i] +") passed");
 	         else {
-		       out.println("UNIT TEST "+ i +": Header("+ hname[i] +", "+ hvalue[i] +") FAILED");
+		       out.fine("UNIT TEST "+ i +": Header("+ hname[i] +", "+ hvalue[i] +") FAILED");
 		       errors++;
 	         }
-		 out.println("\nUNIT TEST " + i + ":  getName()\n");
+		 out.fine("\nUNIT TEST " + i + ":  getName()\n");
 
 	         if ( hname[i].equals(header.getName()) )		// API TEST
-		      out.println("UNIT TEST " + i + ":  passed\n");
+		      out.fine("UNIT TEST " + i + ":  passed\n");
 	         else {
-		      out.println("UNIT TEST " + i + ":  FAILED\n");
+		      out.fine("UNIT TEST " + i + ":  FAILED\n");
 		      errors++;
 	         }
-		 out.println("\nUNIT TEST " + i + ":  getValue()\n");
+		 out.fine("\nUNIT TEST " + i + ":  getValue()\n");
 
                  if ( hvalue[i].equals(header.getValue()) )	// API TEST
-                      out.println("UNIT TEST " + i + ":  passed\n");
+                      out.fine("UNIT TEST " + i + ":  passed\n");
                  else {
-                      out.println("UNIT TEST " + i + ":  FAILED\n");
+                      out.fine("UNIT TEST " + i + ":  FAILED\n");
 		      errors++;
                  }
 	     }

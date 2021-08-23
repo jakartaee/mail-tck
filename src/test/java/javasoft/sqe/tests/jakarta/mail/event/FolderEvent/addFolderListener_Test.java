@@ -48,34 +48,34 @@ public class addFolderListener_Test extends MailTest implements FolderListener {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
 
     public void folderCreated(FolderEvent e)
     {
-	out.println("\nFolder created successfully!");
+	out.fine("\nFolder created successfully!");
 	created = true;
     }
 
     public void folderDeleted(FolderEvent e)
     {
-        out.println("\nFolder deleted successfully!");
+        out.fine("\nFolder deleted successfully!");
         deleted = true;
     }
 
     public void folderRenamed(FolderEvent e)
     {
-        out.println("\nFolder renamed successfully!");
+        out.fine("\nFolder renamed successfully!");
         renamed = true;
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class FolderEvent: addFolderListener(FolderListener)");
+        out.fine("\nTesting class FolderEvent: addFolderListener(FolderListener)");
 
         try {
           // Connect to host server
@@ -89,7 +89,7 @@ public class addFolderListener_Test extends MailTest implements FolderListener {
                  return Status.failed("Invalid testfolder object!");
              }
           // BEGIN UNIT TEST:
-	     out.println("UNIT TEST 1: addConnectionListener(ConnectionListener)\n");
+	     out.fine("UNIT TEST 1: addConnectionListener(ConnectionListener)\n");
 
 	     // make sure the folder doesn't exist before we start
 	     folder1.delete(false);
@@ -115,10 +115,10 @@ public class addFolderListener_Test extends MailTest implements FolderListener {
 	     Thread.sleep(1000);
 
 	     if(( created && renamed ) && ( deleted ))
-		  out.println("UNIT TEST 1:  passed\n");
+		  out.fine("UNIT TEST 1:  passed\n");
 	     else {
-		   out.println("Failed to invoke FolderListener events!");
-		   out.println("UNIT TEST 1:  FAILED\n");
+		   out.fine("Failed to invoke FolderListener events!");
+		   out.fine("UNIT TEST 1:  FAILED\n");
 		   errors++;
 	     }
 	  // END UNIT TEST:

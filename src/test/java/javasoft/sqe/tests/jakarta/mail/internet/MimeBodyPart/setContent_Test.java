@@ -43,15 +43,15 @@ public class setContent_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class MimeBodyPart: setContent()\n");
+        out.fine("\nTesting class MimeBodyPart: setContent()\n");
 
         try {
           // Create a MimeBodyPart object
@@ -67,21 +67,21 @@ public class setContent_Test extends MailTest {
                  return Status.failed("Failed to create Multipart object!");
 
 	  // BEGIN UNIT TEST:
-	     out.println("UNIT TEST 1:  setContent(Multipart)");
+	     out.fine("UNIT TEST 1:  setContent(Multipart)");
 
 	     // Set the content
 	     bp.setContent(mp); 	// API TEST
 
-	     out.println("UNIT TEST 1:  passed\n");
+	     out.fine("UNIT TEST 1:  passed\n");
 	  // END UNIT TEST:
           // BEGIN UNIT TEST:
-             out.println("UNIT TEST 2:  setContent(Object, String)");
+             out.fine("UNIT TEST 2:  setContent(Object, String)");
 	     Object ob = bp.getContent();
 
              // Set the content
              bp.setContent(ob, "application/x-foobar");         // API TEST
 
-             out.println("UNIT TEST 2:  passed\n");
+             out.fine("UNIT TEST 2:  passed\n");
           // END UNIT TEST:
 
 	     checkStatus();

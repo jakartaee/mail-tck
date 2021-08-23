@@ -46,21 +46,21 @@ public class addStoreListener_Test extends MailTest implements StoreListener {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
     public void notification(StoreEvent e)
     {
-	out.println("\nStore connect/close event occurred successfully!");
+	out.fine("\nStore connect/close event occurred successfully!");
 	notified = true;
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class StoreEvent: addStoreListener(StoreListener)");
+        out.fine("\nTesting class StoreEvent: addStoreListener(StoreListener)");
 
         try {
            // Get a Session object
@@ -76,7 +76,7 @@ public class addStoreListener_Test extends MailTest implements StoreListener {
                   return Status.failed("Warning: Failed to create a Store object!");
               }
 	   // BEGIN UNIT TEST:
-	      out.println("UNIT TEST 1: addStoreListener(StoreListener)\n");
+	      out.fine("UNIT TEST 1: addStoreListener(StoreListener)\n");
 
 	      store.addStoreListener(this);	// API TEST
 
@@ -97,13 +97,13 @@ public class addStoreListener_Test extends MailTest implements StoreListener {
 		  return Status.failed("Invalid folder object!");
 	      }
 	      folder.open(Folder.READ_ONLY);
-	      out.println("This folder has "+ folder.getMessageCount() +" messages.\n");
+	      out.fine("This folder has "+ folder.getMessageCount() +" messages.\n");
 
 	      folder.close(false);
 	      store.close();
 	      store.removeStoreListener(this);
 
-	      out.println("UNIT TEST 1:  passed\n");
+	      out.fine("UNIT TEST 1:  passed\n");
 	   // END UNIT TEST:
 
 	      checkStatus();

@@ -42,15 +42,15 @@ public class getParameter_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	 super.run(log, out);
+	 
 
-        out.println("\nTesting class ContentType: getParameter(String)\n");
+        out.fine("\nTesting class ContentType: getParameter(String)\n");
 
         try {
 	   // Create ContentType object
@@ -60,26 +60,26 @@ public class getParameter_Test extends MailTest {
 		  return Status.failed("Failed to create ContentType object!");
 
            // BEGIN UNIT TEST 1:
-              out.println("UNIT TEST 1: getParameter(charset)");
+              out.fine("UNIT TEST 1: getParameter(charset)");
               String param = ct.getParameter("charset");    // API TEST
 	      
               if( param != null ) {
-		  out.println("Parameter is "+param);
-                  out.println("UNIT TEST 1: passed.\n");
+		  out.fine("Parameter is "+param);
+                  out.fine("UNIT TEST 1: passed.\n");
               } else {
-                    out.println("UNIT TEST 1: FAILED.\n");
+                    out.fine("UNIT TEST 1: FAILED.\n");
                     errors++;
               }
            // END UNIT TEST 1:
            // BEGIN UNIT TEST 2:
-              out.println("UNIT TEST 2: getParameter(i18set)");
+              out.fine("UNIT TEST 2: getParameter(i18set)");
               param = ct.getParameter("i18set");    // API TEST
               
               if( param != null ) {
-                  out.println("Parameter is "+param);
-                  out.println("UNIT TEST 2: passed.\n");
+                  out.fine("Parameter is "+param);
+                  out.fine("UNIT TEST 2: passed.\n");
               } else {
-                    out.println("UNIT TEST 2: FAILED.\n");
+                    out.fine("UNIT TEST 2: FAILED.\n");
                     errors++;
               }
            // END UNIT TEST 2:

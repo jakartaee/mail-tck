@@ -41,15 +41,15 @@ public class setPasswdAuthen_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
+    
 
-        out.println("\nTesting class Session: setPasswordAuthentication(URLName, PasswordAuthentication)\n");
+        out.fine("\nTesting class Session: setPasswordAuthentication(URLName, PasswordAuthentication)\n");
 
         try {
            // Get Session object
@@ -68,17 +68,17 @@ public class setPasswdAuthen_Test extends MailTest {
                   return Status.failed("Failed to initialize a PasswordAuthentication object!");
 
            // BEGIN UNIT TEST 1:
-              out.println("UNIT TEST 1:  setPasswordAuthentication(URLName, PasswordAuthentication)");
+              out.fine("UNIT TEST 1:  setPasswordAuthentication(URLName, PasswordAuthentication)");
 
               session.setPasswordAuthentication(url, pwa);  // API TEST
 	      PasswordAuthentication pa = session.getPasswordAuthentication(url);
 
               if( pa != null ) {
-		  out.println("User name is "+ pa.getUserName());
-		  out.println("User password is "+ pa.getPassword());
-                  out.println("UNIT TEST 1: passed");
+		  out.fine("User name is "+ pa.getUserName());
+		  out.fine("User password is "+ pa.getPassword());
+                  out.fine("UNIT TEST 1: passed");
 	      } else {
-		    out.println("UNIT TEST 1: FAILED.\n");
+		    out.fine("UNIT TEST 1: FAILED.\n");
 		    errors++;
 	      }
            // END UNIT TEST 1:

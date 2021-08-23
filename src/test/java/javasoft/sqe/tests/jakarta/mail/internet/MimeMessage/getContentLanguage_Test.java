@@ -42,15 +42,15 @@ public class getContentLanguage_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class MimeMessage: getContentLanguage()\n");
+        out.fine("\nTesting class MimeMessage: getContentLanguage()\n");
 
         try {
           // Connect to host server
@@ -77,11 +77,11 @@ public class getContentLanguage_Test extends MailTest {
                 MimeMessage msg = (MimeMessage)folder.getMessage(i);
 
                 if( msg == null ) {
-                    log.println("Warning: Failed to get message number "+ i);
+                    log.warning("Warning: Failed to get message number "+ i);
                     continue;
                 }
              // BEGIN UNIT TEST:
-                out.println("UNIT TEST "+ i +": getContentLanguage()");
+                out.fine("UNIT TEST "+ i +": getContentLanguage()");
 
                 // get message's content langauge
                 String[] contentlang = msg.getContentLanguage();   // API TEST
@@ -90,11 +90,11 @@ public class getContentLanguage_Test extends MailTest {
 		{
 		     for( int j = 0; j < contentlang.length; j++ ) {
 		          if( contentlang[j] != null )
-			      out.println("Message's content language is "+ contentlang[j]);
+			      out.fine("Message's content language is "+ contentlang[j]);
 		     }
-		     out.println("UNIT TEST "+ i +": passed");
+		     out.fine("UNIT TEST "+ i +": passed");
 		} else
-		      out.println("UNIT TEST "+ i +": has Null Content Language!\n");
+		      out.fine("UNIT TEST "+ i +": has Null Content Language!\n");
 
              // END UNIT TEST:
              }

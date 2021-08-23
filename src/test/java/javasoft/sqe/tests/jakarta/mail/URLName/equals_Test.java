@@ -41,15 +41,15 @@ public class equals_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
+    
 
-        out.println("\nTesting class URLName: equals(Object)\n");
+        out.fine("\nTesting class URLName: equals(Object)\n");
 
         try {
 	   // Create a URLName object
@@ -59,11 +59,11 @@ public class equals_Test extends MailTest {
                   return Status.failed(" Failed to create a URLName object!");
 
            // BEGIN UNIT TEST 1:
-              out.println("UNIT TEST 1:  equals(Object)");
+              out.fine("UNIT TEST 1:  equals(Object)");
               boolean isEq = urlname.equals(urlname);	// API TEST
 
               if( isEq || !isEq )
-                  out.println("UNIT TEST 1: passed");
+                  out.fine("UNIT TEST 1: passed");
            // END UNIT TEST 1:
 
 	      status = Status.passed("OKAY");

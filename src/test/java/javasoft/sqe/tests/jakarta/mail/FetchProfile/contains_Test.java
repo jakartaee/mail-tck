@@ -44,15 +44,15 @@ public class contains_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class FetchProfile: contains(FetchProfile.Item | String)\n");
+        out.fine("\nTesting class FetchProfile: contains(FetchProfile.Item | String)\n");
 
         try {
            // Connect to host server
@@ -78,79 +78,79 @@ public class contains_Test extends MailTest {
 
 	   // BEGIN UNIT TEST 1:
 
-	      out.println("UNIT TEST 1: contains(FetchProfile.Item.ENVELOPE)");
+	      out.fine("UNIT TEST 1: contains(FetchProfile.Item.ENVELOPE)");
 
 	      fp.add(FetchProfile.Item.ENVELOPE);
 
 	      if( fp.contains(FetchProfile.Item.ENVELOPE) )	// API TEST
-		  out.println("UNIT TEST 1: passed.\n");
+		  out.fine("UNIT TEST 1: passed.\n");
 	      else {
-		    out.println("UNIT TEST 1: FAILED.\n");
+		    out.fine("UNIT TEST 1: FAILED.\n");
 		    errors++;
 	      }
 	   // END UNIT TEST 1:
 	   // BEGIN UNIT TEST 2:
 
-	      out.println("UNIT TEST 2: contains(FetchProfile.Item.FLAGS)");
+	      out.fine("UNIT TEST 2: contains(FetchProfile.Item.FLAGS)");
 
 	      fp.add(FetchProfile.Item.FLAGS);
 
               if( fp.contains(FetchProfile.Item.FLAGS) )	// API TEST
-                  out.println("UNIT TEST 2: passed.\n");
+                  out.fine("UNIT TEST 2: passed.\n");
               else {
-                    out.println("UNIT TEST 2: FAILED.\n");
+                    out.fine("UNIT TEST 2: FAILED.\n");
                     errors++;
               }
 	   // END UNIT TEST 2:
 	   // BEGIN UNIT TEST 3:
 
-	      out.println("UNIT TEST 3: contains(FetchProfile.Item.CONTENT_INFO)");
+	      out.fine("UNIT TEST 3: contains(FetchProfile.Item.CONTENT_INFO)");
 
 	      fp.add(FetchProfile.Item.CONTENT_INFO);
 
               if( fp.contains(FetchProfile.Item.CONTENT_INFO) ) 	// API TEST
-                  out.println("UNIT TEST 3: passed.\n");
+                  out.fine("UNIT TEST 3: passed.\n");
               else {
-                    out.println("UNIT TEST 3: FAILED.\n");
+                    out.fine("UNIT TEST 3: FAILED.\n");
                     errors++;
               }
 	   // END UNIT TEST 3:
 	   // BEGIN UNIT TEST 4:
 
-	      out.println("UNIT TEST 4: contains(Subject)");
+	      out.fine("UNIT TEST 4: contains(Subject)");
 
 	      fp.add("Subject");
 
               if( fp.contains("Subject") )	// API TEST
-                  out.println("UNIT TEST 4: passed.\n");
+                  out.fine("UNIT TEST 4: passed.\n");
               else {
-                    out.println("UNIT TEST 4: FAILED.\n");
+                    out.fine("UNIT TEST 4: FAILED.\n");
                     errors++;
               }
 	   // END UNIT TEST 4:
 	   // BEGIN UNIT TEST 5:
 
-              out.println("UNIT TEST 5: contains(From)");
+              out.fine("UNIT TEST 5: contains(From)");
 
               fp.add("From");
 
               if( fp.contains("From") ) 	// API TEST
-                  out.println("UNIT TEST 5: passed.\n");
+                  out.fine("UNIT TEST 5: passed.\n");
               else {
-                    out.println("UNIT TEST 5: FAILED.\n");
+                    out.fine("UNIT TEST 5: FAILED.\n");
                     errors++;
               }
 	   // END UNIT TEST 5:
 	   // BEGIN UNIT TEST 6:
 
-              out.println("UNIT TEST 6: contains(X-mailer)");
+              out.fine("UNIT TEST 6: contains(X-mailer)");
 
               fp.add("X-mailer");
 
               if( fp.contains("X-mailer") )	// API TEST
-                  out.println("UNIT TEST 6: passed.\n");
+                  out.fine("UNIT TEST 6: passed.\n");
               else {
-                    out.println("UNIT TEST 6: FAILED.\n");
+                    out.fine("UNIT TEST 6: FAILED.\n");
                     errors++;
               }
 	   // END UNIT TEST 6:

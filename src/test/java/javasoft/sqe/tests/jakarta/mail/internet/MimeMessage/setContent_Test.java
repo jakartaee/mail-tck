@@ -45,15 +45,15 @@ public class setContent_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class MimeMessage: setContent(Object, String)\n");
+        out.fine("\nTesting class MimeMessage: setContent(Object, String)\n");
 
         try {
           // Get a Session object
@@ -75,48 +75,48 @@ public class setContent_Test extends MailTest {
                  return Status.failed("Warning: Failed to create a Multipart object!");
              }
 	  // BEGIN UNIT TEST 1:
-	     out.println("UNIT TEST 1:  setContent(Multipart)");
+	     out.fine("UNIT TEST 1:  setContent(Multipart)");
 
 	     mob.setContent(mmp);	// API TEST
 	     Object content = mob.getContent();
 
 	     if(( content != null ) && ( content instanceof String )) {
 		  if( ((String)content).equals("text/html") )
-		      out.println("UNIT TEST 1:  passed\n");
+		      out.fine("UNIT TEST 1:  passed\n");
 		  else {
-			out.println("UNIT TEST 1:  FAILED\n");
+			out.fine("UNIT TEST 1:  FAILED\n");
 			errors++;
 		  }
 	     } else if(( content != null ) && ( content instanceof Multipart )) {
-			 out.println("This is a Multipart");
+			 out.fine("This is a Multipart");
             		 Multipart mp1 = (Multipart)content;
             		 int count = mp1.getCount();
-		         out.println("UNIT TEST 1:  passed\n");
+		         out.fine("UNIT TEST 1:  passed\n");
 	             } else {
-		             out.println("UNIT TEST 1:  FAILED\n");
+		             out.fine("UNIT TEST 1:  FAILED\n");
 		             errors++;
 	       }
 	    // END UNIT TEST 1:
             // BEGIN UNIT TEST 2:
-               out.println("UNIT TEST 2:  setContent(Object, String)");
+               out.fine("UNIT TEST 2:  setContent(Object, String)");
 
                mob.setContent(mmp, "application/multipart");      // API TEST
                content = mob.getContent();
 
                if(( content != null ) && ( content instanceof String )) {
                     if( ((String)content).equals("text/html") )
-                        out.println("UNIT TEST 2:  passed\n");
+                        out.fine("UNIT TEST 2:  passed\n");
                     else {
-                          out.println("UNIT TEST 2:  FAILED\n");
+                          out.fine("UNIT TEST 2:  FAILED\n");
                           errors++;
                     }
                } else if(( content != null ) && ( content instanceof Multipart )) {
-                            out.println("This is a Multipart");
+                            out.fine("This is a Multipart");
                             Multipart mp2 = (Multipart)content;
                             int count = mp2.getCount();
-                            out.println("UNIT TEST 2:  passed\n");
+                            out.fine("UNIT TEST 2:  passed\n");
                       } else {
-				out.println("UNIT TEST 2:  FAILED\n");
+				out.fine("UNIT TEST 2:  FAILED\n");
 				errors++;
                }
             // END UNIT TEST 2:

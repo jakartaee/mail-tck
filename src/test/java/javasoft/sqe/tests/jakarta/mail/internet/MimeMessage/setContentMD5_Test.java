@@ -42,15 +42,15 @@ public class setContentMD5_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class MimeMessage: setContentMD5(String)\n");
+        out.fine("\nTesting class MimeMessage: setContentMD5(String)\n");
 
         try {
           // Create a MimeMessage object
@@ -58,39 +58,39 @@ public class setContentMD5_Test extends MailTest {
              MimeMessage msg = new MimeMessage(session);
 
              if( msg == null ) {
-                 log.println("WARNING: FAILED TO CREATE MESSAGE OBJECT");
+                 log.warning("WARNING: FAILED TO CREATE MESSAGE OBJECT");
                  return Status.failed("Failed to create Message object");
              }
           // BEGIN UNIT TEST:
 	     String strvalue = "mind over matter";
-             out.println("UNIT TEST 1: setContentMD5("+strvalue+")");
+             out.fine("UNIT TEST 1: setContentMD5("+strvalue+")");
 
              msg.setContentMD5(strvalue);	// API TEST
 
 	     if( msg.getContentMD5() != null ) {
                  if( strvalue.equals( msg.getContentMD5() ))
-                     out.println("UNIT TEST 1: passed\n");
+                     out.fine("UNIT TEST 1: passed\n");
                  else {
-                       out.println("UNIT TEST 1: FAILED\n");
+                       out.fine("UNIT TEST 1: FAILED\n");
                        errors++;
 		 }
              } else
-		   out.println("Warning: Null object returned by getContentMD5()");
+		   out.fine("Warning: Null object returned by getContentMD5()");
 
              strvalue = "";
-             out.println("UNIT TEST 2: setContentMD5("+strvalue+")");
+             out.fine("UNIT TEST 2: setContentMD5("+strvalue+")");
 
              msg.setContentMD5(strvalue);       // API TEST
 
              if( msg.getContentMD5() != null ) {
                  if( strvalue.equals( msg.getContentMD5() ))
-                     out.println("UNIT TEST 2: passed\n");
+                     out.fine("UNIT TEST 2: passed\n");
                  else {
-                       out.println("UNIT TEST 2: FAILED\n");
+                       out.fine("UNIT TEST 2: FAILED\n");
                        errors++;
                  }
              } else
-                   out.println("Warning: Null object returned by getContentMD5()");
+                   out.fine("Warning: Null object returned by getContentMD5()");
 
           // END UNIT TEST:
              checkStatus();

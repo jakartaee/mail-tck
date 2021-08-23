@@ -44,15 +44,15 @@ public class create_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class Folder: create(int)\n");
+        out.fine("\nTesting class Folder: create(int)\n");
 
         try {
           // Connect to host server
@@ -67,18 +67,18 @@ public class create_Test extends MailTest {
              }
           // BEGIN UNIT TEST 1:
 
-	     out.println("UNIT TEST 1: create(Folder.HOLDS_MESSAGES)\n");
+	     out.fine("UNIT TEST 1: create(Folder.HOLDS_MESSAGES)\n");
 
 	     if ( !(f1.exists()) )
 	     {
 		  return_code = f1.create(Folder.HOLDS_MESSAGES);	// API TEST
 
 		  if ( return_code ) {
-		       out.println("UNIT TEST 1: passed\n");
+		       out.fine("UNIT TEST 1: passed\n");
 		       f1.delete(false);
 		  } else {
-			out.println("Failed to create folder " + testbox);
-			out.println("UNIT TEST 1: FAILED\n");
+			out.fine("Failed to create folder " + testbox);
+			out.fine("UNIT TEST 1: FAILED\n");
 			errors++;
 		  }
 	     }
@@ -93,7 +93,7 @@ public class create_Test extends MailTest {
              if( f2 == null ) {
                  return Status.failed("Invalid test folder");
              }
-	     out.println("UNIT TEST 2: create(Folder.HOLDS_FOLDERS)\n");
+	     out.fine("UNIT TEST 2: create(Folder.HOLDS_FOLDERS)\n");
 
 	     boolean r2 = f2.create(Folder.HOLDS_FOLDERS);  // API TEST
 
@@ -112,11 +112,11 @@ public class create_Test extends MailTest {
 	     boolean r3 = f3.create(Folder.HOLDS_MESSAGES);	// API TEST
 
              if( f3.exists() ) {
-                 out.println("UNIT TEST 2: passed\n");
+                 out.fine("UNIT TEST 2: passed\n");
 		 f2.delete(false);
              } else {
-                     out.println("Failed to create directory folder(s) " + testbox);
-                     out.println("UNIT TEST 2: FAILED\n");
+                     out.fine("Failed to create directory folder(s) " + testbox);
+                     out.fine("UNIT TEST 2: FAILED\n");
                      errors++;
              }
           // END OF UNIT TEST 2:

@@ -47,7 +47,7 @@ public class setFlags_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
     // checks if setFlags API did its job successfully!
@@ -65,11 +65,11 @@ public class setFlags_Test extends MailTest {
 	return true;
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class Folder: setFlags(...)\n");
+        out.fine("\nTesting class Folder: setFlags(...)\n");
 
         try {
           // Connect to host server
@@ -89,7 +89,7 @@ public class setFlags_Test extends MailTest {
                  return Status.failed("Invalid test folder");
              }
              if ( !(testfolder.create(Folder.HOLDS_MESSAGES)) ) {
-					out.println("\nFailed to create test folder: " + testfolder.getFullName() + "\n");
+					out.fine("\nFailed to create test folder: " + testfolder.getFullName() + "\n");
                   return Status.failed("Failed to create test folder.");
              }
 	     folder.open(Folder.READ_ONLY);
@@ -116,92 +116,92 @@ public class setFlags_Test extends MailTest {
 		  imsg[k] = k+1;
 
           // BEGIN UNIT TEST:
-             out.println("UNIT TEST 1: setFlags(start, end, Flag.SEEN, true)");
+             out.fine("UNIT TEST 1: setFlags(start, end, Flag.SEEN, true)");
 
 	     Flags flag = new Flags(Flags.Flag.SEEN);
              testfolder.setFlags(1, msgcount, flag, true);	    // API TEST
 
 	     if (testFlag(tmsg, Flags.Flag.SEEN))
-		  out.println("UNIT TEST 1: passed\n");
+		  out.fine("UNIT TEST 1: passed\n");
 	     else {
-		    out.println("UNIT TEST 1: FAILED\n");
+		    out.fine("UNIT TEST 1: FAILED\n");
 		    errors++;
 	     }
-	     out.println("UNIT TEST 2: setFlags(Message[], Flag.ANSWERED, true)");
+	     out.fine("UNIT TEST 2: setFlags(Message[], Flag.ANSWERED, true)");
 
 	     flag = new Flags(Flags.Flag.ANSWERED);
 	     testfolder.setFlags(tmsg, flag, true);	// API TEST
 
              if ( testFlag(tmsg, Flags.Flag.ANSWERED) )
-                  out.println("UNIT TEST 2: passed\n");
+                  out.fine("UNIT TEST 2: passed\n");
              else {
-                    out.println("UNIT TEST 2: FAILED\n");
+                    out.fine("UNIT TEST 2: FAILED\n");
                     errors++;
              }
-	     out.println("UNIT TEST 3: setFlags(int[], Flag.DELETED, true)");
+	     out.fine("UNIT TEST 3: setFlags(int[], Flag.DELETED, true)");
 
 	     flag = new Flags(Flags.Flag.DELETED);
 	     testfolder.setFlags(imsg, flag, true);	// API TEST
 
              if( testFlag(tmsg, Flags.Flag.DELETED) )
-                 out.println("UNIT TEST 3: passed\n");
+                 out.fine("UNIT TEST 3: passed\n");
              else {
-                    out.println("UNIT TEST 3: FAILED\n");
+                    out.fine("UNIT TEST 3: FAILED\n");
                     errors++;
              }
-	     out.println("UNIT TEST 4: setFlags(Message[], Flag.FLAGGED, true)");
+	     out.fine("UNIT TEST 4: setFlags(Message[], Flag.FLAGGED, true)");
 
 	     flag = new Flags(Flags.Flag.FLAGGED);
 	     testfolder.setFlags(tmsg, flag, true);	// API TEST
 
              if ( testFlag(tmsg, Flags.Flag.FLAGGED) )
-                  out.println("UNIT TEST 4: passed\n");
+                  out.fine("UNIT TEST 4: passed\n");
              else {
-                    out.println("UNIT TEST 4: FAILED\n");
+                    out.fine("UNIT TEST 4: FAILED\n");
                     errors++;
              }
-	     out.println("UNIT TEST 5: setFlags(int[], Flag.DRAFT, true)");
+	     out.fine("UNIT TEST 5: setFlags(int[], Flag.DRAFT, true)");
 
 	     flag = new Flags(Flags.Flag.DRAFT);
 	     testfolder.setFlags(imsg, flag, true);	// API TEST
 
              if( testFlag(tmsg, Flags.Flag.DRAFT) )
-                 out.println("UNIT TEST 5: passed\n");
+                 out.fine("UNIT TEST 5: passed\n");
              else {
-                    out.println("UNIT TEST 5: FAILED\n");
+                    out.fine("UNIT TEST 5: FAILED\n");
                     errors++;
              }
-             out.println("UNIT TEST 6: setFlags(start, end, Flag.SEEN, false)");
+             out.fine("UNIT TEST 6: setFlags(start, end, Flag.SEEN, false)");
 
 	     flag = new Flags(Flags.Flag.SEEN);
 	     testfolder.setFlags(1, msgcount, flag, false);	// API TEST
 
              if( ! testFlag(tmsg, Flags.Flag.SEEN) )
-                 out.println("UNIT TEST 6: passed\n");
+                 out.fine("UNIT TEST 6: passed\n");
              else {
-                    out.println("UNIT TEST 6: FAILED\n");
+                    out.fine("UNIT TEST 6: FAILED\n");
                     errors++;
              }
-             out.println("UNIT TEST 7: setFlags(Message[], Flag.ANSWERED, false)");
+             out.fine("UNIT TEST 7: setFlags(Message[], Flag.ANSWERED, false)");
 
 	     flag = new Flags(Flags.Flag.ANSWERED);
 	     testfolder.setFlags(tmsg, flag, false);	// API TEST
 
              if ( ! testFlag(tmsg, Flags.Flag.ANSWERED) )
-                  out.println("UNIT TEST 7: passed\n");
+                  out.fine("UNIT TEST 7: passed\n");
              else {
-                    out.println("UNIT TEST 7: FAILED\n");
+                    out.fine("UNIT TEST 7: FAILED\n");
                     errors++;
              }
-             out.println("UNIT TEST 8: setFlags(int[], Flag.DELETED, false)");
+             out.fine("UNIT TEST 8: setFlags(int[], Flag.DELETED, false)");
 
 	     flag = new Flags(Flags.Flag.DELETED);
 	     testfolder.setFlags(imsg, flag, false);	// API TEST
 
              if ( ! testFlag(tmsg, Flags.Flag.DELETED) )
-                  out.println("UNIT TEST 8: passed\n");
+                  out.fine("UNIT TEST 8: passed\n");
              else {
-                   out.println("UNIT TEST 8: FAILED\n");
+                   out.fine("UNIT TEST 8: FAILED\n");
                    errors++;
              }
           // END UNIT TEST:

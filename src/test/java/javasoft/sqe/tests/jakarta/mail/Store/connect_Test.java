@@ -45,15 +45,15 @@ public class connect_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
+    
 
-        out.println("\nTesting class Store: connect(String,String,String)\n");
+        out.fine("\nTesting class Store: connect(String,String,String)\n");
 
         try {
           // Get a Session object
@@ -66,7 +66,7 @@ public class connect_Test extends MailTest {
                  return Status.failed("Invalid/Null Store object!");
              }
           // BEGIN UNIT TEST 1:
-             out.println("UNIT TEST 1: connect(null, null, "+ password +")");
+             out.fine("UNIT TEST 1: connect(null, null, "+ password +")");
 
           // Connect
              store_1.connect(null, null, password);		// API TEST
@@ -78,7 +78,7 @@ public class connect_Test extends MailTest {
              if ( folder_1 == null ) {
                   return Status.failed("Invalid/Null folder object!");
              } else
-		  out.println("UNIT TEST 1:  passed\n");
+		  out.fine("UNIT TEST 1:  passed\n");
 
              store_1.close();
 
@@ -97,7 +97,7 @@ public class connect_Test extends MailTest {
              if( store_2 == null ) {
                  return Status.failed("Invalid/Null Store object!");
              }
-             out.println("UNIT TEST 2: connect("+ host +", "+ user +", "+ password +")");
+             out.fine("UNIT TEST 2: connect("+ host +", "+ user +", "+ password +")");
 
           // Connect
              store_2.connect(host, user, password);		// API TEST
@@ -109,7 +109,7 @@ public class connect_Test extends MailTest {
              if( folder_2 == null )
                  return Status.failed("Invalid folder object!");
              else
-		 out.println("UNIT TEST 2:  passed\n");
+		 out.fine("UNIT TEST 2:  passed\n");
 
 	     store_2.close();
           // END UNIT TEST 2:
@@ -124,7 +124,7 @@ public class connect_Test extends MailTest {
              if( store_3 == null ) {
                  return Status.failed("Invalid/Null Store object!");
              }
-             out.println("UNIT TEST 3: connect("+ user +", "+ password +")");
+             out.fine("UNIT TEST 3: connect("+ user +", "+ password +")");
 
           // Connect
              
@@ -137,7 +137,7 @@ public class connect_Test extends MailTest {
              if (folder_3 == null)
                  return Status.failed("Invalid folder object!");
              else
-		 out.println("UNIT TEST 3:  passed\n");
+		 out.fine("UNIT TEST 3:  passed\n");
 
 	     store_3.close();
           // END UNIT TEST 3:             

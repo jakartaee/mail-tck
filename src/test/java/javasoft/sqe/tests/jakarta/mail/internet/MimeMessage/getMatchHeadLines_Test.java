@@ -44,15 +44,15 @@ public class getMatchHeadLines_Test extends MailTest {
     
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class MimeMessage: getMatchingHeaderLines(String[])\n");
+        out.fine("\nTesting class MimeMessage: getMatchingHeaderLines(String[])\n");
 
         try {
           // Connect to host server
@@ -79,20 +79,20 @@ public class getMatchHeadLines_Test extends MailTest {
                 MimeMessage msg = (MimeMessage)folder.getMessage(i);
 
                 if( msg == null ) {
-                    log.println("Warning: Failed to get message number "+ i);
+                    log.warning("Warning: Failed to get message number "+ i);
                     continue;
                 }
              // BEGIN UNIT TEST:
-                out.println("UNIT TEST "+ i +": getMatchingHeaderLines(String[])");
+                out.fine("UNIT TEST "+ i +": getMatchingHeaderLines(String[])");
 
                 // get matching headerlines
                 Enumeration matcheader = msg.getMatchingHeaderLines( headerlist );   // API TEST
 
                 while( matcheader.hasMoreElements() ) {
                        String headers = (String)matcheader.nextElement();
-                       out.println(headers);
+                       out.fine(headers);
                 }
-                out.println("UNIT TEST "+ i +": passed");
+                out.fine("UNIT TEST "+ i +": passed");
              // END UNIT TEST:
              }
              folder.close(false);

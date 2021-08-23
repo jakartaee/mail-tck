@@ -49,15 +49,15 @@ public class getMatchingHeaders_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
+    
 
-        out.println("\nTesting class Message: getMatchingHeaders(String[])\n");
+        out.fine("\nTesting class Message: getMatchingHeaders(String[])\n");
 
         try {
           // Connect to host server
@@ -84,20 +84,20 @@ public class getMatchingHeaders_Test extends MailTest {
                 Message msg = folder.getMessage(i);
 
 	        if( msg == null ) {
-		    log.println("WARNING: FAILED TO GET MESSAGE NUMBER: "+ i);
+		    log.warning("WARNING: FAILED TO GET MESSAGE NUMBER: "+ i);
 		    continue;
 	        }
 	     // BEGIN UNIT TEST:
 		// Get matching headers for given message(s)
-	        out.println("UNIT TEST "+ i +":  getMatchingHeaders(String[])");
+	        out.fine("UNIT TEST "+ i +":  getMatchingHeaders(String[])");
 
 	        Enumeration matcheaders = msg.getMatchingHeaders(headerlist);	// API TEST
 
 	        while( matcheaders.hasMoreElements() ) {
 		       Header headers = (Header)matcheaders.nextElement();
-		       out.println(headers.getName());
+		       out.fine(headers.getName());
 	        }
-                out.println("UNIT TEST "+ i +":  passed\n");
+                out.fine("UNIT TEST "+ i +":  passed\n");
 	     // END UNIT TEST:
 	     }
 	     folder.close(false);

@@ -45,15 +45,15 @@ public class setSubject_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class MimeMessage: setSubject(String, String)\n");
+        out.fine("\nTesting class MimeMessage: setSubject(String, String)\n");
 
         try {
           // Create a MimeMessage object
@@ -61,11 +61,11 @@ public class setSubject_Test extends MailTest {
              MimeMessage msg = new MimeMessage(session);
 
              if( msg == null ) {
-                 log.println("WARNING: FAILED TO CREATE MESSAGE OBJECT");
+                 log.warning("WARNING: FAILED TO CREATE MESSAGE OBJECT");
                  return Status.failed("Failed to create Message object");
              }
           // BEGIN UNIT TEST:
-             out.println("UNIT TEST 1: setSubject(String, String)");
+             out.fine("UNIT TEST 1: setSubject(String, String)");
 
 	     String substr = "hot ice cream";
 
@@ -73,9 +73,9 @@ public class setSubject_Test extends MailTest {
 	     msg.setSubject(substr, "us-ascii" );	// API TEST
 
 	     if ( substr.equals( msg.getSubject() ))
-		  out.println("UNIT TEST 1: passed\n");
+		  out.fine("UNIT TEST 1: passed\n");
 	     else {
-		   out.println("UNIT TEST 1: FAILED\n");
+		   out.fine("UNIT TEST 1: FAILED\n");
 		   errors++;
 	     }
 	  // END UNIT TEST:

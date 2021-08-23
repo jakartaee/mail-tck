@@ -44,15 +44,15 @@ public class getUserFlags_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class Flags: getUserFlags()\n");
+        out.fine("\nTesting class Flags: getUserFlags()\n");
 
         try {
           // Connect to host server
@@ -77,34 +77,34 @@ public class getUserFlags_Test extends MailTest {
 		MimeMessage msg = (MimeMessage)folder.getMessage(i);
 
 		if( msg == null ) {
-		    out.println("WARNING: FAILED TO GET MESSAGE NUMBER: "+ i);
+		    out.fine("WARNING: FAILED TO GET MESSAGE NUMBER: "+ i);
 		    continue;
 		}
 	     // Get Flags object for this message
 		Flags flag = msg.getFlags();
 
                 if( flag == null ) {
-                    out.println("WARNING: FAILED TO GET FLAGS OBJECT FOR MESSAGE: "+ i);
+                    out.fine("WARNING: FAILED TO GET FLAGS OBJECT FOR MESSAGE: "+ i);
                     continue;
                 }
 	     // BEGIN UNIT TEST:
 
-                out.println("UNIT TEST "+ i +":  getUserFlags()");
+                out.fine("UNIT TEST "+ i +":  getUserFlags()");
 
 		String[] flaglist = flag.getUserFlags();		// API TEST
 
 		if( flaglist.length > 0 )
 		{
 		    for( int j = 0; j < flaglist.length; j++ )
-		         out.println(flaglist[j]);
+		         out.fine(flaglist[j]);
 
-		    out.println("UNIT TEST " + i + ":  passed\n");
+		    out.fine("UNIT TEST " + i + ":  passed\n");
 		}
 		else if( flaglist.length == 0 ) {
-			 out.println("No user flags set for this Flags object.");
-			 out.println("UNIT TEST " + i + ":  passed\n");
+			 out.fine("No user flags set for this Flags object.");
+			 out.fine("UNIT TEST " + i + ":  passed\n");
 		     } else {
-		             out.println("UNIT TEST "+ i +":  FAILED\n");
+		             out.fine("UNIT TEST "+ i +":  FAILED\n");
 			     errors++;
 		}
 	     // END OF UNIT TEST:

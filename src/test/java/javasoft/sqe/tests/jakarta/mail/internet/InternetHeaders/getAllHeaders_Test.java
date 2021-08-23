@@ -42,15 +42,15 @@ public class getAllHeaders_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class InternetHeaders: getAllHeaders()\n");
+        out.fine("\nTesting class InternetHeaders: getAllHeaders()\n");
 
         try {
           // Connect to host server
@@ -86,17 +86,17 @@ public class getAllHeaders_Test extends MailTest {
                  return Status.failed("WARNING: Failed to create InternetHeaders object!");
              }
           // BEGIN UNIT TEST:
-             out.println("UNIT TEST 1: getAllHeaders()");
+             out.fine("UNIT TEST 1: getAllHeaders()");
 
           // get all headers
              Enumeration allheaders = ih.getAllHeaders();   // API TEST
 
              while( allheaders.hasMoreElements() ) {
                     Header headers = (Header)allheaders.nextElement();
-                    out.println(headers.getName());
+                    out.fine(headers.getName());
              }
 
-	     out.println("UNIT TEST 1: passed");
+	     out.fine("UNIT TEST 1: passed");
 	  // END UNIT TEST:
 
 	     store.close();

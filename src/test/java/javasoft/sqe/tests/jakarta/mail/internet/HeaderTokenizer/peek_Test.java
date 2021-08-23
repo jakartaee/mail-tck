@@ -47,14 +47,14 @@ public class peek_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
-        out.println("\nTesting class HeaderTokenizer: peek()\n");
+	
+        out.fine("\nTesting class HeaderTokenizer: peek()\n");
 
 	try {
 	   // Create HeaderTokenizer object
@@ -70,7 +70,7 @@ public class peek_Test extends MailTest {
 					new Vector<HeaderTokenizer.Token>();
 
 	   // BEGIN UNIT TEST 1:
-	      out.println("UNIT TEST 1: peek()");
+	      out.fine("UNIT TEST 1: peek()");
 
 	      while((tok = ht.next()).getType() != HeaderTokenizer.Token.EOF) {
 		     toklist.addElement(tok);
@@ -79,10 +79,10 @@ public class peek_Test extends MailTest {
 
 	      for(int i = 0; i < toklist.size(); i++) {
 		  tok = toklist.elementAt(i);
-		        out.println("\t" + type(tok.getType()) +
+		        out.fine("\t" + type(tok.getType()) +
 					"\t" + tok.getValue());
 	      }
-	      out.println("UNIT TEST 1: passed.\n");
+	      out.fine("UNIT TEST 1: passed.\n");
 	   // END UNIT TEST 1:
 
 	      status = Status.passed("OKAY");

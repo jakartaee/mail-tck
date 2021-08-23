@@ -42,16 +42,16 @@ public class properties_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
     static Session session;
 
-    public Status run(PrintWriter log, PrintWriter out) {
-	super.run(log, out);
+    public Status run() {
+	
 
-        out.println("\nTesting class MimeMultipart: effect of " +
+        out.fine("\nTesting class MimeMultipart: effect of " +
             "system property settings\n");
         try {
             session = Session.getInstance(properties, null);
@@ -60,22 +60,22 @@ public class properties_Test extends MailTest {
 
             // BEGIN UNIT TEST:
 	    // test simple correct case
-            out.println("UNIT TEST 1:  test for parse(InputStream) with " +
+            out.fine("UNIT TEST 1:  test for parse(InputStream) with " +
 			"no System properties set");
 	    clearAll();
 	    m = createMessage("x", "x", true);
 	    mp = (MimeMultipart)m.getContent();
 	    if (mp.getCount() == 2) {
-                out.println("UNIT TEST 1:  passed\n");
+                out.fine("UNIT TEST 1:  passed\n");
 	    } else {
-                out.println("UNIT TEST 1:  FAILED\n");
+                out.fine("UNIT TEST 1:  FAILED\n");
                 errors++;
 	    }
             // END UNIT TEST:
 
             // BEGIN UNIT TEST:
 	    // test mail.mime.multipart.ignoreexistingboundaryparameter
-            out.println("UNIT TEST 2:  test for parse(InputStream) with " +
+            out.fine("UNIT TEST 2:  test for parse(InputStream) with " +
 		"mail.mime.multipart.ignoreexistingboundaryparameter=true");
 	    clearAll();
 	    System.setProperty(
@@ -83,31 +83,31 @@ public class properties_Test extends MailTest {
 	    m = createMessage("x", "-", true);
 	    mp = (MimeMultipart)m.getContent();
 	    if (mp.getCount() == 2) {
-                out.println("UNIT TEST 2:  passed\n");
+                out.fine("UNIT TEST 2:  passed\n");
 	    } else {
-                out.println("UNIT TEST 2:  FAILED\n");
+                out.fine("UNIT TEST 2:  FAILED\n");
                 errors++;
 	    }
             // END UNIT TEST:
 
             // BEGIN UNIT TEST:
 	    // test mail.mime.multipart.ignoremissingboundaryparameter default
-            out.println("UNIT TEST 3:  test for parse(InputStream) with " +
+            out.fine("UNIT TEST 3:  test for parse(InputStream) with " +
 		"no boundary parameter");
 	    clearAll();
 	    m = createMessage(null, "x", true);
 	    mp = (MimeMultipart)m.getContent();
 	    if (mp.getCount() == 2) {
-                out.println("UNIT TEST 3:  passed\n");
+                out.fine("UNIT TEST 3:  passed\n");
 	    } else {
-                out.println("UNIT TEST 3:  FAILED\n");
+                out.fine("UNIT TEST 3:  FAILED\n");
                 errors++;
 	    }
             // END UNIT TEST:
 
             // BEGIN UNIT TEST:
 	    // test mail.mime.multipart.ignoremissingboundaryparameter=false
-            out.println("UNIT TEST 4:  test for parse(InputStream) with " +
+            out.fine("UNIT TEST 4:  test for parse(InputStream) with " +
 		"no boundary parameter and " +
 		"mail.mime.multipart.ignoremissingboundaryparameter=false");
 	    clearAll();
@@ -117,31 +117,31 @@ public class properties_Test extends MailTest {
 		m = createMessage(null, "x", true);
 		mp = (MimeMultipart)m.getContent();
 		mp.getCount();		// throw exception
-                out.println("UNIT TEST 4:  FAILED\n");
+                out.fine("UNIT TEST 4:  FAILED\n");
                 errors++;
 	    } catch (MessagingException mex) {
-                out.println("UNIT TEST 4:  passed\n");
+                out.fine("UNIT TEST 4:  passed\n");
 	    }
             // END UNIT TEST:
 
             // BEGIN UNIT TEST:
 	    // test mail.mime.multipart.ignoreexistingmissingendboundary default
-            out.println("UNIT TEST 5:  test for parse(InputStream) with " +
+            out.fine("UNIT TEST 5:  test for parse(InputStream) with " +
 		"no end boundary");
 	    clearAll();
 	    m = createMessage("x", "x", false);
 	    mp = (MimeMultipart)m.getContent();
 	    if (mp.getCount() == 2) {
-                out.println("UNIT TEST 5:  passed\n");
+                out.fine("UNIT TEST 5:  passed\n");
 	    } else {
-                out.println("UNIT TEST 5:  FAILED\n");
+                out.fine("UNIT TEST 5:  FAILED\n");
                 errors++;
 	    }
             // END UNIT TEST:
 
             // BEGIN UNIT TEST:
 	    // test mail.mime.multipart.ignoreexistingmissingendboundary=false
-            out.println("UNIT TEST 6:  test for parse(InputStream) with " +
+            out.fine("UNIT TEST 6:  test for parse(InputStream) with " +
 		"no end boundary" +
 		"mail.mime.multipart.ignoremissingendboundary=false");
 	    clearAll();
@@ -151,48 +151,48 @@ public class properties_Test extends MailTest {
 		m = createMessage("x", "x", false);
 		mp = (MimeMultipart)m.getContent();
 		mp.getCount();		// throw exception
-                out.println("UNIT TEST 6:  FAILED\n");
+                out.fine("UNIT TEST 6:  FAILED\n");
                 errors++;
 	    } catch (MessagingException mex) {
-                out.println("UNIT TEST 6:  passed\n");
+                out.fine("UNIT TEST 6:  passed\n");
 	    }
             // END UNIT TEST:
 
             // BEGIN UNIT TEST:
 	    // test mail.mime.multipart.allowempty=true
-            out.println("UNIT TEST 7:  test for parse(InputStream) with " +
+            out.fine("UNIT TEST 7:  test for parse(InputStream) with " +
 		"mail.mime.multipart.allowempty=true");
 	    clearAll();
 	    System.setProperty( "mail.mime.multipart.allowempty", "true");
 	    m = createEmptyMessage();
 	    mp = (MimeMultipart)m.getContent();
 	    if (mp.getCount() == 0) {
-                out.println("UNIT TEST 7:  passed\n");
+                out.fine("UNIT TEST 7:  passed\n");
 	    } else {
-                out.println("UNIT TEST 7:  FAILED\n");
+                out.fine("UNIT TEST 7:  FAILED\n");
                 errors++;
 	    }
             // END UNIT TEST:
 
             // BEGIN UNIT TEST:
 	    // test mail.mime.multipart.allowempty default
-            out.println("UNIT TEST 8:  test for parse(InputStream) with " +
+            out.fine("UNIT TEST 8:  test for parse(InputStream) with " +
 		"mail.mime.multipart.allowempty default");
 	    clearAll();
 	    try {
 		m = createEmptyMessage();
 		mp = (MimeMultipart)m.getContent();
 		mp.getCount();		// throw exception
-                out.println("UNIT TEST 8:  FAILED\n");
+                out.fine("UNIT TEST 8:  FAILED\n");
                 errors++;
 	    } catch (MessagingException mex) {
-                out.println("UNIT TEST 8:  passed\n");
+                out.fine("UNIT TEST 8:  passed\n");
 	    }
             // END UNIT TEST:
 
             // BEGIN UNIT TEST:
 	    // test mail.mime.multipart.allowempty=true with output
-            out.println("UNIT TEST 9:  test for writeTo(OutputStream) with " +
+            out.fine("UNIT TEST 9:  test for writeTo(OutputStream) with " +
 		"mail.mime.multipart.allowempty=true");
 	    clearAll();
 	    System.setProperty( "mail.mime.multipart.allowempty", "true");
@@ -201,16 +201,16 @@ public class properties_Test extends MailTest {
 	    m.setContent(mp);
 	    m.writeTo(new NullOutputStream());
 	    if (mp.getCount() == 0) {
-                out.println("UNIT TEST 9:  passed\n");
+                out.fine("UNIT TEST 9:  passed\n");
 	    } else {
-                out.println("UNIT TEST 9:  FAILED\n");
+                out.fine("UNIT TEST 9:  FAILED\n");
                 errors++;
 	    }
             // END UNIT TEST:
 
             // BEGIN UNIT TEST:
 	    // test mail.mime.multipart.allowempty default with output
-            out.println("UNIT TEST 10:  test for writeTo(OutputStream) with " +
+            out.fine("UNIT TEST 10:  test for writeTo(OutputStream) with " +
 		"mail.mime.multipart.allowempty default");
 	    clearAll();
 	    try {
@@ -218,10 +218,10 @@ public class properties_Test extends MailTest {
 		mp = new MimeMultipart();
 		m.setContent(mp);
 		m.writeTo(new NullOutputStream());	// throw exception
-                out.println("UNIT TEST 10:  FAILED\n");
+                out.fine("UNIT TEST 10:  FAILED\n");
                 errors++;
 	    } catch (IOException ioex) {
-                out.println("UNIT TEST 10:  passed\n");
+                out.fine("UNIT TEST 10:  passed\n");
 	    }
             // END UNIT TEST:
 

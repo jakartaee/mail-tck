@@ -48,15 +48,15 @@ public class headerterm_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
+    
 
-        out.println("\nTesting class HeaderTerm: HeaderTerm(String, String)\n");
+        out.fine("\nTesting class HeaderTerm: HeaderTerm(String, String)\n");
 
         try {
           // Connect to host server
@@ -84,35 +84,35 @@ public class headerterm_Test extends MailTest {
                 MimeMessage msg =  (MimeMessage)folder.getMessage(i);
 
 	        if( msg == null ) {
-		    log.println("WARNING: FAILED TO GET MESSAGE NUMBER: "+ i);
+		    log.warning("WARNING: FAILED TO GET MESSAGE NUMBER: "+ i);
 		    continue;
 	        }
 	     // BEGIN UNIT TEST:
-		out.println("UNIT TEST "+ (i+1) +":  HeaderTerm("+ name +", "+ pattern +")");
-		out.println("                     :  getHeaderName()");
-	        out.println("                     :  match(Message)");
+		out.fine("UNIT TEST "+ (i+1) +":  HeaderTerm("+ name +", "+ pattern +")");
+		out.fine("                     :  getHeaderName()");
+	        out.fine("                     :  match(Message)");
 
 		HeaderTerm ht = new HeaderTerm(name, pattern); // API TEST
 
 		if( ht == null ) {
-		    log.println("Warning: HeaderTerm contructor returned a Null object!");
+		    log.warning("Warning: HeaderTerm contructor returned a Null object!");
 		    continue;
                 }
 		// Return the name of the header
 		String hname = ht.getHeaderName();	// API TEST
 
 		if( hname != null ) {
-		    out.println("Header name: "+ hname);
+		    out.fine("Header name: "+ hname);
 		}
 		// match the header
 		foundit = ht.match(msg);	// API TEST
 
 	        if( foundit ) {
-	            out.println("Name: "+ name +" Pattern: "+ pattern +" found in Header!");
-                    out.println("UNIT TEST "+ (i+1) +":  passed\n");
+	            out.fine("Name: "+ name +" Pattern: "+ pattern +" found in Header!");
+                    out.fine("UNIT TEST "+ (i+1) +":  passed\n");
 	        } else {
-		        out.println("Name: "+ name +" Pattern: "+ pattern +" Not found in Header!");
-			out.println("UNIT TEST "+ (i+1) +":  passed\n");
+		        out.fine("Name: "+ name +" Pattern: "+ pattern +" Not found in Header!");
+			out.fine("UNIT TEST "+ (i+1) +":  passed\n");
 	        }
 	     // END UNIT TEST:
 	     }

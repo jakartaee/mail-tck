@@ -44,15 +44,15 @@ public class setContentLanguage_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class MimeBodyPart: setContentLanguage(String[])\n");
+        out.fine("\nTesting class MimeBodyPart: setContentLanguage(String[])\n");
 
         try {
           // Create a MimeBodyPart object
@@ -67,12 +67,12 @@ public class setContentLanguage_Test extends MailTest {
 
 	     for( int i = 0; i < getlang.length; i++ )
 	     {
-		  out.println("UNIT TEST "+i+": setContentLanguage("+setlang[i]+")");
+		  out.fine("UNIT TEST "+i+": setContentLanguage("+setlang[i]+")");
 
 		  if( setlang[i].equals(getlang[i]) )
-	              out.println("UNIT TEST "+i+":  passed.\n");
+	              out.fine("UNIT TEST "+i+":  passed.\n");
 	          else {
-		        out.println("UNIT TEST "+i+":  FAILED.\n");
+		        out.fine("UNIT TEST "+i+":  FAILED.\n");
 			errors++;
 		  }
 	     }

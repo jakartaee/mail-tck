@@ -42,15 +42,15 @@ public class getContentMD5_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class MimeBodyPart: getContentMD5()\n");
+        out.fine("\nTesting class MimeBodyPart: getContentMD5()\n");
 
         try {
           // Connect to host server
@@ -77,11 +77,11 @@ public class getContentMD5_Test extends MailTest {
                 MimeMessage msg = (MimeMessage)folder.getMessage(i);
 
 	        if( msg == null ) {
-		    log.println("WARNING: FAILED TO GET MESSAGE NUMBER: "+ i);
+		    log.warning("WARNING: FAILED TO GET MESSAGE NUMBER: "+ i);
 		    continue;
 	        }
 	     // BEGIN UNIT TEST:
-	        out.println("UNIT TEST "+ i +":  getContentMD5()");
+	        out.fine("UNIT TEST "+ i +":  getContentMD5()");
 
 		// Get the "type" of content
 	        Object content = msg.getContent();
@@ -95,10 +95,10 @@ public class getContentMD5_Test extends MailTest {
 			  String contentmd = ((MimeBodyPart)bp).getContentMD5();    // API TEST
 
 			  if ( contentmd != null ) {
-			       out.println("The ContentID of BodyPart is "+ contentmd);
-			       out.println("UNIT TEST "+ i +":  passed\n");
+			       out.fine("The ContentID of BodyPart is "+ contentmd);
+			       out.fine("UNIT TEST "+ i +":  passed\n");
 			  } else {
-				  out.println("UNIT TEST "+ i +":  has Null contentMD5!\n");
+				  out.fine("UNIT TEST "+ i +":  has Null contentMD5!\n");
 			  }
 		     }
 		}

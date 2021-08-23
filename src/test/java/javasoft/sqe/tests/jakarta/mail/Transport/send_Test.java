@@ -53,16 +53,16 @@ public class send_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
+    
 
 	TO = to;
-	out.println("\nTesting Transport class => send(Message, Address[])\n");
+	out.fine("\nTesting Transport class => send(Message, Address[])\n");
 
 	try {
            // Get a Session object
@@ -85,25 +85,25 @@ public class send_Test extends MailTest {
               msg.setContent(msgText, "text/plain");
 
 	   // BEGIN UNIT TEST 1:
-	      out.println("UNIT TEST 1: send(Message)");
+	      out.fine("UNIT TEST 1: send(Message)");
 
 	   // send the mail message
               Transport.send(msg);		// API TEST
 
-              out.println("UNIT TEST 1: passed\n");
+              out.fine("UNIT TEST 1: passed\n");
 	   // END UNIT TEST 1:
 
            // BEGIN UNIT TEST 2:
-              out.println("UNIT TEST 2: send(Message, Address[])");
+              out.fine("UNIT TEST 2: send(Message, Address[])");
 
            // send the mail message off via the specified addresses
               Transport.send(msg, addrs);       // API TEST
 
-              out.println("UNIT TEST 2: passed\n");
+              out.fine("UNIT TEST 2: passed\n");
            // END UNIT TEST 2:
 
            // BEGIN UNIT TEST 3:
-              out.println("UNIT TEST 3: send(Message, String, String)");
+              out.fine("UNIT TEST 3: send(Message, String, String)");
 
 	      // create a Session with no authenticator
 	      session = Session.getInstance(properties, null);
@@ -120,7 +120,7 @@ public class send_Test extends MailTest {
 	      else
 		  Transport.send(msg, null, null);       // API TEST
 
-              out.println("UNIT TEST 3: passed\n");
+              out.fine("UNIT TEST 3: passed\n");
            // END UNIT TEST 3:
 
 	      status = Status.passed("OKAY");

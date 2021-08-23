@@ -94,15 +94,15 @@ public class retainAll_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class Flags: retainAll(Flags)\n");
+        out.fine("\nTesting class Flags: retainAll(Flags)\n");
 
         try {
 	     int test = 1;
@@ -112,17 +112,17 @@ public class retainAll_Test extends MailTest {
 		 Flags orig = createFlags(tests[i]);
 		 Flags arg = createFlags(tests[i+1]);
 		 Flags result = createFlags(tests[i+2]);
-		 out.printf("\nUNIT TEST %d: %s retainAll %s == %s\n", test,
-		   p(orig.toString()), p(arg.toString()), p(result.toString()));
+		 out.fine(String.format("\nUNIT TEST %d: %s retainAll %s == %s\n", test,
+		   p(orig.toString()), p(arg.toString()), p(result.toString())));
 		 boolean expected = !tests[i].equals(tests[i+2]);
 		 boolean got = orig.retainAll(arg);
 
 		 if (got == expected && orig.equals(result)) {
-		       out.printf("UNIT TEST %d: passed\n", test);
+		     out.fine(String.format("UNIT TEST %d: passed\n", test));
 		 } else {
-		       out.printf("result %s\n", p(result.toString()));
-		       out.printf("expected return %b, got %b\n", expected, got);
-		       out.printf("UNIT TEST %d: FAILED\n", test);
+		     out.fine(String.format("result %s\n", p(result.toString())));
+		     out.fine(String.format("expected return %b, got %b\n", expected, got));
+		     out.fine(String.format("UNIT TEST %d: FAILED\n", test));
 		       errors++;
 		 }
 		 test++;

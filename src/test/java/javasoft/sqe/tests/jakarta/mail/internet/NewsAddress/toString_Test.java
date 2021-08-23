@@ -45,15 +45,15 @@ public class toString_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
+    
 
-        out.println("\nTesting class NewsAddress: toString(void | NewsAddress[])\n");
+        out.fine("\nTesting class NewsAddress: toString(void | NewsAddress[])\n");
 
         try {
 	   // Construct a NewsAddress object
@@ -63,15 +63,15 @@ public class toString_Test extends MailTest {
 		  return Status.failed("Failed to create newsgroup object!");
 	      }
            // BEGIN UNIT TEST 1:
-              out.println("UNIT TEST 1:  toString()");
+              out.fine("UNIT TEST 1:  toString()");
               String rfctype = na.toString();      // API TEST
 
               if( rfctype != null ) {
-		  out.println("RFC1036 address of newsgroup is "+rfctype);
-                  out.println("UNIT TEST 1: passed");
+		  out.fine("RFC1036 address of newsgroup is "+rfctype);
+                  out.fine("UNIT TEST 1: passed");
               } else {
-		      out.println("Warning: Failed to convert address to RFC1036!");
-                      out.println("UNIT TEST 1: FAILED");
+		      out.fine("Warning: Failed to convert address to RFC1036!");
+                      out.fine("UNIT TEST 1: FAILED");
                       errors++;
               }
            // END UNIT TEST 1:
@@ -82,15 +82,15 @@ public class toString_Test extends MailTest {
               if( ng == null ) {
                   return Status.failed("Failed to create second newsgroup object!");
               }
-              out.println("UNIT TEST 2:  toString(NewsAddress[])");
+              out.fine("UNIT TEST 2:  toString(NewsAddress[])");
 
 	      NewsAddress[] nalist = ng.parse(pattern);
 	      String addlist = ng.toString(nalist);	// API TEST
 
 	      if( pattern.equals(addlist) )
-                  out.println("UNIT TEST 2: passed");
+                  out.fine("UNIT TEST 2: passed");
               else {
-                    out.println("UNIT TEST 2: FAILED");
+                    out.fine("UNIT TEST 2: FAILED");
                     errors++;
               }
            // END UNIT TEST 2:

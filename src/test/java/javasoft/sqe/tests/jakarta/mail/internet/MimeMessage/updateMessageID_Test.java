@@ -48,41 +48,41 @@ public class updateMessageID_Test extends MailTest {
     
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out) {
-	super.run(log, out);
+    public Status run() {
+	
 
         try {
           // Create a custom MimeMessage object with custom message ID algorithm
              Session session = Session.getInstance(properties, null);
              MyMimeMessage msg = new MyMimeMessage(session); 
              if (msg == null) {
-                 log.println("WARNING: FAILED TO CREATE MESSAGE OBJECT");
+                 log.warning("WARNING: FAILED TO CREATE MESSAGE OBJECT");
                  return Status.failed(
                      "Failed to create custom MimeMessage object");
              }
              
 	  // BEGIN UNIT TEST:
-	     out.println("UNIT TEST 1: MyMimeMessage.updateMessageID()");
+	     out.fine("UNIT TEST 1: MyMimeMessage.updateMessageID()");
 
              String originalMsgID = msg.getMessageID();
-             out.println("Original Message ID = " + originalMsgID);
+             out.fine("Original Message ID = " + originalMsgID);
              msgID = originalMsgID + msgIDSuffix;
              
           // update message ID
 	     msg.saveChanges();	// API TEST for updateMessageID()
             
              String newMsgID = msg.getMessageID();
-             out.println("New updated Message ID = " + newMsgID);
+             out.fine("New updated Message ID = " + newMsgID);
 
              if (newMsgID.equals(msgID)) 
-                out.println("UNIT TEST 1: passed\n");
+                out.fine("UNIT TEST 1: passed\n");
              else {
                 errors++;
-                out.println("UNIT TEST 1: FAILED\n");
+                out.fine("UNIT TEST 1: FAILED\n");
              }
 	  // END UNIT TEST:
 

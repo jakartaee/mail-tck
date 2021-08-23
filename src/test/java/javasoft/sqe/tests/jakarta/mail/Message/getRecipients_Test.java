@@ -56,15 +56,15 @@ public class getRecipients_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
+    
 
-        out.println("\nTesting class Message: getRecipients(int)\n");
+        out.fine("\nTesting class Message: getRecipients(int)\n");
 
         try {
           // Connect to host server
@@ -91,37 +91,37 @@ public class getRecipients_Test extends MailTest {
                 MimeMessage msg =  (MimeMessage)folder.getMessage(i);
 
 	        if( msg == null ) {
-		    log.println("WARNING: FAILED TO GET MESSAGE NUMBER: "+ i);
+		    log.warning("WARNING: FAILED TO GET MESSAGE NUMBER: "+ i);
 		    continue;
 	        }
 	     // BEGIN UNIT TEST:
 		// Get the message's recipients
-	        out.println("UNIT TEST "+ i +":  getRecipients(int)");
+	        out.fine("UNIT TEST "+ i +":  getRecipients(int)");
 
 	        to = msg.getRecipients(Message.RecipientType.TO);
 
 		for( int j = 0; j < to.length; j++ ) {
 	             if( to[j] != null )
-	                 out.println("getRecipients(TO) :=> '" + to[j] + "'");
+	                 out.fine("getRecipients(TO) :=> '" + to[j] + "'");
 	             else
-		         out.println("getRecipients(TO) :=> 'empty field'");
+		         out.fine("getRecipients(TO) :=> 'empty field'");
 		}
 
 	        cc = msg.getRecipients(Message.RecipientType.CC);
 
 	        if( cc != null )
-	            out.println("getRecipients(CC) :=> '" + cc[0] + "'");
+	            out.fine("getRecipients(CC) :=> '" + cc[0] + "'");
 	        else
-		    out.println("getRecipients(CC) :=> 'empty field'");
+		    out.fine("getRecipients(CC) :=> 'empty field'");
 
 	        bcc = msg.getRecipients(Message.RecipientType.BCC);
 
 	        if( bcc != null )
-	            out.println("getRecipients(BCC) :=> '" + bcc[0] + "'");
+	            out.fine("getRecipients(BCC) :=> '" + bcc[0] + "'");
 	        else
-		    out.println("getRecipients(BCC) :=> 'empty field'");
+		    out.fine("getRecipients(BCC) :=> 'empty field'");
 
-                out.println("UNIT TEST "+ i +":  passed\n");
+                out.fine("UNIT TEST "+ i +":  passed\n");
 	     // END UNIT TEST:
 	     }
 	     folder.close(false);

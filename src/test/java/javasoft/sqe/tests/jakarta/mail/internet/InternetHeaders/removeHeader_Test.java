@@ -45,15 +45,15 @@ public class removeHeader_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class InternetHeaders: removeHeader(String)\n");
+        out.fine("\nTesting class InternetHeaders: removeHeader(String)\n");
 
         try {
 	  // create internetheader object
@@ -73,13 +73,13 @@ public class removeHeader_Test extends MailTest {
 
 	     for( int j = 0; j < 5; j++ )
 	     {
-		  out.println("UNIT TEST "+ (j+1) +":  removeHeader("+ head[j] +")");
+		  out.fine("UNIT TEST "+ (j+1) +":  removeHeader("+ head[j] +")");
 		  ih.removeHeader(head[j]);	// API TEST
 		  
 		  // try getting the removed header
 		  String[] hd = ih.getHeader(head[j]);
 
-		  out.println("UNIT TEST "+ (j+1) +": passed");
+		  out.fine("UNIT TEST "+ (j+1) +": passed");
 	     }
 	  // END UNIT TEST:
              checkStatus();

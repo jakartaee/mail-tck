@@ -43,41 +43,41 @@ public class searchException_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
+    
 
-        out.println("\nTesting class SearchException: SearchException(void | String)\n");
+        out.fine("\nTesting class SearchException: SearchException(void | String)\n");
 
         try {
           // Connect to host server
              Store store = connect2host(protocol, host, user, password);
 
 	  // BEGIN UNIT TEST 1:
-	     out.println("UNIT TEST 1: SearchException()");
+	     out.fine("UNIT TEST 1: SearchException()");
 
              SearchException se1 = new SearchException();	// API TEST
 
 	     if( se1 != null )
-	     	 out.println("UNIT TEST 1: passed.\n");
+	     	 out.fine("UNIT TEST 1: passed.\n");
 	     else {
-		   out.println("UNIT TEST 1: FAILED.\n");
+		   out.fine("UNIT TEST 1: FAILED.\n");
 		   errors++;
 	     }
 	  // END UNIT TEST 1:
 	  // BEGIN UNIT TEST 2:
-	     out.println("UNIT TEST 2: SearchException(String)");
+	     out.fine("UNIT TEST 2: SearchException(String)");
 
              SearchException se2 = new SearchException(subject);       // API TEST
 
              if( se2 != null )
-                 out.println("UNIT TEST 2: passed.\n");
+                 out.fine("UNIT TEST 2: passed.\n");
              else {
-                   out.println("UNIT TEST 2: FAILED.\n");
+                   out.fine("UNIT TEST 2: FAILED.\n");
                    errors++;
              }
 	  // END UNIT TEST 2:

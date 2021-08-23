@@ -45,15 +45,15 @@ public class renameTo_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class Folder: renameTo(Folder)\n");
+        out.fine("\nTesting class Folder: renameTo(Folder)\n");
 
         try {
           // Connect to host server
@@ -67,10 +67,10 @@ public class renameTo_Test extends MailTest {
 	         return Status.failed("Invalid folder object!");
        	     }
 	  // BEGIN UNIT TEST 1:
-	     out.println("UNIT TEST 1: renameTo("+testbox+")");
+	     out.fine("UNIT TEST 1: renameTo("+testbox+")");
 
 	     String oldName = folder.getFullName();
-	     out.println("Old folder name is: " + oldName);
+	     out.fine("Old folder name is: " + oldName);
 
 	  // Get a new Folder object
              Folder newFolder = root.getFolder(testbox);
@@ -84,18 +84,18 @@ public class renameTo_Test extends MailTest {
 
 	     if( folder.renameTo(newFolder) )		// API TEST
 	     {
-		 out.println("New folder name is: "+ newFolder.getFullName());
+		 out.fine("New folder name is: "+ newFolder.getFullName());
 
 		 if ( !(oldName.equals(newFolder.getFullName())) )
-                       out.println("UNIT TEST 1: passed\n");
+                       out.fine("UNIT TEST 1: passed\n");
 		 else {
-		       out.println("UNIT TEST 1: FAILED\n");
+		       out.fine("UNIT TEST 1: FAILED\n");
                        errors++;
                  }
 		 // rename it back to original name
 		 newFolder.renameTo(folder);	// API TEST
              } else {
-                     out.println("UNIT TEST 1: FAILED\n");
+                     out.fine("UNIT TEST 1: FAILED\n");
                      errors++;
 	     }
 	  // END UNIT TEST 1:

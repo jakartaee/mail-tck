@@ -55,15 +55,15 @@ public class getFolder_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class Folder: getFolder(String)\n");
+        out.fine("\nTesting class Folder: getFolder(String)\n");
 
         try {
           // Connect to host server
@@ -71,33 +71,33 @@ public class getFolder_Test extends MailTest {
 
 	  // BEGIN UNIT TEST 1:
 	     // Invoked on closed an existing mail folder
-	     out.println("UNIT TEST 1: getFolder(" + mailbox + ")");
+	     out.fine("UNIT TEST 1: getFolder(" + mailbox + ")");
 
              // Get a Folder object
 	     Folder root = getRootFolder(store);
              Folder folder_1 = root.getFolder(mailbox);	// API TEST
 
              if ( folder_1 != null )
-	         out.println("UNIT TEST 1: passed\n");
+	         out.fine("UNIT TEST 1: passed\n");
              else {
-	             out.println("Invalid folder name");
-                     out.println("UNIT TEST 1: FAILED\n");
+	             out.fine("Invalid folder name");
+                     out.fine("UNIT TEST 1: FAILED\n");
                      errors++;
        	     }
 	     folder_1.open(Folder.READ_ONLY);
 	  // END UNIT TEST 1:
           // BEGIN UNIT TEST 2:
 	     // Invoked on an already open mail folder
-             out.println("UNIT TEST 2: getFolder(" + mailbox + ")");
+             out.fine("UNIT TEST 2: getFolder(" + mailbox + ")");
 
              // Get another Folder object related the same mail folder
              Folder folder_2 = root.getFolder(mailbox);	// API TEST
 
              if ( folder_2 != null )
-                 out.println("UNIT TEST 2: passed\n");
+                 out.fine("UNIT TEST 2: passed\n");
              else {
-                   out.println("Unable to get a second folder object for same folder name");
-                   out.println("UNIT TEST 2: FAILED\n");
+                   out.fine("Unable to get a second folder object for same folder name");
+                   out.fine("UNIT TEST 2: FAILED\n");
                    errors++;
              }
 	     folder_1.close(false);
@@ -106,7 +106,7 @@ public class getFolder_Test extends MailTest {
 	     // Invoke on "relative" to this folder test name
 
 	     String testbox = "testerFolder";
-             out.println("UNIT TEST 3: getFolder(" + testbox + ")");
+             out.fine("UNIT TEST 3: getFolder(" + testbox + ")");
 
           // Get a Folder object
              Folder folder_3 = root.getFolder(testbox);	// API TEST
@@ -115,20 +115,20 @@ public class getFolder_Test extends MailTest {
 		  if ( folder_3.create(Folder.HOLDS_MESSAGES) ) {
 		       if ( folder_3.exists() ) {
 			    folder_3.delete(false);
-			    out.println("UNIT TEST 3: passed\n");
+			    out.fine("UNIT TEST 3: passed\n");
 		       } else {
-				out.println("Specified folder name does not exist!");
-				out.println("UNIT TEST 3: FAILED\n");
+				out.fine("Specified folder name does not exist!");
+				out.fine("UNIT TEST 3: FAILED\n");
 				errors++;
 			}
 		  } else {
-			  out.println("Failed to create specified folder.");
-			  out.println("UNIT TEST 3: FAILED\n");
+			  out.fine("Failed to create specified folder.");
+			  out.fine("UNIT TEST 3: FAILED\n");
 			  errors++;
 		    }
 	     } else {
-			out.println("Failed to get specified folder.");
-			out.println("UNIT TEST 3: FAILED\n");
+			out.fine("Failed to get specified folder.");
+			out.fine("UNIT TEST 3: FAILED\n");
 			errors++;
 	     }
 	  // END UNIT TEST 3:

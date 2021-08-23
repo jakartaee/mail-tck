@@ -41,15 +41,15 @@ public class getUserName_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
+    
 
-        out.println("\nTesting class PasswordAuthentication: getUserName()\n");
+        out.fine("\nTesting class PasswordAuthentication: getUserName()\n");
 
         try {
 	   // Initialize a PasswordAuthentication object
@@ -59,15 +59,15 @@ public class getUserName_Test extends MailTest {
 		  return Status.failed("Failed to create a PasswordAuthentication object!");
 
 	   // BEGIN UNIT TEST 1:
-              out.println("UNIT TEST 1:  getUserName()");
+              out.fine("UNIT TEST 1:  getUserName()");
 
 	      String userName = pwa.getUserName();	// API TEST
 
 	      if( (user != null && userName != null && user.equals(userName)) ||
 		    (user == null && userName == null))
-		  out.println("UNIT TEST 1: passed.\n");
+		  out.fine("UNIT TEST 1: passed.\n");
 	      else {
-		    out.println("UNIT TEST 1: FAILED.\n");
+		    out.fine("UNIT TEST 1: FAILED.\n");
 		    errors++;
 	      }
 	   // END UNIT TEST:

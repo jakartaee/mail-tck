@@ -43,31 +43,31 @@ public class getDefaultFolder_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
+    
 
-        out.println("\nTesting class Store: getDefaultFolder()\n");
+        out.fine("\nTesting class Store: getDefaultFolder()\n");
 
         try {
           // Connect to host server
              Store store_1 = this.connect2host(protocol, host, user, password);
 
           // BEGIN UNIT TEST 1:
-             out.println("UNIT TEST 1: getDefaultFolder()");
+             out.fine("UNIT TEST 1: getDefaultFolder()");
 
           // Get a default Folder for this namespace
              Folder folder_1 = store_1.getDefaultFolder();      // API TEST
 
              if ( folder_1 == null ) {
-		  out.println("UNIT TEST 1:  FAILED\n");
+		  out.fine("UNIT TEST 1:  FAILED\n");
                   return Status.failed("Invalid folder object!");
              } else if ( folder_1 != null && ( folder_1 instanceof Folder ))
-                        out.println("UNIT TEST 1:  passed\n");
+                        out.fine("UNIT TEST 1:  passed\n");
 
              store_1.close();
           // END UNIT TEST 1:
@@ -79,7 +79,7 @@ public class getDefaultFolder_Test extends MailTest {
              // Get store object
              Store store_2 = session_2.getStore(protocol);
 
-             out.println("UNIT TEST 2: getDefaultFolder()");
+             out.fine("UNIT TEST 2: getDefaultFolder()");
 
              // Connect to host
 	     if( host != null || user != null || password != null)
@@ -94,10 +94,10 @@ public class getDefaultFolder_Test extends MailTest {
              Folder folder_2 = store_2.getDefaultFolder();	// API TEST
 
              if( folder_2 == null ) {
-		 out.println("UNIT TEST 2:  FAILED\n");
+		 out.fine("UNIT TEST 2:  FAILED\n");
 		 return Status.failed("Invalid folder object!");
              } else if( folder_2 != null && ( folder_2 instanceof Folder ))
-                  	out.println("UNIT TEST 2:  passed\n");
+                  	out.fine("UNIT TEST 2:  passed\n");
 
              store_2.close();
 	  // END UNIT TEST 2:

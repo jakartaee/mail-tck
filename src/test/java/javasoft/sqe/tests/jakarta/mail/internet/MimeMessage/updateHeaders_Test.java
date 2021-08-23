@@ -40,19 +40,19 @@ public class updateHeaders_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out) {
-	super.run(log, out);
+    public Status run() {
+	
 
         try {
           // Create a custom MimeMessage object with custom message ID algorithm
              Session session = Session.getInstance(properties, null);
 
 	  // BEGIN UNIT TEST:
-	     out.println("UNIT TEST 1: MimeMessage.updateHeaders()");
+	     out.fine("UNIT TEST 1: MimeMessage.updateHeaders()");
 
              MimeMessage msg = new MimeMessage(session); 
 	     msg.setSubject("test");
@@ -60,15 +60,15 @@ public class updateHeaders_Test extends MailTest {
 	     msg.saveChanges();
 	     if (msg.getHeader("Mime-Version") != null &&
 		    msg.getHeader("Date") != null)
-                out.println("UNIT TEST 1: passed\n");
+                out.fine("UNIT TEST 1: passed\n");
              else {
                 errors++;
-                out.println("UNIT TEST 1: FAILED\n");
+                out.fine("UNIT TEST 1: FAILED\n");
              }
 	  // END UNIT TEST:
 
 	  // BEGIN UNIT TEST:
-	     out.println("UNIT TEST 2: MimeMessage.updateHeaders date set()");
+	     out.fine("UNIT TEST 2: MimeMessage.updateHeaders date set()");
 
              MimeMessage msg2 = new MimeMessage(session); 
 	     msg.setSubject("test");
@@ -78,10 +78,10 @@ public class updateHeaders_Test extends MailTest {
 	     msg.saveChanges();
 	     if (msg.getHeader("Date", null) != null &&
 		 msg.getSentDate().equals(d))
-                out.println("UNIT TEST 2: passed\n");
+                out.fine("UNIT TEST 2: passed\n");
              else {
                 errors++;
-                out.println("UNIT TEST 2: FAILED\n");
+                out.fine("UNIT TEST 2: FAILED\n");
              }
 	  // END UNIT TEST:
 

@@ -43,13 +43,13 @@ public class set_withDecodeStrict_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
+    
 
         try {
             // BEGIN UNIT TEST:
@@ -71,11 +71,11 @@ public class set_withDecodeStrict_Test extends MailTest {
                 try {        
                     ParameterList pl = new ParameterList(wrongParameters[i]);
                     pl.get("filename");
-                    out.println("UNIT TEST FAILED for input parameter: " 
+                    out.fine("UNIT TEST FAILED for input parameter: " 
                         + wrongParameters[i]);
                     errors++;
                 } catch (ParseException ex) {
-                    out.println("UNIT TEST passed for input parameter: " 
+                    out.fine("UNIT TEST passed for input parameter: " 
                         + wrongParameters[i]);
                 }
             }

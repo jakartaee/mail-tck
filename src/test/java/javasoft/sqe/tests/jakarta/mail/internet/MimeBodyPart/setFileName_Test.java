@@ -44,15 +44,15 @@ public class setFileName_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class MimeBodyPart: setFileName()\n");
+        out.fine("\nTesting class MimeBodyPart: setFileName()\n");
 
         try {
           // Create a MimeBodyPart object
@@ -65,13 +65,13 @@ public class setFileName_Test extends MailTest {
 
              for( int i = 0; i < setfn.length; i++ )
              {
-                  out.println("UNIT TEST "+i+": setFileName("+setfn[i]+")");
+                  out.fine("UNIT TEST "+i+": setFileName("+setfn[i]+")");
 		  bp.setFileName(setfn[i]); 	// API TEST
 
                   if( setfn[i].equals(bp.getFileName()) )
-                      out.println("UNIT TEST "+i+":  passed.\n");
+                      out.fine("UNIT TEST "+i+":  passed.\n");
                   else {
-                        out.println("UNIT TEST "+i+":  FAILED.\n");
+                        out.fine("UNIT TEST "+i+":  FAILED.\n");
                         errors++;
                   }
              }

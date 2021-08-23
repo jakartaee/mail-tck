@@ -44,15 +44,15 @@ public class isOpen_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class Folder: isOpen()\n");
+        out.fine("\nTesting class Folder: isOpen()\n");
 
         try {
           // Connect to host server
@@ -67,26 +67,26 @@ public class isOpen_Test extends MailTest {
        	     }
 	  // BEGIN UNIT TEST 1:
 	     // test with closed folder
-             out.println("UNIT TEST 1: isOpen();");
+             out.fine("UNIT TEST 1: isOpen();");
 
              boolean isOpen = folder.isOpen(); 	// API TEST
 	     
              if( !( isOpen ) ) {
-		 out.println("This folder is not open.");
-                 out.println("UNIT TEST 1: passed\n");
+		 out.fine("This folder is not open.");
+                 out.fine("UNIT TEST 1: passed\n");
              }
 	  // END UNIT TEST 1:
           // BEGIN UNIT TEST 2:
 	     // test with open folder
 
 	     folder.open(Folder.READ_ONLY);
-             out.println("UNIT TEST 2: isOpen();");
+             out.fine("UNIT TEST 2: isOpen();");
 
              isOpen = folder.isOpen();       // API TEST
 
              if( isOpen ) {
-                 out.println("This folder is open.");
-                 out.println("UNIT TEST 2: passed\n");
+                 out.fine("This folder is open.");
+                 out.fine("UNIT TEST 2: passed\n");
              }
           // END UNIT TEST 2:
 	     folder.close(false);

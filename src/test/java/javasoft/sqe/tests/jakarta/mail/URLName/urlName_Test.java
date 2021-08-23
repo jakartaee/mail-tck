@@ -48,48 +48,48 @@ public class urlName_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
+    
 
-        out.println("\nTesting class URLName: URLName(..)\n");
+        out.fine("\nTesting class URLName: URLName(..)\n");
 
         try {
 	  // BEGIN UNIT TEST 1:
-	     out.println("UNIT TEST 1:  URLName(String)");
+	     out.fine("UNIT TEST 1:  URLName(String)");
 	     URLName url1 = new URLName(protocol+"://"+user+":"+password+"@"+host+"/");  // API TEST
 
 	     if( url1 != null )
-		 out.println("UNIT TEST 1: passed");
+		 out.fine("UNIT TEST 1: passed");
 	     else {
-		    out.println("UNIT TEST 1: FAILED");
+		    out.fine("UNIT TEST 1: FAILED");
 		    errors++;
 	     }
 	  // END UNIT TEST 1:
           // BEGIN UNIT TEST 2:
-             out.println("UNIT TEST 2:  URLName(protocol,host,0,mailbox,user,password)");
+             out.fine("UNIT TEST 2:  URLName(protocol,host,0,mailbox,user,password)");
              URLName url2 = new URLName(protocol,host,0,mailbox,user,password);   // API TEST
 
              if( url2 != null )
-                 out.println("UNIT TEST 2: passed");
+                 out.fine("UNIT TEST 2: passed");
              else {
-                    out.println("UNIT TEST 2: FAILED");
+                    out.fine("UNIT TEST 2: FAILED");
                     errors++;
              }
           // END UNIT TEST 2:
 /*	  // BEGIN UNIT TEST 3:
-             out.println("UNIT TEST 3:  URLName(URL)");
+             out.fine("UNIT TEST 3:  URLName(URL)");
 
              URLName url3 = new URLName( URL object );   // API TEST
 
              if( url3 != null )
-                 out.println("UNIT TEST 3: passed");
+                 out.fine("UNIT TEST 3: passed");
              else {
-                    out.println("UNIT TEST 3: FAILED");
+                    out.fine("UNIT TEST 3: FAILED");
                     errors++;
              }
           // END UNIT TEST 3:

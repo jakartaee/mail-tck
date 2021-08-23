@@ -42,15 +42,15 @@ public class getName_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class MimePartDataSource: getName()\n");
+        out.fine("\nTesting class MimePartDataSource: getName()\n");
 
         try {
           // Connect to host server
@@ -83,14 +83,14 @@ public class getName_Test extends MailTest {
 		 return Status.failed("Warning: Failed to create a MimePartDataSource object!");
              }
           // BEGIN UNIT TEST 1:
-             out.println("UNIT TEST 1: getName()");
+             out.fine("UNIT TEST 1: getName()");
 
              String name = mpds.getName();    // API TEST
 
              if( name.equals("") )
-                 out.println("UNIT TEST 1: passed\n");
+                 out.fine("UNIT TEST 1: passed\n");
              else {
-                   out.println("UNIT TEST 1: FAILED\n");
+                   out.fine("UNIT TEST 1: FAILED\n");
 		   errors++;
              }
           // END UNIT TEST 1:

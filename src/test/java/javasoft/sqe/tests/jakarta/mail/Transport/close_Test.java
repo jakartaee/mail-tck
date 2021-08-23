@@ -42,15 +42,15 @@ public class close_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
+    
 
-	out.println("\nTesting Transport class API => close()\n");
+	out.fine("\nTesting Transport class API => close()\n");
 
 	try {
            // Get a Session object
@@ -69,9 +69,9 @@ public class close_Test extends MailTest {
                   transport.connect();
 
 	   // BEGIN UNIT TEST 1:
-	      out.println("UNIT TEST 1:  close()");
+	      out.fine("UNIT TEST 1:  close()");
               transport.close();		// API TEST
-	      out.println("UNIT TEST 1: passed\n");
+	      out.fine("UNIT TEST 1: passed\n");
 	   // END UNIT TEST 1:
 
 	      status = Status.passed("OKAY");

@@ -45,13 +45,13 @@ public class setFileName_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
+    
 
         try {
           // Create a MimeMessage object
@@ -59,7 +59,7 @@ public class setFileName_Test extends MailTest {
              MimeMessage msg = new MimeMessage(session);
              
              if( msg == null) {
-                 log.println("WARNING: FAILED TO CREATE MESSAGE OBJECTS");
+                 log.warning("WARNING: FAILED TO CREATE MESSAGE OBJECTS");
                  return Status.failed("Failed to create Message objects");
              }
 
@@ -68,34 +68,34 @@ public class setFileName_Test extends MailTest {
 
 	     System.setProperty("mail.mime.charset", "utf-8");
              
-             out.println("\nTesting class Message: setFileName(String)\n");
+             out.fine("\nTesting class Message: setFileName(String)\n");
              
 	  // BEGIN UNIT TEST:
 	     // Set body part filename
-	     out.println("UNIT TEST 1:  setFileName(String)");
+	     out.fine("UNIT TEST 1:  setFileName(String)");
 
  	     String fileName="mailworld.txt";
 	     msg.setFileName(fileName);	// API TEST
-	     out.println("setFileName("+ fileName +")");
-	     out.println("Filename associated with this body: "+ msg.getFileName());
+	     out.fine("setFileName("+ fileName +")");
+	     out.fine("Filename associated with this body: "+ msg.getFileName());
 
              if( fileName.equals(msg.getFileName()) )
-                 out.println("UNIT TEST 1:  passed\n");
+                 out.fine("UNIT TEST 1:  passed\n");
              else {
-                   out.println("UNIT TEST 1:  FAILED\n");
+                   out.fine("UNIT TEST 1:  FAILED\n");
                    errors++;
              }
-	     out.println("UNIT TEST 2:  setFileName(String)");
+	     out.fine("UNIT TEST 2:  setFileName(String)");
 
 	     fileName="?#;%^+=-@	$&";
 	     msg.setFileName(fileName); // API TEST
-	     out.println("setFileName("+ fileName +")");
-             out.println("Filename associated with this body: "+ msg.getFileName());
+	     out.fine("setFileName("+ fileName +")");
+             out.fine("Filename associated with this body: "+ msg.getFileName());
 
 	     if( fileName.equals(msg.getFileName()) )
-                 out.println("UNIT TEST 2:  passed\n");
+                 out.fine("UNIT TEST 2:  passed\n");
 	     else {
-		   out.println("UNIT TEST 2:  FAILED\n");
+		   out.fine("UNIT TEST 2:  FAILED\n");
 		   errors++;
 	     }
  
@@ -130,26 +130,26 @@ public class setFileName_Test extends MailTest {
              // 1.First test with default (false) values
              //  for mail.mime.encodefilename and mail.mime.decodefilename
              //  system properties.
-             out.println("UNIT TEST 3:  setFileName(String) with default " +
+             out.fine("UNIT TEST 3:  setFileName(String) with default " +
                  "mail.mime.encodefilename and mail.mime.decodefilename " +
                  "i.e. set to FALSE");
      
 	     msg.setFileName(fileName); // API TEST
-	     out.println("setFileName("+ fileName +")");
+	     out.fine("setFileName("+ fileName +")");
              try { 
-                 out.println("Filename associated with this body: "+ msg.getFileName());
+                 out.fine("Filename associated with this body: "+ msg.getFileName());
 
                  if( fileName.equals(msg.getFileName()) )
-                     out.println("UNIT TEST 3:  passed\n");
+                     out.fine("UNIT TEST 3:  passed\n");
                  else {
-                       out.println("UNIT TEST 3:  FAILED\n");
+                       out.fine("UNIT TEST 3:  FAILED\n");
                        errors++;
                  }
              } catch (Exception ex) {
                  if (! (ex instanceof UnsupportedEncodingException) ) throw ex;
                  else { 
                     // ex is due to not setting the system properties which is OK
-                    out.println("UNIT TEST 3:  passed\n");
+                    out.fine("UNIT TEST 3:  passed\n");
                  }
              }
             // END UNIT TEST:

@@ -41,15 +41,15 @@ public class getProperties_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
+    
 
-        out.println("\nTesting class Session: getProperties()\n");
+        out.fine("\nTesting class Session: getProperties()\n");
 
         try {
              // Create a Properties object
@@ -65,17 +65,17 @@ public class getProperties_Test extends MailTest {
 	     Session session_1 = Session.getInstance(props, null);
 
 	  // BEGIN UNIT TEST 1:
-             out.println("UNIT TEST 1: getProperties()");
+             out.fine("UNIT TEST 1: getProperties()");
              Properties prop_1 = session_1.getProperties();     // API TEST
 
              if ( prop_1 != null ) {
-                   out.println("\nmail.protocol.host = " + prop_1.getProperty("mail."+ protocol +".host"));
-		   out.println("mail.protocol.user = " + prop_1.getProperty("mail."+ protocol +".user"));
-		   out.println("mail.protocol.tester = " + prop_1.getProperty("mail."+ protocol +".tester"));
-		   out.println("mail.store.protocol = " + prop_1.getProperty("mail.store.protocol"));
-                   out.println("UNIT TEST 1:  passed\n");
+                   out.fine("\nmail.protocol.host = " + prop_1.getProperty("mail."+ protocol +".host"));
+		   out.fine("mail.protocol.user = " + prop_1.getProperty("mail."+ protocol +".user"));
+		   out.fine("mail.protocol.tester = " + prop_1.getProperty("mail."+ protocol +".tester"));
+		   out.fine("mail.store.protocol = " + prop_1.getProperty("mail.store.protocol"));
+                   out.fine("UNIT TEST 1:  passed\n");
              } else {
-                     out.println("UNIT TEST 1:  FAILED\n");
+                     out.fine("UNIT TEST 1:  FAILED\n");
                      errors++;
              }
           // END UNIT TEST 1:
@@ -83,16 +83,16 @@ public class getProperties_Test extends MailTest {
 	     // Get a Session object
 	     Session session_2 = Session.getInstance(properties, null);
 
-             out.println("UNIT TEST 2: getProperties()");
+             out.fine("UNIT TEST 2: getProperties()");
              Properties prop_2 = session_2.getProperties();     // API TEST
 
              if ( prop_2 != null ) {
-                   out.println("\nmail.protocol.host = " + prop_2.getProperty("mail."+ protocol +".host"));
-                   out.println("mail.protocol.user = " + prop_2.getProperty("mail."+ protocol +".user"));
-                   out.println("mail.store.protocol = " + prop_2.getProperty("mail.store.protocol"));
-                   out.println("UNIT TEST 2:  passed\n");
+                   out.fine("\nmail.protocol.host = " + prop_2.getProperty("mail."+ protocol +".host"));
+                   out.fine("mail.protocol.user = " + prop_2.getProperty("mail."+ protocol +".user"));
+                   out.fine("mail.store.protocol = " + prop_2.getProperty("mail.store.protocol"));
+                   out.fine("UNIT TEST 2:  passed\n");
              } else {
-                     out.println("UNIT TEST 2:  FAILED\n");
+                     out.fine("UNIT TEST 2:  FAILED\n");
                      errors++;
              }
           // END UNIT TEST 2:

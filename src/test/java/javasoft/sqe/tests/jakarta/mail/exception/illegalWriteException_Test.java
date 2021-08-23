@@ -44,15 +44,15 @@ public class illegalWriteException_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class IllegalWriteException: IllegalWriteException()\n");
+        out.fine("\nTesting class IllegalWriteException: IllegalWriteException()\n");
 
         try {
           // Connect to host server
@@ -99,7 +99,7 @@ public class illegalWriteException_Test extends MailTest {
 	     }
 
 	  // BEGIN UNIT TEST:
-	     out.println("UNIT TEST 1: IllegalWriteException(void | String)");
+	     out.fine("UNIT TEST 1: IllegalWriteException(void | String)");
 
 	  // Change the message's subject
              msg.setSubject("new subject");	// should throw exception
@@ -123,16 +123,16 @@ public class illegalWriteException_Test extends MailTest {
 	     }
 
 	     if (!msg.getSubject().equals("new subject")) {
-		 out.println("UNIT TEST 1: FAILED.\n");
+		 out.fine("UNIT TEST 1: FAILED.\n");
 		 return Status.failed("Failed to change message");
 	     }
 
-	     out.println("UNIT TEST 1: passed (message changed).\n");
+	     out.fine("UNIT TEST 1: passed (message changed).\n");
           // END UNIT TEST:
 	     checkStatus();
 
         } catch ( IllegalWriteException iwe ) {
-		out.println("UNIT TEST 1: passed (exception thrown).\n");
+		out.fine("UNIT TEST 1: passed (exception thrown).\n");
 		ExceptionTest(iwe);
         } catch ( MessagingException me ) {
 		handlException(me);

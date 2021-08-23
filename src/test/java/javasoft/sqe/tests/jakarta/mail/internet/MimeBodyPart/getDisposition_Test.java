@@ -46,15 +46,15 @@ public class getDisposition_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class MimeBodyPart: getDisposition()\n");
+        out.fine("\nTesting class MimeBodyPart: getDisposition()\n");
 
         try {
           // Connect to host server
@@ -81,11 +81,11 @@ public class getDisposition_Test extends MailTest {
                 MimeMessage msg = (MimeMessage)folder.getMessage(i);
 
 	        if ( msg == null ) {
-		    log.println("WARNING: FAILED TO GET MESSAGE NUMBER: "+ i);
+		    log.warning("WARNING: FAILED TO GET MESSAGE NUMBER: "+ i);
 		    continue;
 	        }
 	     // BEGIN UNIT TEST:
-	        out.println("UNIT TEST "+ i +":  getDisposition()");
+	        out.fine("UNIT TEST "+ i +":  getDisposition()");
 
 		// Get the "type" of content
 	        Object content = msg.getContent();
@@ -99,13 +99,13 @@ public class getDisposition_Test extends MailTest {
 			 // get the value of the "Content-Disposition" header field
 			  String disp = ((MimeBodyPart)bp).getDisposition();	// API TEST
 
-			  out.println("getDisposition() :=> "+ disp);
+			  out.fine("getDisposition() :=> "+ disp);
 
 			  if ( disp != null ) {
 				if (( disp != Part.INLINE ) || ( disp != Part.ATTACHMENT ))
-				      out.println("UNIT TEST "+ i +":  passed\n");
+				      out.fine("UNIT TEST "+ i +":  passed\n");
 				else {
-					out.println("UNIT TEST "+ i +":  FAILED\n");
+					out.fine("UNIT TEST "+ i +":  FAILED\n");
 					errors++;
 				}
 			  }

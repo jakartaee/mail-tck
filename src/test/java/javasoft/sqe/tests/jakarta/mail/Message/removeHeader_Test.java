@@ -57,15 +57,15 @@ public class removeHeader_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
+    
 
-        out.println("\nTesting class Message: removeHeader(String)\n");
+        out.fine("\nTesting class Message: removeHeader(String)\n");
 
         try {
           // Create a MimeMessage object
@@ -73,7 +73,7 @@ public class removeHeader_Test extends MailTest {
              MimeMessage msg = new MimeMessage(session);
 
              if( msg == null ) {
-                 log.println("WARNING: FAILED TO CREATE MESSAGE OBJECT");
+                 log.warning("WARNING: FAILED TO CREATE MESSAGE OBJECT");
                  return Status.failed("Failed to create Message object");
              }
 	     // add the specified message headers to message object
@@ -82,7 +82,7 @@ public class removeHeader_Test extends MailTest {
 
 	  // BEGIN UNIT TEST:
 	     // delete the specified message headers
-	     out.println("UNIT TEST 1:  removeHeader(String)");
+	     out.fine("UNIT TEST 1:  removeHeader(String)");
 
 	     for( int j = 0; j < headerlist.length; j++ )
                   msg.removeHeader(headerlist[j]);		// API TEST
@@ -92,7 +92,7 @@ public class removeHeader_Test extends MailTest {
 
              while( allHeaders.hasMoreElements() ) {
                     Header h = (Header)(allHeaders.nextElement());
-		    out.println( h.getName() + ": " + h.getValue() );
+		    out.fine( h.getName() + ": " + h.getValue() );
 
 		    for( int k = 0; k < headerlist.length; k++ ) {
 			 if( h.getName().equals( headerlist[k] ))
@@ -101,9 +101,9 @@ public class removeHeader_Test extends MailTest {
              }
 
 	     if( !(unitest) )
-		  out.println("UNIT TEST 1:  passed\n");
+		  out.fine("UNIT TEST 1:  passed\n");
 	     else {
-		   out.println("UNIT TEST 1:  FAILED\n");
+		   out.fine("UNIT TEST 1:  FAILED\n");
 		   errors++;
 	     }
 	  // END UNIT TEST:

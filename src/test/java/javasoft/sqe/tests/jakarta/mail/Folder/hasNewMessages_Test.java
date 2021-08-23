@@ -45,15 +45,15 @@ public class hasNewMessages_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class Folder: hasNewMessages()\n");
+        out.fine("\nTesting class Folder: hasNewMessages()\n");
 
         try {
           // Connect to host server
@@ -74,7 +74,7 @@ public class hasNewMessages_Test extends MailTest {
                      return Status.failed("Mail folder is empty!");
              }
 	  // BEGIN UNIT TEST 1:
-             out.println("UNIT TEST 1: hasNewMessages();");
+             out.fine("UNIT TEST 1: hasNewMessages();");
 
              boolean hasNewMsg1 = folder.hasNewMessages(); 	// API TEST
 
@@ -83,11 +83,11 @@ public class hasNewMessages_Test extends MailTest {
 	     boolean hasNewMsg2 = folder.hasNewMessages(); 	// API TEST
 	     
              if( hasNewMsg1 && hasNewMsg2 ) {
-		 out.println("This folder has New messages.");
-                 out.println("UNIT TEST 1: passed\n");
+		 out.fine("This folder has New messages.");
+                 out.fine("UNIT TEST 1: passed\n");
              } else {
-		      out.println("This folder has No new messages.");
-		      out.println("UNIT TEST 1: passed\n");
+		      out.fine("This folder has No new messages.");
+		      out.fine("UNIT TEST 1: passed\n");
              }
 	  // END UNIT TEST 1:
 	     store.close();

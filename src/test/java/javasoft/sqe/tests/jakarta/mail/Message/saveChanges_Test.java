@@ -42,15 +42,15 @@ public class saveChanges_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
+    
 
-        out.println("\nTesting class Message: saveChanges()\n");
+        out.fine("\nTesting class Message: saveChanges()\n");
 
         try {
              Session session = Session.getInstance(properties, null);
@@ -67,7 +67,7 @@ public class saveChanges_Test extends MailTest {
              msg.setFlag(Flags.Flag.DELETED, true);
 
              // Save changes to this message object
-             out.println("UNIT TEST 1:  saveChanges()\n");
+             out.fine("UNIT TEST 1:  saveChanges()\n");
 
              msg.saveChanges();	// API TEST
 
@@ -85,9 +85,9 @@ public class saveChanges_Test extends MailTest {
 			   flagstat = true;
 	     }
 	     if( flagstat )
-                 out.println("UNIT TEST 1:  passed\n");
+                 out.fine("UNIT TEST 1:  passed\n");
 	     else {
-		   out.println("UNIT TEST 1: FAILED\n");
+		   out.fine("UNIT TEST 1: FAILED\n");
 		   errors++;
 	     }
 	  // END UNIT TEST:

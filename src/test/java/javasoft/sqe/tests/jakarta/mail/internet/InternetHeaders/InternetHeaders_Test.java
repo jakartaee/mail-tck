@@ -47,25 +47,25 @@ public class InternetHeaders_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class InternetHeaders: InternetHeaders(void | InputStream)\n");
+        out.fine("\nTesting class InternetHeaders: InternetHeaders(void | InputStream)\n");
 
         try {
 	  // BEGIN UNIT TEST 1:
-	     out.println("UNIT TEST 1:  InternetHeaders()");
+	     out.fine("UNIT TEST 1:  InternetHeaders()");
 	     InternetHeaders ih = new InternetHeaders();	    // API TEST
 	     
 	     if(( ih != null ) && ( ih instanceof InternetHeaders ))
-		  out.println("UNIT TEST 1: passed");
+		  out.fine("UNIT TEST 1: passed");
 	     else {
-		    out.println("UNIT TEST 1: FAILED");
+		    out.fine("UNIT TEST 1: FAILED");
 		    errors++;
 	     }
 	  // END UNIT TEST 1:
@@ -97,18 +97,18 @@ public class InternetHeaders_Test extends MailTest {
           // Get a ByteArrayInputStream object
              ByteArrayInputStream bis = createInputStream(msg);
 
-	     out.println("UNIT TEST 2:  InternetHeaders(InputStream)");
+	     out.fine("UNIT TEST 2:  InternetHeaders(InputStream)");
 	     InternetHeaders iheader = new InternetHeaders(bis);	// API TEST
 
 	     if(( iheader != null ) && ( iheader instanceof InternetHeaders ))
-		  out.println("UNIT TEST 2: passed");
+		  out.fine("UNIT TEST 2: passed");
 	     else {
-		    out.println("UNIT TEST 2: FAILED");
+		    out.fine("UNIT TEST 2: FAILED");
 		    errors++;
 	     }
 	  // END UNIT TEST 2:
 	  // BEGIN UNIT TEST 3:
-	     out.println("UNIT TEST 3:  InternetHeaders(InputStream,true)");
+	     out.fine("UNIT TEST 3:  InternetHeaders(InputStream,true)");
 	     String val = "test";
 	     String uval = "test\u03b1";
 	     String headers = "Subject: " + uval + "\r\nH: " + val + "\r\n\r\n";
@@ -118,22 +118,22 @@ public class InternetHeaders_Test extends MailTest {
 
 	     if (uih.getHeader("Subject", null).equals(uval) &&
 	         uih.getHeader("H", null).equals(val))
-		  out.println("UNIT TEST 3: passed");
+		  out.fine("UNIT TEST 3: passed");
 	     else {
-		    out.println("UNIT TEST 3: FAILED");
+		    out.fine("UNIT TEST 3: FAILED");
 		    errors++;
 	     }
 	  // END UNIT TEST 3:
 	  // BEGIN UNIT TEST 4:
-	     out.println("UNIT TEST 4:  InternetHeaders(InputStream,false)");
+	     out.fine("UNIT TEST 4:  InternetHeaders(InputStream,false)");
 	     is = new ByteArrayInputStream(bytes);
 	     uih = new InternetHeaders(is, false); // API TEST
 
 	     if (!uih.getHeader("Subject", null).equals(uval) &&
 	         uih.getHeader("H", null).equals(val))
-		  out.println("UNIT TEST 4: passed");
+		  out.fine("UNIT TEST 4: passed");
 	     else {
-		    out.println("UNIT TEST 4: FAILED");
+		    out.fine("UNIT TEST 4: FAILED");
 		    errors++;
 	     }
 	  // END UNIT TEST 4:

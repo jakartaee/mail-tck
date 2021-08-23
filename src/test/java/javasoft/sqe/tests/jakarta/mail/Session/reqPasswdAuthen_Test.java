@@ -53,15 +53,15 @@ public class reqPasswdAuthen_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
+    
 
-        out.println("\nTesting class Session: requestPasswordAuthentication(InetAddress,int,String,String,String)\n");
+        out.fine("\nTesting class Session: requestPasswordAuthentication(InetAddress,int,String,String,String)\n");
 
         try {
 	   // Initialize a new PasswordAuthentication
@@ -86,16 +86,16 @@ public class reqPasswdAuthen_Test extends MailTest {
               session.setPasswordAuthentication(url, pwa);
 
            // BEGIN UNIT TEST 1:
-              out.println("UNIT TEST 1:  requestPasswordAuthentication()");
+              out.fine("UNIT TEST 1:  requestPasswordAuthentication()");
 
               PasswordAuthentication rpwa = session.requestPasswordAuthentication(null,0,protocol,"", user); // API TEST
 
               if( rpwa == pwa ) {
-		  out.println("User name is "+ rpwa.getUserName());
-		  out.println("User password is "+ rpwa.getPassword());
-                  out.println("UNIT TEST 1: passed\n");
+		  out.fine("User name is "+ rpwa.getUserName());
+		  out.fine("User password is "+ rpwa.getPassword());
+                  out.fine("UNIT TEST 1: passed\n");
 	      } else {
-			out.println("UNIT TEST 1: FAILED\n");
+			out.fine("UNIT TEST 1: FAILED\n");
 			errors++;
 	      }
            // END UNIT TEST 1:

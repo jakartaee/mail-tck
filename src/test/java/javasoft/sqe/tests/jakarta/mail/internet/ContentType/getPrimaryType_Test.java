@@ -42,15 +42,15 @@ public class getPrimaryType_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	 super.run(log, out);
+	 
 
-        out.println("\nTesting class ContentType: getPrimaryType()\n");
+        out.fine("\nTesting class ContentType: getPrimaryType()\n");
 
         try {
 	   // Create ContentType object
@@ -60,14 +60,14 @@ public class getPrimaryType_Test extends MailTest {
 		  return Status.failed("Failed to create ContentType object!");
 
            // BEGIN UNIT TEST 1:
-              out.println("UNIT TEST 1: getPrimaryType()");
+              out.fine("UNIT TEST 1: getPrimaryType()");
               String primeType = ct.getPrimaryType();    // API TEST
 
               if( primeType != null ) {
-		  out.println("Primary type is "+primeType);
-                  out.println("UNIT TEST 1: passed.\n");
+		  out.fine("Primary type is "+primeType);
+                  out.fine("UNIT TEST 1: passed.\n");
               } else {
-                    out.println("UNIT TEST 1: FAILED.\n");
+                    out.fine("UNIT TEST 1: FAILED.\n");
                     errors++;
               }
            // END UNIT TEST 1:

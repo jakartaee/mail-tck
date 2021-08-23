@@ -51,15 +51,15 @@ public class delete_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class Folder: delete(boolean)\n");
+        out.fine("\nTesting class Folder: delete(boolean)\n");
 
         try {
           // Connect to host server
@@ -74,7 +74,7 @@ public class delete_Test extends MailTest {
              }
           // BEGIN UNIT TEST 1:
 
-	     out.println("UNIT TEST 1: delete(false)\n");
+	     out.fine("UNIT TEST 1: delete(false)\n");
 
 	     if ( !(f1.exists()) ) {
 		  boolean return_code = f1.create(Folder.HOLDS_MESSAGES);
@@ -83,10 +83,10 @@ public class delete_Test extends MailTest {
 		       f1.delete(false);		// API TEST
 
 		       if ( !(f1.exists()) )
-			    out.println("UNIT TEST 1: passed\n");
+			    out.fine("UNIT TEST 1: passed\n");
 		       else {
-			     out.println("Failed to delete folder " + testbox);
-			     out.println("UNIT TEST 1: FAILED\n");
+			     out.fine("Failed to delete folder " + testbox);
+			     out.fine("UNIT TEST 1: FAILED\n");
 			     errors++;
 		  	}
 		  }
@@ -132,15 +132,15 @@ public class delete_Test extends MailTest {
 
              if( f3.create(Folder.HOLDS_MESSAGES) )
 	     {
-		 out.println("UNIT TEST 2: delete(true)\n");
+		 out.fine("UNIT TEST 2: delete(true)\n");
 
 	         f2.delete(true);    // API TEST
 
 		 if( !(f2.exists()) )
-		     out.println("UNIT TEST 2: passed\n");
+		     out.fine("UNIT TEST 2: passed\n");
 		 else {
-                        out.println("Failed to create directory "+testbox+" folder(s)");
-                        out.println("UNIT TEST 2: FAILED\n");
+                        out.fine("Failed to create directory "+testbox+" folder(s)");
+                        out.fine("UNIT TEST 2: FAILED\n");
                         errors++;
                  }
              }

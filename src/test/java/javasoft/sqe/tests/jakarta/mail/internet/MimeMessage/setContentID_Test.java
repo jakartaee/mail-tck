@@ -42,15 +42,15 @@ public class setContentID_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class MimeMessage: setContentID(String)\n");
+        out.fine("\nTesting class MimeMessage: setContentID(String)\n");
 
         try {
           // Create a MimeMessage object
@@ -58,39 +58,39 @@ public class setContentID_Test extends MailTest {
              MimeMessage msg = new MimeMessage(session);
 
              if( msg == null ) {
-                 log.println("WARNING: FAILED TO CREATE MESSAGE OBJECT");
+                 log.warning("WARNING: FAILED TO CREATE MESSAGE OBJECT");
                  return Status.failed("Failed to create Message object");
              }
           // BEGIN UNIT TEST:
 	     String strvalue = "cool hand luke";
-             out.println("UNIT TEST 1: setContentID("+strvalue+")");
+             out.fine("UNIT TEST 1: setContentID("+strvalue+")");
 
              msg.setContentID(strvalue);	// API TEST
 
 	     if( msg.getContentID() != null ) {
                  if ( strvalue.equals( msg.getContentID() ))
-                      out.println("UNIT TEST 1: passed\n");
+                      out.fine("UNIT TEST 1: passed\n");
                  else {
-                       out.println("UNIT TEST 1: FAILED\n");
+                       out.fine("UNIT TEST 1: FAILED\n");
                        errors++;
                  }
 	     } else
-		   out.println("Warning: Null object returned by getContentID()");
+		   out.fine("Warning: Null object returned by getContentID()");
 
 	     strvalue = "";
-             out.println("UNIT TEST 2: setContentID("+strvalue+")");
+             out.fine("UNIT TEST 2: setContentID("+strvalue+")");
 
              msg.setContentID(strvalue);        // API TEST
 
              if( msg.getContentID() != null ) {
                  if ( strvalue.equals( msg.getContentID() ))
-                      out.println("UNIT TEST 2: passed\n");
+                      out.fine("UNIT TEST 2: passed\n");
                  else {
-                       out.println("UNIT TEST 2: FAILED\n");
+                       out.fine("UNIT TEST 2: FAILED\n");
                        errors++;
                  }
              } else
-                   out.println("Warning: Null object returned by getContentID()");
+                   out.fine("Warning: Null object returned by getContentID()");
 
           // END UNIT TEST:
 

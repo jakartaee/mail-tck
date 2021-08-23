@@ -42,15 +42,15 @@ public class getPersonal_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class InternetAddress: getPersonal()\n");
+        out.fine("\nTesting class InternetAddress: getPersonal()\n");
 
         try {
           // Connect to host server
@@ -64,7 +64,7 @@ public class getPersonal_Test extends MailTest {
                  return Status.failed("Invalid folder");
              }
 	  // BEGIN UNIT TEST 1:
-	     out.println("\nUNIT TEST 1:  getPersonal()");
+	     out.fine("\nUNIT TEST 1:  getPersonal()");
 	     InternetAddress addr = new InternetAddress();
 
 	     addr.setPersonal("the quick fox jumped over the lazy cow.");
@@ -74,11 +74,11 @@ public class getPersonal_Test extends MailTest {
 	     String personal2 = addr.getPersonal();	// API TEST
 	     
              if(( personal1 != null && personal2 != null )) {
-		  out.println(personal1);
-		  out.println(personal2);
-                  out.println("UNIT TEST 1: passed\n");
+		  out.fine(personal1);
+		  out.fine(personal2);
+                  out.fine("UNIT TEST 1: passed\n");
 	     } else {
-		   out.println("UNIT TEST 1: FAILED\n");
+		   out.fine("UNIT TEST 1: FAILED\n");
 		   errors++;
 	     }
 	  // END UNIT TEST 1:

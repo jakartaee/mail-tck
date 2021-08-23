@@ -43,15 +43,15 @@ public class setDataHandler_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
+    
 
-        out.println("\nTesting class Message: setDataHandler(DataHandler)\n");
+        out.fine("\nTesting class Message: setDataHandler(DataHandler)\n");
 
         try {
           // Create a MimeMessage object
@@ -59,23 +59,23 @@ public class setDataHandler_Test extends MailTest {
              MimeMessage msg = new MimeMessage(session);
 
              if( msg == null ) {
-                 log.println("WARNING: FAILED TO CREATE MESSAGE OBJECT");
+                 log.warning("WARNING: FAILED TO CREATE MESSAGE OBJECT");
                  return Status.failed("Failed to create Message object");
              }
 	  // BEGIN UNIT TEST:
 	     // Set the message's (DataHandler) content
 
-	     out.println("UNIT TEST 1:  setDataHandler(DataHandler)");
+	     out.fine("UNIT TEST 1:  setDataHandler(DataHandler)");
 	     DataHandler datahandle = msg.getDataHandler();
 
 	     msg.setDataHandler(datahandle); 	// API TEST
 	     datahandle = msg.getDataHandler();
-	     out.println("setDataHandler("+ datahandle +")");
+	     out.fine("setDataHandler("+ datahandle +")");
 
 	     if( datahandle != null && ( datahandle instanceof DataHandler ))
-                 out.println("UNIT TEST 1:  passed\n");
+                 out.fine("UNIT TEST 1:  passed\n");
 	     else {
-		   out.println("UNIT TEST 1:  FAILED\n");
+		   out.fine("UNIT TEST 1:  FAILED\n");
 		   errors++;
 	     }
 	  // END UNIT TEST:

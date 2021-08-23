@@ -44,15 +44,15 @@ public class getNonMatchHeadLines_Test extends MailTest {
     
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class InternetHeaders: getNonMatchingHeaderLines(String[])\n");
+        out.fine("\nTesting class InternetHeaders: getNonMatchingHeaderLines(String[])\n");
 
         try {
           // Connect to host server
@@ -88,16 +88,16 @@ public class getNonMatchHeadLines_Test extends MailTest {
                  return Status.failed("WARNING: Failed to create InternetHeaders object!");
              }
           // BEGIN UNIT TEST:
-	     out.println("UNIT TEST 1: getNonMatchingHeaderLines(String[])");
+	     out.fine("UNIT TEST 1: getNonMatchingHeaderLines(String[])");
 
 	  // get non-matching headerlines
 	     Enumeration nomatch = ih.getNonMatchingHeaderLines(headerlist);   // API TEST
 
 	     while( nomatch.hasMoreElements() ) {
                     String headers = (String)nomatch.nextElement();
-                    out.println(headers);
+                    out.fine(headers);
 	     }
-	     out.println("UNIT TEST 1: passed");
+	     out.fine("UNIT TEST 1: passed");
           // END UNIT TEST:
 
 	     store.close();

@@ -71,14 +71,14 @@ public class next_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
-        out.println("\nTesting class HeaderTokenizer: next()\n");
+	
+        out.fine("\nTesting class HeaderTokenizer: next()\n");
 
 	try {
 	   // Create HeaderTokenizer object
@@ -96,23 +96,23 @@ public class next_Test extends MailTest {
 	       * XXX - this test is completely lame, it doesn't actually
 	       * check that the correct values are returned.
 	       */
-	      out.println("UNIT TEST 1: next()");
+	      out.fine("UNIT TEST 1: next()");
 
 	      while((tok = ht.next()).getType() != HeaderTokenizer.Token.EOF) {  // API TEST
 		  if (tok.getType() == 0 || tok.getValue() == null) {
-		    out.println("\t" + type(tok.getType()) +
+		    out.fine("\t" + type(tok.getType()) +
 				"\t" + tok.getValue());
-		    out.println("UNIT TEST 1: Failed.\n");
+		    out.fine("UNIT TEST 1: Failed.\n");
 		    errors++;
 		    break;
 		  }
 	      }
 	      if (errors == 0)
-		  out.println("UNIT TEST 1: passed.\n");
+		  out.fine("UNIT TEST 1: passed.\n");
 	   // END UNIT TEST 1:
 
 	   // BEGIN UNIT TEST 2:
-	      out.println("UNIT TEST 2: next(endOfAtom)");
+	      out.fine("UNIT TEST 2: next(endOfAtom)");
 
 	      int start = errors;
 	      for (TestCase tc : testCases) {
@@ -120,26 +120,26 @@ public class next_Test extends MailTest {
 		  tok = ht.next();
 		  if (tok.getType() != HeaderTokenizer.Token.ATOM || 
 		    !tok.getValue().equals("a")) {
-			out.println("\t" + type(tok.getType()) +
+			out.fine("\t" + type(tok.getType()) +
 				    "\t" + tok.getValue());
-			out.println("UNIT TEST 2: Failed.\n");
+			out.fine("UNIT TEST 2: Failed.\n");
 			errors++;
 			break;
 		  } else {
 		      tok = ht.next();
 		      if (tok.getType() != '=') {
-			    out.println("\t" + type(tok.getType()) +
+			    out.fine("\t" + type(tok.getType()) +
 					"\t" + tok.getValue());
-			    out.println("UNIT TEST 2: Failed.\n");
+			    out.fine("UNIT TEST 2: Failed.\n");
 			    errors++;
 			    break;
 		      } else {
 			  tok = ht.next(tc.endOfAtom);
 			  if (tok.getType() != HeaderTokenizer.Token.QUOTEDSTRING || 
 			    !tok.getValue().equals(tc.expected)) {
-				out.println("\t" + type(tok.getType()) +
+				out.fine("\t" + type(tok.getType()) +
 					    "\t" + tok.getValue());
-				out.println("UNIT TEST 2: Failed.\n");
+				out.fine("UNIT TEST 2: Failed.\n");
 				errors++;
 				break;
 			  }
@@ -147,11 +147,11 @@ public class next_Test extends MailTest {
 		  }
 		}
 		if (errors == start)
-		    out.println("UNIT TEST 2: passed.\n");
+		    out.fine("UNIT TEST 2: passed.\n");
 	   // END UNIT TEST 2:
 
 	   // BEGIN UNIT TEST 3:
-	      out.println("UNIT TEST 3: next(endOfAtom, true)");
+	      out.fine("UNIT TEST 3: next(endOfAtom, true)");
 
 	      start = errors;
 	      for (TestCase tc : testCasesEsc) {
@@ -159,26 +159,26 @@ public class next_Test extends MailTest {
 		  tok = ht.next();
 		  if (tok.getType() != HeaderTokenizer.Token.ATOM || 
 		    !tok.getValue().equals("a")) {
-			out.println("\t" + type(tok.getType()) +
+			out.fine("\t" + type(tok.getType()) +
 				    "\t" + tok.getValue());
-			out.println("UNIT TEST 3: Failed.\n");
+			out.fine("UNIT TEST 3: Failed.\n");
 			errors++;
 			break;
 		  } else {
 		      tok = ht.next();
 		      if (tok.getType() != '=') {
-			    out.println("\t" + type(tok.getType()) +
+			    out.fine("\t" + type(tok.getType()) +
 					"\t" + tok.getValue());
-			    out.println("UNIT TEST 3: Failed.\n");
+			    out.fine("UNIT TEST 3: Failed.\n");
 			    errors++;
 			    break;
 		      } else {
 			  tok = ht.next(tc.endOfAtom, true);
 			  if (tok.getType() != HeaderTokenizer.Token.QUOTEDSTRING || 
 			    !tok.getValue().equals(tc.expected)) {
-				out.println("\t" + type(tok.getType()) +
+				out.fine("\t" + type(tok.getType()) +
 					    "\t" + tok.getValue());
-				out.println("UNIT TEST 3: Failed.\n");
+				out.fine("UNIT TEST 3: Failed.\n");
 				errors++;
 				break;
 			  }
@@ -186,7 +186,7 @@ public class next_Test extends MailTest {
 		  }
 		}
 	        if (errors == start)
-		    out.println("UNIT TEST 3: passed.\n");
+		    out.fine("UNIT TEST 3: passed.\n");
 	   // END UNIT TEST 3:
 
 	      checkStatus();

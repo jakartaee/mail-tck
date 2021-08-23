@@ -43,15 +43,15 @@ public class messagenumberterm_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
+    
 
-        out.println("\nTesting class MessageNumberTerm: MessageNumberTerm(int)\n");
+        out.fine("\nTesting class MessageNumberTerm: MessageNumberTerm(int)\n");
 
         try {
           // Connect to host server
@@ -79,33 +79,33 @@ public class messagenumberterm_Test extends MailTest {
                 MimeMessage msg =  (MimeMessage)folder.getMessage(i);
 
 	        if( msg == null ) {
-		    log.println("WARNING: FAILED TO GET MESSAGE NUMBER: "+ i);
+		    log.warning("WARNING: FAILED TO GET MESSAGE NUMBER: "+ i);
 		    continue;
 	        }
 		int msgnumber = msg.getMessageNumber();
 
              // BEGIN UNIT TEST:
-                out.println("UNIT TEST "+ i +":  MessageNumberTerm("+ msgnumber +")");
+                out.fine("UNIT TEST "+ i +":  MessageNumberTerm("+ msgnumber +")");
 
                 MessageNumberTerm mnt = new MessageNumberTerm(msgnumber);    // API TEST
 
                 if( mnt == null ) {
-                    log.println("Warning: MessageNumberTerm contructor returned a Null object!");
+                    log.warning("Warning: MessageNumberTerm contructor returned a Null object!");
 		    continue;
                 } else
-                      out.println("UNIT TEST "+ i +": passed\n");
+                      out.fine("UNIT TEST "+ i +": passed\n");
 
-	        out.println("UNIT TEST "+ i +":  match(Message)");
+	        out.fine("UNIT TEST "+ i +":  match(Message)");
 
 		// match the message number
 		foundit = mnt.match(msg);	// API TEST
 
 	        if( foundit ) {
-	            out.println("Message number "+ msgnumber +" found.");
-                    out.println("UNIT TEST "+ (i+1) +":  passed\n");
+	            out.fine("Message number "+ msgnumber +" found.");
+                    out.fine("UNIT TEST "+ (i+1) +":  passed\n");
 	        } else {
-		        out.println("Message number "+ msgnumber +" not found!");
-			out.println("UNIT TEST "+ (i+1) +":  passed\n");
+		        out.fine("Message number "+ msgnumber +" not found!");
+			out.fine("UNIT TEST "+ (i+1) +":  passed\n");
 	        }
 	     // END UNIT TEST:
 	     }

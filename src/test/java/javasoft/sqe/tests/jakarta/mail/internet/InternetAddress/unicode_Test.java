@@ -36,78 +36,78 @@ public class unicode_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting InternetAddress class Unicode APIs\n");
+        out.fine("\nTesting InternetAddress class Unicode APIs\n");
 
 	try {
 	     InternetAddress addr;
 
 	  // BEGIN UNIT TEST 1:
-	     out.println("UNIT TEST 1: getAddress()\n");
+	     out.fine("UNIT TEST 1: getAddress()\n");
 	     addr = new InternetAddress(address);
 
 	     if (addr.getAddress().equals(mailbox))	    // API TEST
-		  out.println("UNIT TEST 1:  passed\n");
+		  out.fine("UNIT TEST 1:  passed\n");
 	     else {
-		  out.println("UNIT TEST 1:  FAILED\n");
+		  out.fine("UNIT TEST 1:  FAILED\n");
 		  errors++;
 	     }
 	  // END UNIT TEST 1:
 
 	  // BEGIN UNIT TEST 2:
-	     out.println("UNIT TEST 2: getPersonal()\n");
+	     out.fine("UNIT TEST 2: getPersonal()\n");
 	     addr = new InternetAddress(address);
 
 	     if (addr.getPersonal().equals(personal))	    // API TEST
-		  out.println("UNIT TEST 2:  passed\n");
+		  out.fine("UNIT TEST 2:  passed\n");
 	     else {
-		  out.println("UNIT TEST 2:  FAILED\n");
+		  out.fine("UNIT TEST 2:  FAILED\n");
 		  errors++;
 	     }
 	  // END UNIT TEST 2:
 
 	  // BEGIN UNIT TEST 3:
-	     out.println("UNIT TEST 3: toUnicodeString()\n");
+	     out.fine("UNIT TEST 3: toUnicodeString()\n");
 	     addr = new InternetAddress(mailbox, personal);
 	     String uaddr = addr.toUnicodeString();
 
 	     // either form is ok
 	     if (uaddr.equals(address) || uaddr.equals(qaddress))    // API TEST
-		  out.println("UNIT TEST 3:  passed\n");
+		  out.fine("UNIT TEST 3:  passed\n");
 	     else {
-		  out.println("UNIT TEST 3:  FAILED\n");
+		  out.fine("UNIT TEST 3:  FAILED\n");
 		  errors++;
 	     }
 	  // END UNIT TEST 3:
 
 	  // BEGIN UNIT TEST 4:
-	     out.println("UNIT TEST 4: InternetAddress.toUnicodeString(addresses)\n");
+	     out.fine("UNIT TEST 4: InternetAddress.toUnicodeString(addresses)\n");
 	     InternetAddress addr1 = new InternetAddress(mailbox);
 	     InternetAddress addr2 = new InternetAddress(mailbox2);
 	     InternetAddress[] addresses = new InternetAddress[] {addr1, addr2};
 	     String expected = mailbox + ", " + mailbox2;
 
 	     if (InternetAddress.toUnicodeString(addresses).equals(expected))	// API TEST
-		  out.println("UNIT TEST 4:  passed\n");
+		  out.fine("UNIT TEST 4:  passed\n");
 	     else {
-		  out.println("UNIT TEST 4:  FAILED\n");
+		  out.fine("UNIT TEST 4:  FAILED\n");
 		  errors++;
 	     }
 	  // END UNIT TEST 4:
 
 	  // BEGIN UNIT TEST 5:
-	     out.println("UNIT TEST 5: InternetAddress.toUnicodeString(addresses,used)\n");
+	     out.fine("UNIT TEST 5: InternetAddress.toUnicodeString(addresses,used)\n");
 	     if (InternetAddress.toUnicodeString(addresses, 0).equals(expected)) // API TEST
-		  out.println("UNIT TEST 5:  passed\n");
+		  out.fine("UNIT TEST 5:  passed\n");
 	     else {
-		  out.println("UNIT TEST 5:  FAILED\n");
+		  out.fine("UNIT TEST 5:  FAILED\n");
 		  errors++;
 	     }
 	  // END UNIT TEST 5:

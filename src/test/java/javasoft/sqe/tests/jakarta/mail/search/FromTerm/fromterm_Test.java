@@ -43,15 +43,15 @@ public class fromterm_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
+    
 
-        out.println("\nTesting class FromTerm: FromTerm(Address)\n");
+        out.fine("\nTesting class FromTerm: FromTerm(Address)\n");
 
         try {
           // Connect to host server
@@ -79,30 +79,30 @@ public class fromterm_Test extends MailTest {
                 MimeMessage msg =  (MimeMessage)folder.getMessage(i);
 
 	        if( msg == null ) {
-		    log.println("WARNING: FAILED TO GET MESSAGE NUMBER: "+ i);
+		    log.warning("WARNING: FAILED TO GET MESSAGE NUMBER: "+ i);
 		    continue;
 	        }
 	     // BEGIN UNIT TEST:
 		Address[] addr = msg.getFrom();
 
-		out.println("UNIT TEST "+ (i+1) +":  FromTerm("+ addr[0].toString() +")");
-	        out.println("                     :  match(Message)");
+		out.fine("UNIT TEST "+ (i+1) +":  FromTerm("+ addr[0].toString() +")");
+	        out.fine("                     :  match(Message)");
 
 		FromTerm ft = new FromTerm(addr[0]); // API TEST
 
 		if( ft == null ) {
-		    log.println("Warning: FromTerm contructor returned a Null object!");
+		    log.warning("Warning: FromTerm contructor returned a Null object!");
 		    continue;
                 }
 		// match the address
 		foundit = ft.match(msg);	// API TEST
 
 	        if( foundit ) {
-	            out.println("Pattern "+ pattern +" found in From header.");
-                    out.println("UNIT TEST "+ (i+1) +":  passed\n");
+	            out.fine("Pattern "+ pattern +" found in From header.");
+                    out.fine("UNIT TEST "+ (i+1) +":  passed\n");
 	        } else {
-		        out.println("Pattern "+ pattern +" not found in From header!");
-			out.println("UNIT TEST "+ (i+1) +":  passed\n");
+		        out.fine("Pattern "+ pattern +" not found in From header!");
+			out.fine("UNIT TEST "+ (i+1) +":  passed\n");
 	        }
 	     // END UNIT TEST:
 	     }

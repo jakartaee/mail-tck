@@ -52,20 +52,20 @@ public class contains_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class Flags: contains(Flags | String)\n");
+        out.fine("\nTesting class Flags: contains(Flags | String)\n");
 
         try {
 	  // BEGIN UNIT TEST 1:
 
-	     out.println("\nUNIT TEST 1:  contains(Flags)");
+	     out.fine("\nUNIT TEST 1:  contains(Flags)");
 
 	     Flags flag1 = new Flags();
 
@@ -77,38 +77,38 @@ public class contains_Test extends MailTest {
 		   flag1.add(Flags.Flag.ANSWERED);
 
 		   if( flag1.contains(Flags.Flag.DELETED) )		// API TEST
-			out.println("DELETED flag is contained in Flags object.");
+			out.fine("DELETED flag is contained in Flags object.");
 		   else
 			errors++;
 
                    if( flag1.contains(Flags.Flag.SEEN) )		// API TEST
-                       out.println("SEEN flag is contained in Flags object.");
+                       out.fine("SEEN flag is contained in Flags object.");
                    else
                        errors++;
 
                    if( flag1.contains(Flags.Flag.RECENT) )		// API TEST
-                       out.println("RECENT flag is contained in Flags object.");
+                       out.fine("RECENT flag is contained in Flags object.");
                    else
                        errors++;
 
                    if( flag1.contains(Flags.Flag.ANSWERED) )	// API TEST
-                       out.println("ANSWERED flag is contained in Flags object.");
+                       out.fine("ANSWERED flag is contained in Flags object.");
                    else
                        errors++;
 
 		   if( errors == 0 )
-                       out.println("UNIT TEST 1: passed\n");
+                       out.fine("UNIT TEST 1: passed\n");
 		   else
-		       out.println("UNIT TEST 1: FAILED\n");
+		       out.fine("UNIT TEST 1: FAILED\n");
 	     }
 	     else {
-		    out.println("UNIT TEST 1: FAILED\n");
+		    out.fine("UNIT TEST 1: FAILED\n");
 		    errors++;
 	     }
 	  // END UNIT TEST 1:
           // BEGIN UNIT TEST 2:
 
-             out.println("\nUNIT TEST 2: contains(String)");
+             out.fine("\nUNIT TEST 2: contains(String)");
 
              Flags flag2 = new Flags(Flags.Flag.ANSWERED);
 	     flag1.add("TEST_USER");
@@ -117,27 +117,27 @@ public class contains_Test extends MailTest {
              if (( flag2 != null ) && ( flag2 instanceof Flags ))
 	     {
                    if( flag1.contains("TEST_USER") )		// API TEST
-                       out.println("TEST_USER flag is contained in Flags object.");
+                       out.fine("TEST_USER flag is contained in Flags object.");
                    else
                        errors++;
 
                    if( flag2.contains("USER_TEST") )		// API TEST
-                       out.println("USER_TEST flag is contained in Flags object.");
+                       out.fine("USER_TEST flag is contained in Flags object.");
                    else
                        errors++;
 
                    if( !(flag2.contains("NONEXIST")) )         // API TEST
-                       out.println("NONEXIST flag is NOT contained in Flags object.");
+                       out.fine("NONEXIST flag is NOT contained in Flags object.");
                    else
                        errors++;
 
                    if( errors == 0 )
-                       out.println("UNIT TEST 2: passed\n");
+                       out.fine("UNIT TEST 2: passed\n");
                    else
-                       out.println("UNIT TEST 2: FAILED\n");
+                       out.fine("UNIT TEST 2: FAILED\n");
 	     }
              else {
-                    out.println("UNIT TEST 2: FAILED\n");
+                    out.fine("UNIT TEST 2: FAILED\n");
                     errors++;
              }
           // END UNIT TEST 2:

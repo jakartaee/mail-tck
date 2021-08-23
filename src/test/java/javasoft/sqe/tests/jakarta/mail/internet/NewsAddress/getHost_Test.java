@@ -42,15 +42,15 @@ public class getHost_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class NewsAddress: getHost()\n");
+        out.fine("\nTesting class NewsAddress: getHost()\n");
 
         try {
 	   // Construct a NewsAddress with the given newsgroup
@@ -61,17 +61,17 @@ public class getHost_Test extends MailTest {
 		  return Status.failed("Failed to create "+pattern+" newsgroup on host "+host);
 	      }
 	   // BEGIN UNIT TEST 1:
-              out.println("UNIT TEST 1:  getHost()");
+              out.fine("UNIT TEST 1:  getHost()");
 
 	      String nghost = na.getHost(); 	// API TEST
 
               if( (host != null && nghost != null && nghost.equals(host)) ||
 		    (host == null && nghost == null)) {
-		  out.println("Host name is "+ nghost);
-                  out.println("UNIT TEST 1: passed");
+		  out.fine("Host name is "+ nghost);
+                  out.fine("UNIT TEST 1: passed");
               } else {
-		      out.println("Warning: Host name is null!");
-                      out.println("UNIT TEST 1: FAILED");
+		      out.fine("Warning: Host name is null!");
+                      out.fine("UNIT TEST 1: FAILED");
                       errors++;
               }
            // END UNIT TEST 1:

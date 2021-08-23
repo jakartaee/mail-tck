@@ -57,27 +57,27 @@ public String[] datim = { "=?ISO-8859-1?B?SWYgeW91IGNhbiByZWFkIHRoaXMgeW8=?=",
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 	// parse command-line options
 
-        out.println("\nTesting class MimeUtility: decodeText(String);");
+        out.fine("\nTesting class MimeUtility: decodeText(String);");
 
         try {
 	  // BEGIN UNIT TEST:
 
 	     for( int k = 0; k < datim.length; k++ )
 	     {
-	         out.println("UNIT TEST "+ k +":  decodeText("+datim[k]+")");
+	         out.fine("UNIT TEST "+ k +":  decodeText("+datim[k]+")");
 
-	         out.println("Decoded text = "+ MimeUtility.decodeText(datim[k]));
-		 out.println("\nUNIT TEST "+ k +": passed");
-	         out.println("----------------------------------------");
+	         out.fine("Decoded text = "+ MimeUtility.decodeText(datim[k]));
+		 out.fine("\nUNIT TEST "+ k +": passed");
+	         out.fine("----------------------------------------");
 	     }
 	  // END UNIT TEST:
              checkStatus();

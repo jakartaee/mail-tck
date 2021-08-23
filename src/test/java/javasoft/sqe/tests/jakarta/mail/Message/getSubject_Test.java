@@ -46,15 +46,15 @@ public class getSubject_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
+    
 
-        out.println("\nTesting class Message: getSubject()\n");
+        out.fine("\nTesting class Message: getSubject()\n");
 
         try {
           // Connect to host server
@@ -81,20 +81,20 @@ public class getSubject_Test extends MailTest {
                MimeMessage msg =  (MimeMessage)folder.getMessage(i);
 
 	       if( msg == null ) {
-		   log.println("WARNING: FAILED TO GET MESSAGE NUMBER: "+ i);
+		   log.warning("WARNING: FAILED TO GET MESSAGE NUMBER: "+ i);
 		   continue;
 	       }
 	    // BEGIN UNIT TEST:
 	       // Get the value of subject header field
-	       out.println("UNIT TEST "+ i +":  getSubject()");
+	       out.fine("UNIT TEST "+ i +":  getSubject()");
 
 	       String subject = msg.getSubject();	// API TEST
 
 	       if( subject != null ) {
-	           out.println("getSubject() :=> '"+ subject +"'");
-                   out.println("UNIT TEST "+ i +":  passed\n");
+	           out.fine("getSubject() :=> '"+ subject +"'");
+                   out.fine("UNIT TEST "+ i +":  passed\n");
 	       } else {
-		       out.println("WARNING: Message "+ i +" has null Subject header");
+		       out.fine("WARNING: Message "+ i +" has null Subject header");
 	       }
 	    // END UNIT TEST:
 	     }

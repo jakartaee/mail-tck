@@ -48,15 +48,15 @@ public class getAddress_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class InternetAddress: getAddress()\n");
+        out.fine("\nTesting class InternetAddress: getAddress()\n");
 
         try {
 	  // BEGIN UNIT TEST
@@ -67,19 +67,19 @@ public class getAddress_Test extends MailTest {
                 InternetAddress addr = new InternetAddress(addrlist[i]);
 
                 if( addr == null ) {
-                    log.println("WARNING: FAILED TO CREATE ADDRESS OBJECT: "+ (i+1));
+                    log.warning("WARNING: FAILED TO CREATE ADDRESS OBJECT: "+ (i+1));
                     continue;
                 }
-                out.println("\nUNIT TEST :"+(i+1)+" getAddress()");
+                out.fine("\nUNIT TEST :"+(i+1)+" getAddress()");
 
 		String strname = addr.getAddress();	// API TEST
 
 		if( strname != null ) {
 		    if( strname.equals(addrlist[i]) ) {
-		        out.println("Address = "+ strname);
-			out.println("UNIT TEST "+ (i+1) +": passed\n");
+		        out.fine("Address = "+ strname);
+			out.fine("UNIT TEST "+ (i+1) +": passed\n");
 		    } else {
-			    out.println("UNIT TEST "+ (i+1) +": FAILED\n");
+			    out.fine("UNIT TEST "+ (i+1) +": FAILED\n");
 			    errors++;
 			  }
 		} else

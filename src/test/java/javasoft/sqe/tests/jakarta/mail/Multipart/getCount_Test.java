@@ -41,15 +41,15 @@ public class getCount_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
+    
 
-        out.println("\nTesting class Multipart: getCount()\n");
+        out.fine("\nTesting class Multipart: getCount()\n");
 
         try {	     
           // Connect to host server
@@ -76,7 +76,7 @@ public class getCount_Test extends MailTest {
                 Message msg = folder.getMessage(i);
 
                 if( msg == null ) {
-                    log.println("Warning: Failed to get message number "+ i);
+                    log.warning("Warning: Failed to get message number "+ i);
                     continue;
                 }
              // BEGIN UNIT TEST:
@@ -84,7 +84,7 @@ public class getCount_Test extends MailTest {
 		Object co = msg.getContent();
 		
 		if ( co == null ) {
-		     log.println("Warning: Failed to get message content "+ i);
+		     log.warning("Warning: Failed to get message content "+ i);
                      continue;
                 }
 
@@ -93,16 +93,16 @@ public class getCount_Test extends MailTest {
 		   // cast object to Multipart
 		     Multipart mp = (Multipart)co;
 
-                     out.println("UNIT TEST "+ i +": getCount()");
+                     out.fine("UNIT TEST "+ i +": getCount()");
 		
                   // get the number of bodyparts enclosed for this message
                      int partCount = mp.getCount();   // API TEST
 
                      if( partCount > 0 ) {
-                         out.println("Message's bodypart count is "+ partCount);
-                         out.println("UNIT TEST "+ i +": passed");
+                         out.fine("Message's bodypart count is "+ partCount);
+                         out.fine("UNIT TEST "+ i +": passed");
                      } else
-                           out.println("UNIT TEST "+ i +": has no bodyparts!\n");
+                           out.fine("UNIT TEST "+ i +": has no bodyparts!\n");
 		} else
 			continue;
 

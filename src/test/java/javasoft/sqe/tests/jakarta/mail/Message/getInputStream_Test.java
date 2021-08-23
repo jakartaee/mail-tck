@@ -43,15 +43,15 @@ public class getInputStream_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
+    
 
-        out.println("\nTesting class Message: getInputStream()\n");
+        out.fine("\nTesting class Message: getInputStream()\n");
 
         try {
           // Connect to host server
@@ -78,19 +78,19 @@ public class getInputStream_Test extends MailTest {
                 MimeMessage msg =  (MimeMessage)folder.getMessage(i);
 
 	        if( msg == null ) {
-		    log.println("WARNING: FAILED TO GET MESSAGE NUMBER: "+ i);
+		    log.warning("WARNING: FAILED TO GET MESSAGE NUMBER: "+ i);
  		    continue;  
 	        }
 	     // BEGIN UNIT TEST:
 		// Get whom the message is from
-	        out.println("UNIT TEST "+ i +":  getInputStream()");
+	        out.fine("UNIT TEST "+ i +":  getInputStream()");
 
 	        InputStream istream = msg.getInputStream();	// API TEST
 
 	        if( istream != null && ( istream instanceof InputStream ) ) {
-                    out.println("UNIT TEST "+ i +":  passed\n");
+                    out.fine("UNIT TEST "+ i +":  passed\n");
 	        } else {
-		        out.println("UNIT TEST "+ i +": FAILED\n");
+		        out.fine("UNIT TEST "+ i +": FAILED\n");
 			errors++;
 	        }
 	     // END UNIT TEST:

@@ -45,15 +45,15 @@ public class setDataHandler_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class MimeMessage: setDataHandler(DataHandler)\n");
+        out.fine("\nTesting class MimeMessage: setDataHandler(DataHandler)\n");
 
         try {
           // Connect to host server
@@ -77,7 +77,7 @@ public class setDataHandler_Test extends MailTest {
              MimeMessage dmsg = (MimeMessage)folder.getMessage(1);
 
              if( dmsg == null ) {
-                 log.println("Warning: Failed to get message number 1");
+                 log.warning("Warning: Failed to get message number 1");
 		 return Status.failed("Failed to get message number 1");
              }
           // Create a MimeMessage object
@@ -85,11 +85,11 @@ public class setDataHandler_Test extends MailTest {
              MimeMessage msg = new MimeMessage(session);
 
              if( msg == null ) {
-                 log.println("WARNING: FAILED TO CREATE MESSAGE OBJECT");
+                 log.warning("WARNING: FAILED TO CREATE MESSAGE OBJECT");
                  return Status.failed("Failed to create Message object");
              }
           // BEGIN UNIT TEST:
-             out.println("UNIT TEST 1: setDataHandler(DataHandler)");
+             out.fine("UNIT TEST 1: setDataHandler(DataHandler)");
 
              msg.setDataHandler( dmsg.getDataHandler() );      // API TEST
 	     DataHandler dh = msg.getDataHandler();
@@ -102,9 +102,9 @@ public class setDataHandler_Test extends MailTest {
 			;
 
              if( dh != null )
-                 out.println("UNIT TEST 1: passed\n");
+                 out.fine("UNIT TEST 1: passed\n");
              else {
-                   out.println("UNIT TEST 1: FAILED\n");
+                   out.fine("UNIT TEST 1: FAILED\n");
                    errors++;
              }
           // END UNIT TEST:

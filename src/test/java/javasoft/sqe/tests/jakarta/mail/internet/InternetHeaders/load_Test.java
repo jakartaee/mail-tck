@@ -54,15 +54,15 @@ public class load_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class InternetHeaders: load(InputStream)\n");
+        out.fine("\nTesting class InternetHeaders: load(InputStream)\n");
 
         try {
           // Connect to host server
@@ -98,7 +98,7 @@ public class load_Test extends MailTest {
 
 	     if( ih != null )
 	     {
-		 out.println("UNIT TEST 1:  load(InputStream)");
+		 out.fine("UNIT TEST 1:  load(InputStream)");
 		 ih.load(bis);	// API TEST
 
                  // get all headerlines
@@ -106,11 +106,11 @@ public class load_Test extends MailTest {
 
                  while( allheaders.hasMoreElements() ) {
                 	String headers = (String)allheaders.nextElement();
-                	out.println(headers);
+                	out.fine(headers);
                  }
-		 out.println("UNIT TEST 1: passed");
+		 out.fine("UNIT TEST 1: passed");
 	     } else {
-		    out.println("UNIT TEST 1: FAILED");
+		    out.fine("UNIT TEST 1: FAILED");
 		    errors++;
 	     }
 	     store.close();
@@ -118,44 +118,44 @@ public class load_Test extends MailTest {
 
 	  // BEGIN UNIT TEST 2:
 	     InputStream is;
-	     out.println("UNIT TEST 2:  load(InputStream)");
+	     out.fine("UNIT TEST 2:  load(InputStream)");
 	     is = new ByteArrayInputStream(bytes);
 	     ih = new InternetHeaders(); // API TEST
 	     ih.load(is); // API TEST
 
 	     if (!ih.getHeader(uhead, null).equals(uval) &&
 	         ih.getHeader(head, null).equals(val))
-		  out.println("UNIT TEST 2: passed");
+		  out.fine("UNIT TEST 2: passed");
 	     else {
-		    out.println("UNIT TEST 2: FAILED");
+		    out.fine("UNIT TEST 2: FAILED");
 		    errors++;
 	     }
 	  // END UNIT TEST 2:
 	  // BEGIN UNIT TEST 3:
-	     out.println("UNIT TEST 3:  load(InputStream,true)");
+	     out.fine("UNIT TEST 3:  load(InputStream,true)");
 	     is = new ByteArrayInputStream(bytes);
 	     InternetHeaders uih = new InternetHeaders();
 	     uih.load(is, true); // API TEST
 
 	     if (uih.getHeader(uhead, null).equals(uval) &&
 	         uih.getHeader(head, null).equals(val))
-		  out.println("UNIT TEST 3: passed");
+		  out.fine("UNIT TEST 3: passed");
 	     else {
-		    out.println("UNIT TEST 3: FAILED");
+		    out.fine("UNIT TEST 3: FAILED");
 		    errors++;
 	     }
 	  // END UNIT TEST 3:
 	  // BEGIN UNIT TEST 4:
-	     out.println("UNIT TEST 4:  load(InputStream,false)");
+	     out.fine("UNIT TEST 4:  load(InputStream,false)");
 	     is = new ByteArrayInputStream(bytes);
 	     uih = new InternetHeaders(); // API TEST
 	     uih.load(is, false); // API TEST
 
 	     if (!uih.getHeader(uhead, null).equals(uval) &&
 	         uih.getHeader(head, null).equals(val))
-		  out.println("UNIT TEST 4: passed");
+		  out.fine("UNIT TEST 4: passed");
 	     else {
-		    out.println("UNIT TEST 4: FAILED");
+		    out.fine("UNIT TEST 4: FAILED");
 		    errors++;
 	     }
 	  // END UNIT TEST 4:

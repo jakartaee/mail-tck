@@ -45,15 +45,15 @@ public class receiveddateterm_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
+    
 
-        out.println("\nTesting class ReceivedDateTerm: ReceivedDateTerm(int, Date)\n");
+        out.fine("\nTesting class ReceivedDateTerm: ReceivedDateTerm(int, Date)\n");
 
         try {
           // Connect to host server
@@ -81,33 +81,33 @@ public class receiveddateterm_Test extends MailTest {
                 MimeMessage msg = (MimeMessage)folder.getMessage(i);
 
 	        if( msg == null ) {
-		    log.println("WARNING: FAILED TO GET MESSAGE NUMBER: "+ i);
+		    log.warning("WARNING: FAILED TO GET MESSAGE NUMBER: "+ i);
 		    continue;
 	        }
 		Date receivedDate = msg.getReceivedDate();
 
              // BEGIN UNIT TEST:
-                out.println("UNIT TEST "+ i +":  ReceivedDateTerm(ComparisonTerm.EQ, "+ receivedDate +")");
+                out.fine("UNIT TEST "+ i +":  ReceivedDateTerm(ComparisonTerm.EQ, "+ receivedDate +")");
 
                 ReceivedDateTerm rdt = new ReceivedDateTerm(ComparisonTerm.EQ, receivedDate);    // API TEST
 
                 if( rdt == null ) {
-                    log.println("Warning: ReceivedDateTerm contructor returned a Null object!");
+                    log.warning("Warning: ReceivedDateTerm contructor returned a Null object!");
 		    continue;
                 } else
-                      out.println("UNIT TEST "+ i +": passed\n");
+                      out.fine("UNIT TEST "+ i +": passed\n");
 
-	        out.println("UNIT TEST "+ i +":  match(Message)");
+	        out.fine("UNIT TEST "+ i +":  match(Message)");
 
 		// match the message number
 		foundit = rdt.match(msg);	// API TEST
 
 	        if( foundit ) {
-	            out.println("Expected received date found in message header.");
-                    out.println("UNIT TEST "+ i +":  passed\n");
+	            out.fine("Expected received date found in message header.");
+                    out.fine("UNIT TEST "+ i +":  passed\n");
 	        } else {
-		        out.println("Expected received date not found in message header!");
-			out.println("UNIT TEST "+ i +":  passed\n");
+		        out.fine("Expected received date not found in message header!");
+			out.fine("UNIT TEST "+ i +":  passed\n");
 	        }
 	     // END UNIT TEST:
 	     }

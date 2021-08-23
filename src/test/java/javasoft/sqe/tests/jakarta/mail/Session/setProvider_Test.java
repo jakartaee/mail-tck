@@ -41,15 +41,15 @@ public class setProvider_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
+    
 
-        out.println("\nTesting class Session: setProvider(URLName, Provider)\n");
+        out.fine("\nTesting class Session: setProvider(URLName, Provider)\n");
 
         try {
            // Get Session object
@@ -62,15 +62,15 @@ public class setProvider_Test extends MailTest {
                   return Status.failed("Failed to initialize a Provider object!");
 
            // BEGIN UNIT TEST 1:
-              out.println("UNIT TEST 1:  setProvider(Provider)");
+              out.fine("UNIT TEST 1:  setProvider(Provider)");
 
               session.setProvider(prov1);  // API TEST
 	      Provider prov2 = session.getProvider(protocol);
 
               if( prov1.equals(prov2) )
-                  out.println("UNIT TEST 1: passed");
+                  out.fine("UNIT TEST 1: passed");
 	      else {
-		    out.println("UNIT TEST 1: FAILED.\n");
+		    out.fine("UNIT TEST 1: FAILED.\n");
 		    errors++;
 	      }
            // END UNIT TEST 1:

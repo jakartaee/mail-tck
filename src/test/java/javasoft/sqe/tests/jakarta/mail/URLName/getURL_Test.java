@@ -42,15 +42,15 @@ public class getURL_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
+    
 
-        out.println("\nTesting class URLName: getURL()\n");
+        out.fine("\nTesting class URLName: getURL()\n");
 
         try {
 	   // Create a URLName object
@@ -60,14 +60,14 @@ public class getURL_Test extends MailTest {
                   return Status.failed("Failed to create a URLName object!");
 
            // BEGIN UNIT TEST 1:
-              out.println("UNIT TEST 1:  getURL()");
+              out.fine("UNIT TEST 1:  getURL()");
               URL url = urlname.getURL(); 	// API TEST
 
               if( url != null ) {
-		  out.println("The URL for this URLName object is "+ url);
-                  out.println("UNIT TEST 1: passed");
+		  out.fine("The URL for this URLName object is "+ url);
+                  out.fine("UNIT TEST 1: passed");
 	      } else {
-		    out.println("UNIT TEST 1: FAILED.\n");
+		    out.fine("UNIT TEST 1: FAILED.\n");
 		    errors++;
 	      }
            // END UNIT TEST 1:

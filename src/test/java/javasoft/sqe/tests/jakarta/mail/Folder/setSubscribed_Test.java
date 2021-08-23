@@ -46,15 +46,15 @@ public class setSubscribed_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class Folder: setSubscribed(boolean)\n");
+        out.fine("\nTesting class Folder: setSubscribed(boolean)\n");
 
         try {
           // Connect to host server
@@ -68,7 +68,7 @@ public class setSubscribed_Test extends MailTest {
 	         return Status.failed("Invalid folder object!");
        	     }
 	  // BEGIN UNIT TEST:
-	     out.println("UNIT TEST 1: setSubscribed(true|false)");
+	     out.fine("UNIT TEST 1: setSubscribed(true|false)");
 
 	     try {
 		 folder.setSubscribed(false);	// API TEST
@@ -77,13 +77,13 @@ public class setSubscribed_Test extends MailTest {
 		 boolean isSubscribe = folder.isSubscribed();
 
 		 if ( isSubscribe )
-		      out.println("UNIT TEST 1: passed\n");
+		      out.fine("UNIT TEST 1: passed\n");
 		 else {
-			out.println("UNIT TEST 1: FAILED\n");
+			out.fine("UNIT TEST 1: FAILED\n");
 			errors++;
 		 }
 	     } catch (MethodNotSupportedException ex) {
-		 out.println("UNIT TEST 1: passed (setSubscribed not supported)\n");
+		 out.fine("UNIT TEST 1: passed (setSubscribed not supported)\n");
 	     }
 	  // END UNIT TEST:
 	     //	     folder.close(false);

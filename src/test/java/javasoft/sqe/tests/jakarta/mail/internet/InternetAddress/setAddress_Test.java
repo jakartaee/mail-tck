@@ -42,15 +42,15 @@ public class setAddress_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class InternetAddress: setAddress(String)\n");
+        out.fine("\nTesting class InternetAddress: setAddress(String)\n");
 
         try {
           // Connect to host server
@@ -78,14 +78,14 @@ public class setAddress_Test extends MailTest {
 		Message msg = folder.getMessage(i);
 
 		if( msg == null ) {
-                    log.println("WARNING: FAILED TO GET MESSAGE NUMBER: "+ i);
+                    log.warning("WARNING: FAILED TO GET MESSAGE NUMBER: "+ i);
                     continue;
 		}
 		// Get a From address object(s)
 		Address[] addrs = msg.getFrom();
 
 		if( addrs == null ) {
-                    log.println("WARNING: FAILED TO GET FROM ADDRESS FOR MESSAGE NUMBER: "+ i);
+                    log.warning("WARNING: FAILED TO GET FROM ADDRESS FOR MESSAGE NUMBER: "+ i);
                     continue;
 		}
 		// Convert From address object to a string
@@ -100,10 +100,10 @@ public class setAddress_Test extends MailTest {
 		    
 		    if ( strname != null ) {
 			 if ( strname.equals(addstr) ) {
-			      out.println("Address = "+ strname);
-			      out.println("UNIT TEST "+ i +": passed\n");
+			      out.fine("Address = "+ strname);
+			      out.fine("UNIT TEST "+ i +": passed\n");
 			 } else {
-				out.println("UNIT TEST "+ i +": FAILED\n");
+				out.fine("UNIT TEST "+ i +": FAILED\n");
 				errors++;
 			  }
 		    }

@@ -45,15 +45,15 @@ public class addBodyPart2_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
+    
 
-        out.println("\nTesting class Multipart: addBodyPart(BodyPart, int)\n");
+        out.fine("\nTesting class Multipart: addBodyPart(BodyPart, int)\n");
 
 	try {
            // get the default Session
@@ -82,7 +82,7 @@ public class addBodyPart2_Test extends MailTest {
 	      Multipart mp = new MimeMultipart();
 
 	   // BEGIN UNIT TEST:
-	      out.println("UNIT TEST 1: addBodyPart(BodyPart, int)");
+	      out.fine("UNIT TEST 1: addBodyPart(BodyPart, int)");
 
 	      mp.addBodyPart(mbp1, 0);	    // API TEST
 	      mp.addBodyPart(mbp2, 1);	    // API TEST
@@ -90,9 +90,9 @@ public class addBodyPart2_Test extends MailTest {
 	      mp.addBodyPart(mbp2, 3);	    // API TEST
 
 	      if( mp.getCount() == 4 )
-	          out.println("UNIT TEST 1: passed.\n");
+	          out.fine("UNIT TEST 1: passed.\n");
 	      else {
-		     out.println("UNIT TEST 1: FAILED.\n");
+		     out.fine("UNIT TEST 1: FAILED.\n");
 		     errors++;
 	      }
 	   // END UNIT TEST:

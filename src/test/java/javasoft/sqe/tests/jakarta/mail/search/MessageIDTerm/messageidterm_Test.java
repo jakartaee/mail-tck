@@ -43,15 +43,15 @@ public class messageidterm_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
+    
 
-        out.println("\nTesting class MessageIDTerm: MessageIDTerm(String)\n");
+        out.fine("\nTesting class MessageIDTerm: MessageIDTerm(String)\n");
 
         try {
           // Connect to host server
@@ -79,7 +79,7 @@ public class messageidterm_Test extends MailTest {
                 MimeMessage msg =  (MimeMessage)folder.getMessage(i);
 
 	        if ( msg == null ) {
-		    log.println("WARNING: FAILED TO GET MESSAGE NUMBER: "+ i);
+		    log.warning("WARNING: FAILED TO GET MESSAGE NUMBER: "+ i);
 		    continue;
 	        }
 		String[] header = msg.getHeader("Message-ID");
@@ -88,27 +88,27 @@ public class messageidterm_Test extends MailTest {
 		    continue;
 
              // BEGIN UNIT TEST:
-                out.println("UNIT TEST "+ i +":  MessageIDTerm("+ header[0] +")");
+                out.fine("UNIT TEST "+ i +":  MessageIDTerm("+ header[0] +")");
 
                 MessageIDTerm midt = new MessageIDTerm(header[0]);    // API TEST
 
                 if( midt == null ) {
-                    log.println("Warning: MessageIDTerm contructor returned a Null object!");
+                    log.warning("Warning: MessageIDTerm contructor returned a Null object!");
 		    continue;
                 } else
-                      out.println("UNIT TEST "+ i +": passed\n");
+                      out.fine("UNIT TEST "+ i +": passed\n");
 
-	        out.println("UNIT TEST "+ i +":  match(Message)");
+	        out.fine("UNIT TEST "+ i +":  match(Message)");
 
 		// match the message number
 		foundit = midt.match(msg);	// API TEST
 
 	        if( foundit ) {
-	            out.println("Message-ID  "+ header[0] +" found.");
-                    out.println("UNIT TEST "+ i +":  passed\n");
+	            out.fine("Message-ID  "+ header[0] +" found.");
+                    out.fine("UNIT TEST "+ i +":  passed\n");
 	        } else {
-		        out.println("Message-ID "+ header[0] +" not found!");
-			out.println("UNIT TEST "+ i +":  passed\n");
+		        out.fine("Message-ID "+ header[0] +" not found!");
+			out.fine("UNIT TEST "+ i +":  passed\n");
 	        }
 	     // END UNIT TEST:
 	     }

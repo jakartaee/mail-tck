@@ -49,15 +49,15 @@ public class setFrom_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
+    
 
-        out.println("\nTesting class Message: setFrom(Address)\n");
+        out.fine("\nTesting class Message: setFrom(Address)\n");
 
         try {
 	  // Create Session object
@@ -76,12 +76,12 @@ public class setFrom_Test extends MailTest {
                 InternetAddress addr = new InternetAddress(addrlist[i]);
 
                 if( addr == null ) {
-                    log.println("WARNING: FAILED TO CREATE ADDRESS OBJECT: "+ (i+1));
+                    log.warning("WARNING: FAILED TO CREATE ADDRESS OBJECT: "+ (i+1));
                     continue;
                 }
              // BEGIN UNIT TEST:
 		// set whom the message is from
-	        out.println("UNIT TEST "+ (i+1) +":  setFrom(Address)");
+	        out.fine("UNIT TEST "+ (i+1) +":  setFrom(Address)");
 
 	        msg.setFrom(addr);		// API TEST
 
@@ -90,17 +90,17 @@ public class setFrom_Test extends MailTest {
  
 	        if( newFrom != null ) {
 	            if( addrlist[i].equals(newFrom) ) {
-	                out.println("setFrom("+ addrlist[i] +")");
-                        out.println("UNIT TEST "+ (i+1) +":  passed\n");
+	                out.fine("setFrom("+ addrlist[i] +")");
+                        out.fine("UNIT TEST "+ (i+1) +":  passed\n");
 	             } else {
-			     out.println("getFrom() :=> "+ newFrom);
-	                     out.println("setFrom("+ addrlist[i] +")");
-                             out.println("UNIT TEST "+ (i+1) +":  FAILED\n");
+			     out.fine("getFrom() :=> "+ newFrom);
+	                     out.fine("setFrom("+ addrlist[i] +")");
+                             out.fine("UNIT TEST "+ (i+1) +":  FAILED\n");
 		             errors++;
 	            }
 	        } else {
-			out.println("WARNING: Message "+ (i+1) +" has null 'From' header");
-			out.println("UNIT TEST "+ (i+1) +":  FAILED\n");
+			out.fine("WARNING: Message "+ (i+1) +" has null 'From' header");
+			out.fine("UNIT TEST "+ (i+1) +":  FAILED\n");
 			errors++;
 	        }
 	     // END UNIT TEST:

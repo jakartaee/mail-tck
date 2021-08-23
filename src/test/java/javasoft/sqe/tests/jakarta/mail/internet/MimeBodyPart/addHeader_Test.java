@@ -50,15 +50,15 @@ public class addHeader_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class MimeBodyPart: addHeader(String, String)\n");
+        out.fine("\nTesting class MimeBodyPart: addHeader(String, String)\n");
 
         try {
 	   // Create MimeBodyPart object
@@ -68,41 +68,41 @@ public class addHeader_Test extends MailTest {
 		  return Status.failed("Failed to create a MimeBodyPart object");
 
 	   // BEGIN UNIT TEST 1:
-	      out.println("UNIT TEST 1: addHeader("+name1+","+value1+")");
+	      out.fine("UNIT TEST 1: addHeader("+name1+","+value1+")");
 
 	      mbp.addHeader(name1, value1);	// API TEST
 	      String[] value = mbp.getHeader(name1);
 
 	      if( value1.equals(value[0]) )
-		  out.println("UNIT TEST 1: passed\n");
+		  out.fine("UNIT TEST 1: passed\n");
 	      else {
-		    out.println("UNIT TEST 1: FAILED\n");
+		    out.fine("UNIT TEST 1: FAILED\n");
 		    errors++;
 	      }
 	   // END UNIT TEST 1:
            // BEGIN UNIT TEST 2:
-              out.println("UNIT TEST 2: addHeader("+name2+","+value2+")");
+              out.fine("UNIT TEST 2: addHeader("+name2+","+value2+")");
 
               mbp.addHeader(name2, value2);     // API TEST
 	      value = mbp.getHeader(name2);
 
               if( value2.equals(value[0]) )
-                  out.println("UNIT TEST 2: passed\n");              
+                  out.fine("UNIT TEST 2: passed\n");              
               else {
-                    out.println("UNIT TEST 2: FAILED\n");
+                    out.fine("UNIT TEST 2: FAILED\n");
                     errors++;
               }
            // END UNIT TEST 2:
            // BEGIN UNIT TEST 3:
-              out.println("UNIT TEST 3: addHeader("+name3+","+value3+")");
+              out.fine("UNIT TEST 3: addHeader("+name3+","+value3+")");
 
               mbp.addHeader(name3, value3);     // API TEST
               value = mbp.getHeader(name3);
 
               if( value3.equals(value[0]) )
-                  out.println("UNIT TEST 3: passed\n");
+                  out.fine("UNIT TEST 3: passed\n");
               else {
-                    out.println("UNIT TEST 3: FAILED\n");
+                    out.fine("UNIT TEST 3: FAILED\n");
                     errors++;
               }
            // END UNIT TEST 3:

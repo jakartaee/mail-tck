@@ -44,15 +44,15 @@ public class sentdateterm_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
+    
 
-        out.println("\nTesting class SentDateTerm: SentDateTerm(int, Date)\n");
+        out.fine("\nTesting class SentDateTerm: SentDateTerm(int, Date)\n");
 
         try {
           // Connect to host server
@@ -80,33 +80,33 @@ public class sentdateterm_Test extends MailTest {
                 MimeMessage msg =  (MimeMessage)folder.getMessage(i);
 
 	        if( msg == null ) {
-		    log.println("WARNING: FAILED TO GET MESSAGE NUMBER: "+ i);
+		    log.warning("WARNING: FAILED TO GET MESSAGE NUMBER: "+ i);
 		    continue;
 	        }
 		Date sentDate = msg.getSentDate();
 
              // BEGIN UNIT TEST:
-                out.println("UNIT TEST "+ i +":  SentDateTerm(ComparisonTerm.EQ, "+ sentDate +")");
+                out.fine("UNIT TEST "+ i +":  SentDateTerm(ComparisonTerm.EQ, "+ sentDate +")");
 
                 SentDateTerm sdt = new SentDateTerm(ComparisonTerm.EQ, sentDate);    // API TEST
 
                 if( sdt == null ) {
-                    log.println("Warning: SentDateTerm contructor returned a Null object!");
+                    log.warning("Warning: SentDateTerm contructor returned a Null object!");
 		    continue;
                 } else
-                      out.println("UNIT TEST "+ i +": passed\n");
+                      out.fine("UNIT TEST "+ i +": passed\n");
 
-	        out.println("UNIT TEST "+ i +":  match(Message)");
+	        out.fine("UNIT TEST "+ i +":  match(Message)");
 
 		// match the message number
 		foundit = sdt.match(msg);	// API TEST
 
 	        if( foundit ) {
-	            out.println("Expected sent date found in message header.");
-                    out.println("UNIT TEST "+ i +":  passed\n");
+	            out.fine("Expected sent date found in message header.");
+                    out.fine("UNIT TEST "+ i +":  passed\n");
 	        } else {
-		        out.println("Expected sent date not found in message header!");
-			out.println("UNIT TEST "+ i +":  passed\n");
+		        out.fine("Expected sent date not found in message header!");
+			out.fine("UNIT TEST "+ i +":  passed\n");
 	        }
 	     // END UNIT TEST:
 	     }

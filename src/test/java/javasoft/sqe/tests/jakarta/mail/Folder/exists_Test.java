@@ -48,15 +48,15 @@ public class exists_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class Folder: exists()\n");
+        out.fine("\nTesting class Folder: exists()\n");
 
         try {
           // Connect to host server
@@ -72,17 +72,17 @@ public class exists_Test extends MailTest {
 	  // BEGIN UNIT TEST 1:
 	     // invoke on open (existing) folder
 
-	     out.println("UNIT TEST 1: exists()\n");
+	     out.fine("UNIT TEST 1: exists()\n");
 
 	     if ( folder.create(Folder.HOLDS_MESSAGES) ) {
 		  folder.open(Folder.READ_ONLY);
 		  return_code = folder.exists();	// API TEST
 
                   if ( return_code )
-                       out.println("UNIT TEST 11: passed\n");
+                       out.fine("UNIT TEST 11: passed\n");
                   else {
-                        out.println("Failed to find existing open folder " + testbox);
-                        out.println("UNIT TEST 1: FAILED\n");
+                        out.fine("Failed to find existing open folder " + testbox);
+                        out.fine("UNIT TEST 1: FAILED\n");
                         errors++;
                   }
              }
@@ -90,18 +90,18 @@ public class exists_Test extends MailTest {
           // BEGIN UNIT TEST 2:
              // invoke on closed (existing) folder
 
-             out.println("UNIT TEST 2: exists()\n");
+             out.fine("UNIT TEST 2: exists()\n");
 
              if ( folder.isOpen() ) {
 		  folder.close(true);      // close test folder
                   return_code = folder.exists();      // API TEST
 
                   if ( return_code ) {
-                       out.println("UNIT TEST 2: passed\n");
+                       out.fine("UNIT TEST 2: passed\n");
                        folder.delete(false);
                   } else {
-                        out.println("Failed to find existing closed folder " + testbox);
-                        out.println("UNIT TEST 2: FAILED\n");
+                        out.fine("Failed to find existing closed folder " + testbox);
+                        out.fine("UNIT TEST 2: FAILED\n");
                         errors++;
                   }
              }

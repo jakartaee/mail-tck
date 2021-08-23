@@ -51,15 +51,15 @@ public class search_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class Folder: search(Term)\n");
+        out.fine("\nTesting class Folder: search(Term)\n");
 
         try {
           // Connect to host server
@@ -74,7 +74,7 @@ public class search_Test extends MailTest {
        	     }
              folder.open(Folder.READ_ONLY);
           // BEGIN UNIT TEST 1:
-	     out.println("UNIT TEST 1: search("+ pattern +") in message body.\n");
+	     out.fine("UNIT TEST 1: search("+ pattern +") in message body.\n");
 
 	     BodyTerm freeStr = new BodyTerm(pattern);
 	     Message[] msgList1 = folder.search(freeStr);	// API TEST
@@ -82,16 +82,16 @@ public class search_Test extends MailTest {
 	     if ( msgList1.length > 0 ) {
 	          for ( int i = 0; i < msgList1.length; i++ )
 		  	if ( msgList1[i] != null )
-			     out.println("Pattern "+ pattern +" found in the message: "+ msgList1[i].getFrom()[0]);
+			     out.fine("Pattern "+ pattern +" found in the message: "+ msgList1[i].getFrom()[0]);
 
-		  out.println("UNIT TEST 1: passed\n");
+		  out.fine("UNIT TEST 1: passed\n");
 	     }
 	     else
-		 out.println("Pattern "+ pattern +" not found in message body!\n");
+		 out.fine("Pattern "+ pattern +" not found in message body!\n");
 
 	  // END UNIT TEST 1:
 	  // BEGIN UNIT TEST 2:
-	     out.println("UNIT TEST 2: search("+ pattern +") in message header.\n");
+	     out.fine("UNIT TEST 2: search("+ pattern +") in message header.\n");
 
 	     HeaderTerm caseTerm = new HeaderTerm(SUBJECT, pattern);
 	     Message[] msgList2 = folder.search(caseTerm);	// API TEST
@@ -99,12 +99,12 @@ public class search_Test extends MailTest {
 	     if ( msgList2.length > 0 ) {
 		  for ( int i = 0; i < msgList2.length; i++ )
 		  	if ( msgList2[i] != null )
-			     out.println("Case-sensitive pattern "+ pattern +" found in the message: "+ msgList2[i].getFrom()[0]);
+			     out.fine("Case-sensitive pattern "+ pattern +" found in the message: "+ msgList2[i].getFrom()[0]);
 
-		  out.println("UNIT TEST 2: passed\n");
+		  out.fine("UNIT TEST 2: passed\n");
 	     }
 	     else
-		 out.println("Pattern "+ pattern +" not found in message headers!\n");
+		 out.fine("Pattern "+ pattern +" not found in message headers!\n");
 
           // END UNIT TEST 2:
           // BEGIN UNIT TEST 3:
@@ -117,7 +117,7 @@ public class search_Test extends MailTest {
              // Get all of messages in this folder
              Message[] msgs = folder.getMessages(1, msgcount);
 
-             out.println("UNIT TEST 3: search("+ pattern +", Message[]) in message Subject.\n");
+             out.fine("UNIT TEST 3: search("+ pattern +", Message[]) in message Subject.\n");
 
 	     SubjectTerm subStr = new SubjectTerm(pattern);
 	     Message[] msgList3 = folder.search(subStr, msgs);		// API TEST
@@ -125,16 +125,16 @@ public class search_Test extends MailTest {
 	     if( msgList3.length > 0 ) {
 		 for ( int i = 0; i < msgList3.length; i++ )
 			if ( msgList3[i] != null )
-			     out.println("Pattern "+ pattern +" found in the Subject of message: "+ msgList3[i].getFrom()[0]);
+			     out.fine("Pattern "+ pattern +" found in the Subject of message: "+ msgList3[i].getFrom()[0]);
 
-		  out.println("UNIT TEST 3: passed\n");
+		  out.fine("UNIT TEST 3: passed\n");
 	     }
 	     else
-		 out.println("Pattern "+ pattern +" not found in specified message range!\n");
+		 out.fine("Pattern "+ pattern +" not found in specified message range!\n");
 
 	  // END UNIT TEST 3:
 	  // BEGIN UNIT TEST 4:
-	     out.println("UNIT TEST 4: search("+ pattern +", Message[]);\n");
+	     out.fine("UNIT TEST 4: search("+ pattern +", Message[]);\n");
 
 	     BodyTerm bodyTerm = new BodyTerm(pattern);
 	     Message[] msgList4 = folder.search(bodyTerm, msgs);	// API TEST
@@ -142,11 +142,11 @@ public class search_Test extends MailTest {
 	     if ( msgList4.length > 0 ) {
                   for ( int i = 0; i < msgList4.length; i++ )
 			if ( msgList4[i] != null )
-			     out.println("Pattern "+ pattern +" found in the body of message: " + msgList4[i].getFrom()[0]);
-		  out.println("UNIT TEST 4: passed\n");
+			     out.fine("Pattern "+ pattern +" found in the body of message: " + msgList4[i].getFrom()[0]);
+		  out.fine("UNIT TEST 4: passed\n");
 	     }
 	     else
-		 out.println("Pattern "+ pattern +" not found in bodies of given messages!\n");
+		 out.fine("Pattern "+ pattern +" not found in bodies of given messages!\n");
 
 	  // END UNIT TEST 4:
 	     folder.close(false);

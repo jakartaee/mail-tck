@@ -45,15 +45,15 @@ public class getNames_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
+    
 
-        out.println("\nTesting class ParameterList: getNames()\n");
+        out.fine("\nTesting class ParameterList: getNames()\n");
 
         try {
 	  // create a ParameterList object
@@ -69,14 +69,14 @@ public class getNames_Test extends MailTest {
 	     {
 		  parmlist.set(pname[i], pvalue[i]);
 	     }
-	     out.println("UNIT TEST 1:  getNames()");
+	     out.fine("UNIT TEST 1:  getNames()");
 	     Enumeration allNames = parmlist.getNames();	// API TEST
 
              while( allNames.hasMoreElements() ) {
                     String name = (String)allNames.nextElement();
-                    out.println(name);
+                    out.fine(name);
              }
-             out.println("UNIT TEST 1: passed.\n");
+             out.fine("UNIT TEST 1: passed.\n");
 
 	  // END UNIT TEST:
              checkStatus();

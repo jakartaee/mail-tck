@@ -39,15 +39,15 @@ public class getUIDNext_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
+    
 
-        out.println("\nTesting interface UIDFolder: getUIDNext()\n");
+        out.fine("\nTesting interface UIDFolder: getUIDNext()\n");
 
         try {
           // Connect to host server
@@ -91,13 +91,13 @@ public class getUIDNext_Test extends MailTest {
           // BEGIN UNIT TEST 1:
 	     // get UIDNEXT value
 
-	     out.println("UNIT TEST 1: getUIDNext() empty folder");
+	     out.fine("UNIT TEST 1: getUIDNext() empty folder");
 
 	     long uidfirst = uidtestfolder.getUIDNext();
 	     if (uidfirst == -1 || (uidfirst >= 0 && uidfirst <= 0xffffffffL))
-	          out.println("UNIT TEST 1:  passed\n");
+	          out.fine("UNIT TEST 1:  passed\n");
 	     else {
-		   out.println("UNIT TEST 1:  FAILED\n");
+		   out.fine("UNIT TEST 1:  FAILED\n");
 		   errors++;
 	     }
 
@@ -105,16 +105,16 @@ public class getUIDNext_Test extends MailTest {
 	  // BEGIN UNIT TEST 2:
 	     // get UIDNEXT value after messages have been appended
 
-	     out.println("UNIT TEST 2: getUIDNext() non-empty folder");
+	     out.fine("UNIT TEST 2: getUIDNext() non-empty folder");
 
 	     testfolder.appendMessages(msg);	    // API TEST
 
 	     long uidnext = uidtestfolder.getUIDNext();
 	     if (uidnext == -1 ||
 		   (uidnext >= uidfirst + msg.length && uidnext <= 0xffffffffL))
-	          out.println("UNIT TEST 2:  passed\n");
+	          out.fine("UNIT TEST 2:  passed\n");
 	     else {
-		   out.println("UNIT TEST 2:  FAILED\n");
+		   out.fine("UNIT TEST 2:  FAILED\n");
 		   errors++;
 	     }
 
@@ -122,14 +122,14 @@ public class getUIDNext_Test extends MailTest {
 	  // BEGIN UNIT TEST 3:
 	     // get UIDNEXT value after opening folder
 
-	     out.println("UNIT TEST 3: getUIDNext() open folder");
+	     out.fine("UNIT TEST 3: getUIDNext() open folder");
 
 	     testfolder.open(Folder.READ_WRITE);
 	     long uidcur = uidtestfolder.getUIDNext();
 	     if (uidcur == -1 || (uidcur >= uidnext && uidcur <= 0xffffffffL))
-	          out.println("UNIT TEST 3:  passed\n");
+	          out.fine("UNIT TEST 3:  passed\n");
 	     else {
-		   out.println("UNIT TEST 3:  FAILED\n");
+		   out.fine("UNIT TEST 3:  FAILED\n");
 		   errors++;
 	     }
 	     testfolder.close(false);

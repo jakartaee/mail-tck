@@ -45,25 +45,25 @@ public class MimeMultipart_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class MimeMultipart: MimeMultipart(void | DataSource)\n");
+        out.fine("\nTesting class MimeMultipart: MimeMultipart(void | DataSource)\n");
 
         try {
 	  // BEGIN UNIT TEST 1:
-	     out.println("UNIT TEST 1:  MimeMultipart()");
+	     out.fine("UNIT TEST 1:  MimeMultipart()");
 	     MimeMultipart mp = new MimeMultipart();	    // API TEST
 	     
 	     if(( mp != null ) && ( mp instanceof MimeMultipart ))
-		  out.println("UNIT TEST 1: passed");
+		  out.fine("UNIT TEST 1: passed");
 	     else {
-		    out.println("UNIT TEST 1: FAILED");
+		    out.fine("UNIT TEST 1: FAILED");
 		    errors++;
 	     }
 	  // END UNIT TEST 1:
@@ -74,19 +74,19 @@ public class MimeMultipart_Test extends MailTest {
              if ( ds == null ) {
                   return Status.failed("WARNING: null FileDataSource object");
              }
-	     out.println("UNIT TEST 2:  MimeMultipart(DataSource)");
+	     out.fine("UNIT TEST 2:  MimeMultipart(DataSource)");
 
 	     MimeMultipart mmp = new MimeMultipart((DataSource)ds);	// API TEST
 
 	     if(( mmp != null ) && ( mmp instanceof MimeMultipart ))
-		  out.println("UNIT TEST 2: passed");
+		  out.fine("UNIT TEST 2: passed");
 	     else {
-		    out.println("UNIT TEST 2: FAILED");
+		    out.fine("UNIT TEST 2: FAILED");
 		    errors++;
 	     }
 	  // END UNIT TEST 2:
 	  // BEGIN UNIT TEST 3:
-	     out.println("UNIT TEST 3:  MimeMultipart(String, BodyParts...)");
+	     out.fine("UNIT TEST 3:  MimeMultipart(String, BodyParts...)");
 	     MimeBodyPart mbp1 = new MimeBodyPart();
 	     String cont1 = "part1";
 	     mbp1.setText(cont1);
@@ -98,9 +98,9 @@ public class MimeMultipart_Test extends MailTest {
 	     if (mpp.getCount() == 2 &&
 		    mpp.getBodyPart(0).getContent().equals(cont1) &&
 		    mpp.getBodyPart(1).getContent().equals(cont2))
-		  out.println("UNIT TEST 3: passed");
+		  out.fine("UNIT TEST 3: passed");
 	     else {
-		  out.println("UNIT TEST 3: FAILED");
+		  out.fine("UNIT TEST 3: FAILED");
 		  errors++;
 	     }
 	  // END UNIT TEST 3:

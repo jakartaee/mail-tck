@@ -40,15 +40,15 @@ public class getURLName_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
+    
 
-	out.println("\nTesting Transport class API => getURLName()\n");
+	out.fine("\nTesting Transport class API => getURLName()\n");
 
 	try {
            // Get a Session object
@@ -67,11 +67,11 @@ public class getURLName_Test extends MailTest {
                   transport.connect();
 
 	   // BEGIN UNIT TEST 1:
-	      out.println("UNIT TEST 1:  close()");
+	      out.fine("UNIT TEST 1:  close()");
               URLName urlname = transport.getURLName();		// API TEST
 
-	      out.println("URL name for this transport is "+ urlname);
-	      out.println("UNIT TEST 1: passed\n");
+	      out.fine("URL name for this transport is "+ urlname);
+	      out.fine("UNIT TEST 1: passed\n");
 	   // END UNIT TEST 1:
 
 	   // close connect to transport

@@ -46,16 +46,16 @@ public class sendFailedException_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
 	TO = to;
-        out.println("\nTesting class SendFailedException: SendFailedException(void|String|Exception|Address[])\n");
+        out.fine("\nTesting class SendFailedException: SendFailedException(void|String|Exception|Address[])\n");
 
         try {
            // Get a Session object
@@ -87,17 +87,17 @@ public class sendFailedException_Test extends MailTest {
                   transport.connect();
 
            // BEGIN UNIT TEST 1:
-              out.println("UNIT TEST 1: SendFailedException()");
+              out.fine("UNIT TEST 1: SendFailedException()");
 
               // send the mail message
               transport.send(msg);	// API TEST
 
-              out.println("UNIT TEST 1: FAILED\n");
+              out.fine("UNIT TEST 1: FAILED\n");
            // END UNIT TEST 1:
 
 	      status = Status.failed(" Failed to catch SendFailedException ");
         } catch ( SendFailedException me ) {
-		out.println("UNIT TEST 1: passed.\n");
+		out.fine("UNIT TEST 1: passed.\n");
 		try {
 		      transport.close();
 		      ExceptionTest(me);

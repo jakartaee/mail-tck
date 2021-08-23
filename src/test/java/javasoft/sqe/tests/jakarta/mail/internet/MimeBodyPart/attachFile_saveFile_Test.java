@@ -46,12 +46,12 @@ public class attachFile_saveFile_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out) {
-	super.run(log, out);
+    public Status run() {
+	
 
 	Session session = createSession();
 
@@ -61,10 +61,10 @@ public class attachFile_saveFile_Test extends MailTest {
             fw.write("This is a test file.");
             fw.close();
         } catch (IOException e) {
-            out.println("\nError writing to file.");
+            out.fine("\nError writing to file.");
         }
 
-        out.println("\nTesting class MimeBodyPart: attachFile\n");
+        out.fine("\nTesting class MimeBodyPart: attachFile\n");
 
         File file = null;
         File savedfile = null;
@@ -74,24 +74,24 @@ public class attachFile_saveFile_Test extends MailTest {
 
 	 // BEGIN UNIT TEST:
 
-            out.println("UNIT TEST 1 : attachFile(String) " +
+            out.fine("UNIT TEST 1 : attachFile(String) " +
                     "And saveFile(String)");
 
-            out.println("attached file name = " + fn
+            out.fine("attached file name = " + fn
                        + "\nsaved file name = " + savedfn);
             bp.attachFile(fn); 	// API TEST
 
             if (fn.equals(bp.getFileName())) {
-               out.println(bp.getFileName());
-               out.println("UNIT TEST passed.");
+               out.fine(bp.getFileName());
+               out.fine("UNIT TEST passed.");
             } else {
-               out.println("UNIT TEST FAILED");
+               out.fine("UNIT TEST FAILED");
 	       errors++;
             }
 
             bp.attachFile(fn);          // API TEST
 	    if (!bp.getDisposition().equals(Part.ATTACHMENT)) {
-               out.println("UNIT TEST FAILED");
+               out.fine("UNIT TEST FAILED");
 	       errors++;
 	    }
             bp.saveFile(savedfn);       // API TEST
@@ -101,7 +101,7 @@ public class attachFile_saveFile_Test extends MailTest {
 
 	 // BEGIN UNIT TEST:
 
-            out.println("UNIT TEST 2 : attachFile(File) " +
+            out.fine("UNIT TEST 2 : attachFile(File) " +
                     "And saveFile(File)");
 
             file = new File(fn);
@@ -114,9 +114,9 @@ public class attachFile_saveFile_Test extends MailTest {
 
 	 // BEGIN UNIT TEST:
 
-            out.println("UNIT TEST 3 : attachFile(String, String, String)");
+            out.fine("UNIT TEST 3 : attachFile(String, String, String)");
 
-            out.println("attached file name = " + fn);
+            out.fine("attached file name = " + fn);
 	    MimeMessage msg = new MimeMessage(session);
 	    MimeMultipart mp = new MimeMultipart();
 	    bp = new MimeBodyPart();
@@ -127,11 +127,11 @@ public class attachFile_saveFile_Test extends MailTest {
 
 	    if (bp.isMimeType("test/test") &&
 		    bp.getEncoding().equals("base64")) {
-                out.println("UNIT TEST passed.");
+                out.fine("UNIT TEST passed.");
             } else {
-		out.println("content type = " + bp.getContentType());
-		out.println("encoding = " + bp.getEncoding());
-                out.println("UNIT TEST FAILED");
+		out.fine("content type = " + bp.getContentType());
+		out.fine("encoding = " + bp.getEncoding());
+                out.fine("UNIT TEST FAILED");
 	        errors++;
             }
 
@@ -139,9 +139,9 @@ public class attachFile_saveFile_Test extends MailTest {
 
 	 // BEGIN UNIT TEST:
 
-            out.println("UNIT TEST 4 : attachFile(File, String, String)");
+            out.fine("UNIT TEST 4 : attachFile(File, String, String)");
 
-            out.println("attached file name = " + fn);
+            out.fine("attached file name = " + fn);
 	    msg = new MimeMessage(session);
 	    mp = new MimeMultipart();
 	    bp = new MimeBodyPart();
@@ -152,11 +152,11 @@ public class attachFile_saveFile_Test extends MailTest {
 
 	    if (bp.isMimeType("test/test") &&
 		    bp.getEncoding().equals("base64")) {
-                out.println("UNIT TEST passed.");
+                out.fine("UNIT TEST passed.");
             } else {
-		out.println("content type = " + bp.getContentType());
-		out.println("encoding = " + bp.getEncoding());
-                out.println("UNIT TEST FAILED");
+		out.fine("content type = " + bp.getContentType());
+		out.fine("encoding = " + bp.getEncoding());
+                out.fine("UNIT TEST FAILED");
 	        errors++;
             }
 
@@ -184,14 +184,14 @@ public class attachFile_saveFile_Test extends MailTest {
         while (bytecontent != -1) {
             if (bytecontent != newfis.read()) {
                 samecontents = false;
-                out.println("UNIT TEST FAILED.\n");
+                out.fine("UNIT TEST FAILED.\n");
                 break;
             }
             bytecontent = origfis.read();
         }
 
         if (samecontents && newfis.read() == -1)
-            out.println("UNIT TEST passed.\n");
+            out.fine("UNIT TEST passed.\n");
         else errors++;
 
         if (origfis != null)

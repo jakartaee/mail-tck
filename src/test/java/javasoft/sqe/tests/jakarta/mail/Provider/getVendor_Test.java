@@ -41,15 +41,15 @@ public class getVendor_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
+    
 
-	out.println("\nTesting class Provider: getVendor()\n");
+	out.fine("\nTesting class Provider: getVendor()\n");
 
         try {
 	   // Get Session object
@@ -60,12 +60,12 @@ public class getVendor_Test extends MailTest {
                   return Status.failed("Failed to get Provider object!");
               }
            // BEGIN UNIT TEST 1:
-              out.println("UNIT TEST 1: getVendor()");
+              out.fine("UNIT TEST 1: getVendor()");
 
 	      String vendorName = prov.getVendor();	// API TEST
 
-	      out.println("Vendor associated with this implementation is "+ vendorName);
-	      out.println("UNIT TEST 1:  passed\n");
+	      out.fine("Vendor associated with this implementation is "+ vendorName);
+	      out.fine("UNIT TEST 1:  passed\n");
 
            // END UNIT TEST 1:
 

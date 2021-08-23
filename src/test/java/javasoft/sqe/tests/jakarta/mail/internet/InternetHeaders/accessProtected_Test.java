@@ -39,13 +39,13 @@ public class accessProtected_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
         try {
 	  // BEGIN UNIT TEST:
@@ -66,14 +66,14 @@ public class accessProtected_Test extends MailTest {
         // for e.g: list of headers, header name and header value
         
         void printTestResult() {
-            out.println("UNIT TEST 1: accessing protected variables: \n" +
+            out.fine("UNIT TEST 1: accessing protected variables: \n" +
                         "    class InternetHeaders: 'headers' \n" +
                         "    class InternetHeader: 'name' and 'value'\n");
             //Simply creating an InternetHeader will test the protected access of 
             //name and value variables
             InternetHeader hdr = new InternetHeader("GreetingLine", "How are you?");
             headers.add(hdr); 
-            out.println("UNIT TEST 1 passed");
+            out.fine("UNIT TEST 1 passed");
        } 
     }
 }

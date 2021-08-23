@@ -52,15 +52,15 @@ public class sizeterm_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
+    
 
-        out.println("\nTesting class SizeTerm: SizeTerm(int, int)\n");
+        out.fine("\nTesting class SizeTerm: SizeTerm(int, int)\n");
 
         try {
           // Connect to host server
@@ -87,34 +87,34 @@ public class sizeterm_Test extends MailTest {
                 MimeMessage msg =  (MimeMessage)folder.getMessage(i);
 
 	        if( msg == null ) {
-		    log.println("WARNING: FAILED TO GET MESSAGE NUMBER: "+ i);
+		    log.warning("WARNING: FAILED TO GET MESSAGE NUMBER: "+ i);
 		    continue;
 	        }
 	     // BEGIN UNIT TEST:
 
 		for( int j = 0; j < comptype.length; j++ )
 		{
-		    out.println("UNIT TEST "+ i +":  SizeTerm("+ comptype[j] +", "+ msgsize[j] +")");
+		    out.fine("UNIT TEST "+ i +":  SizeTerm("+ comptype[j] +", "+ msgsize[j] +")");
 		 // create a SizeTerm object
 		    SizeTerm st = new SizeTerm(comptype[j], msgsize[j]);	// API TEST
 
                     if( st == null ) {
-                        log.println("Warning: SizeTerm contructor returned a Null object!");
+                        log.warning("Warning: SizeTerm contructor returned a Null object!");
                         continue;
                     } else
-                          out.println("UNIT TEST "+ i +": passed.");
+                          out.fine("UNIT TEST "+ i +": passed.");
 
-		    out.println("UNIT TEST "+ i +":  match(Message)");
+		    out.fine("UNIT TEST "+ i +":  match(Message)");
 
 		 // call the comparison method
 		    boolean foundit = st.match(msg);	// API TEST
 
 	            if( foundit ) {
-	                out.println("The flag comparison was successfull.");
-                        out.println("UNIT TEST "+ (i+1) +":  passed\n");
+	                out.fine("The flag comparison was successfull.");
+                        out.fine("UNIT TEST "+ (i+1) +":  passed\n");
 	            } else {
-		            out.println("The flag comparison was Not successfull!");
-			    out.println("UNIT TEST "+ (i+1) +":  passed\n");
+		            out.fine("The flag comparison was Not successfull!");
+			    out.fine("UNIT TEST "+ (i+1) +":  passed\n");
 	            }
 		}
 	     // END UNIT TEST:

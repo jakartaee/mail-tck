@@ -49,51 +49,51 @@ public class headerTokenizer_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
-        out.println("\nTesting class HeaderTokenizer: HeaderTokenizer()\n");
+	
+        out.fine("\nTesting class HeaderTokenizer: HeaderTokenizer()\n");
 
 	try {
            // BEGIN UNIT TEST 1:
-              out.println("UNIT TEST 1: HeaderTokenizer(String)");
+              out.fine("UNIT TEST 1: HeaderTokenizer(String)");
               HeaderTokenizer ht1 = new HeaderTokenizer(value);		// API TEST
 
               if( ht1 != null )
-                  out.println("UNIT TEST 1: passed.\n");
+                  out.fine("UNIT TEST 1: passed.\n");
               else {
-                    out.println("UNIT TEST 1: Failed.\n");
+                    out.fine("UNIT TEST 1: Failed.\n");
                     errors++;
               }
            // END UNIT TEST 1:
            // BEGIN UNIT TEST 2:
-              out.println("UNIT TEST 2: HeaderTokenizer(String, String)");
+              out.fine("UNIT TEST 2: HeaderTokenizer(String, String)");
 
               HeaderTokenizer ht2 = new HeaderTokenizer(value,
                                     mime ? HeaderTokenizer.MIME : HeaderTokenizer.RFC822);	// API TEST
 
               if( ht2 != null )
-                  out.println("UNIT TEST 2: passed.\n");
+                  out.fine("UNIT TEST 2: passed.\n");
               else {
-                    out.println("UNIT TEST 2: Failed.\n");
+                    out.fine("UNIT TEST 2: Failed.\n");
                     errors++;
               }
            // END UNIT TEST 2:
 	   // BEGIN UNIT TEST 3:
-	      out.println("UNIT TEST 3: HeaderTokenizer(String, String, boolean)");
+	      out.fine("UNIT TEST 3: HeaderTokenizer(String, String, boolean)");
 
 	      HeaderTokenizer ht3 = new HeaderTokenizer(value,
 			mime ? HeaderTokenizer.MIME : HeaderTokenizer.RFC822,
 			!return_comments);				// API TEST
 
 	      if( ht3 != null )
-		  out.println("UNIT TEST 3: passed.\n");
+		  out.fine("UNIT TEST 3: passed.\n");
 	      else {
-		    out.println("UNIT TEST 3: Failed.\n");
+		    out.fine("UNIT TEST 3: Failed.\n");
 		    errors++;
 	      }
 	   // END UNIT TEST 1:

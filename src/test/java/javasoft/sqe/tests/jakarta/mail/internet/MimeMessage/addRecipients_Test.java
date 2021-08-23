@@ -43,15 +43,15 @@ public class addRecipients_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class MimeMessage: addRecipients(int, Address[])\n");
+        out.fine("\nTesting class MimeMessage: addRecipients(int, Address[])\n");
 
         try {
           // Connect to host server
@@ -75,7 +75,7 @@ public class addRecipients_Test extends MailTest {
 	     MimeMessage dmsg = (MimeMessage)folder.getMessage(1);
 
 	     if( dmsg == null ) {
-		 log.println("Warning: Failed to get message number 1");
+		 log.warning("Warning: Failed to get message number 1");
 		 return Status.failed("Failed to get message number 1");
 	     }
           // Create a MimeMessage object
@@ -83,11 +83,11 @@ public class addRecipients_Test extends MailTest {
              MimeMessage msg = new MimeMessage(session);
 
              if( msg == null ) {
-                 log.println("WARNING: FAILED TO CREATE MESSAGE OBJECT");
+                 log.warning("WARNING: FAILED TO CREATE MESSAGE OBJECT");
                  return Status.failed("Failed to create Message object");
              }
 	  // BEGIN UNIT TEST:
-	     out.println("UNIT TEST 1: addRecipients(int, Address[])");
+	     out.fine("UNIT TEST 1: addRecipients(int, Address[])");
 
 	     // add new To: recipients
 	     msg.addRecipients(Message.RecipientType.TO, dmsg.getRecipients(Message.RecipientType.TO));	// API TEST
@@ -96,10 +96,10 @@ public class addRecipients_Test extends MailTest {
 	     if( addrTOlist != null ) {
 		 for( int j = 0; j < addrTOlist.length; j++ ) {
 		      if ( addrTOlist[j] != null )
-			   out.println( ((InternetAddress)addrTOlist[j]).getAddress() );
+			   out.fine( ((InternetAddress)addrTOlist[j]).getAddress() );
 		 }
 	     } else
-		   out.println("Warning: getRecipients(Message.RecipientType.TO) returned null pointer");
+		   out.fine("Warning: getRecipients(Message.RecipientType.TO) returned null pointer");
 
 	     // add new Cc: recipients
 	     msg.addRecipients(Message.RecipientType.CC, dmsg.getRecipients(Message.RecipientType.TO));	// API TEST
@@ -108,10 +108,10 @@ public class addRecipients_Test extends MailTest {
 	     if( addrCClist != null ) {
 		 for( int k = 0; k < addrCClist.length; k++ ) {
 		      if( addrCClist[k] != null )
-			  out.println( ((InternetAddress)addrCClist[k]).getAddress() );
+			  out.fine( ((InternetAddress)addrCClist[k]).getAddress() );
 		 }
 	     } else
-		   out.println("Warning: getRecipients(Message.RecipientType.CC) returned null pointer");
+		   out.fine("Warning: getRecipients(Message.RecipientType.CC) returned null pointer");
 
 	     // add new Bcc; recipients
 	     msg.addRecipients(Message.RecipientType.BCC, dmsg.getRecipients(Message.RecipientType.TO));	// API TEST
@@ -120,12 +120,12 @@ public class addRecipients_Test extends MailTest {
 	     if( addrBCClist != null ) {
 		 for( int n = 0; n < addrBCClist.length; n++ ) {
 		      if( addrBCClist[n] != null )
-			  out.println( ((InternetAddress)addrBCClist[n]).getAddress() );
+			  out.fine( ((InternetAddress)addrBCClist[n]).getAddress() );
 		 }
 	     } else
-		   out.println("Warning: getRecipients(Message.RecipientType.BCC) returned null pointer");
+		   out.fine("Warning: getRecipients(Message.RecipientType.BCC) returned null pointer");
 
-	     out.println("UNIT TEST 1: passed\n");
+	     out.fine("UNIT TEST 1: passed\n");
 	  // END UNIT TEST:
 
              folder.close(false);

@@ -44,15 +44,15 @@ public class getHeaderNames_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class FetchProfile: getHeaderNames()\n");
+        out.fine("\nTesting class FetchProfile: getHeaderNames()\n");
 
         try {
 	   // Create an empty FetchProfile
@@ -68,13 +68,13 @@ public class getHeaderNames_Test extends MailTest {
 
 	   // BEGIN UNIT TEST 1:
 
-	      out.println("UNIT TEST 1: getHeaderNames()");
+	      out.fine("UNIT TEST 1: getHeaderNames()");
 
 	      String[] headname = fp.getHeaderNames(); 	// API TEST
 
 	      for( int j = 0; j < headname.length; j++ )
 	      {
-		   out.println(headname[j]);
+		   out.fine(headname[j]);
 
 		   if( !itemName[j].equals(headname[j]) ) {
 		       notFound = true;
@@ -83,9 +83,9 @@ public class getHeaderNames_Test extends MailTest {
               }
 
 	      if( !notFound )
-		  out.println("UNIT TEST 1: passed.\n");
+		  out.fine("UNIT TEST 1: passed.\n");
 	      else {
-		     out.println("UNIT TEST 1: FAILED.\n");
+		     out.fine("UNIT TEST 1: FAILED.\n");
 		     errors++;
 	      }
 	   // END UNIT TEST 1:

@@ -45,15 +45,15 @@ public class notterm_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
+    
 
-        out.println("\nTesting class NotTerm: NotTerm(SearchTerm)\n");
+        out.fine("\nTesting class NotTerm: NotTerm(SearchTerm)\n");
 
         try {
           // Connect to host server
@@ -68,24 +68,24 @@ public class notterm_Test extends MailTest {
              }
              folder.open(Folder.READ_ONLY);
 
-	     out.println("UNIT TEST 1: NotTerm(SearchTerm)");
+	     out.fine("UNIT TEST 1: NotTerm(SearchTerm)");
 
              NotTerm not = new NotTerm(new SubjectTerm(subject));	// API TEST
 
 	     if( not != null )
-	     	 out.println("UNIT TEST 1: passed.");
+	     	 out.fine("UNIT TEST 1: passed.");
 	     else {
-		   out.println("UNIT TEST 1: FAILED.");
+		   out.fine("UNIT TEST 1: FAILED.");
 		   errors++;
 	     }
-	     out.println("UNIT TEST 2: getTerm()");
+	     out.fine("UNIT TEST 2: getTerm()");
 
 	     // get the negate term
              SearchTerm negateTerm = not.getTerm();        // API TEST
 
 	     if( negateTerm != null ) {
-		 out.println(negateTerm);
-		 out.println("UNIT TEST 2: passed.");
+		 out.fine(negateTerm.toString());
+		 out.fine("UNIT TEST 2: passed.");
 	     }
 
 	     if( msgcount == -1 ) {
@@ -101,21 +101,21 @@ public class notterm_Test extends MailTest {
                 MimeMessage msg =  (MimeMessage)folder.getMessage(i);
 
 	        if( msg == null ) {
-		    log.println("WARNING: FAILED TO GET MESSAGE NUMBER: "+ i);
+		    log.warning("WARNING: FAILED TO GET MESSAGE NUMBER: "+ i);
 		    continue;
 	        }
 	     // BEGIN UNIT TEST:
-	        out.println("UNIT TEST "+ (i+2) +":  match(Message)");
+	        out.fine("UNIT TEST "+ (i+2) +":  match(Message)");
 
 		// find the pattern in message body
 		foundit = not.match(msg);	// API TEST
 
 	        if( foundit ) {
-	            out.println("Atleast one negate term found in the message header.");
-                    out.println("UNIT TEST "+ (i+2) +":  passed\n");
+	            out.fine("Atleast one negate term found in the message header.");
+                    out.fine("UNIT TEST "+ (i+2) +":  passed\n");
 	        } else {
-		        out.println("No negate terms found in the message header!");
-			out.println("UNIT TEST "+ (i+2) +":  passed\n");
+		        out.fine("No negate terms found in the message header!");
+			out.fine("UNIT TEST "+ (i+2) +":  passed\n");
 	        }
 	     // END UNIT TEST:
 	     }

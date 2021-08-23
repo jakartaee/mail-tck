@@ -42,12 +42,12 @@ public class reply_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out) {
-	super.run(log, out);
+    public Status run() {
+	
 
         try {
              Session session = createSession();
@@ -62,7 +62,7 @@ public class reply_Test extends MailTest {
 	     msg.setText("test");
 
 	  // BEGIN UNIT TEST 1:
-	     out.println("UNIT TEST 1: reply(false)");
+	     out.fine("UNIT TEST 1: reply(false)");
 
 	     Message replyMsg = msg.reply(false);	// API TEST
 
@@ -70,16 +70,16 @@ public class reply_Test extends MailTest {
 	     if (addrs != null && addrs.length == 1 && addrs[0].equals(from) &&
 		    replyMsg.getSubject().equals("Re: " + subj) &&
 		    msg.isSet(Flags.Flag.ANSWERED)) {
-                out.println("UNIT TEST 1: passed\n");
+                out.fine("UNIT TEST 1: passed\n");
              } else {
-                out.println("UNIT TEST 1: FAILED\n");
+                out.fine("UNIT TEST 1: FAILED\n");
                 errors++;
              }
 
 	  // END UNIT TEST 1:
 
 	  // BEGIN UNIT TEST 2:
-	     out.println("UNIT TEST 2: reply(true)");
+	     out.fine("UNIT TEST 2: reply(true)");
 
 	     replyMsg = msg.reply(true);	// API TEST
 
@@ -87,16 +87,16 @@ public class reply_Test extends MailTest {
 	     if (addrs != null && addrs.length == 2 &&
 		    ((addrs[0].equals(from) && addrs[1].equals(to)) ||
 		     (addrs[0].equals(to) && addrs[1].equals(from)))) {
-                out.println("UNIT TEST 2: passed\n");
+                out.fine("UNIT TEST 2: passed\n");
              } else {
-                out.println("UNIT TEST 2: FAILED\n");
+                out.fine("UNIT TEST 2: FAILED\n");
                 errors++;
              }
 
 	  // END UNIT TEST 2:
 
 	  // BEGIN UNIT TEST 3:
-	     out.println("UNIT TEST 3: reply(false, false)");
+	     out.fine("UNIT TEST 3: reply(false, false)");
 
              msg = new MimeMessage(session);
 	     msg.setFrom(from);
@@ -109,9 +109,9 @@ public class reply_Test extends MailTest {
 	     if (addrs != null && addrs.length == 1 && addrs[0].equals(from) &&
 		    replyMsg.getSubject().equals("Re: " + subj) &&
 		    !msg.isSet(Flags.Flag.ANSWERED)) {
-                out.println("UNIT TEST 3: passed\n");
+                out.fine("UNIT TEST 3: passed\n");
              } else {
-                out.println("UNIT TEST 3: FAILED\n");
+                out.fine("UNIT TEST 3: FAILED\n");
                 errors++;
              }
 

@@ -46,15 +46,15 @@ public class getParent_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class Folder: getParent()\n");
+        out.fine("\nTesting class Folder: getParent()\n");
 
         try {
           // Connect to host server
@@ -70,20 +70,20 @@ public class getParent_Test extends MailTest {
 	     folder.open(Folder.READ_ONLY);
 	  // BEGIN UNIT TEST 1:
 	  
-             out.println("UNIT TEST 1: getParent();");
+             out.fine("UNIT TEST 1: getParent();");
 
              Folder papa1 = folder.getParent();	// API TEST
-	     out.println("The parent folder of "+ mailbox +" is "+ papa1);
+	     out.fine("The parent folder of "+ mailbox +" is "+ papa1);
 
 	     folder.close(false);
 
 	     Folder papa2 = folder.getParent(); // API TEST
-	     out.println("The parent folder of "+ mailbox +" is "+ papa2);
+	     out.fine("The parent folder of "+ mailbox +" is "+ papa2);
 
              if(( papa1 == null && papa2 == null ) || ( papa1 instanceof Folder && papa2 instanceof Folder ) )
-                  out.println("UNIT TEST 1: passed\n");
+                  out.fine("UNIT TEST 1: passed\n");
 	     else {
-                    out.println("UNIT TEST 1: FAILED\n");
+                    out.fine("UNIT TEST 1: FAILED\n");
                     errors++;
 	     }
 	  // END UNIT TEST 1:

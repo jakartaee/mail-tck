@@ -41,28 +41,28 @@ public class getProvider_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-    super.run(log, out);
+    
 
-	out.println("\nTesting class Session: getProvider(String)\n");
+	out.fine("\nTesting class Session: getProvider(String)\n");
 
         try {
           // BEGIN UNIT TEST 1:
 	     // Get Session object
              Session session = Session.getInstance(properties, null);
-             out.println("UNIT TEST 1: getProvider("+ protocol +")");
+             out.fine("UNIT TEST 1: getProvider("+ protocol +")");
 
              Provider provide = session.getProvider(protocol); // API TEST
 
              if( provide != null )
-                 out.println("UNIT TEST 1:  passed\n");
+                 out.fine("UNIT TEST 1:  passed\n");
              else {
-		    out.println("UNIT TEST 1:  FAILED\n");
+		    out.fine("UNIT TEST 1:  FAILED\n");
                     errors++;
              }
           // END UNIT TEST 1:

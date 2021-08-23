@@ -50,26 +50,26 @@ public String[] datim = { "Hello World	",
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run(System.err, System.out);
+        Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
-    public Status run(PrintWriter log, PrintWriter out)
+    public Status run()
     {
-	super.run(log, out);
+	
 
-        out.println("\nTesting class MimeUtility: encodeText(String);");
+        out.fine("\nTesting class MimeUtility: encodeText(String);");
 
         try {
 	  // BEGIN UNIT TEST:
 
 	     for( int k = 0; k < datim.length; k++ )
 	     {
-	         out.println("UNIT TEST "+ k +":  encodeText("+datim[k]+")");
+	         out.fine("UNIT TEST "+ k +":  encodeText("+datim[k]+")");
 
-	         out.println("Encoded text = "+ MimeUtility.encodeText(datim[k]));
-		 out.println("\nUNIT TEST "+ k +": passed");
-	         out.println("----------------------------------------");
+	         out.fine("Encoded text = "+ MimeUtility.encodeText(datim[k]));
+		 out.fine("\nUNIT TEST "+ k +": passed");
+	         out.fine("----------------------------------------");
 	     }
 	  // END UNIT TEST:
              checkStatus();
