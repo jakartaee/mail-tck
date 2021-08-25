@@ -16,13 +16,21 @@
 
 package javasoft.sqe.tests.jakarta.mail.util;
 
+import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 import com.sun.javatest.Status;
 
@@ -42,9 +50,10 @@ import jakarta.mail.Store;
 
 public class MailTest {
 
+    private static final String TS_JTE_FILE = System.getProperty("tck.jte.properties");
     protected final Logger log = Logger.getLogger(getClass().getName());
     protected final Logger out = log;
-	public String testname;		// testcase name
+    public String testname;		// testcase name
 	public String protocol;		// server protocol being used
 	public String transport_protocol;	// Transport protocol
 	public String host;		// host server name
@@ -73,47 +82,144 @@ public class MailTest {
 	public Properties properties = new Properties();	// the global properties object
 	public Session session;		// Session object variable
 	public boolean debug = false;	// debug mode
-
-	/**
-	 * Create System properties object.
-	 */
-	public MailTest() {
-        try (InputStream input = MailTest.class.getResourceAsStream("/ts.properties")) {
-            properties.load(input);
-            parseArgs();
+	
+	protected void parseTestArgs() {
+	    if (TS_JTE_FILE == null) {
+	        throw new IllegalStateException("tck.jte.properties property is required to load the test properties");
+	    }
+	    try (InputStream input = new FileInputStream(new File(TS_JTE_FILE))) {
+	        Properties properties = new Properties();
+	        properties.load(input);
+            String[] args = getArgsFromHtml(properties);
+            parseArgs(args);
         } catch (IOException e) {
-            throw new IllegalStateException("Cannot load ts.properties " + e);
+            throw new IllegalStateException("Cannot parse arguments for the test", e);
         }
 	}
 
+	private String[] getArgsFromHtml(Properties properties) throws IOException {
+	    String testClass = getClass().getCanonicalName();
+	    String htmlResource = getClass().getPackage().getName().replaceAll("\\.", "/") + "/testlist.html";
+	    URL url = getClass().getClassLoader().getResource(htmlResource);
+	    try (InputStream input = url.openStream()) {
+	        if (input == null) {
+	            throw new IllegalStateException(htmlResource + " was not found");
+	        }
+	        try (BufferedReader reader = new BufferedReader(new InputStreamReader(input))) {
+    	        List<String> lines = reader.lines().collect(Collectors.toList());
+    	        boolean foundTest = false;
+    	        for (String line : lines) {
+    	            if (line.contains(testClass)) {
+    	                foundTest = true;
+    	            } else if (foundTest && line.contains("executeArgs")) {
+    	                String command = line.replaceFirst("<TR><TD><B>executeArgs</B></TD><TD> ", "")
+    	                        .replaceFirst("<TR><TD><B>executeArgs</B></TD><TD>", "").replaceFirst("</TD></TR>", "");
+    	                if ("".equals(command)) {
+    	                    return new String[0];
+    	                } else {
+        	                String[] args = command.split(" ");
+        	                for (int i = 0; i < args.length; i++) {
+        	                    // Remove double quotes. Some arguments are wrong and it contains only 1 double quote
+        	                    if (args[i].startsWith("\"")) {
+        	                        args[i] = args[i].substring(1, args[i].length());
+        	                    }
+        	                    if (args[i].endsWith("\"")) {
+        	                        args[i] = args[i].substring(0, args[i].length() - 1);
+        	                    }
+        	                    if (args[i].startsWith("$")) {
+        	                        String keyNo$ = args[i].replaceFirst("\\$", "");
+        	                        String value = properties.getProperty(keyNo$);
+        	                        if (value != null) {
+        	                            args[i] = value;
+        	                        }
+        	                    }
+        	                }
+        	                return args;
+    	                }
+    	            }
+    	        }
+	        }
+	    }
+	    throw new IllegalStateException("Arguments not found in " + htmlResource + " for test " + testClass);
+	}
+	
 	/**
 	 * Get command-line arguments and 
 	 * stuff the values into member fields.
 	 *
+	 * @param	argv	command line arguments
 	 */
-	private void parseArgs() {
-	    protocol = properties.getProperty("mail.protocol");
-	    transport_protocol = properties.getProperty("mail.transport.protocol");
-	    transport_host = properties.getProperty("mail.transport.host");
-	    host = properties.getProperty("mail.host");
-	    user = properties.getProperty("mail.user");
-	    password = properties.getProperty("mail.password");
-	    mailbox = properties.getProperty("mail.mailbox");
-	    testbox = properties.getProperty("mail.mailbox.test");
-	    from = properties.getProperty("mail.from");
-	    to = properties.getProperty("mail.to");
-	    rootpath = properties.getProperty("mail.root.path");
-	    iofile = properties.getProperty("mail.io.file");
-	    pattern = properties.getProperty("mail.pattern");
-	    newName = properties.getProperty("mail.new.name");
-	    subject = properties.getProperty("mail.subject");
-	    portvalue = properties.getProperty("mail.port");
-	    tportvalue = properties.getProperty("mail.transport.port");
-	    workdir = properties.getProperty("mail.work.dir");
-	    auth = Boolean.parseBoolean(properties.getProperty("mail.auth"));
-	    proxy = properties.getProperty("mail.proxy");
-	    debug = Boolean.parseBoolean(properties.getProperty("mail.debug"));
-	    msgcount = properties.size();
+	public void parseArgs(String[] argv) {
+	    out.fine("Test Arguments: " + Arrays.asList(argv));
+	  int optind;
+
+          for (optind = 0; optind < argv.length; optind++) {
+		if (argv[optind].equals("-t"))
+		    	protocol = argv[++optind];
+		else if (argv[optind].equals("-tp"))
+			transport_protocol = argv[++optind];
+		else if (argv[optind].equals("-th"))
+			transport_host = ifnull(argv[++optind]);
+		else if (argv[optind].equals("-h"))
+			host = ifnull(argv[++optind]);
+		else if (argv[optind].equals("-u"))
+			user = ifnull(argv[++optind]);
+		else if (argv[optind].equals("-p"))
+			password = ifnull(argv[++optind]);
+		else if (argv[optind].equals("-m"))
+			mailbox = argv[++optind];
+		else if (argv[optind].equals("-test"))
+			testbox = argv[++optind];
+		else if (argv[optind].equals("-from"))
+			from = argv[++optind];
+		else if (argv[optind].equals("-to"))
+			to = argv[++optind];
+		else if (argv[optind].equals("-r"))
+			rootpath = argv[++optind];
+		else if (argv[optind].equals("-io"))
+			iofile = argv[++optind];
+		else if (argv[optind].equals("-s"))
+			pattern = argv[++optind];
+		else if (argv[optind].equals("-n"))
+			newName = argv[++optind];
+		else if (argv[optind].equals("-subject"))
+			subject = argv[++optind];
+		else if (argv[optind].equals("-pn"))
+                        portvalue = argv[++optind];
+		else if (argv[optind].equals("-tpn"))
+                        tportvalue = argv[++optind];
+		else if (argv[optind].equals("-WorkDir"))
+			workdir = argv[++optind];
+		else if (argv[optind].equals("-A"))
+			auth = true;
+		else if (argv[optind].equals("-proxy"))
+			proxy = argv[++optind];
+		else if (argv[optind].equals("-D"))
+			debug = true;
+		else if (argv[optind].equals("--")) {
+			optind++;
+			break;
+		} else if (argv[optind].startsWith("-")) {
+			  out.fine(
+"Usage: test [-D] [-t protocol] [-tp transport_protocol] [-th transport_host]");
+			  out.fine(
+"\t[-h host] [-u user] [-p password] [-r rootpath] [-m mailbox]");
+			  out.fine(
+"\t[-test testbox] [-from from_address] [-to to_address] [-io iofile]");
+			  out.fine(
+"\t[-s pattern] [-n newname] [-subject subject] [-pn port_number]");
+			  out.fine(
+"\t[-tpn transport_port_number]");
+			  out.fine(
+"\t[-WorkDir workdirpath] [-A] [-proxy socks-proxy] [msgcount]");
+			System.exit(1);
+		} else
+			break;
+	    }
+	    // get integer number from the command-line
+
+	    if (optind < argv.length)
+		msgcount = Integer.parseInt(argv[optind]);
 
 	    if (portvalue != null)
 		portnum = Integer.parseInt(portvalue);
@@ -122,10 +228,10 @@ public class MailTest {
 		tportnum = Integer.parseInt(tportvalue);
 
 	    if (transport_host == null)
-	        transport_host = host;
+		transport_host = host;
 
 	    if (protocol != null) {
-	        properties.setProperty("mail.store.protocol", protocol);
+		properties.setProperty("mail.store.protocol", protocol);
 		if (host != null)
 		    properties.setProperty("mail." + protocol + ".host", host);
 		if (user != null)
@@ -138,24 +244,24 @@ public class MailTest {
 									proxy);
 	    }
 	    if (transport_protocol != null) {
-    		properties.setProperty(
-    			"mail.transport.protocol", transport_protocol);
-    		properties.setProperty(
-    			"mail.transport.protocol.rfc822", transport_protocol);
-    		if (transport_host != null)
-    		    properties.setProperty(
-    			"mail." + transport_protocol + ".host", transport_host);
-    		if (auth && user != null)
-    		    properties.setProperty(
-    			"mail." + transport_protocol + ".user", user);
-    		if (tportnum > 0)
-    		    properties.setProperty(
-    			"mail." + transport_protocol + ".port", "" + tportnum);
-    		properties.setProperty(
-    			"mail." + transport_protocol + ".auth", "" + auth);
-    		if (proxy != null)
-    		    properties.setProperty(
-    			"mail." + transport_protocol + ".socks.host", proxy);
+		properties.setProperty(
+			"mail.transport.protocol", transport_protocol);
+		properties.setProperty(
+			"mail.transport.protocol.rfc822", transport_protocol);
+		if (transport_host != null)
+		    properties.setProperty(
+			"mail." + transport_protocol + ".host", transport_host);
+		if (auth && user != null)
+		    properties.setProperty(
+			"mail." + transport_protocol + ".user", user);
+		if (tportnum > 0)
+		    properties.setProperty(
+			"mail." + transport_protocol + ".port", "" + tportnum);
+		properties.setProperty(
+			"mail." + transport_protocol + ".auth", "" + auth);
+		if (proxy != null)
+		    properties.setProperty(
+			"mail." + transport_protocol + ".socks.host", proxy);
 	    }
 	    if (debug) {
     		out.fine("Session properties:");

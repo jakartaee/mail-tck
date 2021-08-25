@@ -41,8 +41,9 @@ import javasoft.sqe.tests.jakarta.mail.util.MailTest;
 public class getURL_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
+    @org.junit.jupiter.api.Disabled
     public void test() {
-        Status s = run();
+        parseTestArgs(); Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 

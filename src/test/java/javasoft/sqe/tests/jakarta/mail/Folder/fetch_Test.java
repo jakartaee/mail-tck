@@ -43,7 +43,7 @@ public class fetch_Test extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run();
+        parseTestArgs(); Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 
@@ -86,8 +86,12 @@ public class fetch_Test extends MailTest {
 
 		  if ( msgs[i] != null && ( msgs[i] instanceof Message ) ) {
 		       out.fine(msgs[i].getReceivedDate().toString());
-                       out.fine(msgs[i].getFrom().toString());
-                       out.fine(msgs[i].getSubject().toString());
+        		       if (msgs[i].getFrom() != null) {
+        		           out.fine(msgs[i].getFrom().toString());
+        		       }
+                       if (msgs[i].getSubject() != null) {
+                           out.fine(msgs[i].getSubject().toString());
+                       }
                        if (msgs[i].getHeader("X-mailer") != null) {
                            out.fine(msgs[i].getHeader("X-mailer").toString());
                        }

@@ -46,7 +46,7 @@ public class addStoreListener_Test extends MailTest implements StoreListener {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run();
+        parseTestArgs(); Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 

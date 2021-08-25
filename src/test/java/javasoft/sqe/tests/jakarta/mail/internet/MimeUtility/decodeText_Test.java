@@ -57,7 +57,7 @@ public String[] datim = { "=?ISO-8859-1?B?SWYgeW91IGNhbiByZWFkIHRoaXMgeW8=?=",
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run();
+        parseTestArgs(); Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 

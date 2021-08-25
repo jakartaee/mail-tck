@@ -34,14 +34,17 @@
 	<version>1.0.0-SNAPSHOT</version>
 
 	<properties>
+	    <!-- Update next 2 dependencies after releasing Mail-API and Angus -->
 		<jakarta.mail.version>2.1.0-SNAPSHOT</jakarta.mail.version>
-		<angus.mail.version>1.0.0-SNAPSHOT</angus.mail.version>
+        <angus.mail.version>1.0.0-SNAPSHOT</angus.mail.version>
+		<jakarta.activation.version>2.0.1</jakarta.activation.version>
 		<jupiter-api.version>5.7.2</jupiter-api.version>
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.plugin>3.8.1</maven.compiler.plugin>
 		<surefire.version>3.0.0-M5</surefire.version>
 		<jar.version>3.2.0</jar.version>
+		<copyright.version>2.3</copyright.version>
 	</properties>
 
 	<dependencies>
@@ -61,16 +64,12 @@
 			<artifactId>angus-mail</artifactId>
 			<version>${angus.mail.version}</version>
 		</dependency>
-		<dependency>
-			<groupId>org.eclipse.angus</groupId>
-			<artifactId>smtp</artifactId>
-			<version>${angus.mail.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.eclipse.angus</groupId>
-			<artifactId>imap</artifactId>
-			<version>${angus.mail.version}</version>
-		</dependency>
+		<!-- Remove after Angus is released -->
+        <dependency>
+            <groupId>jakarta.activation</groupId>
+            <artifactId>jakarta.activation-api</artifactId>
+            <version>${jakarta.activation.version}</version>
+        </dependency>
 	</dependencies>
 
 	<build>
@@ -84,10 +83,22 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>${surefire.version}</version>
+				<configuration>
+					<systemProperties>
+						<property>
+							<name>tck.jte.properties</name>
+							<value>${project.basedir}/lib/ts.properties</value>
+						</property>
+					</systemProperties>
+                    <!-- loadFromConf_Test and loadFromLib_Test requires a new JVM to work -->
+                    <forkCount>1</forkCount>
+                    <reuseForks>false</reuseForks>
+				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.glassfish.copyright</groupId>
 				<artifactId>glassfish-copyright-maven-plugin</artifactId>
+				<version>${copyright.version}</version>
 				<configuration>
 					<excludeFile>etc/config/copyright-exclude</excludeFile>
 					<scm>git</scm>

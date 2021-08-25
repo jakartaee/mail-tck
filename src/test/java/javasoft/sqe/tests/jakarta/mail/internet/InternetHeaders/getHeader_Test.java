@@ -48,8 +48,9 @@ public class getHeader_Test extends MailTest {
     public static String[] delimiter = { ":","+","%" };
 
     @org.junit.jupiter.api.Test
+    @org.junit.jupiter.api.Disabled
     public void test() {
-        Status s = run();
+        parseTestArgs(); Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 

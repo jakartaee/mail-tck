@@ -39,8 +39,9 @@ public class storeClosedException_Test extends MailTest {
     private Folder folder;
 
     @org.junit.jupiter.api.Test
+    @org.junit.jupiter.api.Disabled
     public void test() {
-        Status s = run();
+        parseTestArgs(); Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 

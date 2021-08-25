@@ -41,7 +41,7 @@ public class encoded_true_Test extends encoded_default_Test {
 
     @org.junit.jupiter.api.Test
     public void test() {
-        Status s = run();
+        parseTestArgs(); Status s = run();
         assertEquals(Status.PASSED, s.getType(), "Status " + s);
     }
 

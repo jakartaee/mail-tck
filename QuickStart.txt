@@ -1,0 +1,47 @@
+Quick Start Instructions for Jakarta Mail TCK
+
+================================
+Running the TCK from the source 
+================================
+
+1. Checkout TCK workspace.
+     git clone git@github.com:eclipse-ee4j/mail-tck.git
+2. Make sure maven is installed and in your PATH.
+3. Open lib/ts.jte for editing.
+   Save and close the file.
+4. See "Setting up the mailbox" below.
+5. Execute 'mvn clean install'.
+6. After the TCK suite finishes running, the report can be found in
+   target/surefire-reports
+
+================================
+  Setting up the mailbox
+================================
+
+a) Install IMAP server software on a machine.
+   Note that the IMAP server must support IMAP4 (RFC 1730) or
+   IMAP4-rev1 (RFC 2060).
+b) Create one user account with password on this server.
+   Note that a password is necessary.
+c) To populate the mailbox of the user you just created, compile and execute: 
+     mvn clean install -DskipTests
+     java -jar target/jakarta.mail-tck-1.0.0-SNAPSHOT.jar -s test1 -d dest_url
+   where dest_url is of the form - protocol://username:password@hostname/
+   For example:
+     java -jar target/jakarta.mail-tck-1.0.0-SNAPSHOT.jar -f -s target/test-classes/mailboxes/test1 -d imap://username:password@domain/test1
+d) Install SMTP software on a machine.
+   Setup a user account so that the SMTP server can
+   deliver email to that account. 
+e) Now open the lib/ts.properties file,
+   scroll to the end of the file and and set the following variables:
+
+   JAVAMAIL_SERVER=<server on which mailserver to be used is installed>
+   JAVAMAIL_USERNAME=<username of the user account you created in step b>
+   JAVAMAIL_PASSWORD=<password of the user account you created in step b>
+   JAVAMAIL_ROOT_PATH=<points to the folder, under which your test mailboxes
+			exist. This variable must be set to "" or "/" if your
+			mailboxes are directly under the root>
+   SMTP_USERNAME=<smtp username to use. Usually, this is the same as the
+			imap username if you are using a mail server>
+   SMTP_DOMAIN=<domain name of the server eg: sun.com, aol.com>
+f) Save and close the file. 

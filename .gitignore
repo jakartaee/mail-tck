@@ -15,3 +15,4 @@ published/
 jakarta.mail.jar
 jakarta.activation.jar
 /bin/
+*.bkp
