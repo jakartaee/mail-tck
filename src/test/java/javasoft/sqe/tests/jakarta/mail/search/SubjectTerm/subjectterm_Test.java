@@ -49,7 +49,7 @@ public class subjectterm_Test extends MailTest {
 
     public Status run()
     {
-    
+        pattern = "java mail";
 
         out.fine("\nTesting class SubjectTerm: SubjectTerm(String)\n");
 
