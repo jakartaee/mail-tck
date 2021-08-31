@@ -35,9 +35,8 @@
 
 	<properties>
 	    <!-- Update next 2 dependencies after releasing Mail-API and Angus -->
-		<jakarta.mail.version>2.1.0-SNAPSHOT</jakarta.mail.version>
-        <angus.mail.version>1.0.0-SNAPSHOT</angus.mail.version>
-		<jakarta.activation.version>2.0.1</jakarta.activation.version>
+		<mail-api.version>2.1.0-RC1</mail-api.version>
+        <angus.mail.version>1.0.0-M1</angus.mail.version>
 		<jupiter-api.version>5.7.2</jupiter-api.version>
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<maven.compiler.source>1.8</maven.compiler.source>
@@ -54,22 +53,16 @@
 			<version>${jupiter-api.version}</version>
 			<scope>test</scope>
 		</dependency>
-		<dependency>
-			<groupId>jakarta.mail</groupId>
-			<artifactId>jakarta.mail-api</artifactId>
-			<version>${jakarta.mail.version}</version>
-		</dependency>
+        <dependency>
+            <groupId>jakarta.mail</groupId>
+            <artifactId>jakarta.mail-api</artifactId>
+            <version>${mail-api.version}</version>
+        </dependency>
 		<dependency>
 			<groupId>org.eclipse.angus</groupId>
 			<artifactId>angus-mail</artifactId>
 			<version>${angus.mail.version}</version>
 		</dependency>
-		<!-- Remove after Angus is released -->
-        <dependency>
-            <groupId>jakarta.activation</groupId>
-            <artifactId>jakarta.activation-api</artifactId>
-            <version>${jakarta.activation.version}</version>
-        </dependency>
 	</dependencies>
 
 	<build>
