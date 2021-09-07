@@ -44,7 +44,20 @@
 		<surefire.version>3.0.0-M5</surefire.version>
 		<jar.version>3.2.0</jar.version>
 		<copyright.version>2.3</copyright.version>
+		<sigtest.file>/jakarta.mail_2.0_java_1.8.sig</sigtest.file>
 	</properties>
+
+    <profiles>
+        <profile>
+            <id>jdk9+</id>
+            <activation>
+                <jdk>[9,)</jdk>
+            </activation>
+            <properties>
+	            <sigtest.file>/jakarta.mail_2.0_java_11.sig</sigtest.file>
+	        </properties>
+        </profile>
+    </profiles>
 
 	<dependencies>
 		<dependency>
@@ -63,6 +76,14 @@
 			<artifactId>angus-mail</artifactId>
 			<version>${angus.mail.version}</version>
 		</dependency>
+		<dependency>
+		    <groupId>sigtest</groupId>
+		    <artifactId>sigtest</artifactId>
+		    <version>1.0</version>
+		    <scope>system</scope>
+		    <systemPath>${project.basedir}/sigtest.jar</systemPath>
+		</dependency>
+
 	</dependencies>
 
 	<build>
@@ -82,6 +103,10 @@
 							<name>tck.jte.properties</name>
 							<value>${project.basedir}/lib/ts.properties</value>
 						</property>
+                        <property>
+                            <name>sigtest</name>
+                            <value>${sigtest.file}</value>
+                        </property>
 					</systemProperties>
                     <!-- loadFromConf_Test and loadFromLib_Test requires a new JVM to work -->
                     <forkCount>1</forkCount>
