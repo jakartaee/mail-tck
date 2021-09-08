@@ -41,7 +41,7 @@ import javasoft.sqe.tests.jakarta.mail.util.MailTest;
  *           If this is true then the testcase passes, otherwise it fails.
  */
 
-public class setFileNameTest_encodeFalse_decodeTrue extends MailTest {
+public class setFileNameTest_encodeFalse_decodeTrueTest extends MailTest {
 
     @org.junit.jupiter.api.Test
     public void test() {
