@@ -54,16 +54,11 @@ spec:
     string(name: 'MAIL_BUNDLE_URL',
            defaultValue: 'https://repo1.maven.org/maven2/com/sun/mail/jakarta.mail/2.0.0/jakarta.mail-2.0.0.jar',
            description: 'URL required for downloading Javamail implementation jar' )
-    string(name: 'TCK_BUNDLE_BASE_URL',
-           defaultValue: '',
+    string(name: 'TCK_BUNDLE_URL',
+           defaultValue: 'https://download.eclipse.org/ee4j/mail/tck/eftl/jakarta-mail-tck-2.0.0.zip',
            description: 'Base URL required for downloading prebuilt binary TCK Bundle from a hosted location' )
-    string(name: 'TCK_BUNDLE_FILE_NAME', 
-           defaultValue: 'mail-tck-2.0.0.zip', 
-	   description: 'Name of bundle file to be appended to the base url' )
     choice(name: 'JDK', choices: 'JDK8\nJDK11',
            description: 'Java SE Version to be used for running TCK either JDK8/JDK11' )
-    choice(name: 'LICENSE', choices: 'EPL\nEFTL',
-           description: 'License file to be used to build the TCK bundle(s) either EPL(default) or Eclipse Foundation TCK License' )
   }
   environment {
     ANT_OPTS = "-Djavax.xml.accessExternalStylesheet=all -Djavax.xml.accessExternalSchema=all -Djavax.xml.accessExternalDTD=file,http" 
@@ -71,12 +66,14 @@ spec:
     MAIL_HOST="localhost"
   }
   stages {
-    stage('mail-tck-build') {
+    stage('mail-tck-fetch') {
       steps {
         container('mail-tck-ci') {
           sh """
             env
-            bash -x ${WORKSPACE}/docker/build_mailtck.sh
+            mkdir bundles
+            cd bundles
+            wget -q ${TCK_BUNDLE_URL} -O mail-tck-bundles.zip
           """
           archiveArtifacts artifacts: 'bundles/*.zip'
           stash includes: 'bundles/*.zip', name: 'mail-tck-bundles'
