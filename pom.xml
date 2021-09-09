@@ -44,6 +44,7 @@
 		<surefire.version>3.0.0-M5</surefire.version>
 		<jar.version>3.2.0</jar.version>
 		<copyright.version>2.3</copyright.version>
+		<sigtest.version>1.4</sigtest.version>
 		<sigtest.file>/jakarta.mail_2.0_java_1.8.sig</sigtest.file>
 	</properties>
 
@@ -77,12 +78,16 @@
 			<version>${angus.mail.version}</version>
 		</dependency>
 		<dependency>
-		    <groupId>sigtest</groupId>
-		    <artifactId>sigtest</artifactId>
-		    <version>1.0</version>
-		    <scope>system</scope>
-		    <systemPath>${project.basedir}/sigtest.jar</systemPath>
-		</dependency>
+		    <groupId>org.netbeans.tools</groupId>
+            <artifactId>sigtest-maven-plugin</artifactId>
+            <version>${sigtest.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.netbeans.tools</groupId>
+                    <artifactId>ct-sym</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
 
 	</dependencies>
 

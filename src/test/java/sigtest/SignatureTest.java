@@ -24,6 +24,8 @@ import java.io.InputStream;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.nio.file.Files;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Executes the signature test.
@@ -32,6 +34,25 @@ import java.nio.file.Files;
 public class SignatureTest extends com.sun.tdk.signaturetest.SignatureTest {
 
     private static final String SIG_FILE_NAME = System.getProperty("sigtest", "/jakarta.mail_2.0_java_1.8.sig");
+    private static final String[] EXCLUDE_CLASSES = {
+            "java.util.Map",
+            "java.lang.Object",
+            "java.io.ByteArrayInputStream",
+            "java.io.InputStream",
+            "java.lang.Deprecated",
+            "java.io.Writer",
+            "java.io.OutputStream",
+            "java.util.List",
+            "java.util.Collection",
+            "java.lang.instrument.IllegalClassFormatException",
+            "javax.transaction.xa.XAException",
+            "java.lang.annotation.Repeatable",
+            "java.lang.InterruptedException",
+            "java.lang.CloneNotSupportedException",
+            "java.lang.Throwable",
+            "java.lang.Thread",
+            "java.lang.Enum"
+    };
 
     @org.junit.jupiter.api.Test
     public void test() throws IOException {
@@ -40,9 +61,17 @@ public class SignatureTest extends com.sun.tdk.signaturetest.SignatureTest {
         try (InputStream inputStream = SignatureTest.class.getResourceAsStream(SIG_FILE_NAME)) {
             Files.copy(inputStream, file.toPath());
         }
-        String[] args = new String[] {"-Package", "jakarta.mail", "-FileName", file.getAbsolutePath()};
+        List<String> commands = new ArrayList<>();
+        commands.add("-Package");
+        commands.add("jakarta.mail");
+        commands.add("-FileName");
+        commands.add(file.getAbsolutePath());
+        for (String exclude : EXCLUDE_CLASSES) {
+            commands.add("-IgnoreJDKClass");
+            commands.add(exclude);
+        }
         try (StringWriter out = new StringWriter(); PrintWriter writer = new PrintWriter(out, true)) {
-            run(args, writer, null);
+            run(commands.toArray(new String[0]), writer, null);
             boolean status = isPassed();
             assertTrue(status, () -> SIG_FILE_NAME + "\n" + out.toString());
         }
