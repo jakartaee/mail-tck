@@ -67,19 +67,19 @@
     <target name="build"
             description="Compiles all sources to the classes directory">
 	<javac includeantruntime="false" deprecation="yes"
-			source="1.8" target="1.8"
+			source="11" target="11"
 			optimize="true" srcdir="tests"
 			classpath="${class.path}" destdir="${class.dir}"
 			debug="on" />
  
         <javac includeantruntime="false" deprecation="yes"
-			source="1.8" target="1.8"
+			source="11" target="11"
 			optimize="true" srcdir="harness"
 			classpath="${class.path}" destdir="${class.dir}"
 			debug="on" />
  
         <javac includeantruntime="false" deprecation="yes"
-			source="1.8" target="1.8"
+			source="11" target="11"
 			optimize="true"
 			srcdir="${tests.dir}${file.separator}mailboxes"
 			classpath="${class.path}"
