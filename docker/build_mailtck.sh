@@ -15,6 +15,9 @@
 #
 # SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
 
+export JAVA_HOME=${JDK11_HOME}
+export PATH=$JAVA_HOME/bin:$PATH
+
 echo "ANT_HOME=$ANT_HOME"
 echo "export JAVA_HOME=$JAVA_HOME"
 echo "export MAVEN_HOME=$MAVEN_HOME"
