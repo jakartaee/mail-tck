@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2021 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<parent>
+		<groupId>org.eclipse.ee4j</groupId>
+		<artifactId>project</artifactId>
+		<version>1.0.6</version>
+		<relativePath></relativePath>
+	</parent>
+	<modelVersion>4.0.0</modelVersion>
+	<packaging>jar</packaging>
+
+	<groupId>com.sun.mail</groupId>
+	<artifactId>jakarta.mail-tck</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+
+	<properties>
+	    <!-- Update next 2 dependencies after releasing Mail-API and Angus -->
+		<mail-api.version>2.1.0-RC1</mail-api.version>
+        <angus.mail.version>1.0.0-M1</angus.mail.version>
+		<jupiter-api.version>5.7.2</jupiter-api.version>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.plugin>3.8.1</maven.compiler.plugin>
+		<surefire.version>3.0.0-M5</surefire.version>
+		<jar.version>3.2.0</jar.version>
+		<copyright.version>2.3</copyright.version>
+		<sigtest.version>1.4</sigtest.version>
+		<sigtest.file>/jakarta.mail_2.0_java_1.8.sig</sigtest.file>
+	</properties>
+
+    <profiles>
+        <profile>
+            <id>jdk9+</id>
+            <activation>
+                <jdk>[9,)</jdk>
+            </activation>
+            <properties>
+	            <sigtest.file>/jakarta.mail_2.0_java_11.sig</sigtest.file>
+	        </properties>
+        </profile>
+    </profiles>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter</artifactId>
+			<version>${jupiter-api.version}</version>
+			<scope>test</scope>
+		</dependency>
+        <dependency>
+            <groupId>jakarta.mail</groupId>
+            <artifactId>jakarta.mail-api</artifactId>
+            <version>${mail-api.version}</version>
+        </dependency>
+		<dependency>
+			<groupId>org.eclipse.angus</groupId>
+			<artifactId>angus-mail</artifactId>
+			<version>${angus.mail.version}</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.netbeans.tools</groupId>
+            <artifactId>sigtest-maven-plugin</artifactId>
+            <version>${sigtest.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.netbeans.tools</groupId>
+                    <artifactId>ct-sym</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven.compiler.plugin}</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>${surefire.version}</version>
+				<configuration>
+					<systemProperties>
+						<property>
+							<name>tck.jte.properties</name>
+							<value>${project.basedir}/lib/ts.properties</value>
+						</property>
+                        <property>
+                            <name>sigtest</name>
+                            <value>${sigtest.file}</value>
+                        </property>
+					</systemProperties>
+                    <!-- loadFromConf_Test and loadFromLib_Test requires a new JVM to work -->
+                    <forkCount>1</forkCount>
+                    <reuseForks>false</reuseForks>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.glassfish.copyright</groupId>
+				<artifactId>glassfish-copyright-maven-plugin</artifactId>
+				<version>${copyright.version}</version>
+				<configuration>
+					<excludeFile>etc/config/copyright-exclude</excludeFile>
+					<scm>git</scm>
+					<debug>false</debug>
+					<scmOnly>true</scmOnly>
+					<warn>false</warn>
+					<update>false</update>
+					<ignoreYear>false</ignoreYear>
+					<templateFile>etc/config/copyright.txt</templateFile>
+					<bsdTemplateFile>etc/config/edl-copyright.txt</bsdTemplateFile>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>${jar.version}</version>
+				<configuration>
+					<archive>
+						<manifest>
+							<addClasspath>true</addClasspath>
+							<classpathPrefix>lib</classpathPrefix>
+							<mainClass>fpopulate</mainClass>
+						</manifest>
+					</archive>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>copy-dependencies</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>copy-dependencies</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${project.build.directory}/lib</outputDirectory>
+							<includeScope>runtime</includeScope>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

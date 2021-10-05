@@ -1,0 +1,472 @@
+<HTML>
+<HEAD>
+<!--
+
+    Copyright (c) 2012, 2021 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<TITLE>Message</TITLE>
+</HEAD>
+
+<H1>Message</H1>
+
+<BODY>
+
+<font size=+1>
+These tests are designed to test the functionality of Message
+</font>
+
+<HR>
+
+<font size=+1>
+The following are the test descriptions for the tests developed.Links to the sources are also included.
+</font>
+
+<H3>API Tests </H3>
+
+<A NAME=addFrom_Test></A>
+<TABLE BORDER class=TestDescription>
+<TR><TD><B>title</B></TD><TD>addFrom() API(s)</TD></TR>
+<TR><TD><B>name</B></TD><TD>addFrom_Test</TD></TR>
+<TR><TD><B>source</B></TD><TD><A HREF=addFrom_Test.java>addFrom_Test.java</A></TD></TR>
+<TR><TD><B>executeClass</B></TD><TD>javasoft.sqe.tests.jakarta.mail.Message.addFrom_Test</TD></TR>
+<TR><TD><B>executeArgs</B></TD><TD> -t $JAVAMAIL_PROTOCOL -tp $JAVAMAIL_TRANSPORT_PROTOCOL -h $JAVAMAIL_SERVER -th $JAVAMAIL_TRANSPORT_SERVER -u $JAVAMAIL_USERNAME -p $JAVAMAIL_PASSWORD -r $JAVAMAIL_ROOT_PATH -m $JAVAMAIL_MAILBOX</TD></TR>
+<TR><TD><B>keywords</B></TD><TD>positive extensionAPI</TD></TR>
+</TABLE>
+<BR>
+
+<A NAME=addHeader_Test></A>
+<TABLE BORDER class=TestDescription>
+<TR><TD><B>title</B></TD><TD>addHeader() API(s)</TD></TR>
+<TR><TD><B>name</B></TD><TD>addHeader_Test</TD></TR>
+<TR><TD><B>source</B></TD><TD><A HREF=addHeader_Test.java>addHeader_Test.java</A></TD></TR>
+<TR><TD><B>executeClass</B></TD><TD>javasoft.sqe.tests.jakarta.mail.Message.addHeader_Test</TD></TR>
+<TR><TD><B>executeArgs</B></TD><TD> -t $JAVAMAIL_PROTOCOL -tp $JAVAMAIL_TRANSPORT_PROTOCOL -h $JAVAMAIL_SERVER -th $JAVAMAIL_TRANSPORT_SERVER -u $JAVAMAIL_USERNAME -p $JAVAMAIL_PASSWORD -r $JAVAMAIL_ROOT_PATH -m $JAVAMAIL_MAILBOX</TD></TR>
+<TR><TD><B>keywords</B></TD><TD>positive extensionAPI</TD></TR>
+</TABLE>
+<BR>
+
+<A NAME=addRecipient_Test></A>
+<TABLE BORDER class=TestDescription>
+<TR><TD><B>title</B></TD><TD>addRecipient() API(s)</TD></TR>
+<TR><TD><B>name</B></TD><TD>addRecipient_Test</TD></TR>
+<TR><TD><B>source</B></TD><TD><A HREF=addRecipient_Test.java>addRecipient_Test.java</A></TD></TR>
+<TR><TD><B>executeClass</B></TD><TD>javasoft.sqe.tests.jakarta.mail.Message.addRecipient_Test</TD></TR>
+<TR><TD><B>executeArgs</B></TD><TD> -t $JAVAMAIL_PROTOCOL -tp $JAVAMAIL_TRANSPORT_PROTOCOL -h $JAVAMAIL_SERVER -th $JAVAMAIL_TRANSPORT_SERVER -u $JAVAMAIL_USERNAME -p $JAVAMAIL_PASSWORD -r $JAVAMAIL_ROOT_PATH -m $JAVAMAIL_MAILBOX</TD></TR>
+<TR><TD><B>keywords</B></TD><TD>positive extensionAPI</TD></TR>
+</TABLE>
+<BR>
+
+<A NAME=getAllHeaders_Test></A>
+<TABLE BORDER class=TestDescription>
+<TR><TD><B>title</B></TD><TD>getAllHeaders() API(s)</TD></TR>
+<TR><TD><B>name</B></TD><TD>getAllHeaders_Test</TD></TR>
+<TR><TD><B>source</B></TD><TD><A HREF=getAllHeaders_Test.java>getAllHeaders_Test.java</A></TD></TR>
+<TR><TD><B>executeClass</B></TD><TD>javasoft.sqe.tests.jakarta.mail.Message.getAllHeaders_Test</TD></TR>
+<TR><TD><B>executeArgs</B></TD><TD> -t $JAVAMAIL_PROTOCOL -tp $JAVAMAIL_TRANSPORT_PROTOCOL -h $JAVAMAIL_SERVER -th $JAVAMAIL_TRANSPORT_SERVER -u $JAVAMAIL_USERNAME -p $JAVAMAIL_PASSWORD -r $JAVAMAIL_ROOT_PATH -m $JAVAMAIL_MAILBOX</TD></TR>
+<TR><TD><B>keywords</B></TD><TD>positive extensionAPI</TD></TR>
+</TABLE>
+<BR>
+
+<A NAME=getContentType_Test></A>
+<TABLE BORDER class=TestDescription>
+<TR><TD><B>title</B></TD><TD>getContentType() API(s)</TD></TR>
+<TR><TD><B>name</B></TD><TD>getContentType_Test</TD></TR>
+<TR><TD><B>source</B></TD><TD><A HREF=getContentType_Test.java>getContentType_Test.java</A></TD></TR>
+<TR><TD><B>executeClass</B></TD><TD>javasoft.sqe.tests.jakarta.mail.Message.getContentType_Test</TD></TR>
+<TR><TD><B>executeArgs</B></TD><TD> -t $JAVAMAIL_PROTOCOL -tp $JAVAMAIL_TRANSPORT_PROTOCOL -h $JAVAMAIL_SERVER -th $JAVAMAIL_TRANSPORT_SERVER -u $JAVAMAIL_USERNAME -p $JAVAMAIL_PASSWORD -r $JAVAMAIL_ROOT_PATH -m $JAVAMAIL_MAILBOX</TD></TR>
+<TR><TD><B>keywords</B></TD><TD>positive extensionAPI</TD></TR>
+</TABLE>
+<BR>
+
+<A NAME=getContent_Test></A>
+<TABLE BORDER class=TestDescription>
+<TR><TD><B>title</B></TD><TD>getContent() API(s)</TD></TR>
+<TR><TD><B>name</B></TD><TD>getContent_Test</TD></TR>
+<TR><TD><B>source</B></TD><TD><A HREF=getContent_Test.java>getContent_Test.java</A></TD></TR>
+<TR><TD><B>executeClass</B></TD><TD>javasoft.sqe.tests.jakarta.mail.Message.getContent_Test</TD></TR>
+<TR><TD><B>executeArgs</B></TD><TD> -t $JAVAMAIL_PROTOCOL -tp $JAVAMAIL_TRANSPORT_PROTOCOL -h $JAVAMAIL_SERVER -th $JAVAMAIL_TRANSPORT_SERVER -u $JAVAMAIL_USERNAME -p $JAVAMAIL_PASSWORD -r $JAVAMAIL_ROOT_PATH -m $JAVAMAIL_MAILBOX</TD></TR>
+<TR><TD><B>keywords</B></TD><TD>positive extensionAPI</TD></TR>
+</TABLE>
+<BR>
+
+<A NAME=getDataHandler_Test></A>
+<TABLE BORDER class=TestDescription>
+<TR><TD><B>title</B></TD><TD>getDataHandler() API(s)</TD></TR>
+<TR><TD><B>name</B></TD><TD>getDataHandler_Test</TD></TR>
+<TR><TD><B>source</B></TD><TD><A HREF=getDataHandler_Test.java>getDataHandler_Test.java</A></TD></TR>
+<TR><TD><B>executeClass</B></TD><TD>javasoft.sqe.tests.jakarta.mail.Message.getDataHandler_Test</TD></TR>
+<TR><TD><B>executeArgs</B></TD><TD> -t $JAVAMAIL_PROTOCOL -tp $JAVAMAIL_TRANSPORT_PROTOCOL -h $JAVAMAIL_SERVER -th $JAVAMAIL_TRANSPORT_SERVER -u $JAVAMAIL_USERNAME -p $JAVAMAIL_PASSWORD -r $JAVAMAIL_ROOT_PATH -m $JAVAMAIL_MAILBOX</TD></TR>
+<TR><TD><B>keywords</B></TD><TD>positive extensionAPI</TD></TR>
+</TABLE>
+<BR>
+
+<A NAME=getDescription_Test></A>
+<TABLE BORDER class=TestDescription>
+<TR><TD><B>title</B></TD><TD>getDescription() API(s)</TD></TR>
+<TR><TD><B>name</B></TD><TD>getDescription_Test</TD></TR>
+<TR><TD><B>source</B></TD><TD><A HREF=getDescription_Test.java>getDescription_Test.java</A></TD></TR>
+<TR><TD><B>executeClass</B></TD><TD>javasoft.sqe.tests.jakarta.mail.Message.getDescription_Test</TD></TR>
+<TR><TD><B>executeArgs</B></TD><TD> -t $JAVAMAIL_PROTOCOL -tp $JAVAMAIL_TRANSPORT_PROTOCOL -h $JAVAMAIL_SERVER -th $JAVAMAIL_TRANSPORT_SERVER -u $JAVAMAIL_USERNAME -p $JAVAMAIL_PASSWORD -r $JAVAMAIL_ROOT_PATH -m $JAVAMAIL_MAILBOX</TD></TR>
+<TR><TD><B>keywords</B></TD><TD>positive extensionAPI</TD></TR>
+</TABLE>
+<BR>
+
+<A NAME=getDisposition_Test></A>
+<TABLE BORDER class=TestDescription>
+<TR><TD><B>title</B></TD><TD>getDisposition() API(s)</TD></TR>
+<TR><TD><B>name</B></TD><TD>getDisposition_Test</TD></TR>
+<TR><TD><B>source</B></TD><TD><A HREF=getDisposition_Test.java>getDisposition_Test.java</A></TD></TR>
+<TR><TD><B>executeClass</B></TD><TD>javasoft.sqe.tests.jakarta.mail.Message.getDisposition_Test</TD></TR>
+<TR><TD><B>executeArgs</B></TD><TD> -t $JAVAMAIL_PROTOCOL -tp $JAVAMAIL_TRANSPORT_PROTOCOL -h $JAVAMAIL_SERVER -th $JAVAMAIL_TRANSPORT_SERVER -u $JAVAMAIL_USERNAME -p $JAVAMAIL_PASSWORD -r $JAVAMAIL_ROOT_PATH -m $JAVAMAIL_MAILBOX</TD></TR>
+<TR><TD><B>keywords</B></TD><TD>positive extensionAPI</TD></TR>
+</TABLE>
+<BR>
+
+<A NAME=getFileName_Test></A>
+<TABLE BORDER class=TestDescription>
+<TR><TD><B>title</B></TD><TD>getFileName() API(s)</TD></TR>
+<TR><TD><B>name</B></TD><TD>getFileName_Test</TD></TR>
+<TR><TD><B>source</B></TD><TD><A HREF=getFileName_Test.java>getFileName_Test.java</A></TD></TR>
+<TR><TD><B>executeClass</B></TD><TD>javasoft.sqe.tests.jakarta.mail.Message.getFileName_Test</TD></TR>
+<TR><TD><B>executeArgs</B></TD><TD> -t $JAVAMAIL_PROTOCOL -tp $JAVAMAIL_TRANSPORT_PROTOCOL -h $JAVAMAIL_SERVER -th $JAVAMAIL_TRANSPORT_SERVER -u $JAVAMAIL_USERNAME -p $JAVAMAIL_PASSWORD -r $JAVAMAIL_ROOT_PATH -m $JAVAMAIL_MAILBOX</TD></TR>
+<TR><TD><B>keywords</B></TD><TD>positive extensionAPI</TD></TR>
+</TABLE>
+<BR>
+
+<A NAME=getFlags_Test></A>
+<TABLE BORDER class=TestDescription>
+<TR><TD><B>title</B></TD><TD>getFlags() API(s)</TD></TR>
+<TR><TD><B>name</B></TD><TD>getFlags_Test</TD></TR>
+<TR><TD><B>source</B></TD><TD><A HREF=getFlags_Test.java>getFlags_Test.java</A></TD></TR>
+<TR><TD><B>executeClass</B></TD><TD>javasoft.sqe.tests.jakarta.mail.Message.getFlags_Test</TD></TR>
+<TR><TD><B>executeArgs</B></TD><TD> -t $JAVAMAIL_PROTOCOL -tp $JAVAMAIL_TRANSPORT_PROTOCOL -h $JAVAMAIL_SERVER -th $JAVAMAIL_TRANSPORT_SERVER -u $JAVAMAIL_USERNAME -p $JAVAMAIL_PASSWORD -r $JAVAMAIL_ROOT_PATH -m $JAVAMAIL_MAILBOX</TD></TR>
+<TR><TD><B>keywords</B></TD><TD>positive extensionAPI</TD></TR>
+</TABLE>
+<BR>
+
+<A NAME=getFolder_Test></A>
+<TABLE BORDER class=TestDescription>
+<TR><TD><B>title</B></TD><TD>getFolder() API(s)</TD></TR>
+<TR><TD><B>name</B></TD><TD>getFolder_Test</TD></TR>
+<TR><TD><B>source</B></TD><TD><A HREF=getFolder_Test.java>getFolder_Test.java</A></TD></TR>
+<TR><TD><B>executeClass</B></TD><TD>javasoft.sqe.tests.jakarta.mail.Message.getFolder_Test</TD></TR>
+<TR><TD><B>executeArgs</B></TD><TD> -t $JAVAMAIL_PROTOCOL -tp $JAVAMAIL_TRANSPORT_PROTOCOL -h $JAVAMAIL_SERVER -th $JAVAMAIL_TRANSPORT_SERVER -u $JAVAMAIL_USERNAME -p $JAVAMAIL_PASSWORD -r $JAVAMAIL_ROOT_PATH -m $JAVAMAIL_MAILBOX</TD></TR>
+<TR><TD><B>keywords</B></TD><TD>positive extensionAPI</TD></TR>
+</TABLE>
+<BR>
+
+<A NAME=getFrom_Test></A>
+<TABLE BORDER class=TestDescription>
+<TR><TD><B>title</B></TD><TD>getFrom() API(s)</TD></TR>
+<TR><TD><B>name</B></TD><TD>getFrom_Test</TD></TR>
+<TR><TD><B>source</B></TD><TD><A HREF=getFrom_Test.java>getFrom_Test.java</A></TD></TR>
+<TR><TD><B>executeClass</B></TD><TD>javasoft.sqe.tests.jakarta.mail.Message.getFrom_Test</TD></TR>
+<TR><TD><B>executeArgs</B></TD><TD> -t $JAVAMAIL_PROTOCOL -tp $JAVAMAIL_TRANSPORT_PROTOCOL -h $JAVAMAIL_SERVER -th $JAVAMAIL_TRANSPORT_SERVER -u $JAVAMAIL_USERNAME -p $JAVAMAIL_PASSWORD -r $JAVAMAIL_ROOT_PATH -m $JAVAMAIL_MAILBOX</TD></TR>
+<TR><TD><B>keywords</B></TD><TD>positive extensionAPI</TD></TR>
+</TABLE>
+<BR>
+
+<A NAME=getHeader_Test></A>
+<TABLE BORDER class=TestDescription>
+<TR><TD><B>title</B></TD><TD>getHeader() API(s)</TD></TR>
+<TR><TD><B>name</B></TD><TD>getHeader_Test</TD></TR>
+<TR><TD><B>source</B></TD><TD><A HREF=getHeader_Test.java>getHeader_Test.java</A></TD></TR>
+<TR><TD><B>executeClass</B></TD><TD>javasoft.sqe.tests.jakarta.mail.Message.getHeader_Test</TD></TR>
+<TR><TD><B>executeArgs</B></TD><TD> -t $JAVAMAIL_PROTOCOL -tp $JAVAMAIL_TRANSPORT_PROTOCOL -h $JAVAMAIL_SERVER -th $JAVAMAIL_TRANSPORT_SERVER -u $JAVAMAIL_USERNAME -p $JAVAMAIL_PASSWORD -r $JAVAMAIL_ROOT_PATH -m $JAVAMAIL_MAILBOX</TD></TR>
+<TR><TD><B>keywords</B></TD><TD>positive extensionAPI</TD></TR>
+</TABLE>
+<BR>
+
+<A NAME=getInputStream_Test></A>
+<TABLE BORDER class=TestDescription>
+<TR><TD><B>title</B></TD><TD>getInputStream() API(s)</TD></TR>
+<TR><TD><B>name</B></TD><TD>getInputStream_Test</TD></TR>
+<TR><TD><B>source</B></TD><TD><A HREF=getInputStream_Test.java>getInputStream_Test.java</A></TD></TR>
+<TR><TD><B>executeClass</B></TD><TD>javasoft.sqe.tests.jakarta.mail.Message.getInputStream_Test</TD></TR>
+<TR><TD><B>executeArgs</B></TD><TD> -t $JAVAMAIL_PROTOCOL -tp $JAVAMAIL_TRANSPORT_PROTOCOL -h $JAVAMAIL_SERVER -th $JAVAMAIL_TRANSPORT_SERVER -u $JAVAMAIL_USERNAME -p $JAVAMAIL_PASSWORD -r $JAVAMAIL_ROOT_PATH -m $JAVAMAIL_MAILBOX</TD></TR>
+<TR><TD><B>keywords</B></TD><TD>positive extensionAPI</TD></TR>
+</TABLE>
+<BR>
+
+<A NAME=getMatchingHeaders_Test></A>
+<TABLE BORDER class=TestDescription>
+<TR><TD><B>title</B></TD><TD>getMatchingHeaders() API(s)</TD></TR>
+<TR><TD><B>name</B></TD><TD>getMatchingHeaders_Test</TD></TR>
+<TR><TD><B>source</B></TD><TD><A HREF=getMatchingHeaders_Test.java>getMatchingHeaders_Test.java</A></TD></TR>
+<TR><TD><B>executeClass</B></TD><TD>javasoft.sqe.tests.jakarta.mail.Message.getMatchingHeaders_Test</TD></TR>
+<TR><TD><B>executeArgs</B></TD><TD> -t $JAVAMAIL_PROTOCOL -tp $JAVAMAIL_TRANSPORT_PROTOCOL -h $JAVAMAIL_SERVER -th $JAVAMAIL_TRANSPORT_SERVER -u $JAVAMAIL_USERNAME -p $JAVAMAIL_PASSWORD -r $JAVAMAIL_ROOT_PATH -m $JAVAMAIL_MAILBOX</TD></TR>
+<TR><TD><B>keywords</B></TD><TD>positive extensionAPI</TD></TR>
+</TABLE>
+<BR>
+
+<A NAME=getMessageNumber_Test></A>
+<TABLE BORDER class=TestDescription>
+<TR><TD><B>title</B></TD><TD>getMessageNumber() API(s)</TD></TR>
+<TR><TD><B>name</B></TD><TD>getMessageNumber_Test</TD></TR>
+<TR><TD><B>source</B></TD><TD><A HREF=getMessageNumber_Test.java>getMessageNumber_Test.java</A></TD></TR>
+<TR><TD><B>executeClass</B></TD><TD>javasoft.sqe.tests.jakarta.mail.Message.getMessageNumber_Test</TD></TR>
+<TR><TD><B>executeArgs</B></TD><TD> -t $JAVAMAIL_PROTOCOL -tp $JAVAMAIL_TRANSPORT_PROTOCOL -h $JAVAMAIL_SERVER -th $JAVAMAIL_TRANSPORT_SERVER -u $JAVAMAIL_USERNAME -p $JAVAMAIL_PASSWORD -r $JAVAMAIL_ROOT_PATH -m $JAVAMAIL_MAILBOX</TD></TR>
+<TR><TD><B>keywords</B></TD><TD>positive extensionAPI</TD></TR>
+</TABLE>
+<BR>
+
+<A NAME=getNonMatchingHeaders_Test></A>
+<TABLE BORDER class=TestDescription>
+<TR><TD><B>title</B></TD><TD>getNonMatchingHeaders() API(s)</TD></TR>
+<TR><TD><B>name</B></TD><TD>getNonMatchingHeaders_Test</TD></TR>
+<TR><TD><B>source</B></TD><TD><A HREF=getNonMatchingHeaders_Test.java>getNonMatchingHeaders_Test.java</A></TD></TR>
+<TR><TD><B>executeClass</B></TD><TD>javasoft.sqe.tests.jakarta.mail.Message.getNonMatchingHeaders_Test</TD></TR>
+<TR><TD><B>executeArgs</B></TD><TD> -t $JAVAMAIL_PROTOCOL -tp $JAVAMAIL_TRANSPORT_PROTOCOL -h $JAVAMAIL_SERVER -th $JAVAMAIL_TRANSPORT_SERVER -u $JAVAMAIL_USERNAME -p $JAVAMAIL_PASSWORD -r $JAVAMAIL_ROOT_PATH -m $JAVAMAIL_MAILBOX</TD></TR>
+<TR><TD><B>keywords</B></TD><TD>positive extensionAPI</TD></TR>
+</TABLE>
+<BR>
+
+<A NAME=getReceivedDate_Test></A>
+<TABLE BORDER class=TestDescription>
+<TR><TD><B>title</B></TD><TD>getReceivedDate() API(s)</TD></TR>
+<TR><TD><B>name</B></TD><TD>getReceivedDate_Test</TD></TR>
+<TR><TD><B>source</B></TD><TD><A HREF=getReceivedDate_Test.java>getReceivedDate_Test.java</A></TD></TR>
+<TR><TD><B>executeClass</B></TD><TD>javasoft.sqe.tests.jakarta.mail.Message.getReceivedDate_Test</TD></TR>
+<TR><TD><B>executeArgs</B></TD><TD> -t $JAVAMAIL_PROTOCOL -tp $JAVAMAIL_TRANSPORT_PROTOCOL -h $JAVAMAIL_SERVER -th $JAVAMAIL_TRANSPORT_SERVER -u $JAVAMAIL_USERNAME -p $JAVAMAIL_PASSWORD -r $JAVAMAIL_ROOT_PATH -m $JAVAMAIL_MAILBOX</TD></TR>
+<TR><TD><B>keywords</B></TD><TD>positive extensionAPI</TD></TR>
+</TABLE>
+<BR>
+
+<A NAME=getRecipients_Test></A>
+<TABLE BORDER class=TestDescription>
+<TR><TD><B>title</B></TD><TD>getRecipients() API(s)</TD></TR>
+<TR><TD><B>name</B></TD><TD>getRecipients_Test</TD></TR>
+<TR><TD><B>source</B></TD><TD><A HREF=getRecipients_Test.java>getRecipients_Test.java</A></TD></TR>
+<TR><TD><B>executeClass</B></TD><TD>javasoft.sqe.tests.jakarta.mail.Message.getRecipients_Test</TD></TR>
+<TR><TD><B>executeArgs</B></TD><TD> -t $JAVAMAIL_PROTOCOL -tp $JAVAMAIL_TRANSPORT_PROTOCOL -h $JAVAMAIL_SERVER -th $JAVAMAIL_TRANSPORT_SERVER -u $JAVAMAIL_USERNAME -p $JAVAMAIL_PASSWORD -r $JAVAMAIL_ROOT_PATH -m $JAVAMAIL_MAILBOX</TD></TR>
+<TR><TD><B>keywords</B></TD><TD>positive extensionAPI</TD></TR>
+</TABLE>
+<BR>
+
+<A NAME=getReplyTo_Test></A>
+<TABLE BORDER class=TestDescription>
+<TR><TD><B>title</B></TD><TD>getReplyTo() API(s)</TD></TR>
+<TR><TD><B>name</B></TD><TD>getReplyTo_Test</TD></TR>
+<TR><TD><B>source</B></TD><TD><A HREF=getReplyTo_Test.java>getReplyTo_Test.java</A></TD></TR>
+<TR><TD><B>executeClass</B></TD><TD>javasoft.sqe.tests.jakarta.mail.Message.getReplyTo_Test</TD></TR>
+<TR><TD><B>executeArgs</B></TD><TD> -t $JAVAMAIL_PROTOCOL -tp $JAVAMAIL_TRANSPORT_PROTOCOL -h $JAVAMAIL_SERVER -th $JAVAMAIL_TRANSPORT_SERVER -u $JAVAMAIL_USERNAME -p $JAVAMAIL_PASSWORD -r $JAVAMAIL_ROOT_PATH -m $JAVAMAIL_MAILBOX</TD></TR>
+<TR><TD><B>keywords</B></TD><TD>positive extensionAPI</TD></TR>
+</TABLE>
+<BR>
+
+<A NAME=getSession_Test></A>
+<TABLE BORDER class=TestDescription>
+<TR><TD><B>title</B></TD><TD>getSession() API(s)</TD></TR>
+<TR><TD><B>name</B></TD><TD>getSession_Test</TD></TR>
+<TR><TD><B>source</B></TD><TD><A HREF=getSession_Test.java>getSession_Test.java</A></TD></TR>
+<TR><TD><B>executeClass</B></TD><TD>javasoft.sqe.tests.jakarta.mail.Message.getSession_Test</TD></TR>
+<TR><TD><B>executeArgs</B></TD><TD> </TD></TR>
+<TR><TD><B>keywords</B></TD><TD>positive extensionAPI</TD></TR>
+</TABLE>
+<BR>
+
+<A NAME=getSize_Test></A>
+<TABLE BORDER class=TestDescription>
+<TR><TD><B>title</B></TD><TD>getSize() API(s)</TD></TR>
+<TR><TD><B>name</B></TD><TD>getSize_Test</TD></TR>
+<TR><TD><B>source</B></TD><TD><A HREF=getSize_Test.java>getSize_Test.java</A></TD></TR>
+<TR><TD><B>executeClass</B></TD><TD>javasoft.sqe.tests.jakarta.mail.Message.getSize_Test</TD></TR>
+<TR><TD><B>executeArgs</B></TD><TD> -t $JAVAMAIL_PROTOCOL -tp $JAVAMAIL_TRANSPORT_PROTOCOL -h $JAVAMAIL_SERVER -th $JAVAMAIL_TRANSPORT_SERVER -u $JAVAMAIL_USERNAME -p $JAVAMAIL_PASSWORD -r $JAVAMAIL_ROOT_PATH -m $JAVAMAIL_MAILBOX</TD></TR>
+<TR><TD><B>keywords</B></TD><TD>positive extensionAPI</TD></TR>
+</TABLE>
+<BR>
+
+<A NAME=getSubject_Test></A>
+<TABLE BORDER class=TestDescription>
+<TR><TD><B>title</B></TD><TD>getSubject() API(s)</TD></TR>
+<TR><TD><B>name</B></TD><TD>getSubject_Test</TD></TR>
+<TR><TD><B>source</B></TD><TD><A HREF=getSubject_Test.java>getSubject_Test.java</A></TD></TR>
+<TR><TD><B>executeClass</B></TD><TD>javasoft.sqe.tests.jakarta.mail.Message.getSubject_Test</TD></TR>
+<TR><TD><B>executeArgs</B></TD><TD> -t $JAVAMAIL_PROTOCOL -tp $JAVAMAIL_TRANSPORT_PROTOCOL -h $JAVAMAIL_SERVER -th $JAVAMAIL_TRANSPORT_SERVER -u $JAVAMAIL_USERNAME -p $JAVAMAIL_PASSWORD -r $JAVAMAIL_ROOT_PATH -m $JAVAMAIL_MAILBOX</TD></TR>
+<TR><TD><B>keywords</B></TD><TD>positive extensionAPI</TD></TR>
+</TABLE>
+<BR>
+
+<A NAME=isExpunged_Test></A>
+<TABLE BORDER class=TestDescription>
+<TR><TD><B>title</B></TD><TD>isExpunged() API(s)</TD></TR>
+<TR><TD><B>name</B></TD><TD>isExpunged_Test</TD></TR>
+<TR><TD><B>source</B></TD><TD><A HREF=isExpunged_Test.java>isExpunged_Test.java</A></TD></TR>
+<TR><TD><B>executeClass</B></TD><TD>javasoft.sqe.tests.jakarta.mail.Message.isExpunged_Test</TD></TR>
+<TR><TD><B>executeArgs</B></TD><TD> -t $JAVAMAIL_PROTOCOL -tp $JAVAMAIL_TRANSPORT_PROTOCOL -h $JAVAMAIL_SERVER -th $JAVAMAIL_TRANSPORT_SERVER -u $JAVAMAIL_USERNAME -p $JAVAMAIL_PASSWORD -r $JAVAMAIL_ROOT_PATH -m $JAVAMAIL_MAILBOX</TD></TR>
+<TR><TD><B>keywords</B></TD><TD>positive extensionAPI</TD></TR>
+</TABLE>
+<BR>
+
+<A NAME=isSet_Test></A>
+<TABLE BORDER class=TestDescription>
+<TR><TD><B>title</B></TD><TD>isSet() API(s)</TD></TR>
+<TR><TD><B>name</B></TD><TD>isSet_Test</TD></TR>
+<TR><TD><B>source</B></TD><TD><A HREF=isSet_Test.java>isSet_Test.java</A></TD></TR>
+<TR><TD><B>executeClass</B></TD><TD>javasoft.sqe.tests.jakarta.mail.Message.isSet_Test</TD></TR>
+<TR><TD><B>executeArgs</B></TD><TD> -t $JAVAMAIL_PROTOCOL -tp $JAVAMAIL_TRANSPORT_PROTOCOL -h $JAVAMAIL_SERVER -th $JAVAMAIL_TRANSPORT_SERVER -u $JAVAMAIL_USERNAME -p $JAVAMAIL_PASSWORD -r $JAVAMAIL_ROOT_PATH -m $JAVAMAIL_MAILBOX</TD></TR>
+<TR><TD><B>keywords</B></TD><TD>positive extensionAPI</TD></TR>
+</TABLE>
+<BR>
+
+<A NAME=match_Test></A>
+<TABLE BORDER class=TestDescription>
+<TR><TD><B>title</B></TD><TD>match() API(s)</TD></TR>
+<TR><TD><B>name</B></TD><TD>match_Test</TD></TR>
+<TR><TD><B>source</B></TD><TD><A HREF=match_Test.java>match_Test.java</A></TD></TR>
+<TR><TD><B>executeClass</B></TD><TD>javasoft.sqe.tests.jakarta.mail.Message.match_Test</TD></TR>
+<TR><TD><B>executeArgs</B></TD><TD> -t $JAVAMAIL_PROTOCOL -tp $JAVAMAIL_TRANSPORT_PROTOCOL -h $JAVAMAIL_SERVER -th $JAVAMAIL_TRANSPORT_SERVER -u $JAVAMAIL_USERNAME -p $JAVAMAIL_PASSWORD -r $JAVAMAIL_ROOT_PATH -m $JAVAMAIL_MAILBOX -s java</TD></TR>
+<TR><TD><B>keywords</B></TD><TD>positive extensionAPI</TD></TR>
+</TABLE>
+<BR>
+
+<A NAME=removeHeader_Test></A>
+<TABLE BORDER class=TestDescription>
+<TR><TD><B>title</B></TD><TD>removeHeader() API(s)</TD></TR>
+<TR><TD><B>name</B></TD><TD>removeHeader_Test</TD></TR>
+<TR><TD><B>source</B></TD><TD><A HREF=removeHeader_Test.java>removeHeader_Test.java</A></TD></TR>
+<TR><TD><B>executeClass</B></TD><TD>javasoft.sqe.tests.jakarta.mail.Message.removeHeader_Test</TD></TR>
+<TR><TD><B>executeArgs</B></TD><TD> -t $JAVAMAIL_PROTOCOL -tp $JAVAMAIL_TRANSPORT_PROTOCOL -h $JAVAMAIL_SERVER -th $JAVAMAIL_TRANSPORT_SERVER -u $JAVAMAIL_USERNAME -p $JAVAMAIL_PASSWORD -r $JAVAMAIL_ROOT_PATH -m $JAVAMAIL_MAILBOX</TD></TR>
+<TR><TD><B>keywords</B></TD><TD>positive extensionAPI</TD></TR>
+</TABLE>
+<BR>
+
+<A NAME=saveChanges_Test></A>
+<TABLE BORDER class=TestDescription>
+<TR><TD><B>title</B></TD><TD>saveChanges() API(s)</TD></TR>
+<TR><TD><B>name</B></TD><TD>saveChanges_Test</TD></TR>
+<TR><TD><B>source</B></TD><TD><A HREF=saveChanges_Test.java>saveChanges_Test.java</A></TD></TR>
+<TR><TD><B>executeClass</B></TD><TD>javasoft.sqe.tests.jakarta.mail.Message.saveChanges_Test</TD></TR>
+<TR><TD><B>executeArgs</B></TD><TD> -t $JAVAMAIL_PROTOCOL -tp $JAVAMAIL_TRANSPORT_PROTOCOL -h $JAVAMAIL_SERVER -th $JAVAMAIL_TRANSPORT_SERVER -u $JAVAMAIL_USERNAME -p $JAVAMAIL_PASSWORD -r $JAVAMAIL_ROOT_PATH -m $JAVAMAIL_MAILBOX -test xyzmail</TD></TR>
+<TR><TD><B>keywords</B></TD><TD>positive extensionAPI</TD></TR>
+</TABLE>
+<BR>
+
+<A NAME=setDataHandler_Test></A>
+<TABLE BORDER class=TestDescription>
+<TR><TD><B>title</B></TD><TD>setDataHandler() API(s)</TD></TR>
+<TR><TD><B>name</B></TD><TD>setDataHandler_Test</TD></TR>
+<TR><TD><B>source</B></TD><TD><A HREF=setDataHandler_Test.java>setDataHandler_Test.java</A></TD></TR>
+<TR><TD><B>executeClass</B></TD><TD>javasoft.sqe.tests.jakarta.mail.Message.setDataHandler_Test</TD></TR>
+<TR><TD><B>executeArgs</B></TD><TD> -t $JAVAMAIL_PROTOCOL -tp $JAVAMAIL_TRANSPORT_PROTOCOL -h $JAVAMAIL_SERVER -th $JAVAMAIL_TRANSPORT_SERVER -u $JAVAMAIL_USERNAME -p $JAVAMAIL_PASSWORD -r $JAVAMAIL_ROOT_PATH -m $JAVAMAIL_MAILBOX</TD></TR>
+<TR><TD><B>keywords</B></TD><TD>positive extensionAPI</TD></TR>
+</TABLE>
+<BR>
+
+<A NAME=setFileName_Test></A>
+<TABLE BORDER class=TestDescription>
+<TR><TD><B>title</B></TD><TD>setFileName() API(s)</TD></TR>
+<TR><TD><B>name</B></TD><TD>setFileName_Test</TD></TR>
+<TR><TD><B>source</B></TD><TD><A HREF=setFileName_Test.java>setFileName_Test.java</A></TD></TR>
+<TR><TD><B>executeClass</B></TD><TD>javasoft.sqe.tests.jakarta.mail.Message.setFileName_Test</TD></TR>
+<TR><TD><B>executeArgs</B></TD><TD> -t $JAVAMAIL_PROTOCOL -tp $JAVAMAIL_TRANSPORT_PROTOCOL -h $JAVAMAIL_SERVER -th $JAVAMAIL_TRANSPORT_SERVER -u $JAVAMAIL_USERNAME -p $JAVAMAIL_PASSWORD -r $JAVAMAIL_ROOT_PATH -m $JAVAMAIL_MAILBOX</TD></TR>
+<TR><TD><B>keywords</B></TD><TD>positive extensionAPI</TD></TR>
+</TABLE>
+<BR>
+
+<A NAME=setFlag_Test></A>
+<TABLE BORDER class=TestDescription>
+<TR><TD><B>title</B></TD><TD>setFlag() API(s)</TD></TR>
+<TR><TD><B>name</B></TD><TD>setFlag_Test</TD></TR>
+<TR><TD><B>source</B></TD><TD><A HREF=setFlag_Test.java>setFlag_Test.java</A></TD></TR>
+<TR><TD><B>executeClass</B></TD><TD>javasoft.sqe.tests.jakarta.mail.Message.setFlag_Test</TD></TR>
+<TR><TD><B>executeArgs</B></TD><TD> -t $JAVAMAIL_PROTOCOL -tp $JAVAMAIL_TRANSPORT_PROTOCOL -h $JAVAMAIL_SERVER -th $JAVAMAIL_TRANSPORT_SERVER -u $JAVAMAIL_USERNAME -p $JAVAMAIL_PASSWORD -r $JAVAMAIL_ROOT_PATH -m $JAVAMAIL_MAILBOX</TD></TR>
+<TR><TD><B>keywords</B></TD><TD>positive extensionAPI</TD></TR>
+</TABLE>
+<BR>
+
+<A NAME=setFrom_Test></A>
+<TABLE BORDER class=TestDescription>
+<TR><TD><B>title</B></TD><TD>setFrom() API(s)</TD></TR>
+<TR><TD><B>name</B></TD><TD>setFrom_Test</TD></TR>
+<TR><TD><B>source</B></TD><TD><A HREF=setFrom_Test.java>setFrom_Test.java</A></TD></TR>
+<TR><TD><B>executeClass</B></TD><TD>javasoft.sqe.tests.jakarta.mail.Message.setFrom_Test</TD></TR>
+<TR><TD><B>executeArgs</B></TD><TD> -t $JAVAMAIL_PROTOCOL -tp $JAVAMAIL_TRANSPORT_PROTOCOL -h $JAVAMAIL_SERVER -th $JAVAMAIL_TRANSPORT_SERVER -u $JAVAMAIL_USERNAME -p $JAVAMAIL_PASSWORD -r $JAVAMAIL_ROOT_PATH -m $JAVAMAIL_MAILBOX</TD></TR>
+<TR><TD><B>keywords</B></TD><TD>positive extensionAPI</TD></TR>
+</TABLE>
+<BR>
+
+<A NAME=setHeader_Test></A>
+<TABLE BORDER class=TestDescription>
+<TR><TD><B>title</B></TD><TD>setHeader() API(s)</TD></TR>
+<TR><TD><B>name</B></TD><TD>setHeader_Test</TD></TR>
+<TR><TD><B>source</B></TD><TD><A HREF=setHeader_Test.java>setHeader_Test.java</A></TD></TR>
+<TR><TD><B>executeClass</B></TD><TD>javasoft.sqe.tests.jakarta.mail.Message.setHeader_Test</TD></TR>
+<TR><TD><B>executeArgs</B></TD><TD> -t $JAVAMAIL_PROTOCOL -tp $JAVAMAIL_TRANSPORT_PROTOCOL -h $JAVAMAIL_SERVER -th $JAVAMAIL_TRANSPORT_SERVER -u $JAVAMAIL_USERNAME -p $JAVAMAIL_PASSWORD -r $JAVAMAIL_ROOT_PATH -m $JAVAMAIL_MAILBOX</TD></TR>
+<TR><TD><B>keywords</B></TD><TD>positive extensionAPI</TD></TR>
+</TABLE>
+<BR>
+
+<A NAME=setRecipients_Test></A>
+<TABLE BORDER class=TestDescription>
+<TR><TD><B>title</B></TD><TD>setRecipients() API(s)</TD></TR>
+<TR><TD><B>name</B></TD><TD>setRecipients_Test</TD></TR>
+<TR><TD><B>source</B></TD><TD><A HREF=setRecipients_Test.java>setRecipients_Test.java</A></TD></TR>
+<TR><TD><B>executeClass</B></TD><TD>javasoft.sqe.tests.jakarta.mail.Message.setRecipients_Test</TD></TR>
+<TR><TD><B>executeArgs</B></TD><TD> -t $JAVAMAIL_PROTOCOL -tp $JAVAMAIL_TRANSPORT_PROTOCOL -h $JAVAMAIL_SERVER -th $JAVAMAIL_TRANSPORT_SERVER -u $JAVAMAIL_USERNAME -p $JAVAMAIL_PASSWORD -r $JAVAMAIL_ROOT_PATH -m $JAVAMAIL_MAILBOX</TD></TR>
+<TR><TD><B>keywords</B></TD><TD>positive extensionAPI</TD></TR>
+</TABLE>
+<BR>
+
+<A NAME=setReplyTo_Test></A>
+<TABLE BORDER class=TestDescription>
+<TR><TD><B>title</B></TD><TD>setReplyTo() API(s)</TD></TR>
+<TR><TD><B>name</B></TD><TD>setReplyTo_Test</TD></TR>
+<TR><TD><B>source</B></TD><TD><A HREF=setReplyTo_Test.java>setReplyTo_Test.java</A></TD></TR>
+<TR><TD><B>executeClass</B></TD><TD>javasoft.sqe.tests.jakarta.mail.Message.setReplyTo_Test</TD></TR>
+<TR><TD><B>executeArgs</B></TD><TD> -t $JAVAMAIL_PROTOCOL -tp $JAVAMAIL_TRANSPORT_PROTOCOL -h $JAVAMAIL_SERVER -th $JAVAMAIL_TRANSPORT_SERVER -u $JAVAMAIL_USERNAME -p $JAVAMAIL_PASSWORD -r $JAVAMAIL_ROOT_PATH -m $JAVAMAIL_MAILBOX -to $SMTP_TO</TD></TR>
+<TR><TD><B>keywords</B></TD><TD>positive extensionAPI</TD></TR>
+</TABLE>
+<BR>
+
+<A NAME=setSubject_Test></A>
+<TABLE BORDER class=TestDescription>
+<TR><TD><B>title</B></TD><TD>setSubject() API(s)</TD></TR>
+<TR><TD><B>name</B></TD><TD>setSubject_Test</TD></TR>
+<TR><TD><B>source</B></TD><TD><A HREF=setSubject_Test.java>setSubject_Test.java</A></TD></TR>
+<TR><TD><B>executeClass</B></TD><TD>javasoft.sqe.tests.jakarta.mail.Message.setSubject_Test</TD></TR>
+<TR><TD><B>executeArgs</B></TD><TD> -t $JAVAMAIL_PROTOCOL -tp $JAVAMAIL_TRANSPORT_PROTOCOL -h $JAVAMAIL_SERVER -th $JAVAMAIL_TRANSPORT_SERVER -u $JAVAMAIL_USERNAME -p $JAVAMAIL_PASSWORD -r $JAVAMAIL_ROOT_PATH -m $JAVAMAIL_MAILBOX</TD></TR>
+<TR><TD><B>keywords</B></TD><TD>positive extensionAPI</TD></TR>
+</TABLE>
+<BR>
+
+<A NAME=setFileNameTest_encodeTrue_decodeFalseTest></A>
+<TABLE BORDER class=TestDescription>
+<TR><TD><B>title</B></TD><TD>setFileName() API(s) with mail.mime.encodefilename=true and mail.mime.decodefilename=false</TD></TR>
+<TR><TD><B>name</B></TD><TD>setFileNameTest_encodeTrue_decodeFalseTest</TD></TR>
+<TR><TD><B>source</B></TD><TD><A HREF=setFileNameTest_encodeTrue_decodeFalseTest.java>setFileNameTest_encodeTrue_decodeFalse.java</A></TD></TR>
+<TR><TD><B>executeClass</B></TD><TD>javasoft.sqe.tests.jakarta.mail.Message.setFileNameTest_encodeTrue_decodeFalseTest</TD></TR>
+<TR><TD><B>executeArgs</B></TD><TD> -t $JAVAMAIL_PROTOCOL -tp $JAVAMAIL_TRANSPORT_PROTOCOL -h $JAVAMAIL_SERVER -th $JAVAMAIL_TRANSPORT_SERVER -u $JAVAMAIL_USERNAME -p $JAVAMAIL_PASSWORD -r $JAVAMAIL_ROOT_PATH -m $JAVAMAIL_MAILBOX</TD></TR>
+<TR><TD><B>keywords</B></TD><TD>positive extensionAPI</TD></TR>
+</TABLE>
+<BR>
+
+<A NAME=setFileNameTest_encodeFalse_decodeTrueTest></A>
+<TABLE BORDER class=TestDescription>
+<TR><TD><B>title</B></TD><TD>setFileName() API(s) with mail.mime.encodefilename=false and mail.mime.decodefilename=true</TD></TR>
+<TR><TD><B>name</B></TD><TD>setFileNameTest_encodeFalse_decodeTrueTest</TD></TR>
+<TR><TD><B>source</B></TD><TD><A HREF=setFileNameTest_encodeFalse_decodeTrue.java>setFileNameTest_encodeFalse_decodeTrueTest.java</A></TD></TR>
+<TR><TD><B>executeClass</B></TD><TD>javasoft.sqe.tests.jakarta.mail.Message.setFileNameTest_encodeFalse_decodeTrueTest</TD></TR>
+<TR><TD><B>executeArgs</B></TD><TD> -t $JAVAMAIL_PROTOCOL -tp $JAVAMAIL_TRANSPORT_PROTOCOL -h $JAVAMAIL_SERVER -th $JAVAMAIL_TRANSPORT_SERVER -u $JAVAMAIL_USERNAME -p $JAVAMAIL_PASSWORD -r $JAVAMAIL_ROOT_PATH -m $JAVAMAIL_MAILBOX</TD></TR>
+<TR><TD><B>keywords</B></TD><TD>positive extensionAPI</TD></TR> 
+</TABLE>
+<BR>
+
+<HR>
+
+</BODY>
+</HTML>

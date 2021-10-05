@@ -1,3 +1,0 @@
-name=Jakarta Mail 2.0 TCK
-classpath=$TS_HOME/classes
-testsuite=com.oracle.ts.lib.harness.TS
