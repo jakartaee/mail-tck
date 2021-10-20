@@ -41,7 +41,26 @@ It also verifies the existence and correct modifiers of public fields.
 		-ClassPath $LOCAL_CLASSES
 		-TestURL $testURL
 		-Package jakarta.mail
-		-FileName jakarta.mail_2.1_java_${java.specification.version}.sig
+		-FileName jakarta.mail_2.1.sig
+		-exclude java.util.Map
+	    -exclude java.lang.Object
+	    -exclude java.io.ByteArrayInputStream
+	    -exclude java.io.InputStream
+	    -exclude java.lang.Deprecated
+	    -exclude java.io.Writer
+	    -exclude java.io.OutputStream
+	    -exclude java.util.List
+	    -exclude java.util.Collection
+	    -exclude java.lang.instrument.IllegalClassFormatException
+	    -exclude javax.transaction.xa.XAException
+	    -exclude javax.xml.transform.sax
+	    -exclude java.lang.annotation.Repeatable
+	    -exclude java.lang.InterruptedException
+	    -exclude java.lang.CloneNotSupportedException
+	    -exclude java.lang.Throwable
+	    -exclude java.lang.Thread
+	    -exclude java.lang.Enum
+	    -exclude org.xml.sax
 	<TR><TD><B>keywords</B> <TD>extensionAPI
 </TABLE>
 
