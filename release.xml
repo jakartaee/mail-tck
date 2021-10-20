@@ -27,7 +27,7 @@
         <mkdir dir="${basedir}/docs/javadocs"/>
         <javadoc 
             destdir="${basedir}/docs/javadocs" 
-            source="9" 
+            source="11" 
             notree="false" 
             use="true" 
             nonavbar="false" 
@@ -40,10 +40,14 @@
             <sourcepath>
                 <pathelement location="${basedir}/tests/api"/>
             </sourcepath>
+            <modulepath>
+                <pathelement path="${module.path}"/>
+            </modulepath>
             <classpath>
                 <pathelement path="${class.path}"/>
             </classpath>
             <fileset dir="${basedir}/tests/api"/>
+        	<arg line="--add-modules ALL-MODULE-PATH"/>
         </javadoc>
     </target>
 
