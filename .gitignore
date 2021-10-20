@@ -11,3 +11,9 @@ target/
 published/
 jakarta.mail.jar
 jakarta.activation.jar
+
+.classpath
+.project
+.settings/
+.idea
+.m2
