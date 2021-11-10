@@ -20,8 +20,8 @@
 <project name="mailtck" default="default" basedir="." xmlns:if="ant:if">
     <description>Builds and runs the project mailtck.</description>
 
-    <property name="version" value="2.0"/>
-    <property name="version.tck" value="2.0.1"/>
+    <property name="version" value="2.1"/>
+    <property name="version.tck" value="2.1.0"/>
 
     <property environment="env"/>
     <dirname property="mailtck.basedir" file="${ant.file.mailtck}"/>
