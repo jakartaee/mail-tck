@@ -22,10 +22,23 @@ else
   exit 1
 fi
 
-if [[ "$JDK" == "JDK11" || "$JDK" == "jdk11" ]];then
-  export JAVA_HOME=${JDK11_HOME}
-  export PATH=$JAVA_HOME/bin:$PATH
-fi
+export JAVA_HOME=${JDK11_HOME}
+
+if [[ "$JDK" == "JDK12" || "$JDK" == "jdk12" ]];then
+  export JAVA_HOME=${JDK12_HOME}
+elif [[ "$JDK" == "JDK13" || "$JDK" == "jdk13" ]];then
+  export JAVA_HOME=${JDK13_HOME}
+elif [[ "$JDK" == "JDK14" || "$JDK" == "jdk14" ]];then
+  export JAVA_HOME=${JDK14_HOME}
+elif [[ "$JDK" == "JDK15" || "$JDK" == "jdk15" ]];then
+  export JAVA_HOME=${JDK15_HOME}
+elif [[ "$JDK" == "JDK16" || "$JDK" == "jdk16" ]];then
+  export JAVA_HOME=${JDK16_HOME}
+elif [[ "$JDK" == "JDK17" || "$JDK" == "jdk17" ]];then
+  export JAVA_HOME=${JDK17_HOME}
+fi  
+
+export PATH=$JAVA_HOME/bin:$PATH
   
 export TS_HOME=${WORKSPACE}/mail-tck
 
@@ -46,10 +59,10 @@ mkdir -p ${HOME}/.m2
 
 WGET_PROPS="--progress=bar:force --no-cache"
 if [ -z "$JAF_BUNDLE_URL" ];then
-  export JAF_BUNDLE_URL=https://jakarta.oss.sonatype.org/content/repositories/staging/jakarta/activation/jakarta.activation-api/2.1.0-RC1/jakarta.activation-api-2.1.0-RC1.jar
+  export JAF_BUNDLE_URL=https://jakarta.oss.sonatype.org/content/repositories/staging/jakarta/activation/jakarta.activation-api/2.1.0/jakarta.activation-api-2.1.0.jar
 fi
 if [ -z "$MAIL_BUNDLE_URL" ];then
-  export MAIL_BUNDLE_URL=https://jakarta.oss.sonatype.org/content/repositories/staging/jakarta/mail/jakarta.mail-api/2.1.0-RC1/jakarta.mail-api-2.1.0-RC1.jar
+  export MAIL_BUNDLE_URL=https://jakarta.oss.sonatype.org/content/repositories/staging/jakarta/mail/jakarta.mail-api/2.1.0/jakarta.mail-api-2.1.0.jar
 fi
 wget $WGET_PROPS $JAF_BUNDLE_URL -O jakarta.activation.jar
 wget $WGET_PROPS $MAIL_BUNDLE_URL -O jakarta.mail.jar
