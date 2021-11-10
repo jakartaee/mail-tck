@@ -58,7 +58,7 @@ spec:
            defaultValue: '',
            description: 'Base URL required for downloading prebuilt binary TCK Bundle from a hosted location' )
     string(name: 'TCK_BUNDLE_FILE_NAME', 
-           defaultValue: 'mail-tck-2.0.0.zip', 
+           defaultValue: 'mail-tck-2.1.0.zip', 
 	   description: 'Name of bundle file to be appended to the base url' )
     choice(name: 'JDK', choices: 'JDK11',
            description: 'Java SE Version to be used for running TCK either JDK11' )
