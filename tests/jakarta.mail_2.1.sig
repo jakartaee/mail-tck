@@ -213,7 +213,7 @@ supr jakarta.mail.MessagingException
 hfds serialVersionUID
 
 CLSS public abstract interface !annotation jakarta.mail.MailSessionDefinition
- anno 0 java.lang.annotation.Repeatable(java.lang.Class<? extends java.lang.annotation.Annotation> value=class jakarta.mail.MailSessionDefinitions)
+ anno 0 java.lang.annotation.Repeatable(java.lang.Class<? extends java.lang.annotation.Annotation> value=interface jakarta.mail.MailSessionDefinitions)
  anno 0 java.lang.annotation.Retention(java.lang.annotation.RetentionPolicy value=RUNTIME)
  anno 0 java.lang.annotation.Target(java.lang.annotation.ElementType[] value=[TYPE])
 intf java.lang.annotation.Annotation
