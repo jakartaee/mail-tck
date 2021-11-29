@@ -55,6 +55,20 @@ sed -i "s#^SMTP_DOMAIN=.*#SMTP_DOMAIN=james.local#g" "$TS_HOME/lib/ts.jte"
 sed -i "s#^SMTP_FROM=.*#SMTP_FROM=user01@james.local#g" "$TS_HOME/lib/ts.jte"
 sed -i "s#^SMTP_TO=.*#SMTP_TO=user01@james.local#g" "$TS_HOME/lib/ts.jte"
 
+
+sed -i "s#^TS_HOME=.*#TS_HOME=$TS_HOME#g" "$TS_HOME/lib/ts.pluggability.jte"
+sed -i "s#^JAVA_HOME=.*#JAVA_HOME=$JAVA_HOME#g" "$TS_HOME/lib/ts.pluggability.jte"
+sed -i "s#^JARPATH=.*#JARPATH=$WORKSPACE#g" "$TS_HOME/lib/ts.pluggability.jte"
+sed -i "s#^JAVAMAIL_SERVER=.*#JAVAMAIL_SERVER=localhost -pn 1143#g" "$TS_HOME/lib/ts.pluggability.jte"
+sed -i "s#^JAVAMAIL_PROTOCOL=.*#JAVAMAIL_PROTOCOL=imap#g" "$TS_HOME/lib/ts.pluggability.jte"
+sed -i "s#^JAVAMAIL_TRANSPORT_PROTOCOL=.*#JAVAMAIL_TRANSPORT_PROTOCOL=smtp#g" "$TS_HOME/lib/ts.pluggability.jte"
+sed -i "s#^JAVAMAIL_TRANSPORT_SERVER=.*#JAVAMAIL_TRANSPORT_SERVER=localhost -tpn 1025#g" "$TS_HOME/lib/ts.pluggability.jte"
+sed -i "s#^JAVAMAIL_USERNAME=.*#JAVAMAIL_USERNAME=$MAIL_USER#g" "$TS_HOME/lib/ts.pluggability.jte"
+sed -i "s#^JAVAMAIL_PASSWORD=.*#JAVAMAIL_PASSWORD=1234#g" "$TS_HOME/lib/ts.pluggability.jte"
+sed -i "s#^SMTP_DOMAIN=.*#SMTP_DOMAIN=james.local#g" "$TS_HOME/lib/ts.pluggability.jte"
+sed -i "s#^SMTP_FROM=.*#SMTP_FROM=user01@james.local#g" "$TS_HOME/lib/ts.pluggability.jte"
+sed -i "s#^SMTP_TO=.*#SMTP_TO=user01@james.local#g" "$TS_HOME/lib/ts.pluggability.jte"
+
 mkdir -p ${HOME}/.m2
 
 WGET_PROPS="--progress=bar:force --no-cache"
@@ -64,11 +78,40 @@ fi
 if [ -z "$MAIL_BUNDLE_URL" ];then
   export MAIL_BUNDLE_URL=https://jakarta.oss.sonatype.org/content/repositories/staging/jakarta/mail/jakarta.mail-api/2.1.0/jakarta.mail-api-2.1.0.jar
 fi
-wget $WGET_PROPS $JAF_BUNDLE_URL -O jakarta.activation.jar
-wget $WGET_PROPS $MAIL_BUNDLE_URL -O jakarta.mail.jar
+if [ -z "$ANGUS_BUNDLE_URL" ];then
+  export ANGUS_BUNDLE_URL=https://jakarta.oss.sonatype.org/content/repositories/staging/org/eclipse/angus/angus-mail/1.0.0-SNAPSHOT/angus-mail-1.0.0-20211103.105245-4.jar
+fi
+if [ -z "$ANGUS_ACTIVATION_BUNDLE_URL" ];then
+  export ANGUS_ACTIVATION_BUNDLE_URL=https://jakarta.oss.sonatype.org/content/repositories/staging/org/eclipse/angus/angus-activation/1.0.0-SNAPSHOT/angus-activation-1.0.0-20211201.124130-9.jar
+fi
+
+wget $WGET_PROPS $JAF_BUNDLE_URL -O ${WORKSPACE}/jakarta.activation-api.jar
+wget $WGET_PROPS $MAIL_BUNDLE_URL -O ${WORKSPACE}/jakarta.mail-api.jar
+wget $WGET_PROPS $ANGUS_BUNDLE_URL -O ${WORKSPACE}/angus-mail.jar
+wget $WGET_PROPS $ANGUS_ACTIVATION_BUNDLE_URL -O ${WORKSPACE}/angus-activation.jar
+
+if [ -z "$GF_BUNDLE_URL" ]; then
+  echo "Using default url for GF bundle: $DEFAULT_GF_BUNDLE_URL"
+  export GF_BUNDLE_URL=$DEFAULT_GF_BUNDLE_URL
+fi
+
+wget $WGET_PROPS $GF_BUNDLE_URL -O latest-glassfish.zip
+unzip -q -o latest-glassfish.zip
+
+TOP_GLASSFISH_DIR="glassfish7"
+chmod -R 777 ${TOP_GLASSFISH_DIR}
+
+if [[ "$RUNTIME" == "Glassfish" ]]; then
+  sed -i "s#^JARPATH=.*#JARPATH=$WORKSPACE/$TOP_GLASSFISH_DIR/glassfish/modules#g" ${TS_HOME}/lib/ts.jte
+  sed -i "s#^JARPATH=.*#JARPATH=$WORKSPACE/$TOP_GLASSFISH_DIR/glassfish/modules#g" ${TS_HOME}/lib/ts.pluggability.jte
+  export CLASSPATH=$TS_HOME/tests/mailboxes:$WORKSPACE/$TOP_GLASSFISH_DIR/glassfish/modules/jakarta.mail-api.jar:$WORKSPACE/$TOP_GLASSFISH_DIR/glassfish/modules/jakarta.activation-api.jar:$WORKSPACE/$TOP_GLASSFISH_DIR/glassfish/modules/angus-mail.jar:$WORKSPACE/$TOP_GLASSFISH_DIR/glassfish/modules/angus-activation.jar:$CLASSPATH
+else 
+  sed -i "s#^JARPATH=.*#JARPATH=$WORKSPACE#g" ${TS_HOME}/lib/ts.jte
+  sed -i "s#^JARPATH=.*#JARPATH=$WORKSPACE#g" ${TS_HOME}/lib/ts.pluggability.jte
+  export CLASSPATH=$TS_HOME/tests/mailboxes:$WORKSPACE/jakarta.mail-api.jar:$WORKSPACE/jakarta.activation-api.jar:$WORKSPACE/angus-mail.jar:${WORKSPACE}/angus-activation.jar:$CLASSPATH
+fi
 
 cd $TS_HOME/tests/mailboxes
-export CLASSPATH=$TS_HOME/tests/mailboxes:$WORKSPACE/jakarta.mail.jar:$WORKSPACE/jakarta.activation.jar:$CLASSPATH
 javac -cp $CLASSPATH fpopulate.java
 java -cp $CLASSPATH fpopulate -s test1 -d imap://user01%40james.local:1234@localhost:1143
 
@@ -76,7 +119,7 @@ which ant
 ant -version
 
 cd $WORKSPACE/mail-tck/
-ant -Dreport.dir=$WORKSPACE/JTreport/mail-tck -Dwork.dir=$WORKSPACE/JTwork/mail-tck run
+ant -Dreport.dir=$WORKSPACE/JTreport/mail-tck -Dwork.dir=$WORKSPACE/JTwork/mail-tck run run.pluggability
 
 
 HOST=`hostname -f`

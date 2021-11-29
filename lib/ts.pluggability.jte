@@ -1,5 +1,5 @@
 #
-# Copyright (c) 2020 Oracle and/or its affiliates. All rights reserved.
+# Copyright (c) 2021 Oracle and/or its affiliates. All rights reserved.
 #
 # This program and the accompanying materials are made available under the
 # terms of the Eclipse Public License v. 2.0, which is available at
@@ -49,15 +49,15 @@ JARPATH=.
 # Adjust these as necessary for Windows or UNIX
 # (Must use "${JARPATH}" syntax so ant will expand the nested properties)
 
-API_JAR=${JARPATH}/jakarta.mail-api.jar:${JARPATH}/jakarta.activation-api.jar:
+API_JAR=${JARPATH}/jakarta.mail-api.jar:${JARPATH}/jakarta.activation-api.jar
 
-##CI_JAR=${JARPATH}/angus-mail.jar:${JARPATH}/angus-activation.jar
-CI_JAR=${JARPATH}/angus-mail.jar:${JARPATH}/angus-activation.jar
+##CI_JAR=$TS_HOME/classes-providers/mail_alternate_provider.jar:${JARPATH}/angus-activation.jar
+CI_JAR=$TS_HOME/classes-providers/mail_alternate_provider.jar:${JARPATH}/angus-activation.jar
 # Or use the following if testing modules:
 #CI_JAR=${JARPATH}/smtp.jar:${JARPATH}/imap.jar
 
-##TESTCLASS=$TS_HOME\\classes
-TESTCLASS=$TS_HOME/classes
+##TESTCLASS=$TS_HOME\\classes-pluggability
+TESTCLASS=$TS_HOME/classes-pluggability
 
 ##extraOtherJVMClassPath=$TS_HOME\\sigtest.jar;$API_JAR;$CI_JAR;$TESTCLASS
 extraOtherJVMClassPath=$TS_HOME/sigtest.jar:$API_JAR:$CI_JAR:$TESTCLASS
@@ -122,7 +122,7 @@ env.mailUnix.script=$TCKScript
 # The runtime to be tested ...
 #
 env.mailUnix.command.execute=$ExecTCKTestOtherJVMCmd \
-	CLASSPATH=$testSuiteRootDir/../classes$:$testClassDir:\
+	CLASSPATH=$testSuiteRootDir/../classes-pluggability$:$testClassDir:\
 	$javatestClassDir$:$extraOtherJVMClassPath \
 	HOME=${user.home} \
 	$JAVA_HOME/bin/java -verify $testExecuteClass $testExecuteArgs $testDebug
@@ -140,7 +140,7 @@ env.mailUnixMod.script=$TCKScript
 # The runtime to be tested ...
 #
 env.mailUnixMod.command.execute=$ExecTCKTestOtherJVMCmd \
-	CLASSPATH=$testSuiteRootDir/../classes$:$testClassDir:\
+	CLASSPATH=$testSuiteRootDir/../classes-pluggability$:$testClassDir:\
 	$javatestClassDir$:$extraOtherJVMClassPath \
 	HOME=${user.home} \
 	$JAVA_HOME/bin/java -verify \
@@ -172,7 +172,7 @@ env.mailWindows.script=$TCKScript
 # JavaTest, which might in turn be set from your Windows SystemRoot variable.
 #
 env.mailWindows.command.execute=$ExecTCKTestOtherJVMCmd \
-	CLASSPATH=$testSuiteRootDir$/..$/classes$:$javatestClassDir$:$extraOtherJVMClassPath \
+	CLASSPATH=$testSuiteRootDir$/..$/classes-pluggability$:$javatestClassDir$:$extraOtherJVMClassPath \
 	SystemRoot=${SYSTEMROOT} \
 	windir=${SYSTEMROOT} \
 	$JAVA_HOME$/bin$/java -verify $testExecuteClass $testExecuteArgs $testDebug
@@ -200,7 +200,7 @@ env.mailWindowsMod.script=$TCKScript
 # JavaTest, which might in turn be set from your Windows SystemRoot variable.
 #
 env.mailWindowsMod.command.execute=$ExecTCKTestOtherJVMCmd \
-	CLASSPATH=$testSuiteRootDir$/..$/classes$:$javatestClassDir$:$extraOtherJVMClassPath \
+	CLASSPATH=$testSuiteRootDir$/..$/classes-pluggability$:$javatestClassDir$:$extraOtherJVMClassPath \
 	SystemRoot=${SYSTEMROOT} \
 	windir=${SYSTEMROOT} \
 	$JAVA_HOME$/bin$/java -verify \

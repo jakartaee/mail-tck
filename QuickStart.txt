@@ -11,7 +11,7 @@ Running the TCK from the source
    and jakarta.mail.jar in any location. Let's call it JARPATH. 
    It's usually simplest to just put them in $TCKHOME.
 3. Make sure ant is installed and in your PATH.
-4. Open $TCKHOME/lib/ts.jte for editing.
+4. Open $TCKHOME/lib/ts.jte and $TCKHOME/lib/ts.pluggability.jte for editing.
    In the file set the TS_HOME, JARPATH and JAVA_HOME.
    Save and close the file.
 5. In TCKHOME, execute 'ant build'.  This will compile all source under
@@ -73,7 +73,7 @@ f) Save and close the file.
 2. If you need to record a sig file, in TCKHOME, execute 'ant record.sigtest'.
    This will create a new sig file in TCKHOME for the version of Java SE you
    are using. 
-3. Open $TCKHOME/lib/ts.jte for editing.
+3. Open $TCKHOME/lib/ts.jte and $TCKHOME/lib/ts.pluggability.jte for editing.
    In the file, unset the TCKHOME, JARPATH, JAVA_HOME, JAVAMAIL_SERVER,
    JAVAMAIL_USERNAME, JAVAMAIL_PASSWORD, SMTP_USERNAME and SMTP_DOMAIN
    variables. Save and close the file. 
