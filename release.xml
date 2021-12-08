@@ -81,6 +81,7 @@
                         version,
                         docs/javadocs/**,
                         tests/api/**,
+                        tests/pluggability/**,
                         tests/testsuite.html,
                         tests/testsuite.jtt,
                         tests/SignatureTest.html,
@@ -91,7 +92,7 @@
                         lib/*.jti,
                         lib/*.jtx,
                         tools/**,
-                        classes/**,
+                        classes*/**,
                         LICENSE.md,
                         harness/**"
                         prefix="mail-tck"/>

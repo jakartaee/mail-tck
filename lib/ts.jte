@@ -49,16 +49,18 @@ JARPATH=.
 # Adjust these as necessary for Windows or UNIX
 # (Must use "${JARPATH}" syntax so ant will expand the nested properties)
 
-##LOCAL_CLASSES=${JARPATH}\\jakarta.mail.jar:${JARPATH}\\jakarta.activation.jar
-LOCAL_CLASSES=${JARPATH}/jakarta.mail.jar:${JARPATH}/jakarta.activation.jar
+API_JAR=${JARPATH}/jakarta.mail-api.jar:${JARPATH}/jakarta.activation-api.jar:
+
+##CI_JAR=${JARPATH}/angus-mail.jar:${JARPATH}/angus-activation.jar
+CI_JAR=${JARPATH}/angus-mail.jar:${JARPATH}/angus-activation.jar
 # Or use the following if testing modules:
-#LOCAL_CLASSES=${JARPATH}/mailapi.jar:${JARPATH}/smtp.jar:${JARPATH}/imap.jar:${JARPATH}/jakarta.activation.jar
+#CI_JAR=${JARPATH}/smtp.jar:${JARPATH}/imap.jar
 
 ##TESTCLASS=$TS_HOME\\classes
 TESTCLASS=$TS_HOME/classes
 
-##extraOtherJVMClassPath=$TS_HOME\\sigtest.jar;$LOCAL_CLASSES;$TESTCLASS
-extraOtherJVMClassPath=$TS_HOME/sigtest.jar:$LOCAL_CLASSES:$TESTCLASS
+##extraOtherJVMClassPath=$TS_HOME\\sigtest.jar;$API_JAR;$CI_JAR;$TESTCLASS
+extraOtherJVMClassPath=$TS_HOME/sigtest.jar:$API_JAR:$CI_JAR:$TESTCLASS
 
 ##javatestClassDir=$TS_HOME\\javatest.jar
 javatestClassDir=$TS_HOME/javatest.jar
@@ -143,7 +145,7 @@ env.mailUnixMod.command.execute=$ExecTCKTestOtherJVMCmd \
 	HOME=${user.home} \
 	$JAVA_HOME/bin/java -verify \
 		--add-modules jakarta.activation,jakarta.mail \
-		-p $LOCAL_CLASSES \
+		-p $API_JAR \
 		$testExecuteClass $testExecuteArgs $testDebug
 
 
@@ -203,7 +205,7 @@ env.mailWindowsMod.command.execute=$ExecTCKTestOtherJVMCmd \
 	windir=${SYSTEMROOT} \
 	$JAVA_HOME$/bin$/java -verify \
 		--add-modules jakarta.activation,jakarta.mail \
-		-p $LOCAL_CLASSES \
+		-p $API_JAR \
 		$testExecuteClass $testExecuteArgs $testDebug
 
 

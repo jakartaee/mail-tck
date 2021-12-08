@@ -40,7 +40,7 @@ public class equals_Test extends MailTest {
     {
         equals_Test test = new equals_Test();
         Status s = test.run(argv, System.err, System.out);
-	s.exit();
+        s.exit();
     }
 
     public Status run(String argv[], PrintWriter log, PrintWriter out)

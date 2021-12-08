@@ -22,6 +22,8 @@
 
     <property name="version" value="2.1"/>
     <property name="version.tck" value="2.1.0"/>
+    <property name="api.module.name" value="jakarta.mail"/>
+
 
     <property environment="env"/>
     <dirname property="mailtck.basedir" file="${ant.file.mailtck}"/>
@@ -33,6 +35,22 @@
     <property name="tests.dir" value="${ts.home}${file.separator}tests"/>
     <property name="work.dir" value="${ts.home}/JTwork"/>
     <property name="report.dir" value="${ts.home}/JTreport"/>
+
+    <property name="lib.dir" value="${ts.home}${file.separator}lib"/>
+    <property name="harness.dir" value="${ts.home}${file.separator}classes-harness"/>
+
+    <property name="class.pluggability.dir" value="${ts.home}${file.separator}classes-pluggability"/>
+    <property name="class.providers.dir" value="${ts.home}${file.separator}classes-providers"/>
+
+    <property name="report.api.dir" value="${ts.home}/JTreport"/>
+    <property name="report.pluggability.dir" value="${ts.home}/JTreport-Pluggability"/>
+
+    <mkdir dir="${harness.dir}"/>
+    <mkdir dir="${class.dir}"/>
+    <mkdir dir="${class.pluggability.dir}"/>
+    <mkdir dir="${class.providers.dir}"/>
+    <mkdir dir="${work.dir}"/>
+    <mkdir dir="${report.pluggability.dir}"/>
     <mkdir dir="${class.dir}"/>
     <mkdir dir="${work.dir}"/>
     <mkdir dir="${report.dir}"/>
@@ -45,7 +63,8 @@
             <isset property="debug"/>
     </condition>
 
-    <property name="class.path" value="${class.dir}${path.separator}${ts.home}/sigtest.jar${path.separator}${ts.home}/javatest.jar${path.separator}${LOCAL_CLASSES}"/>
+    <property name="class.path" value="${class.dir}${path.separator}${ts.home}/sigtest.jar${path.separator}${ts.home}/javatest.jar${path.separator}${API_JAR}"/>
+    <property name="pluggability.class.path" value="${class.pluggability.dir}${path.separator}${ts.home}/javatest.jar${path.separator}"/>
 
     <!-- Does the current runtime support modules? -->
     <condition property="jdk.modules" value="false" else="true">
@@ -66,21 +85,41 @@
 
     <target name="build"
             description="Compiles all sources to the classes directory">
-	<javac includeantruntime="false" deprecation="yes"
-			source="11" target="11"
-			optimize="true" srcdir="tests"
+	    <javac includeantruntime="false" deprecation="yes"
+			release="11" optimize="true" srcdir="tests/api"
 			classpath="${class.path}" destdir="${class.dir}"
 			debug="on" />
+        <javac includeantruntime="false" deprecation="yes"
+            release="11" optimize="true" srcdir="tests/pluggability"
+            classpath="${class.path}" modulepath="${module.path}" destdir="${class.pluggability.dir}"
+            debug="on">
+            <compilerarg line="--add-modules ALL-MODULE-PATH"/>
+        </javac>
+        <javac includeantruntime="false" deprecation="yes"
+           release="11"
+           srcdir="providers"
+           classpath="${class.path}" modulepath="${module.path}" destdir="${class.providers.dir}"
+           debug="on">
+            <compilerarg line="--add-modules ALL-MODULE-PATH"/>
+        </javac>
+        <copy todir="${class.providers.dir}/META-INF">
+            <fileset dir="providers/META-INF"/>
+        </copy>
+        <jar destfile="${class.providers.dir}/mail_alternate_provider.jar" basedir="${class.providers.dir}"/>
+        <javac includeantruntime="false" deprecation="yes"
+			release="11" optimize="true" srcdir="harness"
+			classpath="${class.path}" destdir="${harness.dir}"
+            debug="on">
+        </javac>
+        <copy todir="${class.dir}">
+             <fileset dir="${harness.dir}"/>
+         </copy>
+        <copy todir="${class.pluggability.dir}">
+            <fileset dir="${harness.dir}"/>
+        </copy>
  
         <javac includeantruntime="false" deprecation="yes"
-			source="11" target="11"
-			optimize="true" srcdir="harness"
-			classpath="${class.path}" destdir="${class.dir}"
-			debug="on" />
- 
-        <javac includeantruntime="false" deprecation="yes"
-			source="11" target="11"
-			optimize="true"
+			release="11" optimize="true"
 			srcdir="${tests.dir}${file.separator}mailboxes"
 			classpath="${class.path}"
 			destdir="${tests.dir}${file.separator}mailboxes"
@@ -91,11 +130,35 @@
             description="Cleans all classes from the classes directory">
         <delete failonerror="false" includeEmptyDirs="true">
             <fileset dir="${class.dir}" includes="*/**"/>
+            <fileset dir="${harness.dir}" includes="*/**"/>
+            <fileset dir="${class.pluggability.dir}" includes="*/**"/>
+            <fileset dir="${class.providers.dir}" includes="*/**"/>
         </delete>
     </target>
 
     <target name="run"
             description="Executes the Jakarta Mail TCK in batch mode">
+        <local name="ts.jte"/>
+        <local name="run.class.path"/>
+        <local name="report.dir"/>
+        <local name="test.suite"/>
+        <property name="report.dir" value="${report.api.dir}"/>
+        <property name="test.suite" value="tests/api"/>
+        <property name="ts.jte" value="ts.jte"/>
+        <property name="run.class.path" value="${class.path}"/>
+        <javatest.batch/>
+    </target>
+
+    <target name="run.pluggability"
+                description="Executes the Mail TCK in batch mode">
+        <local name="ts.jte"/>
+        <local name="run.class.path"/>
+        <local name="report.dir"/>
+        <local name="test.suite"/>
+        <property name="report.dir" value="${report.pluggability.dir}"/>
+        <property name="test.suite" value="tests/pluggability"/>
+        <property name="ts.jte" value="ts.pluggability.jte"/>
+        <property name="run.class.path" value="${pluggability.class.path}"/>
         <javatest.batch/>
     </target>
 
@@ -144,10 +207,8 @@
         -->
 
         <java classname="com.sun.javatest.tool.Main"
-              failonerror="${failOnError}" fork="yes" >
-            <classpath>
-                <pathelement path="${class.path}"/>
-            </classpath>	
+              failonerror="${failOnError}" fork="yes" classpath="${run.class.path}" modulepath="${module.path}">
+            <jvmarg line="--add-modules ALL-MODULE-PATH"/>
 	    <sysproperty key="testDebug" value="${tests.debug}"/>
         </java>
     </presetdef>
@@ -165,9 +226,9 @@
         <javatest>
             <arg line=" -EsysProps" />
             <arg line=" -batch" />
-            <arg line=" -ts tests/testsuite.html" />
+            <arg line=" -ts ${test.suite}/testsuite.html" />
             <arg line=" -workdir ${work.dir}" />
-            <arg line=" -envFiles ${ts.home}/lib/ts.jte" />
+            <arg line=" -envFiles ${ts.home}/lib/${ts.jte}" />
             <arg line=" -env mailUnix${lib.modules}" />
             <arg line=" -excludeList ${ts.home}/lib/ts.jtx" />
             <arg line=" -timeoutFactor 1" />

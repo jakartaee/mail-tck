@@ -27,6 +27,11 @@ sed -i "s#^TS_HOME=.*#TS_HOME=$WORKSPACE#g" "$WORKSPACE/lib/ts.jte"
 sed -i "s#^JAVA_HOME=.*#JAVA_HOME=$JAVA_HOME#g" "$WORKSPACE/lib/ts.jte"
 sed -i "s#^JARPATH=.*#JARPATH=$WORKSPACE#g" "$WORKSPACE/lib/ts.jte"
 
+sed -i "s#^TS_HOME=.*#TS_HOME=$WORKSPACE#g" "$WORKSPACE/lib/ts.pluggability.jte"
+sed -i "s#^JAVA_HOME=.*#JAVA_HOME=$JAVA_HOME#g" "$WORKSPACE/lib/ts.pluggability.jte"
+sed -i "s#^JARPATH=.*#JARPATH=$WORKSPACE#g" "$WORKSPACE/lib/ts.pluggability.jte"
+
+
 mkdir -p ${HOME}/.m2
 
 cd $WORKSPACE
@@ -34,19 +39,29 @@ cd $WORKSPACE
 if [ ! -z "$TCK_BUNDLE_BASE_URL" ]; then
   #use pre-built tck bundle from this location to run test
   mkdir -p ${WORKSPACE}/bundles
-  wget  --progress=bar:force --no-cache ${TCK_BUNDLE_BASE_URL}/${TCK_BUNDLE_FILE_NAME} -O ${WORKSPACE}/bundles/mail-tck-2.0_latest.zip
+  wget  --progress=bar:force --no-cache ${TCK_BUNDLE_BASE_URL}/${TCK_BUNDLE_FILE_NAME} -O ${WORKSPACE}/bundles/mail-tck-2.1_latest.zip
   exit 0
 fi
 
 WGET_PROPS="--progress=bar:force --no-cache"
 if [ -z "$JAF_BUNDLE_URL" ];then
-  export JAF_BUNDLE_URL=https://repo1.maven.org/maven2/com/sun/activation/jakarta.activation/2.0.0/jakarta.activation-2.0.0.jar
+  export JAF_BUNDLE_URL=https://jakarta.oss.sonatype.org/content/repositories/staging/jakarta/activation/jakarta.activation-api/2.1.0/jakarta.activation-api-2.1.0.jar
 fi
 if [ -z "$MAIL_BUNDLE_URL" ];then
-  export MAIL_BUNDLE_URL=https://repo1.maven.org/maven2/com/sun/mail/jakarta.mail/2.0.0/jakarta.mail-2.0.0.jar
+  export MAIL_BUNDLE_URL=https://jakarta.oss.sonatype.org/content/repositories/staging/jakarta/mail/jakarta.mail-api/2.1.0/jakarta.mail-api-2.1.0.jar
 fi
-wget $WGET_PROPS $JAF_BUNDLE_URL -O jakarta.activation.jar
-wget $WGET_PROPS $MAIL_BUNDLE_URL -O jakarta.mail.jar
+if [ -z "$ANGUS_BUNDLE_URL" ];then
+  export ANGUS_BUNDLE_URL=https://jakarta.oss.sonatype.org/content/repositories/staging/org/eclipse/angus/angus-mail/1.0.0-SNAPSHOT/angus-mail-1.0.0-20211103.105245-4.jar
+fi
+if [ -z "$ANGUS_ACTIVATION_BUNDLE_URL" ];then
+  export ANGUS_ACTIVATION_BUNDLE_URL=https://jakarta.oss.sonatype.org/content/repositories/staging/org/eclipse/angus/angus-activation/1.0.0-SNAPSHOT/angus-activation-1.0.0-20210811.141336-3.jar
+fi
+
+wget $WGET_PROPS $JAF_BUNDLE_URL -O ${WORKSPACE}/jakarta.activation-api.jar
+wget $WGET_PROPS $MAIL_BUNDLE_URL -O ${WORKSPACE}/jakarta.mail-api.jar
+wget $WGET_PROPS $ANGUS_BUNDLE_URL -O ${WORKSPACE}/angus-mail.jar
+wget $WGET_PROPS $ANGUS_ACTIVATION_BUNDLE_URL -O ${WORKSPACE}/angus-activation.jar
+
 
 which ant
 ant -version
