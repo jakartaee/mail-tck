@@ -50,17 +50,8 @@ fi
 if [ -z "$MAIL_BUNDLE_URL" ];then
   export MAIL_BUNDLE_URL=https://jakarta.oss.sonatype.org/content/repositories/staging/jakarta/mail/jakarta.mail-api/2.1.0/jakarta.mail-api-2.1.0.jar
 fi
-if [ -z "$ANGUS_BUNDLE_URL" ];then
-  export ANGUS_BUNDLE_URL=https://jakarta.oss.sonatype.org/content/repositories/staging/org/eclipse/angus/angus-mail/1.0.0-SNAPSHOT/angus-mail-1.0.0-20211103.105245-4.jar
-fi
-if [ -z "$ANGUS_ACTIVATION_BUNDLE_URL" ];then
-  export ANGUS_ACTIVATION_BUNDLE_URL=https://jakarta.oss.sonatype.org/content/repositories/staging/org/eclipse/angus/angus-activation/1.0.0-SNAPSHOT/angus-activation-1.0.0-20210811.141336-3.jar
-fi
-
 wget $WGET_PROPS $JAF_BUNDLE_URL -O ${WORKSPACE}/jakarta.activation-api.jar
 wget $WGET_PROPS $MAIL_BUNDLE_URL -O ${WORKSPACE}/jakarta.mail-api.jar
-wget $WGET_PROPS $ANGUS_BUNDLE_URL -O ${WORKSPACE}/angus-mail.jar
-wget $WGET_PROPS $ANGUS_ACTIVATION_BUNDLE_URL -O ${WORKSPACE}/angus-activation.jar
 
 
 which ant

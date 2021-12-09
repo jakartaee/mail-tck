@@ -1,6 +1,6 @@
 /JTreport/
 /JTwork/
-/classes/
+/classes*/
 /docs/javadocs/
 /docs/ug/src/main/jbake/content/toc.adoc
 /mail-tck-*.zip
@@ -17,3 +17,4 @@ jakarta.activation.jar
 .settings/
 .idea
 .m2
+*.iml
