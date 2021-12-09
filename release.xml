@@ -47,7 +47,7 @@
                 <pathelement path="${class.path}"/>
             </classpath>
             <fileset dir="${basedir}/tests/api"/>
-        	<arg line="--add-modules ALL-MODULE-PATH"/>
+        	<arg line="--add-modules jakarta.mail"/>
         </javadoc>
     </target>
 
@@ -69,11 +69,14 @@
             <zipfileset dir="${ts.home}/docs/"
                         includes="README.md"
                         prefix="mail-tck"/>
+            <zipfileset dir="${ts.home}/docs"
+                        includes="index.html,ReleaseNotes-*.html"
+                        prefix="mail-tck/docs"/>
             <zipfileset dir="${ts.home}/docs/ug/target/staging/"
-                        prefix="mail-tck/docs/html/"/>
+                        prefix="mail-tck/docs/html-usersguide/"/>
             <zipfileset dir="${ts.home}/docs/ug/target/generated-docs/"
                         includes="*.pdf"
-                        prefix="mail-tck/docs"/>
+                        prefix="mail-tck/docs/pdf-usersguide/"/>
             <zipfileset dir="${ts.home}"
                         includes="build.xml,
                         javatest.jar,
