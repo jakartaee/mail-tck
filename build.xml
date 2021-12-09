@@ -63,67 +63,64 @@
             <isset property="debug"/>
     </condition>
 
-    <property name="class.path" value="${class.dir}${path.separator}${ts.home}/sigtest.jar${path.separator}${ts.home}/javatest.jar${path.separator}${API_JAR}"/>
+    <property name="module.path" value="${API_JAR}"/>
+    <property name="class.path" value="${class.dir}${path.separator}${ts.home}/sigtest.jar${path.separator}${ts.home}/javatest.jar"/>
     <property name="pluggability.class.path" value="${class.pluggability.dir}${path.separator}${ts.home}/javatest.jar${path.separator}"/>
 
-    <!-- Does the current runtime support modules? -->
-    <condition property="jdk.modules" value="false" else="true">
-	<or>
-	    <contains string="${java.version}" substring="1.7" />
-	    <contains string="${java.version}" substring="1.8" />
-	</or>
-	<!-- anything else is JDK9+ -->
-    </condition>
-    <condition property="java.classes.for.sig.ext"
-		value="lib/modules"
-                else="lib/rt.jar">
-	<istrue value="${jdk.modules}"/>
-    </condition>
+    <property name="java.classes.for.sig.ext" value="lib/modules"/>
 
     <!-- Empty string to test without modules, "Mod" to test with modules -->
     <property name="lib.modules" value="" />
 
     <target name="build"
             description="Compiles all sources to the classes directory">
-	    <javac includeantruntime="false" deprecation="yes"
-			release="11" optimize="true" srcdir="tests/api"
-			classpath="${class.path}" destdir="${class.dir}"
-			debug="on" />
         <javac includeantruntime="false" deprecation="yes"
-            release="11" optimize="true" srcdir="tests/pluggability"
-            classpath="${class.path}" modulepath="${module.path}" destdir="${class.pluggability.dir}"
-            debug="on">
-            <compilerarg line="--add-modules ALL-MODULE-PATH"/>
+               release="11" srcdir="tests/api"
+               modulepath="${module.path}"
+               classpath="${class.path}" destdir="${class.dir}"
+               debug="on">
+            <compilerarg line="--add-modules jakarta.mail"/>
         </javac>
         <javac includeantruntime="false" deprecation="yes"
-           release="11"
-           srcdir="providers"
-           classpath="${class.path}" modulepath="${module.path}" destdir="${class.providers.dir}"
-           debug="on">
-            <compilerarg line="--add-modules ALL-MODULE-PATH"/>
+               release="11" srcdir="tests/pluggability"
+               classpath="${class.path}" modulepath="${module.path}" destdir="${class.pluggability.dir}"
+               debug="on">
+            <compilerarg line="--add-modules jakarta.mail"/>
+        </javac>
+        <javac includeantruntime="false" deprecation="yes"
+               release="11"
+               srcdir="providers"
+               classpath="${class.path}" modulepath="${module.path}" destdir="${class.providers.dir}"
+               debug="on">
+            <compilerarg line="--add-modules jakarta.mail"/>
         </javac>
         <copy todir="${class.providers.dir}/META-INF">
             <fileset dir="providers/META-INF"/>
         </copy>
         <jar destfile="${class.providers.dir}/mail_alternate_provider.jar" basedir="${class.providers.dir}"/>
         <javac includeantruntime="false" deprecation="yes"
-			release="11" optimize="true" srcdir="harness"
-			classpath="${class.path}" destdir="${harness.dir}"
-            debug="on">
+               release="11" srcdir="harness"
+               modulepath="${module.path}"
+               classpath="${class.path}" destdir="${harness.dir}"
+               debug="on">
+            <compilerarg line="--add-modules jakarta.mail"/>
         </javac>
         <copy todir="${class.dir}">
-             <fileset dir="${harness.dir}"/>
-         </copy>
+            <fileset dir="${harness.dir}"/>
+        </copy>
         <copy todir="${class.pluggability.dir}">
             <fileset dir="${harness.dir}"/>
         </copy>
- 
+
         <javac includeantruntime="false" deprecation="yes"
-			release="11" optimize="true"
-			srcdir="${tests.dir}${file.separator}mailboxes"
-			classpath="${class.path}"
-			destdir="${tests.dir}${file.separator}mailboxes"
-			debug="on" />
+               release="11"
+               srcdir="${tests.dir}${file.separator}mailboxes"
+               modulepath="${module.path}"
+               classpath="${class.path}"
+               destdir="${tests.dir}${file.separator}mailboxes"
+               debug="on">
+            <compilerarg line="--add-modules jakarta.mail"/>
+        </javac>
     </target>
 
     <target name="clean"
