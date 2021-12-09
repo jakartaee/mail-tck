@@ -1,5 +1,5 @@
 #
-# Copyright (c) 2020 Oracle and/or its affiliates. All rights reserved.
+# Copyright (c) 2020, 2021 Oracle and/or its affiliates. All rights reserved.
 #
 # This program and the accompanying materials are made available under the
 # terms of the Eclipse Public License v. 2.0, which is available at
@@ -15,10 +15,10 @@
 #
 
 # Commented tests @ 02/03/2005 
-api/javasoft/sqe/tests/jakarta/mail/internet/InternetHeaders/testlist.html#getHeader_Test
-api/javasoft/sqe/tests/jakarta/mail/Folder/testlist.html#copyMessages_Test
-api/javasoft/sqe/tests/jakarta/mail/Folder/testlist.html#expunge_Test
-api/javasoft/sqe/tests/jakarta/mail/Message/testlist.html#getRecipients_Test
-api/javasoft/sqe/tests/jakarta/mail/search/RecipientTerm/testlist.html#recipientterm_Test
-api/javasoft/sqe/tests/jakarta/mail/Folder/testlist.html#setFlags_Test
-api/javasoft/sqe/tests/jakarta/mail/exception/MessageRemovedException/testlist.html#msgRemoveExp_Test
+javasoft/sqe/tests/jakarta/mail/internet/InternetHeaders/testlist.html#getHeader_Test
+javasoft/sqe/tests/jakarta/mail/Folder/testlist.html#copyMessages_Test
+javasoft/sqe/tests/jakarta/mail/Folder/testlist.html#expunge_Test
+javasoft/sqe/tests/jakarta/mail/Message/testlist.html#getRecipients_Test
+javasoft/sqe/tests/jakarta/mail/search/RecipientTerm/testlist.html#recipientterm_Test
+javasoft/sqe/tests/jakarta/mail/Folder/testlist.html#setFlags_Test
+javasoft/sqe/tests/jakarta/mail/exception/MessageRemovedException/testlist.html#msgRemoveExp_Test
