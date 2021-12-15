@@ -7,18 +7,20 @@ Running the TCK from the source
 1. Checkout TCK workspace in TCKHOME (e.g., "mail-tck").
      git clone git@github.com:eclipse-ee4j/mail-tck.git
    Change directory to $TCKHOME.
-2. Place jakarta.activation.jar (if using Java SE 9 or later)
-   and jakarta.mail.jar in any location. Let's call it JARPATH. 
+2. Place jakarta.activation-api.jar, the implementation of activation (for example angus-activation),
+   jakarta.mail-api.jar and the implementation of mail (for example angus-mail)
+   in any location. Let's call it JARPATH. 
    It's usually simplest to just put them in $TCKHOME.
 3. Make sure ant is installed and in your PATH.
 4. Open $TCKHOME/lib/ts.jte and $TCKHOME/lib/ts.pluggability.jte for editing.
    In the file set the TS_HOME, JARPATH and JAVA_HOME.
    Save and close the file.
 5. In TCKHOME, execute 'ant build'.  This will compile all source under
-   $TCKHOME/tests and $TCKHOME/harness into $TCKHOME/classes.
+   $TCKHOME/tests and $TCKHOME/harness into $TCKHOME/classes, $TCKHOME/classes-harness,
+   $TCKHOME/classes-pluggability and $TCKHOME/classes-providers.
 6. See "Setting up the mailbox" below.
 7. In $TCKHOME, execute the following command to start the TCK in batch mode:
-     'ant run'
+     'ant run run.pluggability'
    Alternatively, you can run 'ant gui' to start the TCK in gui mode.
 
     If you are running on Windows, change the following property in
@@ -27,9 +29,7 @@ Running the TCK from the source
     jtwiz.environment.env=mailWindows
 
 8. After the TCK suite finishes running, the report can be found in
-    $TCKHOME/JTreport/index.html
-9. To test with modules on JDK 11+, put the module jar files in $TCKHOME
-   and run with 'ant runmod'.
+    $TCKHOME/JTreport/index.html and $TCKHOME/JTreport-Pluggability/index.html
 
 
 ================================
