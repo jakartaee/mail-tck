@@ -7,8 +7,8 @@ Running the TCK from the source
 1. Checkout TCK workspace in TCKHOME (e.g., "mail-tck").
      git clone git@github.com:eclipse-ee4j/mail-tck.git
    Change directory to $TCKHOME.
-2. Place jakarta.activation-api.jar, angus-activation.jar
-   , jakarta.mail-api.jar and the implementation of mail (for example angus-mail)
+2. Place jakarta.activation-api.jar, the implementation of activation (for example angus-activation),
+   jakarta.mail-api.jar and the implementation of mail (for example angus-mail)
    in any location. Let's call it JARPATH. 
    It's usually simplest to just put them in $TCKHOME.
 3. Make sure ant is installed and in your PATH.

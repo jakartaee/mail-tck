@@ -69,6 +69,7 @@
             <zipfileset dir="${ts.home}/docs/"
                         includes="README.md"
                         prefix="mail-tck"/>
+            <zipfileset dir="${ts.home}" includes="QuickStart.txt" prefix="mail-tck/docs/html-usersguide"/>
             <zipfileset dir="${ts.home}/docs"
                         includes="index.html,ReleaseNotes-*.html"
                         prefix="mail-tck/docs"/>
