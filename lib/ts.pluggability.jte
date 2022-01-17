@@ -1,5 +1,5 @@
 #
-# Copyright (c) 2021 Oracle and/or its affiliates. All rights reserved.
+# Copyright (c) 2021, 2022 Oracle and/or its affiliates. All rights reserved.
 #
 # This program and the accompanying materials are made available under the
 # terms of the Eclipse Public License v. 2.0, which is available at
@@ -15,13 +15,13 @@
 #
 
 #########################################################################
-#                                                                   	#
+#                                                                       #
 #   JavaTest Environment file for TCK                                   #
 #                                                                       #
-#   The platform specific environments in this file will likely 	#
+#   The platform specific environments in this file will likely         #
 #   have to be modified during installation of the TCK.                 #
-#   You can modify values inline, here, or you can override them in 	#
-#   a separate file, and give both files to JavaTest.			#
+#   You can modify values inline, here, or you can override them in     #
+#   a separate file, and give both files to JavaTest.                   #
 #                                                                       #
 #########################################################################
 
