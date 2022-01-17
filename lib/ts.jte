@@ -1,5 +1,5 @@
 #
-# Copyright (c) 2020 Oracle and/or its affiliates. All rights reserved.
+# Copyright (c) 2020, 2022 Oracle and/or its affiliates. All rights reserved.
 #
 # This program and the accompanying materials are made available under the
 # terms of the Eclipse Public License v. 2.0, which is available at
@@ -15,13 +15,13 @@
 #
 
 #########################################################################
-#                                                                   	#
+#                                                                       #
 #   JavaTest Environment file for TCK                                   #
 #                                                                       #
-#   The platform specific environments in this file will likely 	#
+#   The platform specific environments in this file will likely         #
 #   have to be modified during installation of the TCK.                 #
-#   You can modify values inline, here, or you can override them in 	#
-#   a separate file, and give both files to JavaTest.			#
+#   You can modify values inline, here, or you can override them in     #
+#   a separate file, and give both files to JavaTest.                   #
 #                                                                       #
 #########################################################################
 
@@ -122,7 +122,7 @@ env.mailUnix.script=$TCKScript
 # The runtime to be tested ...
 #
 env.mailUnix.command.execute=$ExecTCKTestOtherJVMCmd \
-	CLASSPATH=$testSuiteRootDir/../classes$:$testClassDir:\
+	CLASSPATH=$testSuiteRootDir/../classes:$testClassDir:\
 	$javatestClassDir$:$extraOtherJVMClassPath \
 	HOME=${user.home} \
 	$JAVA_HOME/bin/java -verify $testExecuteClass $testExecuteArgs $testDebug
@@ -140,12 +140,12 @@ env.mailUnixMod.script=$TCKScript
 # The runtime to be tested ...
 #
 env.mailUnixMod.command.execute=$ExecTCKTestOtherJVMCmd \
-	CLASSPATH=$testSuiteRootDir/../classes$:$testClassDir:\
+	CLASSPATH=$testSuiteRootDir/../classes:$testClassDir:\
 	$javatestClassDir$:$extraOtherJVMClassPath \
 	HOME=${user.home} \
 	$JAVA_HOME/bin/java -verify \
-		--add-modules jakarta.activation,jakarta.mail \
-		-p $API_JAR \
+		--add-modules jakarta.mail \
+		--module-path $API_JAR \
 		$testExecuteClass $testExecuteArgs $testDebug
 
 
@@ -204,8 +204,8 @@ env.mailWindowsMod.command.execute=$ExecTCKTestOtherJVMCmd \
 	SystemRoot=${SYSTEMROOT} \
 	windir=${SYSTEMROOT} \
 	$JAVA_HOME$/bin$/java -verify \
-		--add-modules jakarta.activation,jakarta.mail \
-		-p $API_JAR \
+		--add-modules jakarta.mail \
+		--module-path $API_JAR \
 		$testExecuteClass $testExecuteArgs $testDebug
 
 
