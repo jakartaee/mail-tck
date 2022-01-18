@@ -2,7 +2,7 @@
 <head>
 <!--
 
-    Copyright (c) 2012, 2021 Oracle and/or its affiliates. All rights reserved.
+    Copyright (c) 2012, 2022 Oracle and/or its affiliates. All rights reserved.
 
     This program and the accompanying materials are made available under the
     terms of the Eclipse Public License v. 2.0, which is available at
@@ -42,31 +42,33 @@ It also verifies the existence and correct modifiers of public fields.
 		-TestURL $testURL
 		-Package jakarta.mail
 		-FileName jakarta.mail_2.1.sig
-		-exclude java.util.Map
-	    -exclude java.lang.Object
-	    -exclude java.io.ByteArrayInputStream
-	    -exclude java.io.InputStream
-	    -exclude java.lang.Deprecated
-	    -exclude java.io.Writer
-	    -exclude java.io.OutputStream
-	    -exclude java.util.List
-	    -exclude java.util.Collection
-	    -exclude java.lang.instrument.IllegalClassFormatException
-	    -exclude javax.transaction.xa.XAException
-	    -exclude javax.xml.transform.sax
-	    -exclude java.lang.annotation.Repeatable
-	    -exclude java.lang.InterruptedException
-	    -exclude java.lang.CloneNotSupportedException
-	    -exclude java.lang.Throwable
-	    -exclude java.lang.Thread
-	    -exclude java.lang.Enum
-	    -exclude org.xml.sax
+		-IgnoreJDKClass java.util.Map
+	    -IgnoreJDKClass java.lang.Object
+	    -IgnoreJDKClass java.io.ByteArrayInputStream
+	    -IgnoreJDKClass java.io.InputStream
+	    -IgnoreJDKClass java.lang.Deprecated
+	    -IgnoreJDKClass java.io.Writer
+	    -IgnoreJDKClass java.io.OutputStream
+	    -IgnoreJDKClass java.util.List
+	    -IgnoreJDKClass java.util.Collection
+	    -IgnoreJDKClass java.lang.instrument.IllegalClassFormatException
+	    -IgnoreJDKClass javax.transaction.xa.XAException
+	    -IgnoreJDKClass javax.xml.transform.sax
+	    -IgnoreJDKClass java.lang.annotation.Repeatable
+	    -IgnoreJDKClass java.lang.InterruptedException
+	    -IgnoreJDKClass java.lang.CloneNotSupportedException
+	    -IgnoreJDKClass java.lang.Throwable
+	    -IgnoreJDKClass java.lang.Thread
+	    -IgnoreJDKClass java.lang.Enum
+	    -IgnoreJDKClass org.xml.sax
+	    -IgnoreJDKClass java.lang.Enum.EnumDesc
+	    -IgnoreJDKClass java.lang.constant.Constable
 	<TR><TD><B>keywords</B> <TD>extensionAPI
 </TABLE>
 
 <hr>
-<EM>Last Updated: 20/10/2021<BR>
-&copy; Copyright (c) 2007, 2021, Oracle and/or its affiliates. All rights reserved.
+<EM>Last Updated: 18/01/2022<BR>
+&copy; Copyright (c) 2007, 2022, Oracle and/or its affiliates. All rights reserved.
 ORACLE PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.</EM>
 </body>
 </html>

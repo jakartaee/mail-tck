@@ -19,7 +19,7 @@ spec:
     - "james.local"
   containers:
   - name: mail-tck-ci
-    image: jakartaee/cts-javamail-base:0.2
+    image: jakartaee/cts-javamail-base:0.3
     command:
     - cat
     tty: true
@@ -71,8 +71,8 @@ spec:
            description: 'URL required for downloading GlassFish Full/Web profile bundle' )
     choice(name: 'RUNTIME', choices: 'Glassfish\nANGUS',
            description: 'Run JAF Tests with Angus/Glassfish' )
-    choice(name: 'JDK', choices: 'JDK11',
-           description: 'Java SE Version to be used for running TCK either JDK11' )
+    choice(name: 'JDK', choices: 'JDK11\nJDK17',
+           description: 'Java SE Version to be used for running TCK either JDK11 or JDK17' )
     choice(name: 'LICENSE', choices: 'EPL\nEFTL',
            description: 'License file to be used to build the TCK bundle(s) either EPL(default) or Eclipse Foundation TCK License' )
   }
