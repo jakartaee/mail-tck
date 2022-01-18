@@ -79,10 +79,10 @@ if [ -z "$MAIL_BUNDLE_URL" ];then
   export MAIL_BUNDLE_URL=https://jakarta.oss.sonatype.org/content/repositories/staging/jakarta/mail/jakarta.mail-api/2.1.0/jakarta.mail-api-2.1.0.jar
 fi
 if [ -z "$ANGUS_BUNDLE_URL" ];then
-  export ANGUS_BUNDLE_URL=https://jakarta.oss.sonatype.org/content/repositories/staging/org/eclipse/angus/angus-mail/1.0.0-SNAPSHOT/angus-mail-1.0.0-20211103.105245-4.jar
+  export ANGUS_BUNDLE_URL=https://jakarta.oss.sonatype.org/content/repositories/staging/org/eclipse/angus/angus-mail/1.0.0/angus-mail-1.0.0.jar
 fi
 if [ -z "$ANGUS_ACTIVATION_BUNDLE_URL" ];then
-  export ANGUS_ACTIVATION_BUNDLE_URL=https://jakarta.oss.sonatype.org/content/repositories/staging/org/eclipse/angus/angus-activation/1.0.0-SNAPSHOT/angus-activation-1.0.0-20211201.124130-9.jar
+  export ANGUS_ACTIVATION_BUNDLE_URL=https://jakarta.oss.sonatype.org/content/repositories/staging/org/eclipse/angus/angus-activation/1.0.0/angus-activation-1.0.0.jar
 fi
 
 wget $WGET_PROPS $JAF_BUNDLE_URL -O ${WORKSPACE}/jakarta.activation-api.jar
