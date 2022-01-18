@@ -1,7 +1,7 @@
 #!/bin/bash -xe
 
 #
-# Copyright (c) 2018, 2021 Oracle and/or its affiliates. All rights reserved.
+# Copyright (c) 2018, 2022 Oracle and/or its affiliates. All rights reserved.
 #
 # This program and the accompanying materials are made available under the
 # terms of the Eclipse Public License v. 2.0, which is available at
@@ -21,8 +21,6 @@ else
   echo "[ERROR] TCK bundle not found"
   exit 1
 fi
-
-export JAVA_HOME=${JDK11_HOME}
 
 if [[ "$JDK" == "JDK12" || "$JDK" == "jdk12" ]];then
   export JAVA_HOME=${JDK12_HOME}
