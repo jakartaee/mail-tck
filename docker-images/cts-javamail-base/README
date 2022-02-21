@@ -25,9 +25,26 @@ Additional softwares to be downloaded
 -jdk-11.0.10_linux-x64_bin.tar.gz
 -jdk-8u251-linux-x64.tar.gz
 
-JDK11_HOME will the available as JDK11 home path at /opt/jdk-11.0.10
+JDK11_HOME will be available as JDK11 home path at /opt/jdk-11.0.10
 
 Build command : docker build -t jakartaee/cts-javamail-base:0.2 -f Dockerfile2 .
 Image push command : docker push jakartaee/cts-javamail-base:0.2
+
+=====================================
+
+Dockerfile3:
+
+Image - jakartaee/cts-javamail-base:0.3
+
+Additional softwares to be downloaded
+-openjdk-11.0.2_linux-x64_bin.tar.gz
+-openjdk-17.0.1_linux-x64_bin.tar.gz
+
+JAVA_HOME will be available as JDK11 home path at /opt/jdk-11.0.2
+JDK11_HOME will be available as JDK11 home path at /opt/jdk-11.0.2
+JDK17_HOME will be available as JDK17 home path at /opt/jdk-17.0.1
+
+Build command : docker build -t jakartaee/cts-javamail-base:0.3 -f Dockerfile3 .
+Image push command : docker push jakartaee/cts-javamail-base:0.3
 
 =====================================
