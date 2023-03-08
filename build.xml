@@ -64,7 +64,7 @@
     </condition>
 
     <property name="module.path" value="${API_JAR}"/>
-    <property name="class.path" value="${class.dir}${path.separator}${ts.home}/sigtest.jar${path.separator}${ts.home}/javatest.jar"/>
+    <property name="class.path" value="${class.dir}${path.separator}${ts.home}/sigtest.jar${path.separator}${ts.home}/javatest.jar${path.separator}${module.path}"/>
     <property name="pluggability.class.path" value="${class.pluggability.dir}${path.separator}${ts.home}/javatest.jar${path.separator}"/>
 
     <property name="java.classes.for.sig.ext" value="lib/modules"/>
@@ -76,23 +76,19 @@
             description="Compiles all sources to the classes directory">
         <javac includeantruntime="false" deprecation="yes"
                release="11" srcdir="tests/api"
-               modulepath="${module.path}"
                classpath="${class.path}" destdir="${class.dir}"
                debug="on">
-            <compilerarg line="--add-modules jakarta.mail"/>
         </javac>
         <javac includeantruntime="false" deprecation="yes"
                release="11" srcdir="tests/pluggability"
-               classpath="${class.path}" modulepath="${module.path}" destdir="${class.pluggability.dir}"
+               classpath="${class.path}" destdir="${class.pluggability.dir}"
                debug="on">
-            <compilerarg line="--add-modules jakarta.mail"/>
         </javac>
         <javac includeantruntime="false" deprecation="yes"
                release="11"
                srcdir="providers"
-               classpath="${class.path}" modulepath="${module.path}" destdir="${class.providers.dir}"
+               classpath="${class.path}" destdir="${class.providers.dir}"
                debug="on">
-            <compilerarg line="--add-modules jakarta.mail"/>
         </javac>
         <copy todir="${class.providers.dir}/META-INF">
             <fileset dir="providers/META-INF"/>
@@ -100,10 +96,8 @@
         <jar destfile="${class.providers.dir}/mail_alternate_provider.jar" basedir="${class.providers.dir}"/>
         <javac includeantruntime="false" deprecation="yes"
                release="11" srcdir="harness"
-               modulepath="${module.path}"
                classpath="${class.path}" destdir="${harness.dir}"
                debug="on">
-            <compilerarg line="--add-modules jakarta.mail"/>
         </javac>
         <copy todir="${class.dir}">
             <fileset dir="${harness.dir}"/>
@@ -115,11 +109,9 @@
         <javac includeantruntime="false" deprecation="yes"
                release="11"
                srcdir="${tests.dir}${file.separator}mailboxes"
-               modulepath="${module.path}"
                classpath="${class.path}"
                destdir="${tests.dir}${file.separator}mailboxes"
                debug="on">
-            <compilerarg line="--add-modules jakarta.mail"/>
         </javac>
     </target>
 
@@ -139,29 +131,43 @@
         <local name="run.class.path"/>
         <local name="report.dir"/>
         <local name="test.suite"/>
+        <local name="ts.jtx"/>
         <property name="report.dir" value="${report.api.dir}"/>
         <property name="test.suite" value="tests/api"/>
         <property name="ts.jte" value="ts.jte"/>
+        <property name="ts.jtx" value="${ts.home}/lib/ts.jtx"/>
         <property name="run.class.path" value="${class.path}"/>
         <javatest.batch/>
     </target>
 
     <target name="run.pluggability"
-                description="Executes the Mail TCK in batch mode">
+            description="Executes the Mail TCK pluggability tests in batch mode">
         <local name="ts.jte"/>
         <local name="run.class.path"/>
         <local name="report.dir"/>
         <local name="test.suite"/>
+        <local name="ts.jtx"/>
         <property name="report.dir" value="${report.pluggability.dir}"/>
         <property name="test.suite" value="tests/pluggability"/>
         <property name="ts.jte" value="ts.pluggability.jte"/>
+        <property name="ts.jtx" value="${ts.home}/lib/ts.jtx"/>
         <property name="run.class.path" value="${pluggability.class.path}"/>
         <javatest.batch/>
     </target>
 
     <target name="runmod"
             description="Executes the Jakarta Mail TCK in batch mode with modules">
-	<property name="lib.modules" value="Mod" />
+        <local name="ts.jte"/>
+        <local name="run.class.path"/>
+        <local name="report.dir"/>
+        <local name="test.suite"/>
+        <local name="ts.jtx"/>
+        <property name="report.dir" value="${report.api.dir}"/>
+        <property name="test.suite" value="tests/api"/>
+        <property name="ts.jte" value="ts.jte"/>
+        <property name="ts.jtx" value="${ts.home}/lib/ts.jtx"/>
+        <property name="run.class.path" value="${class.path}"/>
+        <property name="lib.modules" value="Mod" />
         <javatest.batch/>
     </target>
 
@@ -204,8 +210,7 @@
         -->
 
         <java classname="com.sun.javatest.tool.Main"
-              failonerror="${failOnError}" fork="yes" classpath="${run.class.path}" modulepath="${module.path}">
-            <jvmarg line="--add-modules ALL-MODULE-PATH"/>
+              failonerror="${failOnError}" fork="yes" classpath="${run.class.path}">
 	    <sysproperty key="testDebug" value="${tests.debug}"/>
         </java>
     </presetdef>
