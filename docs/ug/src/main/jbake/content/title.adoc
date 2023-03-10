@@ -17,7 +17,7 @@ Technology Compatibility Kit User's Guide for {TechnologyFullName}
 
 Release {TechnologyVersion} for Jakarta EE
 
-February 2022
+March 2023
 
 [[sthref1]]
 
@@ -26,7 +26,7 @@ February 2022
 Technology Compatibility Kit User's Guide for {TechnologyFullName},
 Release {TechnologyVersion} for Jakarta EE
 
-Copyright (c) 2017, 2022 Oracle and/or its affiliates. All rights reserved.
+Copyright (c) 2017, 2023 Oracle and/or its affiliates. All rights reserved.
 
 This program and the accompanying materials are made available under
 the terms of the Eclipse Public License v. 2.0, which is available at
