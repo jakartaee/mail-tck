@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006, 2020 Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2006, 2021 Oracle and/or its affiliates. All rights reserved.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License v. 2.0, which is available at
@@ -54,6 +54,8 @@ public class setFileNameTest_encodeFalse_decodeTrue extends MailTest {
 	parseArgs(argv); // parse command-line options
 
         try {
+            System.setProperty("mail.mime.encodefilename", "false");
+            System.setProperty("mail.mime.decodefilename", "true");
              // Create a MimeMessage object
              Session session = Session.getInstance(properties, null);
              MimeMessage msg = new MimeMessage(session);
@@ -69,8 +71,6 @@ public class setFileNameTest_encodeFalse_decodeTrue extends MailTest {
              out.println("UNIT TEST 1: setFileName(String) with default " +
                                        "mail.mime.encodefilename = FALSE and " +
                                        "mail.mime.decodefilename = TRUE");             
-             System.setProperty("mail.mime.encodefilename", "false");
-             System.setProperty("mail.mime.decodefilename", "true");
 
              msg.setFileName("=?ISO646-US?Q?=3F=3F-a=5Fgerman=5Fcharacter?=");
            
