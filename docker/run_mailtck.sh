@@ -1,7 +1,7 @@
 #!/bin/bash -xe
 
 #
-# Copyright (c) 2018, 2022 Oracle and/or its affiliates. All rights reserved.
+# Copyright (c) 2018, 2023 Oracle and/or its affiliates. All rights reserved.
 #
 # This program and the accompanying materials are made available under the
 # terms of the Eclipse Public License v. 2.0, which is available at
@@ -22,18 +22,10 @@ else
   exit 1
 fi
 
-if [[ "$JDK" == "JDK12" || "$JDK" == "jdk12" ]];then
-  export JAVA_HOME=${JDK12_HOME}
-elif [[ "$JDK" == "JDK13" || "$JDK" == "jdk13" ]];then
-  export JAVA_HOME=${JDK13_HOME}
-elif [[ "$JDK" == "JDK14" || "$JDK" == "jdk14" ]];then
-  export JAVA_HOME=${JDK14_HOME}
-elif [[ "$JDK" == "JDK15" || "$JDK" == "jdk15" ]];then
-  export JAVA_HOME=${JDK15_HOME}
-elif [[ "$JDK" == "JDK16" || "$JDK" == "jdk16" ]];then
-  export JAVA_HOME=${JDK16_HOME}
-elif [[ "$JDK" == "JDK17" || "$JDK" == "jdk17" ]];then
-  export JAVA_HOME=${JDK17_HOME}
+if [[ "$JDK" == "JDK21" || "$JDK" == "jdk21" ]];then
+  wget https://download.java.net/java/early_access/jdk21/15/GPL/openjdk-21-ea+15_linux-x64_bin.tar.gz -O jdk-21.tar.gz
+  tar -xvf jdk-21.tar.gz
+  export JAVA_HOME=$WORKSPACE/jdk-21.0.1
 fi  
 
 export PATH=$JAVA_HOME/bin:$PATH
@@ -71,16 +63,16 @@ mkdir -p ${HOME}/.m2
 
 WGET_PROPS="--progress=bar:force --no-cache"
 if [ -z "$JAF_BUNDLE_URL" ];then
-  export JAF_BUNDLE_URL=https://jakarta.oss.sonatype.org/content/repositories/staging/jakarta/activation/jakarta.activation-api/2.1.0/jakarta.activation-api-2.1.0.jar
+  export JAF_BUNDLE_URL=https://jakarta.oss.sonatype.org/content/repositories/staging/jakarta/activation/jakarta.activation-api/2.1.2/jakarta.activation-api-2.1.2.jar
 fi
 if [ -z "$MAIL_BUNDLE_URL" ];then
-  export MAIL_BUNDLE_URL=https://jakarta.oss.sonatype.org/content/repositories/staging/jakarta/mail/jakarta.mail-api/2.1.0/jakarta.mail-api-2.1.0.jar
+  export MAIL_BUNDLE_URL=https://jakarta.oss.sonatype.org/content/repositories/staging/jakarta/mail/jakarta.mail-api/2.1.1/jakarta.mail-api-2.1.1.jar
 fi
 if [ -z "$ANGUS_BUNDLE_URL" ];then
-  export ANGUS_BUNDLE_URL=https://jakarta.oss.sonatype.org/content/repositories/staging/org/eclipse/angus/angus-mail/1.0.0/angus-mail-1.0.0.jar
+  export ANGUS_BUNDLE_URL=https://jakarta.oss.sonatype.org/content/repositories/staging/org/eclipse/angus/angus-mail/2.0.2/angus-mail-2.0.2.jar
 fi
 if [ -z "$ANGUS_ACTIVATION_BUNDLE_URL" ];then
-  export ANGUS_ACTIVATION_BUNDLE_URL=https://jakarta.oss.sonatype.org/content/repositories/staging/org/eclipse/angus/angus-activation/1.0.0/angus-activation-1.0.0.jar
+  export ANGUS_ACTIVATION_BUNDLE_URL=https://jakarta.oss.sonatype.org/content/repositories/staging/org/eclipse/angus/angus-activation/2.0.1/angus-activation-2.0.1.jar
 fi
 
 wget $WGET_PROPS $JAF_BUNDLE_URL -O ${WORKSPACE}/jakarta.activation-api.jar

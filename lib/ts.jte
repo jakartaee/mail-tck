@@ -1,5 +1,5 @@
 #
-# Copyright (c) 2020, 2022 Oracle and/or its affiliates. All rights reserved.
+# Copyright (c) 2020, 2023 Oracle and/or its affiliates. All rights reserved.
 #
 # This program and the accompanying materials are made available under the
 # terms of the Eclipse Public License v. 2.0, which is available at
@@ -125,7 +125,7 @@ env.mailUnix.command.execute=$ExecTCKTestOtherJVMCmd \
 	CLASSPATH=$testSuiteRootDir/../classes:$testClassDir:\
 	$javatestClassDir$:$extraOtherJVMClassPath \
 	HOME=${user.home} \
-	$JAVA_HOME/bin/java -verify $testExecuteClass $testExecuteArgs $testDebug
+	$JAVA_HOME/bin/java -DnoSecurityManager=true -verify $testExecuteClass $testExecuteArgs $testDebug
 
 #---------- JDK/UNIX module configuration -----------------------------------
 
@@ -143,7 +143,7 @@ env.mailUnixMod.command.execute=$ExecTCKTestOtherJVMCmd \
 	CLASSPATH=$testSuiteRootDir/../classes:$testClassDir:\
 	$javatestClassDir$:$extraOtherJVMClassPath \
 	HOME=${user.home} \
-	$JAVA_HOME/bin/java -verify \
+	$JAVA_HOME/bin/java -DnoSecurityManager=true -verify \
 		--add-modules jakarta.mail \
 		--module-path $API_JAR \
 		$testExecuteClass $testExecuteArgs $testDebug
@@ -175,7 +175,7 @@ env.mailWindows.command.execute=$ExecTCKTestOtherJVMCmd \
 	CLASSPATH=$testSuiteRootDir$/..$/classes$:$javatestClassDir$:$extraOtherJVMClassPath \
 	SystemRoot=${SYSTEMROOT} \
 	windir=${SYSTEMROOT} \
-	$JAVA_HOME$/bin$/java -verify $testExecuteClass $testExecuteArgs $testDebug
+	$JAVA_HOME$/bin$/java -DnoSecurityManager=true -verify $testExecuteClass $testExecuteArgs $testDebug
 
 #---------- JDK/Windows module configuration --------------------------------
 
@@ -203,7 +203,7 @@ env.mailWindowsMod.command.execute=$ExecTCKTestOtherJVMCmd \
 	CLASSPATH=$testSuiteRootDir$/..$/classes$:$javatestClassDir$:$extraOtherJVMClassPath \
 	SystemRoot=${SYSTEMROOT} \
 	windir=${SYSTEMROOT} \
-	$JAVA_HOME$/bin$/java -verify \
+	$JAVA_HOME$/bin$/java -DnoSecurityManager=true -verify \
 		--add-modules jakarta.mail \
 		--module-path $API_JAR \
 		$testExecuteClass $testExecuteArgs $testDebug

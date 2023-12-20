@@ -49,16 +49,16 @@ spec:
   }
   parameters {
     string(name: 'JAF_BUNDLE_URL',
-           defaultValue: 'https://jakarta.oss.sonatype.org/content/repositories/staging/jakarta/activation/jakarta.activation-api/2.1.0/jakarta.activation-api-2.1.0.jar',
+           defaultValue: 'https://jakarta.oss.sonatype.org/content/repositories/staging/jakarta/activation/jakarta.activation-api/2.1.2/jakarta.activation-api-2.1.2.jar',
            description: 'URL required for downloading JAF implementation jar' )
     string(name: 'ANGUS_ACTIVATION_BUNDLE_URL', 
-           defaultValue: 'https://jakarta.oss.sonatype.org/content/repositories/staging/org/eclipse/angus/angus-activation/1.0.0/angus-activation-1.0.0.jar',
+           defaultValue: 'https://jakarta.oss.sonatype.org/content/repositories/staging/org/eclipse/angus/angus-activation/2.0.1/angus-activation-2.0.1.jar',
            description: 'URL required for downloading JAF compatible implementation jar' )
     string(name: 'MAIL_BUNDLE_URL',
-           defaultValue: 'https://jakarta.oss.sonatype.org/content/repositories/staging/jakarta/mail/jakarta.mail-api/2.1.0/jakarta.mail-api-2.1.0.jar',
+           defaultValue: 'https://jakarta.oss.sonatype.org/content/repositories/staging/jakarta/mail/jakarta.mail-api/2.1.2/jakarta.mail-api-2.1.2.jar',
            description: 'URL required for downloading Javamail API jar' )
     string(name: 'ANGUS_BUNDLE_URL',
-           defaultValue: 'https://jakarta.oss.sonatype.org/content/repositories/staging/org/eclipse/angus/angus-mail/1.0.0/angus-mail-1.0.0.jar',
+           defaultValue: 'https://jakarta.oss.sonatype.org/content/repositories/staging/org/eclipse/angus/angus-mail/2.0.2/angus-mail-2.0.2.jar',
            description: 'URL required for downloading Javamail implementation jar' )
     string(name: 'TCK_BUNDLE_BASE_URL',
            defaultValue: '',
@@ -67,12 +67,12 @@ spec:
            defaultValue: 'mail-tck-2.1.0.zip', 
 	         description: 'Name of bundle file to be appended to the base url' )
     string(name: 'GF_BUNDLE_URL', 
-           defaultValue: 'https://download.eclipse.org/ee4j/glassfish/glassfish-7.0.0-SNAPSHOT-nightly.zip', 
+           defaultValue: 'https://download.eclipse.org/ee4j/glassfish/glassfish-7.0.0.zip', 
            description: 'URL required for downloading GlassFish Full/Web profile bundle' )
     choice(name: 'RUNTIME', choices: 'Glassfish\nANGUS',
            description: 'Run JAF Tests with Angus/Glassfish' )
-    choice(name: 'JDK', choices: 'JDK11\nJDK17',
-           description: 'Java SE Version to be used for running TCK either JDK11 or JDK17' )
+    choice(name: 'JDK', choices: 'JDK21',
+           description: 'Java SE Version to be used for running TCK either JDK21' )
     choice(name: 'LICENSE', choices: 'EPL\nEFTL',
            description: 'License file to be used to build the TCK bundle(s) either EPL(default) or Eclipse Foundation TCK License' )
   }
