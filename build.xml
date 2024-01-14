@@ -21,7 +21,7 @@
     <description>Builds and runs the project mailtck.</description>
 
     <property name="version" value="2.1"/>
-    <property name="version.tck" value="2.1.1"/>
+    <property name="version.tck" value="2.1.2"/>
     <property name="api.module.name" value="jakarta.mail"/>
 
 

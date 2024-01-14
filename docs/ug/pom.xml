@@ -28,9 +28,8 @@
     <groupId>com.sun.mail</groupId>
     <artifactId>tck_ug</artifactId>
     <packaging>pom</packaging>
-    <version>2.1.1</version>
-    <name>Eclipse Foundation, Technology Compatibility Kit User's Guide for Jakarta Mail API 2.1 for Jakarta EE, Release 2.1.1</name>
-
+    <version>2.1.2</version>
+    <name>Eclipse Foundation, Technology Compatibility Kit User's Guide for Jakarta Mail API 2.1 for Jakarta EE, Release 2.1.2</name>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <site.output.dir>${project.build.directory}/staging</site.output.dir>
